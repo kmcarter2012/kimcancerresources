@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Georgia Resources - Community Resource Directory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Root variables for consistent theming */
+    :root {
+        --primary-color: #3a86ff;
+        --secondary-color: #ff006e;
+        --accent-color: #8338ec;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --success-color: #38b000;
+        --warning-color: #ffbe0b;
+        --danger-color: #dc3545;
+        --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
+        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
+    }
+
+    /* Universal Box-Sizing */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body and Typography */
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background-color: #f8f9fa;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+
+    h1, h2, h3, h4 {
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+    /* Hero Section Styling */
+    .hero-section {
+        background: var(--blue-gradient);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 250px;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 800px;
+        margin: 0.5rem auto 0;
+    }
+
+    /* Pointed bottom shape for the hero */
+    .hero-section::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: white;
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        z-index: 999;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-top: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        list-style: disc;
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Header and Navigation */
+    nav {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .main-navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-navbar li {
+        margin: 0;
+    }
+
+    .main-navbar a, .dropbtn {
+        display: block;
+        color: var(--dark-color);
+        text-align: center;
+        padding: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .main-navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: var(--light-color);
+        color: var(--primary-color);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 250px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .dropdown-content a {
+        padding: 0.75rem 1rem;
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Main Content Layout */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .resource-section {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .resource-section > p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Back Button Specifics */
+    .back-button {
+        display: inline-block;
+        margin: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 500;
+    }
+
+    .back-button:hover {
+        background-color: var(--accent-color);
+        transform: translateX(-5px);
+        text-decoration: none;
+    }
+
+    /* Search Box */
+    .search-container {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-container h2 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 1rem;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    .search-box input:focus {
+        border-color: var(--primary-color);
+    }
+
+    .search-box button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-box button:hover {
+        background-color: var(--accent-color);
+    }
+
+    #searchResults {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    /* Quick Navigation Menu */
+    .quick-nav {
+        position: sticky;
+        top: 70px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+    }
+
+    .quick-nav h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+
+    .quick-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .quick-nav ul li {
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 0.5rem;
+    }
+
+    .quick-nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    .quick-nav ul li a {
+        display: block;
+        color: var(--dark-color);
+        transition: color 0.3s ease;
+    }
+
+    .quick-nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Two-Column Layout for Desktop */
+    @media (min-width: 992px) {
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        color: white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: #adb5bd;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icons a {
+        color: white;
+        background-color: #495057;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #495057;
+        color: #adb5bd;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+        z-index: 1000;
+    }
+
+    .back-to-top:hover {
+        background-color: var(--accent-color);
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .container {
+            padding: 1rem;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main-navbar {
+            flex-direction: column;
+        }
+
+        .dropdown-content {
+            position: static;
+            width: 100%;
+            box-shadow: none;
+        }
+
+        .resource-section {
+            padding: 1.5rem;
+        }
+
+        .hero-section {
+            padding: 3rem 1rem;
+            min-height: 220px;
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+        }
+
+        .two-column-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .quick-nav {
+            position: static;
+            max-height: none;
+            overflow-y: visible;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .search-box {
+            flex-direction: column;
+        }
+
+        .search-box input, .search-box button {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .search-box button {
+            margin-top: 0.5rem;
+        }
+
+        .hero-section {
+            padding: 2rem 1rem;
+            min-height: 180px;
+        }
+
+        .resource-section {
+            padding: 1rem;
+        }
+    }
+  </style>
+</head>
+<body>
+   <div id="top"></div>
+
+   <a href="index.html" class="back-button">← Back to Main Page</a>
+
+   <header>
+     <div class="hero-section">
+         <h1 class="hero-title">Georgia Resources</h1>
+         <p class="hero-subtitle">Statewide and County-Specific Support for Cancer Patients</p>
+     </div>
+
+     <nav>
+       <ul class="main-navbar">
+         <li><a href="#georgia-resources">Georgia Statewide</a></li>
+         <li><a href="#georgia-housing">Housing</a></li>
+         <li><a href="#georgia-utilities">Utilities</a></li>
+         <li><a href="#georgia-food">Food & Nutrition</a></li>
+         <li><a href="#georgia-dental">Dental</a></li>
+         <li><a href="#georgia-senior-resources">Seniors</a></li>
+         <li><a href="#georgia-transportation">Transportation</a></li>
+         <li><a href="#atlanta-fulton-resources">Atlanta / Fulton County</a></li>
+         <li class="dropdown">
+           <button class="dropbtn">Other Counties</button>
+           <div class="dropdown-content">
+             <a href="#dekalb-county">DeKalb County</a>
+             <a href="#gwinnett-county">Gwinnett County</a>
+             <a href="#cobb-county">Cobb County</a>
+             <a href="#clayton-county">Clayton County</a>
+             <a href="#richmond-county">Richmond County</a>
+           </div>
+         </li>
+       </ul>
+     </nav>
+   </header>
+
+   <div class="container">
+       <div class="search-container">
+           <h2>Find Resources</h2>
+           <div class="search-box">
+               <input type="text" id="siteSearch" placeholder="Search for resources...">
+               <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+           </div>
+           <div id="searchResults"></div>
+       </div>
+
+       <div class="two-column-layout">
+           <div class="quick-nav">
+               <h3>Quick Navigation</h3>
+               <ul>
+                   <li><a href="#georgia-resources">Georgia Statewide</a></li>
+                   <li><a href="#georgia-housing">Housing</a></li>
+                   <li><a href="#georgia-utilities">Utilities</a></li>
+                   <li><a href="#georgia-food">Food & Nutrition</a></li>
+                   <li><a href="#georgia-dental">Dental</a></li>
+                   <li><a href="#georgia-senior-resources">Seniors</a></li>
+                   <li><a href="#georgia-transportation">Transportation</a></li>
+                   <li><a href="#atlanta-fulton-resources">Atlanta / Fulton County</a></li>
+                   <li><a href="#dekalb-county">DeKalb County</a></li>
+                   <li><a href="#gwinnett-county">Gwinnett County</a></li>
+                   <li><a href="#cobb-county">Cobb County</a></li>
+                   <li><a href="#clayton-county">Clayton County</a></li>
+                   <li><a href="#richmond-county">Richmond County</a></li>
+               </ul>
+           </div>
+
+           <div class="main-content">
+               <section id="georgia-resources" class="resource-section">
+                   <h2>Georgia Resources</h2>
+                   <p>Explore a variety of programs and services available specifically for Georgia residents.</p>
+
+                   <h3>Georgia Resource Search Portals</h3>
+                   <ul>
+                       <li><a href="https://www.211georgia.org/"><strong>211 Georgia:</strong></a> The comprehensive information and referral service that connects people to resources in their community including food, housing, health services, and emergency assistance.</li>
+                       <li><a href="https://georgia.gov/services"><strong>Georgia.gov Services:</strong></a> Official Georgia state services portal to find benefits, assistance programs, and support services statewide.</li>
+                       <li><a href="https://dfcs.georgia.gov/services"><strong>Georgia DFCS Services:</strong></a> Department of Family and Children Services portal for finding benefits and social services throughout Georgia.</li>
+                       <li><a href="https://www.georgiaseniorguide.com/"><strong>Georgia Senior Guide:</strong></a> Comprehensive directory of senior housing, care services, and resources throughout Georgia.</li>
+                       <li><a href="https://www.georgiacaregiverresource.org/"><strong>Georgia Caregiver Resource Center:</strong></a> Statewide resource for family caregivers providing support, education, and resources.</li>
+                   </ul>
+
+                   <h3 id="georgia-housing">Georgia Housing Resources</h3>
+                   <ul>
+                       <li><a href="https://www.dca.ga.gov/safe-affordable-housing"><strong>Georgia Department of Community Affairs:</strong></a> Provides information on affordable housing, homelessness prevention, and housing assistance programs for Georgia residents.</li>
+                       <li><a href="https://www.ghfa.org/"><strong>Georgia Housing Finance Authority:</strong></a> Offers resources for affordable rental housing and homeownership programs throughout Georgia.</li>
+                       <li><a href="https://www.dca.ga.gov/safe-affordable-housing/housing-special-needs"><strong>DCA Housing for Special Needs:</strong></a> Provides various housing assistance programs for individuals with special needs and disabilities.</li>
+                       <li><a href="https://www.georgiahousingdata.org/"><strong>Georgia Housing Data:</strong></a> Comprehensive housing information and resources for renters and homebuyers.</li>
+                       <li><a href="https://www.socialserve.com/tenant/GA/"><strong>Georgia Housing Search:</strong></a> Search tool for affordable housing, subsidized housing, and accessible units throughout Georgia.</li>
+                       <li><a href="https://www.habitat.org/local/georgia"><strong>Habitat for Humanity Georgia:</strong></a> Multiple affiliate organizations throughout Georgia providing affordable homeownership opportunities.</li>
+                       <li><a href="https://www.georgiahomelessness.org/"><strong>Georgia Coalition to End Homelessness:</strong></a> Resources for preventing and ending homelessness with housing assistance programs.</li>
+                       <li><a href="https://www.unitedwayatlanta.org/housing"><strong>United Way of Greater Atlanta Housing:</strong></a> Housing stability programs and rental assistance for families in crisis.</li>
+                       <li><a href="https://www.georgiarentalassistance.org/"><strong>Georgia Rental Assistance Program:</strong></a> Emergency rental assistance for eligible households impacted by COVID-19.</li>
+                   </ul>
+
+                   <h3 id="georgia-utilities">Georgia Utility Assistance</h3>
+                   <ul>
+                       <li><a href="https://www.dca.ga.gov/safe-affordable-housing/weatherization-energy-assistance"><strong>Georgia Energy Assistance Program:</strong></a> Information on Georgia programs that help with utility bills through the Department of Community Affairs.</li>
+                       <li><a href="https://www.liheapga.org/"><strong>LIHEAP Georgia:</strong></a> Low Income Home Energy Assistance Program providing financial assistance for heating and cooling bills.</li>
+                       <li><a href="https://www.georgiapower.com/residential/billing-and-rate-options/payment-and-billing-assistance"><strong>Georgia Power Payment Assistance:</strong></a> Programs to help customers manage their electric bills including payment plans and energy efficiency programs.</li>
+                       <li><a href="https://www.atlantagaslight.com/account-services/billing-payment/payment-assistance"><strong>Atlanta Gas Light Payment Assistance:</strong></a> Natural gas bill assistance programs for eligible customers.</li>
+                       <li><a href="https://www.salvationarmyusa.org/usn/plugins/gdocsearch_ua.jsp?placeID=7021"><strong>Salvation Army Georgia:</strong></a> Emergency utility assistance programs throughout Georgia to prevent service disconnections.</li>
+                       <li><a href="https://www.catholiccharitiesatlanta.org/services/emergency-assistance/"><strong>Catholic Charities Atlanta:</strong></a> Emergency financial assistance including utility bill help for those in need.</li>
+                       <li><a href="https://www.benefits.gov/benefit/623"><strong>Federal Energy Assistance:</strong></a> Federal resources for energy bill assistance that Georgia residents can access.</li>
+                       <li><a href="https://www.georgiapower.com/residential/billing-and-rate-options/pricing-and-rate-plans/special-programs"><strong>Georgia Power Low Income Programs:</strong></a> Special utility rate programs and energy efficiency assistance for qualifying low-income customers.</li>
+                       <li><a href="https://www.scanaenergy.com/customer-care/bill-pay-assistance"><strong>SCANA Energy Bill Assistance:</strong></a> Payment assistance programs and budget billing options for natural gas customers.</li>
+                       <li><a href="https://www.georgiaweatherization.com/"><strong>Georgia Weatherization Assistance Program:</strong></a> Free weatherization services to help reduce energy costs for low-income households.</li>
+                   </ul>
+
+                   <h3 id="georgia-food">Georgia Food & Nutrition Resources</h3>
+                   <ul>
+                       <li><a href="https://dfcs.georgia.gov/food-assistance"><strong>Georgia DFCS Food Assistance:</strong></a> Apply for SNAP, WIC, and other food assistance programs through the Department of Family and Children Services.</li>
+                       <li><a href="https://compass.ga.gov/"><strong>Georgia COMPASS:</strong></a> Online portal to apply for SNAP (food stamps), Medicaid, and other public benefits.</li>
+                       <li><a href="https://aging.georgia.gov/nutrition-services"><strong>Georgia Department of Human Services Aging Division:</strong></a> Senior nutrition programs including home-delivered meals and congregate dining.</li>
+                       <li><a href="https://www.atlbfb.org/"><strong>Atlanta Community Food Bank:</strong></a> Provides food assistance and connects people to local food pantries throughout North Georgia.</li>
+                       <li><a href="https://www.secondharvestsga.org/"><strong>Second Harvest of South Georgia:</strong></a> Food bank serving South Georgia communities with food pantries and mobile food programs.</li>
+                       <li><a href="https://www.feedingamerica.org/find-your-local-foodbank/georgia"><strong>Feeding America Georgia Food Banks:</strong></a> Network of food banks throughout Georgia providing emergency food assistance.</li>
+                       <li><a href="https://dph.georgia.gov/WIC"><strong>Georgia WIC Program:</strong></a> Nutrition program for pregnant women, new mothers, and children under 5 years old.</li>
+                       <li><a href="https://www.gadoe.org/School-Nutrition/Pages/default.aspx"><strong>Georgia School Nutrition Program:</strong></a> Free and reduced-price meals for school-age children and summer feeding programs.</li>
+                       <li><a href="https://www.gafoodbank.org/"><strong>Georgia Food Bank Association:</strong></a> Network of food banks serving communities across Georgia with emergency food assistance.</li>
+                       <li><a href="https://www.midgeorgiafoodbank.org/"><strong>Middle Georgia Community Food Bank:</strong></a> Serves 24 counties in Middle Georgia with food pantries and mobile food programs.</li>
+                       <li><a href="https://www.foodbank-nwga.org/"><strong>Food Bank of Northeast Georgia:</strong></a> Provides food assistance to 13 counties in Northeast Georgia.</li>
+                       <li><a href="https://www.mealsbygracea.org/"><strong>Meals by Grace:</strong></a> Metro Atlanta organization providing free meals and food assistance to families in need.</li>
+                       <li><a href="https://www.georgiaorganics.org/farm-to-school"><strong>Georgia Organics Farm to School:</strong></a> Programs connecting schools with local farms to provide fresh, healthy food options.</li>
+                       <li><a href="https://www.snap4ct2.org/Georgia/"><strong>Georgia SNAP Outreach:</strong></a> Help with SNAP (food stamp) applications and understanding benefits eligibility.</li>
+                       <li><a href="https://www.georgiafoodstampoffice.com/"><strong>Georgia Food Stamp Office Locations:</strong></a> Directory of DFCS offices where you can apply for SNAP benefits in person.</li>
+                       <li><a href="https://www.mowaa.org/page/Georgia"><strong>Meals on Wheels Georgia:</strong></a> Network of local programs delivering meals to homebound seniors throughout Georgia.</li>
+                   </ul>
+
+                   <h3 id="georgia-dental">Georgia Dental Resources</h3>
+                   <p>Explore dental care options and training-based clinics available across Georgia.</p>
+                   <ul>
+                       <li><a href="https://www.gadental.org/public/find-a-dentist"><strong>Georgia Dental Association - Find a Dentist:</strong></a> Directory of dentists and clinics providing care for patients with limited financial resources.</li>
+                       <li><a href="https://findahealthcenter.hrsa.gov/"><strong>Georgia Federally Qualified Health Centers:</strong></a> Health centers providing dental care for low-income, uninsured, and underinsured patients.</li>
+                       <li><a href="https://www.dental.uga.edu/patientcare/"><strong>University of Georgia College of Dental Medicine:</strong></a> Dental care provided by dental students under supervision. Phone: (706) 721-2117</li>
+                       <li><a href="https://www.gru.edu/alliedhealth/dentalhygiene/clinics.php"><strong>Georgia Regents University Dental Hygiene Clinic:</strong></a> Preventive dental care provided by dental hygiene students. Phone: (706) 721-4261</li>
+                       <li><a href="https://www.clayton.edu/health/dental-hygiene/clinic"><strong>Clayton State University Dental Hygiene Clinic:</strong></a> Affordable dental hygiene services. Phone: (678) 466-4720</li>
+                       <li><a href="https://www.gsu.edu/dental-hygiene-clinic/"><strong>Georgia State University Dental Hygiene Clinic:</strong></a> Low-cost preventive dental care in Atlanta. Phone: (404) 413-1212</li>
+                   </ul>
+
+                   <h3 id="georgia-senior-resources">Georgia Senior Resources</h3>
+                   <p>Explore senior-focused services including benefits, caregiving support, and local aging resources.</p>
+                   <ul>
+                       <li><a href="https://aging.georgia.gov/programs-and-services"><strong>Georgia Department of Human Services Division of Aging Services:</strong></a> Comprehensive services for seniors including case management, home care, and adult protective services.</li>
+                       <li><a href="https://aging.georgia.gov/adult-protective-services"><strong>Georgia Adult Protective Services:</strong></a> Investigates reports of abuse, neglect, and exploitation of adults 18 and older who are disabled or 65 and older.</li>
+                       <li><a href="https://aging.georgia.gov/information-assistance"><strong>Georgia Aging and Disability Services Helpline:</strong></a> Call 1-866-552-4464 for information about services and support for older adults and people with disabilities throughout Georgia.</li>
