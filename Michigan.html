@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michigan Resources - Community Resource Directory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Root variables for consistent theming */
+    :root {
+        --primary-color: #3a86ff;
+        --secondary-color: #ff006e;
+        --accent-color: #8338ec;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --success-color: #38b000;
+        --warning-color: #ffbe0b;
+        --danger-color: #dc3545;
+        --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
+        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
+    }
+
+    /* Universal Box-Sizing */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body and Typography */
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background-color: #f8f9fa;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+
+    h1, h2, h3, h4 {
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+    /* Hero Section Styling (Adapted for Michigan page) */
+    .hero-section {
+        background: var(--blue-gradient); /* Using the primary gradient */
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 250px;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 800px;
+        margin: 0.5rem auto 0;
+    }
+
+    /* Pointed bottom shape for the hero */
+    .hero-section::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: white; /* To blend with the nav */
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        z-index: 999;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .site-title { /* Used for the main title in the header on this page */
+        font-size: 2.2rem; /* Slightly smaller than main hero title */
+        color: var(--dark-color);
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-top: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem; /* Indent lists slightly */
+        list-style: disc; /* Keep default bullet points for readability */
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Header and Navigation */
+    nav {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .main-navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-navbar li {
+        margin: 0;
+    }
+
+    .main-navbar a, .dropbtn {
+        display: block;
+        color: var(--dark-color);
+        text-align: center;
+        padding: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .main-navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: var(--light-color);
+        color: var(--primary-color);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 250px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .dropdown-content a {
+        padding: 0.75rem 1rem;
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Main Content Layout */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .resource-section {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .resource-section > p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Back Button Specifics */
+    .back-button {
+        display: inline-block;
+        margin: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 500;
+    }
+
+    .back-button:hover {
+        background-color: var(--accent-color);
+        transform: translateX(-5px);
+        text-decoration: none;
+    }
+
+    /* Search Box (main content search) */
+    .search-container {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-container h2 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 1rem;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    .search-box input:focus {
+        border-color: var(--primary-color);
+    }
+
+    .search-box button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-box button:hover {
+        background-color: var(--accent-color);
+    }
+
+    #searchResults {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    /* Quick Navigation Menu */
+    .quick-nav {
+        position: sticky;
+        top: 70px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+    }
+
+    .quick-nav h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+
+    .quick-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .quick-nav ul li {
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 0.5rem;
+    }
+
+    .quick-nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    .quick-nav ul li a {
+        display: block;
+        color: var(--dark-color);
+        transition: color 0.3s ease;
+    }
+
+    .quick-nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Two-Column Layout for Desktop */
+    @media (min-width: 992px) {
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+        border-radius: 10px 10px 0 0; /* Rounded top corners for footer */
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        color: white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: #adb5bd;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icons a {
+        color: white;
+        background-color: #495057;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #495057;
+        color: #adb5bd;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+        z-index: 1000;
+    }
+
+    .back-to-top:hover {
+        background-color: var(--accent-color);
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .container {
+            padding: 1rem;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main-navbar {
+            flex-direction: column;
+        }
+
+        .dropdown-content {
+            position: static;
+            width: 100%;
+            box-shadow: none;
+        }
+
+        .resource-section {
+            padding: 1.5rem;
+        }
+
+        .hero-section {
+            padding: 3rem 1rem;
+            min-height: 220px; /* Adjusted for smaller screens */
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem; /* Slightly smaller for mobile */
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+        }
+
+        .two-column-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .quick-nav {
+            position: static;
+            max-height: none;
+            overflow-y: visible;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .search-box {
+            flex-direction: column;
+        }
+
+        .search-box input, .search-box button {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .search-box button {
+            margin-top: 0.5rem;
+        }
+
+        .hero-section {
+            padding: 2rem 1rem;
+            min-height: 180px; /* Further adjusted for very small screens */
+        }
+
+        .resource-section {
+            padding: 1rem;
+        }
+    }
+  </style>
+</head>
+<body>
+   <div id="top"></div>
+
+   <a href="index.html" class="back-button">← Back to Main Page</a>
+
+   <header>
+     <div class="hero-section">
+         <h1 class="hero-title">Michigan Resources</h1>
+         <p class="hero-subtitle">Statewide and County-Specific Support for Cancer Patients</p>
+     </div>
+
+     <nav>
+       <ul class="main-navbar">
+         <li><a href="#michigan-resources">Michigan Statewide</a></li>
+         <li><a href="#michigan-housing">Housing</a></li>
+         <li><a href="#michigan-utilities">Utilities</a></li>
+         <li><a href="#michigan-food">Food & Nutrition</a></li>
+         <li><a href="#michigan-dental">Dental</a></li>
+         <li><a href="#michigan-cancer-financial">Cancer Financial Assistance</a></li>
+         <li><a href="#michigan-senior-resources">Seniors</a></li>
+         <li><a href="#michigan-transportation">Transportation</a></li>
+         <li><a href="#michigan-medical-supplies">Medical Equipment & Supplies</a></li>
+         <li class="dropdown">
+           <button class="dropbtn">Counties</button>
+           <div class="dropdown-content">
+             <a href="#detroit-resources">Detroit / Wayne County</a>
+             <a href="#grand-rapids-resources">Grand Rapids / Kent County</a>
+             <a href="#oakland-county-resources">Oakland County</a>
+           </div>
+         </li>
+       </ul>
+     </nav>
+   </header>
+
+   <div class="container">
+       <div class="search-container">
+           <h2>Find Resources</h2>
+           <div class="search-box">
+               <input type="text" id="siteSearch" placeholder="Search for resources...">
+               <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+           </div>
+           <div id="searchResults"></div>
+       </div>
+
+       <div class="two-column-layout">
+           <div class="quick-nav">
+               <h3>Quick Navigation</h3>
+               <ul>
+                   <li><a href="#michigan-resources">Michigan Statewide</a></li>
+                   <li><a href="#michigan-housing">Housing</a></li>
+                   <li><a href="#michigan-utilities">Utilities</a></li>
+                   <li><a href="#michigan-food">Food & Nutrition</a></li>
+                   <li><a href="#michigan-dental">Dental</a></li>
+                   <li><a href="#michigan-cancer-financial">Cancer Financial Assistance</a></li>
+                   <li><a href="#michigan-senior-resources">Seniors</a></li>
+                   <li><a href="#michigan-transportation">Transportation</a></li>
+                   <li><a href="#michigan-medical-supplies">Medical Equipment & Supplies</a></li>
+                   <li><a href="#detroit-resources">Detroit / Wayne County</a></li>
+                   <li><a href="#grand-rapids-resources">Grand Rapids / Kent County</a></li>
+                   <li><a href="#oakland-county-resources">Oakland County</a></li>
+               </ul>
+           </div>
+
+           <div class="main-content">
+               <section id="michigan-resources" class="resource-section">
+                   <h2>Michigan Resources</h2>
+                   <p>Explore a variety of programs and services available specifically for Michigan residents.</p>
+    
+                   <h3 id="michigan-state-guides">Michigan State Resource Guides</h3>
+                   <p>Comprehensive guides and directories provided by state agencies to help navigate available resources.</p>
+                   <ul>
+                     <li><a href="https://mi211.org/"><strong>MI 211:</strong></a> Call <a href="tel:211">211</a> or visit the website to connect with local resources throughout Michigan including housing, utilities, food, health services, and more. This statewide service helps Michigan residents find local support 24/7.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/-/media/Project/Websites/mdhhs/Adult-and-Childrens-Services/Child-Support/Resource-Guide_web.pdf"><strong>MDHHS Comprehensive Resource Guide:</strong></a> State-level guide covering public assistance programs, healthcare resources, child support services, and community resources throughout Michigan.</li>
+                     <li><a href="https://www.mclaren.org/Uploads/Public/Documents/MPHO/documents/patient-resources/2024-State-and-National-Community-Resource.pdf"><strong>McLaren Health State & National Community Resources:</strong></a> Detailed guide of healthcare navigation resources, medical assistance programs, and support services for patients throughout Michigan.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/adult-child-serv"><strong>MDHHS Adult & Children's Services:</strong></a> Information on various state programs including adult protective services, children's services, and family support.</li>
+                     <li><a href="https://newmibridges.michigan.gov/s/isd-landing-page"><strong>MI Bridges:</strong></a> Michigan's online portal to apply for and manage benefits including healthcare, food assistance, cash assistance, and emergency relief.</li>
+                     <li><a href="https://www.michigan.gov/sos/how-do-i/assistance-programs"><strong>Michigan Secretary of State - Assistance Programs:</strong></a> Information on state ID assistance, driver's license resources, and other documentation support.</li>
+                     <li><a href="https://www.michigan.gov/leo/bureaus-agencies/mrs/"><strong>Michigan Rehabilitation Services (MRS):</strong></a> Provides specialized employment and education-related services to help individuals with disabilities achieve employment and self-sufficiency.</li>
+                     <li><a href="https://www.michigan.gov/leo/bureaus-agencies/bsbp"><strong>Bureau of Services for Blind Persons:</strong></a> Resources for visually impaired Michigan residents, including rehabilitation services, training, and technological assistance.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/inside-mdhhs/county-offices"><strong>MDHHS County Offices Directory:</strong></a> Find local MDHHS offices throughout Michigan for in-person assistance with state programs and benefits.</li>
+                     <li><a href="https://mi211.org/"><strong>Michigan 2‑1‑1:</strong></a> Find help with food, housing, utility bills, and disaster support—call, text, or search online to connect with local programs.</li>
+                     <li><a href="https://directory.mi211.org/"><strong>Michigan 2‑1‑1 Database Search:</strong></a> Database of over 27,000 local programs—search by service and ZIP code to find community resources across Michigan.</li>
+                     <li><a href="https://newmibridges.michigan.gov/s/isd-explore-resources?language=en_US"><strong>MI Bridges – Help Me Find Resources:</strong></a> Access 30,000+ state and local resources—create a MI Bridges account to explore programs and services online.</li>
+                   </ul>
+    
+                   <h3 id="michigan-housing">Michigan Housing Resources</h3>
+                   <ul>
+                     <li><a href="https://www.hud.gov/states/michigan"><strong>U.S. Department of Housing and Urban Development (HUD) - Michigan:</strong></a> Federal housing resources for Michigan residents, including information on rental assistance, homeownership programs, housing counseling, and homelessness prevention programs.</li>
+                     <li><a href="https://newmibridges.michigan.gov/s/isd-explore-resources?language=en_US#1$Experiencing_Homelessness$/landing-page/sunny.jpg"><strong>MI Bridges - Homelessness Resources:</strong></a> Connects individuals experiencing homelessness or housing insecurity with emergency shelter, housing assistance, and related support services throughout Michigan.</li>
+                     <li><a href="https://www.michigan.gov/mshda"><strong>Michigan State Housing Development Authority (MSHDA):</strong></a> Provides information on affordable housing programs, rental assistance, and homeownership initiatives throughout Michigan.</li>
+                     <li><a href="https://www.michigan.gov/mshda/rental/housing-choice-voucher"><strong>Housing Choice Voucher Program:</strong></a> Offers rental assistance to eligible low-income families and individuals in Michigan.</li>
+                     <li><a href="https://www.michigan.gov/mshda/homeownership/counseling-search"><strong>Housing Counseling:</strong></a> Connect with housing counselors who can help with foreclosure prevention, homebuyer education, and other housing needs.</li>
+                     <li><a href="https://www.michigan.gov/mshda/homeless"><strong>Homeless Programs and Services:</strong></a> Resources and assistance for individuals and families experiencing homelessness or housing insecurity.</li>
+                     <li><a href="https://www.michigan.gov/leo/bureaus-agencies/michigan-community-service-commission/disaster-response/michigan-community-resources"><strong>Michigan Community Resources:</strong></a> Information on various housing and community resources available throughout the state.</li>
+                   </ul>
+    
+                   <h3 id="michigan-utilities">Michigan Utility Assistance</h3>
+                   <ul>
+                     <li><a href="https://www.michigan.gov/mpsc/consumer/energy-assistance"><strong>Michigan Public Service Commission - Energy Assistance Programs:</strong></a> Comprehensive guide to all state energy assistance programs including the Michigan Energy Assistance Program (MEAP), Home Heating Credit, State Emergency Relief, and Weatherization Assistance Program. Includes eligibility information and application links.</li>
+                     <li><a href="https://unitedwaysem.org/resources/utility-assistance/"><strong>United Way for Southeastern Michigan - Utility Assistance:</strong></a> Comprehensive directory of utility assistance programs available to residents in Wayne, Oakland, and Macomb counties, including payment assistance, home weatherization, and emergency services. Phone: Call <a href="tel:211">2-1-1</a> for information.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/assistance-programs/cash"><strong>MDHHS Cash Assistance Programs:</strong></a> Information about State Emergency Relief (SER) which can help with emergency utility bills, and other cash assistance programs that can help with living expenses.</li>
+                     <li><a href="https://www.michigan.gov/mpsc/consumer/assistance"><strong>Michigan Public Service Commission - Utility Assistance:</strong></a> Information on programs that help Michigan residents pay utility bills.</li>
+                     <li><a href="https://newmibridges.michigan.gov/s/isd-landing-page"><strong>MI Bridges - State Emergency Relief:</strong></a> Apply for emergency utility assistance through Michigan's online benefits portal.</li>
+                     <li><a href="https://www.consumersenergy.com/residential/programs-and-services/payment-assistance"><strong>Consumers Energy Payment Assistance:</strong></a> Programs to help Consumers Energy customers manage energy bills.</li>
+                     <li><a href="https://www.dteenergy.com/michigan/en/residential/customer-service/payment-assistance.html"><strong>DTE Energy Payment Assistance:</strong></a> Resources for DTE customers who need help with their gas and electric bills.</li>
+                     <li><a href="https://thawfund.org/"><strong>The Heat and Warmth Fund (THAW):</strong></a> Assists Michigan residents with energy-related emergencies through various utility assistance programs.</li>
+                   </ul>
+    
+                   <h3 id="michigan-food">Michigan Food & Nutrition Resources</h3>
+                   <ul>
+                     <li><a href="https://www.michigan.gov/mdhhs/assistance-programs/food"><strong>MDHHS Food Assistance Programs:</strong></a> Comprehensive information about all state food assistance programs including SNAP (food stamps), WIC, school meals, senior nutrition programs, and emergency food resources.</li>
+                     <li><a href="https://newmibridges.michigan.gov/s/isd-landing-page"><strong>MI Bridges - Food Assistance Program:</strong></a> Apply for SNAP (food stamps), medical, and other public benefits through Michigan's online portal.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/assistance-programs/food"><strong>Michigan MDHHS - Food Assistance:</strong></a> Information on food programs including SNAP, WIC, and other nutrition services.</li>
+                     <li><a href="https://www.feedwm.org/"><strong>Feeding America West Michigan:</strong></a> Connects people with food resources through mobile food pantries and partner agencies in western Michigan.</li>
+                     <li><a href="https://www.gcfb.org/"><strong>Gleaners Community Food Bank:</strong></a> Provides food assistance through various programs in southeastern Michigan.</li>
+                     <li><a href="https://fbcmich.org/"><strong>Food Bank Council of Michigan:</strong></a> Statewide network coordinating food banks and hunger relief efforts across Michigan.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/assistance-programs/food/wicbreastfeeding"><strong>Michigan WIC Program:</strong></a> Nutrition services for women, infants, and children under five who qualify.</li>
+                     <li><a href="https://www.michigan.gov/aging/nutrition"><strong>Michigan Department of Health and Human Services - Senior Nutrition:</strong></a> Provides meals and nutrition services for eligible seniors.</li>
+                     <li><a href="https://www.michigan.gov/mde/services/food"><strong>Michigan Department of Education - Food and Nutrition Programs:</strong></a> School breakfast, lunch, and summer food programs for children.</li>
+                   </ul>
+    
+                   <h3 id="michigan-dental">Michigan Dental Resources</h3>
+                   <p>Explore dental care options and training-based clinics available across Michigan.</p>
+                   <ul>
+                     <li><a href="https://www.michigan.gov/mdhhs/assistance-programs/healthcare/dental"><strong>Michigan MDHHS - Dental Care:</strong></a> Information on dental services available through Medicaid and other state programs.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/assistance-programs/medicaid"><strong>Michigan Medicaid Dental Coverage:</strong></a> Information about dental benefits available through Michigan's Medicaid program, including coverage details and how to find a provider.</li>
+                     <li><a href="https://findahealthcenter.hrsa.gov/?state=MI"><strong>Michigan's Federally Qualified Health Centers:</strong></a> These centers provide dental services for people who are low income, uninsured, or undocumented residents.</li>
+                     <li><a href="https://dental.umich.edu/patient-care"><strong>University of Michigan School of Dentistry:</strong></a> Provides comprehensive dental care at reduced fees. Call: <a href="tel:7347641525">734-764-1525</a></li>
+                     <li><a href="https://www.dental.msu.edu/patients"><strong>Michigan State University College of Human Medicine:</strong></a> Offers dental services through their educational programs. Call: <a href="tel:5173533000">517-353-3000</a></li>
+                     <li><a href="https://www.dental.udetroit.edu/patients"><strong>University of Detroit Mercy School of Dentistry:</strong></a> Provides dental care through their teaching clinics. Call: <a href="tel:3134946700">313-494-6700</a></li>
+                     <li><a href="https://www.michigandental.org/public/dental-clinics/"><strong>Michigan Dental Association - Find a Dental Clinic:</strong></a> Listing of clinics throughout Michigan for people with limited financial resources.</li>
+                   </ul>
+    
+                   <h3 id="michigan-senior-resources">Michigan Senior Resources</h3>
+                   <p>Explore senior-focused services including benefits, caregiving support, and local aging resources.</p>
+                   <ul>
+                     <li><a href="https://www.michigan.gov/mdhhs/adult-child-serv/adults-and-seniors/health-services/aging-services"><strong>Michigan Department of Health and Human Services - Aging Services:</strong></a> Complete directory of state programs for older adults including nutrition services, community living support, care management, and caregiver resources.</li>
+                     <li><a href="https://www.michigan.gov/osa"><strong>Michigan Office of Services to the Aging:</strong></a> Offers community-based services for seniors including caregiver support and elder abuse prevention.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/adult-child-serv/adult-ps"><strong>MDHHS Adult Protective Services:</strong></a> Protects older adults and adults with disabilities from abuse, neglect, and exploitation.</li>
+                     <li><a href="https://www.michigan.gov/osa/resources/directory"><strong>Michigan Aging & Adult Services Information Line:</strong></a> Call <a href="tel:18008527795">1-800-852-7795</a> for information on senior programs, benefits, and support services.</li>
+                     <li><a href="https://www.aaa1b.org/"><strong>Area Agency on Aging 1-B:</strong></a> Serves seniors in southeast Michigan with various support services and resource connections.</li>
+                     <li><a href="https://www.michigancaregiver.org/"><strong>Michigan Dementia Care and Support:</strong></a> Resources for caregivers and those living with dementia and Alzheimer's disease.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/assistance-programs/medicare-medicaid"><strong>Medicare/Medicaid Assistance Program (MMAP):</strong></a> Free counseling service to help Michigan residents understand Medicare and Medicaid benefits.</li>
+                     <li><a href="https://www.seniorresourcesmichigan.org/"><strong>Senior Resources of Michigan:</strong></a> Connects seniors with local services and support options throughout the state.</li>
+                     <li><a href="https://www.michigan.gov/leo/bureaus-agencies/csa/community-services/aging-and-adult-services"><strong>Michigan Aging and Adult Services Agency:</strong></a> Provides a variety of services for older adults including home-delivered meals, in-home care, and transportation assistance.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/assistance-programs/healthcare/seniorsservices"><strong>MDHHS Senior Services:</strong></a> Information on healthcare programs specifically for Michigan seniors including nursing facility care and home health services.</li>
+                     <li><a href="https://www.michigan.gov/taxes/iit/credits-exemptions-and-deductions/homestead-property-tax-credit/senior-citizens-disabled"><strong>Michigan Property Tax Relief for Seniors:</strong></a> Information about property tax credits and exemptions available to eligible seniors.</li>
+                   </ul>
+    
+                   <h3 id="michigan-transportation">Michigan Transportation Resources</h3>
+                   <p>Explore transportation options for seniors, people with disabilities, and Medicaid recipients across Michigan.</p>
+                   <ul>
+                     <li><a href="https://mi211.org/transportation"><strong>MI 211 Transportation Resources:</strong></a> Comprehensive database of transportation options throughout Michigan, including medical transport, senior services, and disability assistance. Call <a href="tel:211">211</a> or visit the website to find transportation resources in your specific area.</li>
+                     <li><a href="https://www.myride2.com"><strong>myride2:</strong></a> Transportation service that helps older adults and people with disabilities find rides in Washtenaw, Wayne, Oakland, and Macomb counties. Call <a href="tel:8556974332">855-697-4332</a> to speak with a mobility specialist who can help arrange transportation.</li>
+                     <li><a href="https://www.michigan.gov/osa/services/transportation"><strong>Michigan Office of Services to the Aging - Transportation:</strong></a> Information on transportation services available to older adults throughout the state.</li>
+                     <li><a href="https://www.michigan.gov/mdot/travel/public"><strong>Michigan Department of Transportation - Public Transportation:</strong></a> Find local transit services, including specialized services for seniors and people with disabilities.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/assistance-programs/healthcare/transportation"><strong>MDHHS - Non-Emergency Medical Transportation:</strong></a> Transportation assistance for Medicaid recipients traveling to healthcare appointments.</li>
+                     <li><a href="https://www.detroitmi.gov/departments/detroit-department-transportation"><strong>Detroit Department of Transportation (DDOT):</strong></a> Public transit services in Detroit, including reduced fare programs for seniors and people with disabilities.</li>
+                     <li><a href="https://www.smartbus.org/Rider-Tools/Fares-Passes"><strong>SMART Bus - Reduced Fare Program:</strong></a> Reduced fares for seniors and people with disabilities in southeast Michigan.</li>
+                     <li><a href="https://www.theride.org/services/paratransit"><strong>TheRide - A-Ride Paratransit Services:</strong></a> Door-to-door transportation service for people with disabilities in the Ann Arbor area.</li>
+                     <li><a href="https://www.michigan.gov/osa/resources/directory/area-agencies-on-aging"><strong>Area Agencies on Aging:</strong></a> Local agencies that can help seniors access transportation services in their communities.</li>
+                   </ul>
+    
+                   <h3 id="michigan-medical-supplies">Michigan Medical Equipment & Incontinence Supplies</h3>
+                   <p>Resources for accessing medical equipment loan closets, incontinence supplies, and other medical necessities across Michigan.</p>
+                   <ul>
+                     <li><a href="https://www.michiganassistiveprograms.org/dme-loan-closets"><strong>Michigan Assistive Technology Program - DME Loan Closets:</strong></a> Directory of durable medical equipment loan closets throughout Michigan where residents can borrow equipment like wheelchairs, walkers, and hospital beds.</li>
+                     <li><a href="https://www.dmecbsmi.org/"><strong>DME Coalition of Southeast Michigan:</strong></a> Collaborative network that helps connect people with medical equipment needs to available resources in the region.</li>
+                     <li><a href="https://www.uofmhealth.org/patient-visitor-guide/guest-assistance-program/medical-equipment-loan-closet"><strong>University of Michigan Health Equipment Loan Closet:</strong></a> Free loans of equipment like wheelchairs, walkers, and crutches for Michigan Medicine patients.</li>
+                     <li><a href="https://www.jfswm.org/services/aids-equipment-loan-closet/"><strong>Jewish Family Services of Washtenaw County - Equipment Loan Closet:</strong></a> Provides used medical equipment to community members regardless of religious affiliation.</li>
+                     <li><a href="https://www.diaperbankmichigan.org/"><strong>Diaper Bank of Michigan:</strong></a> Network of diaper banks that provide diapers and incontinence supplies to those in need across Michigan.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/assistance-programs/healthcare/eligibility"><strong>Michigan Medicaid - Incontinence Supplies Coverage:</strong></a> Information on how Medicaid may cover incontinence supplies for eligible individuals.</li>
+                     <li><a href="https://www.detroitareamrc.org/"><strong>ARC Detroit - Medical Equipment Exchange:</strong></a> Facilitates the exchange of gently used medical equipment for individuals with disabilities.</li>
+                     <li><a href="https://www.simonfoundationmi.org/"><strong>Simon Foundation for Continence:</strong></a> Resources and support for people with incontinence issues, including information on accessing supplies.</li>
+                     <li><a href="https://www.cancersupportmi.org/"><strong>Cancer Support Community Michigan:</strong></a> May provide referrals to medical equipment loan programs and incontinence supply resources for cancer patients.</li>
+                     <li><a href="https://www.midmichiganah.org/"><strong>Mid-Michigan Area Health (MMAH):</strong></a> Offers some medical equipment loan programs in central Michigan counties.</li>
+                   </ul>
+    
+                   <h3 id="detroit-resources">Detroit / Wayne County Resources</h3>
+                   <p>Explore support services available to residents of Detroit and Wayne County, including housing, legal aid, crisis response, and public assistance.</p>
+                   <ul>
+                     <li><a href="https://detroitmi.gov/departments/housing-and-revitalization-department/housing-resources"><strong>City of Detroit - Housing Resources:</strong></a> Comprehensive guide to housing assistance, home repair programs, and housing stability initiatives.</li>
+                     <li><a href="https://unitedwaysem.org/211/"><strong>211 Southeast Michigan:</strong></a> Connects residents to essential health and social services, including shelter, food, and mental health support.</li>
+                     <li><a href="https://detroitmi.gov/departments/detroit-health-department/programs-and-services"><strong>Detroit Health Department:</strong></a> Offers health services, immunizations, food safety, and other public health programs.</li>
+                     <li><a href="https://www.ladadetroit.org/"><strong>Legal Aid and Defender Association:</strong></a> Provides free legal assistance to low-income residents of Wayne County facing civil legal issues.</li>
+                     <li><a href="https://www.waynemetro.org/"><strong>Wayne Metropolitan Community Action Agency:</strong></a> Offers comprehensive services including utility assistance, housing, food, and financial empowerment programs.</li>
+                     <li><a href="https://www.waynecounty.com/departments/hhvs/home.aspx"><strong>Wayne County Health, Human & Veterans Services:</strong></a> County-level services for residents including health programs and veteran support.</li>
+                     <li><a href="https://www.needhelppayingbills.com/html/wayne_county_assistance_progra.html"><strong>Wayne County Assistance Programs:</strong></a> List of financial assistance programs and resources for Wayne County residents.</li>
+                     <li><a href="https://www.michigan.gov/mdhhs/safety-injury-prev/publicsafety/domesticandintimate"><strong>Michigan Domestic Violence Helpline:</strong></a> Call <a href="tel:18007997233">1-800-799-7233</a> for 24/7 confidential support and referrals.</li>
+                     <li><a href="https://www.nami.org/help"><strong>NAMI Mental Health Helpline:</strong></a> Contact <a href="tel:8009506264">1-800-950-NAMI</a>, Mon–Fri, 9am–5pm, for mental health information and resources.</li>
+                     <li><a href="https://988lifeline.org/"><strong>National Suicide Prevention Lifeline:</strong></a> Call or text <a href="tel:988">988</a>, or chat online 24/7 for immediate crisis support.</li>
+                   </ul>
+    
+                   <section id="grand-rapids-resources" class="resource-section">
+                     <h2>Grand Rapids / Kent County Resources</h2>
+                     <p>Resources specifically for residents of Grand Rapids and Kent County areas.</p>
+                     
+                     <h3 id="gr-food">Food Assistance Resources - Grand Rapids Area</h3>
+                     <ul>
+                       <li><a href="https://mealsonwheelswesternmichigan.org/"><strong>Meals on Wheels Western Michigan:</strong></a> Delivers wholesome meals directly to seniors' doorsteps, ensuring they enjoy balanced diets without the burden of travel. Regular meal deliveries alleviate the daily cooking stress for our senior friends. Phone: <a href="tel:6164593111">(616) 459-3111</a></li>
+                       <li><a href="https://feedwm.org/"><strong>Feeding America West Michigan:</strong></a> Provides food pantries and mobile distributions throughout Kent County, offering vital resources to seniors facing food insecurity. Phone: <a href="tel:6167843250">(616) 784-3250</a></li>
+                       <li><a href="https://seniormealsprogram.org/"><strong>Senior Meals Program:</strong></a> Ensures homebound seniors receive nourishing meals, enhancing their health and independence. Phone: <a href="tel:6164593111">(616) 459-3111</a></li>
+                       <li><a href="https://reviveandthriveproject.org/"><strong>Revive & Thrive Project:</strong></a> Provides meal delivery for individuals undergoing treatment for cancer, organ transplants, or those recently hospitalized due to complications from diabetes, heart failure, COPD, or heart disease. Meals are delivered once per week on Wednesday evenings between 6:00-7:30 pm. Donations are requested, and the program is funded in part through the Kent County Senior Millage. Service duration is 24 weeks. Phone: <a href="tel:6166063314">(616) 606-3314</a></li>
+                       <li><a href="https://momsmeals.com/"><strong>Mom's Meals:</strong></a> Delivers meals nationally for Medicaid or Medicare Advantage participants who are disabled and/or over the age of 65. Enrollment is through the health insurance provider. Meals are delivered on-demand based on the time of order. The cost is covered by health insurance, or $7.00 per meal if self-pay. Meals are provided for four weeks, up to four times a year. Phone: <a href="tel:18775086667">1-877-508-6667</a></li>
+                       <li><a href="https://accesskent.com/"><strong>Kent County Community Action:</strong></a> Provides meal services for individuals 60 years or older who are homebound and reside in Kent County. Service is not income-based. Meals are delivered once per week, usually on Mondays, with bilingual (English/Spanish) staff and delivery drivers. Donations are requested, and the program is funded in part through the Kent County Senior Millage. Service is ongoing based on need. Phone: <a href="tel:6166327950">(616) 632-7950</a></li>
+                       <li><a href="https://centralusa.salvationarmy.org/wmni/"><strong>The Salvation Army – Grand Rapids:</strong></a> Offers a variety of social services, including food assistance programs. Contact them directly for eligibility requirements and pantry hours. Address: 1215 E. Fulton St., Grand Rapids, MI 49503. Phone: <a href="tel:6164593433">(616) 459-3433</a></li>
+                       <li><a href="https://meltrotter.org/"><strong>Mel Trotter Ministries:</strong></a> While Mel Trotter is best known for its homeless shelter and hot meals, they also partner with local groups to distribute groceries or direct individuals to food pantries. Address: 225 Commerce Ave. SW, Grand Rapids, MI 49503. Phone: <a href="tel:6164548249">(616) 454-8249</a></li>
+                       <li><a href="https://baxtercommunitycenter.org/"><strong>Baxter Community Center:</strong></a> Provides a marketplace/pantry where community members can access groceries at a low cost or no cost, as well as additional health and education services. Address: 935 Baxter St. SE, Grand Rapids, MI 49506. Phone: <a href="tel:6164568593">(616) 456-8593</a></li>
+                       <li><a href="https://thegreenapplepantry.org/services/food-assistance/"><strong>The Pantry (South Grand Rapids):</strong></a> Operated by John Knox Presbyterian Church, The Pantry serves residents in certain Southeast Grand Rapids zip codes. Offers a client-choice model where guests can select items according to family needs. Address: 4301 Kalamazoo Ave. SE, Grand Rapids, MI 49508. Phone: <a href="tel:6164559411">(616) 455-9411</a></li>
+                       <li><a href="https://accessofwestmichigan.org/"><strong>Access of West Michigan:</strong></a> Not a direct food pantry, but coordinates hunger-relief efforts among many local pantries and can connect individuals with the nearest resource. Address: 1700 28th St. SE, Grand Rapids, MI 49508. Phone: <a href="tel:6167742175">(616) 774-2175</a></li>
+                       <li><a href="https://secomministries.org/"><strong>SECOM Resource Center:</strong></a> Offers a food pantry, fresh produce (when available), and a variety of programs to support families with children. Address: 1545 Buchanan Ave. SW, Grand Rapids, MI 49507. Phone: <a href="tel:6164527684">(616) 452-7684</a></li>
+                       <li><a href="https://nwpantry.org/"><strong>Northwest Food Pantry:</strong></a> Serves those residing in the Northwest side neighborhoods. Call or check their website for specific documentation requirements and distribution hours. Address: 1224 Davis Ave. NW, Grand Rapids, MI 49504. Phone: <a href="tel:6164514036">(616) 451-4036</a></li>
+                       <li><a href="https://ucomgr.org/"><strong>UCOM (United Church Outreach Ministry):</strong></a> Located just southwest of Grand Rapids in Wyoming, UCOM offers a food pantry, nutrition education, and other community support services. Address: 1311 Chicago Dr. SW, Wyoming, MI 49509. Phone: <a href="tel:6162414006">(616) 241-4006</a></li>
+                       <li><a href="https://westminstergr.org/"><strong>Westminster Presbyterian Church Food Pantry:</strong></a> Provides food assistance as part of the church's outreach. Check their website or call for pantry hours and details. Address: 47 Jefferson Ave. SE, Grand Rapids, MI 49503. Phone: <a href="tel:6164561456">(616) 456-1456</a></li>
+                       <li><a href="https://kentcountymi.gov/180/Commodity-Supplemental-Food-Program-CSFP"><strong>Commodity Supplemental Food Program (CSFP):</strong></a> Improves the health of seniors 60 years and older by providing monthly distributions of nutritious USDA commodity foods. Food packages may include cheese, milk, canned meat, plant-based protein, vegetables, fruits, grains, cereals, and juices. Must be 60 years or older to qualify. Address: 121 Martin Luther King Jr. Street, Suite 110, Grand Rapids, MI 49507. Phone: <a href="tel:6166327950">(616) 632-7950</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-transportation">Transportation Assistance - Grand Rapids Area</h3>
+                     <ul>
+                       <li><a href="https://ridetherapid.org/"><strong>Ride the Rapid:</strong></a> Offers affordable public transportation throughout Kent County with a fare of $1.75 one-way and $0.85 for seniors aged 65 and older. Serves locations in Kentwood, Grand Rapids, Walker, East Grand Rapids, Grandville, and Wyoming. Phone: <a href="tel:6167761100">(616) 776-1100</a> (Option 1)</li>
+                       <li><a href="https://ridetherapid.org/additionalservices/go-bus"><strong>Go!Bus (The Rapid):</strong></a> Provides curb-to-curb transport for seniors and individuals with disabilities, fostering mobility and access to vital services. Fare is $3.50 per one-way trip for individuals with disabilities and $8.00 for seniors aged 65 and older. Phone: <a href="tel:6164566141">(616) 456-6141</a></li>
+                       <li><a href="https://ridetherapid.org/additional-services/ridelink"><strong>RideLink:</strong></a> Offers transportation to adults 60 or older throughout Kent County. Pre-registration is required, and a $2.00 donation per trip is encouraged. Suitable for doctors visits, recreational outings, and shopping trips. Phone: <a href="tel:6167741288">(616) 774-1288</a></li>
+                       <li><strong>Hope Network – Transportation Services:</strong> Provides transportation services within Kent County and portions of Ottawa County. Call for details. Phone: <a href="tel:6162430876">(616) 243-0876</a></li>
+                       <li><a href="https://uber.com/"><strong>Private Pay Transportation Options:</strong></a> Various private pay transportation services available. Prices vary and can take you anywhere.
+                         <ul>
+                           <li>GR Metro Cars: <a href="tel:6168276700">(616) 827-6700</a></li>
+                           <li>Calder City Cab: <a href="tel:6164548080">(616) 454-8080</a></li>
+                           <li>Yellow Cab: <a href="tel:6164594646">(616) 459-4646</a></li>
+                           <li>My Taxi Services: <a href="tel:6164568222">(616) 456-8222</a></li>
+                           <li>United Taxi: <a href="tel:6168554777">(616) 855-4777</a></li>
+                         </ul>
+                       </li>
+                       <li><strong>Freedom Medical Transit, LLC:</strong> Offers non-emergency medical transportation. Call for cost and service area details. Phone: <a href="tel:2692677679">(269) 267-7679</a> or <a href="tel:6166781938">(616) 678-1938</a></li>
+                       <li><a href="https://rideyourwaygr.com/"><strong>Ride Your Way:</strong></a> Provides affordable transportation throughout the West Michigan area. Call to request a quote. Phone: <a href="tel:6168556800">(616) 855-6800</a></li>
+                       <li><strong>Ricks AMT:</strong> Call for a quote regarding transportation services. Phone: <a href="tel:9897386202">(989) 738-6202</a></li>
+                       <li><a href="https://readyridegr.com/"><strong>Ready Ride – Non-Emergency Medical Transportation:</strong></a> Offers non-emergency medical transportation services. Call for a quote and information about service areas. Phone: <a href="tel:6162612400">(616) 261-2400</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-utilities">Utility Assistance - Grand Rapids Area</h3>
+                     <ul>
+                       <li><a href="https://kentcountymi.gov/communityaction"><strong>Kent County Community Action:</strong></a> Offers utility assistance programs, helping seniors manage energy costs to remain cozy in their homes. Phone: <a href="tel:6166327950">(616) 632-7950</a></li>
+                       <li><a href="https://michigan.gov/mshda"><strong>Energy Assistance Program (EAP):</strong></a> Assists low-income households in paying energy bills, ensuring essential utility services remain intact. Phone: <a href="tel:5173732035">(517) 373-2035</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-housing">Housing Assistance - Grand Rapids Area</h3>
+                     <ul>
+                       <li><a href="https://homerepairservices.org/"><strong>Home Repair Services of Kent County:</strong></a> Provides critical home repair services for low-income homeowners, enhancing safety and accessibility for senior residents. Phone: <a href="tel:6162412601">(616) 241-2601</a></li>
+                       <li><a href="https://grandrapidsmi.gov/Government/Departments/Housing-Commission"><strong>Grand Rapids Housing Commission:</strong></a> Offers affordable housing options and rental assistance, promoting stable living conditions for seniors. Phone: <a href="tel:6162352600">(616) 235-2600</a></li>
+                       <li><a href="https://aaakentcounty.org/"><strong>Senior Housing Options by the Area Agency on Aging:</strong></a> Provides insights into various senior housing options, from independent living to assisted facilities. Phone: <a href="tel:6167741288">(616) 774-1288</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-health">Health and Wellness Resources - Grand Rapids Area</h3>
+                     <ul>
+                       <li><a href="https://spectrumhealth.org/seniors"><strong>Spectrum Health Senior Health:</strong></a> Delivers specialized healthcare services tailored for seniors, ensuring comprehensive medical care and support. Phone: <a href="tel:6164864000">(616) 486-4000</a></li>
+                       <li><a href="https://grymca.org/"><strong>Senior Fitness Classes at the YMCA:</strong></a> Offers fitness classes designed for seniors, promoting physical health and social engagement. Phone: <a href="tel:6168559622">(616) 855-9622</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-mental-health">Mental Health Resources - Grand Rapids Area</h3>
+                     <ul>
+                       <li><a href="https://pinerest.org/"><strong>Geriatric Mental Health Program - Pine Rest:</strong></a> Provides mental health services for older adults, offering therapy and support for various challenges. Phone: <a href="tel:6164555000">(616) 455-5000</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-dental">Dental Resources - Grand Rapids Area</h3>
+                     <ul>
+                       <li><a href="https://grcdental.org/"><strong>Grand Rapids Community Dental Clinic:</strong></a> Offers affordable dental care on a sliding scale for low-income individuals, ensuring seniors maintain their oral health. Phone: <a href="tel:6164597266">(616) 459-7266</a></li>
+                       <li><a href="https://michigandental.org/"><strong>Michigan Dental Association – Donated Dental Services:</strong></a> Provides free dental care to seniors in need through a network of volunteer dentists, supporting their overall well-being. Phone: <a href="tel:8005892632">(800) 589-2632</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-dme">Durable Medical Equipment (DME) and Medical Supply Lending Closets - Grand Rapids Area</h3>
+                     <ul>
+                       <li><a href="https://kentcountymi.gov/medicalequipmentloan"><strong>Kent County Medical Equipment Loan Program:</strong></a> Provides free or low-cost durable medical equipment (DME) for seniors and individuals with disabilities, ensuring access to crucial mobility aids. Phone: <a href="tel:6166327950">(616) 632-7950</a></li>
+                       <li><a href="https://salmich.org/"><strong>The Salvation Army - Medical Equipment Loan Program:</strong></a> Offers a lending closet for medical supplies and equipment at no cost, supporting seniors' health and safety at home. Phone: <a href="tel:6164593433">(616) 459-3433</a></li>
+                       <li><a href="https://aaakentcounty.org/"><strong>Area Agency on Aging - Equipment Loan Program:</strong></a> Provides various medical equipment for short-term loans to seniors in need, helping to bridge gaps during recovery. Phone: <a href="tel:6167741288">(616) 774-1288</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-senior-services">Kent County Senior Services</h3>
+                     <p>Resources specifically for seniors in the Kent County area.</p>
+                     <ul>
+                       <li><a href="https://www.aaawm.org/"><strong>Area Agency on Aging of Western Michigan:</strong></a> Provides services to help older adults remain living in their own homes. Phone: <a href="tel:6164565664">(616) 456-5664</a></li>
+                       <li><a href="https://www.accesskent.com/"><strong>accessKENT:</strong></a> Kent County's official website with information about senior services. Phone: <a href="tel:6166327950">(616) 632-7950</a></li>
+                       <li><a href="https://www.eldershelpers.com/"><strong>Elders Helpers:</strong></a> Offers in-home care services for seniors. Phone: <a href="tel:6164548305">(616) 454-8305</a></li>
+                       <li><a href="https://www.elderlawofmi.org/"><strong>Elder Law of Michigan:</strong></a> Provides legal assistance and advocacy for older adults. Phone: <a href="tel:8664009164">(866) 400-9164</a></li>
+                       <li><a href="https://www.kcprotect.org/"><strong>Kent County Elder Abuse Coalition:</strong></a> Works to protect seniors from abuse and exploitation. Phone: <a href="tel:8554443911">(855) 444-3911</a></li>
+                       <li><a href="https://www.umchgr.org/"><strong>United Methodist Community House:</strong></a> Offers programs and activities for seniors. Phone: <a href="tel:6164523226">(616) 452-3226 x.3013</a></li>
+                       <li><a href="https://centralusa.salvationarmy.org/wmni/fultonheights/"><strong>The Salvation Army - Fulton Heights:</strong></a> Provides various services for seniors. Phone: <a href="tel:6164941459">(616) 494-1459</a>. Address: 1235 Fulton St E. Grand Rapids, Michigan 49503</li>
+                       <li><a href="https://www.memorycare.com/"><strong>Memorycare.com:</strong></a> Housing resources for seniors with memory care needs.</li>
+                     </ul>
+                     
+                     <h3 id="gr-senior-transportation">Kent County Senior Transportation</h3>
+                     <ul>
+                       <li><a href="https://www.kentcountyride.link/"><strong>Kent County Ride Link:</strong></a> Connects seniors with transportation options. Phone: <a href="tel:8446946589">(844) 694-6589</a></li>
+                       <li><a href="https://www.ridetherapid.org/additionalservices/go-bus"><strong>The Rapid Go Bus:</strong></a> Provides transportation services for seniors and people with disabilities. Phone: <a href="tel:6164566141">(616) 456-6141</a></li>
+                       <li><a href="https://www.michigan.gov/sos/vehicles/license-plates-and-disability-parking"><strong>Disability Parking License Plates and Placards:</strong></a> Information on how to obtain disability parking permits.</li>
+                     </ul>
+                     
+                     <h3 id="gr-senior-food">Kent County Senior Food Resources</h3>
+                     <ul>
+                       <li><a href="https://mealsonwheelswesternmichigan.org/"><strong>Meals on Wheels Western Michigan:</strong></a> Delivers meals to homebound seniors. Phone: <a href="tel:6164593111">(616) 459-3111</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-senior-learning">Kent County Lifelong Learning Opportunities</h3>
+                     <ul>
+                       <li><a href="https://www.fhps.net/community/community-services/"><strong>Forest Hills Public Schools Community Services:</strong></a> Offers educational programs for seniors. Phone: <a href="tel:6164938950">(616) 493-8950</a></li>
+                       <li><a href="https://www.gvsu.edu/learn/grand-forum-11.htm"><strong>Grand Valley State University Grand Forum:</strong></a> Provides educational opportunities for older adults. Phone: <a href="tel:6163312770">(616) 331-2770</a></li>
+                       <li><a href="https://www.aquinas.edu/olli"><strong>OLLI at Aquinas:</strong></a> Osher Lifelong Learning Institute offering courses for older adults. Phone: <a href="tel:6166322430">(616) 632-2430</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-senior-centers">Kent County Senior Activity Centers</h3>
+                     <ul>
+                       <li><a href="https://www.wyomingmi.gov/About-Wyoming/City-Departments/Parks-and-Recreation/Senior-Center"><strong>City of Wyoming Senior Center:</strong></a> Offers activities and programs for seniors. Phone: <a href="tel:6165303190">(616) 530-3190</a></li>
+                       <li><a href="https://www.northviewseniors.org/"><strong>Northview Senior Citizens:</strong></a> Provides social and recreational activities for seniors. Phone: <a href="tel:6163656150">(616) 365-6150</a></li>
+                       <li><a href="https://seniorneighbors.org/"><strong>Senior Neighbors:</strong></a> Offers various programs and services for seniors. Phone: <a href="tel:6164596019">(616) 459-6019</a></li>
+                       <li><a href="https://centralusa.salvationarmy.org/kroccenter/"><strong>Salvation Army Kroc Community Center:</strong></a> Provides recreational activities and programs for seniors. Phone: <a href="tel:6165887200">(616) 588-7200</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-senior-additional">Additional Kent County Senior Resources</h3>
+                     <ul>
+                       <li><a href="https://kdl.org/community-resources/senior-services/"><strong>Kent District Library - Senior Services:</strong></a> Comprehensive listing of senior resources maintained by the Kent District Library system.</li>
+                     </ul>
+                     
+                     <h3 id="gr-home-repair">Kent County Home Repair Assistance</h3>
+                     <ul>
+                       <li><a href="https://www.grandrapidsmi.gov/Services/Apply-for-Housing-Rehabilitation-Program"><strong>City of Grand Rapids Housing Rehabilitation Program:</strong></a> Provides assistance for home repairs to eligible Grand Rapids residents. Address: City Hall, 300 Monroe Ave. NW Suite 400, Grand Rapids. Phone: <a href="tel:6164563030">(616) 456-3030</a></li>
+                       <li><a href="https://www.accesskent.com/Departments/CommunityAction/home_rehab.htm"><strong>Home Rehabilitation through accessKENT:</strong></a> Offers home rehabilitation assistance through Kent County Community Action. Address: 121 Martin Luther King Jr. St SE, Suite 110, Grand Rapids. Phone: <a href="tel:6166327950">(616) 632-7950</a></li>
+                       <li><a href="https://homerepairservices.org/"><strong>Home Repair Services:</strong></a> Provides repair services, education, and resources to help Kent County homeowners maintain their homes. Address: 1100 South Division, Grand Rapids. Phone: <a href="tel:6162412601">(616) 241-2601</a></li>
+                       <li><a href="https://www.habitatkent.org/restore/"><strong>Habitat for Humanity ReStores:</strong></a> Offers low-cost building materials and home items. Two locations:
+                         <ul>
+                           <li>5701 S Division Ave., Wyoming | Phone: <a href="tel:6165314591">(616) 531-4591</a></li>
+                           <li>5920 Alpine Ave NW, Comstock Park | Phone: <a href="tel:6166479292">(616) 647-9292</a></li>
+                         </ul>
+                       </li>
+                     </ul>
+                     
+                     <h3 id="gr-housing">Kent County Rental and Home Ownership Programs</h3>
+                     <ul>
+                       <li><a href="https://www.habitatkent.org/"><strong>Habitat for Humanity of Kent County:</strong></a> Builds and repairs homes for families in need. Address: 425 Pleasant St SW, Grand Rapids. Phone: <a href="tel:6167742431">(616) 774-2431</a></li>
+                       <li><a href="https://www.healthyhomescoalition.org/"><strong>Healthy Homes Coalition of West Michigan:</strong></a> Works to eliminate harmful housing conditions for children. Address: 1545 Buchanan Ave SW 2, Grand Rapids MI 49507. Phone: <a href="tel:6162413300">(616) 241-3300</a></li>
+                       <li><a href="https://iccf.org/"><strong>Inner City Christian Federation:</strong></a> Provides affordable housing and promotes home ownership. Address: 415 Martin Luther King Jr. St SE, Suite 100, Grand Rapids. Phone: <a href="tel:6163369333">(616) 336-9333</a></li>
+                       <li><a href="https://www.michigan.gov/mshda"><strong>Michigan State Housing Development Authority:</strong></a> Offers programs for homebuyers and homeowners. Email: MSHDAHomeOwnershipPF@michigan.gov</li>
+                     </ul>
+                     
+                     <h3 id="gr-additional-housing">Kent County Additional Housing Resources</h3>
+                     <ul>
+                       <li><a href="https://grurbanleague.org/"><strong>Grand Rapids Urban League:</strong></a> Provides housing counseling and other services. Address: 745 Eastern Ave SE, Grand Rapids. Phone: <a href="tel:6162452207">(616) 245-2207</a></li>
+                       <li><a href="https://www.fhcwm.org/"><strong>Fair Housing Center of West Michigan:</strong></a> Works to prevent housing discrimination. Address: 20 Hall St SE, Grand Rapids. Phone: <a href="tel:6164512980">(616) 451-2980</a></li>
+                       <li><a href="https://kdl.org/community-resources/home-repair-assistance/"><strong>Kent District Library - Home Repair Resources:</strong></a> Comprehensive listing of home repair assistance resources maintained by the Kent District Library system.</li>
+                     </ul>
+                     
+                     <h3 id="gr-homelessness">Kent County Homelessness Resources</h3>
+                     <ul>
+                       <li><a href="https://communityrebuilders.org/"><strong>Community Rebuilders:</strong></a> Provides housing services for homeless individuals and families. Address: 1120 Monroe NW, Suite 220. Phone: <a href="tel:6164585102">(616) 458-5102</a></li>
+                       <li><a href="https://degageministries.org/"><strong>Dégagé Ministries:</strong></a> Offers meals, shelter, and other services for homeless individuals. Address: 144 Division Ave S. Phone: <a href="tel:6164541661">(616) 454-1661</a></li>
+                       <li><a href="https://guidinglightworks.org/"><strong>Guiding Light Mission:</strong></a> Provides shelter, recovery programs, and employment services. Address: 255 Division Ave S. Phone: <a href="tel:6164510236">(616) 451-0236</a></li>
+                       <li><a href="https://centralusa.salvationarmy.org/wmni/"><strong>Kent County Salvation Army:</strong></a> Offers various services including homeless assistance.</li>
+                       <li><a href="https://www.meltrotter.org/"><strong>Mel Trotter Ministries:</strong></a> Provides shelter and services for homeless individuals. Address: 225 Commerce Ave SW. Phone: <a href="tel:6164548249">(616) 454-8249</a>
+                         <ul>
+                           <li>For referrals for families experiencing housing insecurity, eviction, or back rent:
+                             <ul>
+                               <li>Northern Kent County - Molly Dlugos: <a href="tel:6165888777">(616) 588-8777</a> or <a href="mailto:mollydlugos@meltrotter.org">mollydlugos@meltrotter.org</a></li>
+                               <li>Grand Rapids - Cherie Pecynski: <a href="tel:6165888776">(616) 588-8776</a> or <a href="mailto:cheriepecynski@meltrotter.org">cheriepecynski@meltrotter.org</a></li>
+                               <li>Southern Kent County - Noah Van Kampen: <a href="tel:6165888742">(616) 588-8742</a> or <a href="mailto:noahvankampen@meltrotter.org">noahvankampen@meltrotter.org</a></li>
+                             </ul>
+                           </li>
+                         </ul>
+                       </li>
+                     </ul>
+                     
+                     <h3 id="gr-women-youth-family">Kent County Resources for Women, Youth & Families</h3>
+                     <p><em>Note: Some shelters require a referral from the Salvation Army Homeless Assistance Program. Referrals are done by phone at <a href="tel:6164545840">(616) 454-5840</a>, then select option 2. If you need immediate assistance, dial <a href="tel:211">211</a>.</em></p>
+                     <ul>
+                       <li><a href="https://iccf.org/family-haven/"><strong>ICCF Family Haven:</strong></a> Emergency shelter for families experiencing homelessness. Address: 701 Prospect Ave SE. Phone: <a href="tel:6162474949">(616) 247-4949</a></li>
+                       <li><a href="https://safehavenministries.org/"><strong>Safe Haven Ministries:</strong></a> Services for those impacted by domestic abuse. Address: 2627 Birchcrest Dr SE. Phone: <a href="tel:6164526664">(616) 452-6664</a></li>
+                       <li><a href="https://familypromisegr.org/"><strong>Family Promise of Grand Rapids:</strong></a> Helps homeless families achieve sustainable independence. Address: 516 Cherry St SE. Phone: <a href="tel:6164755220">(616) 475-5220</a></li>
+                       <li><a href="https://dwellingplacegr.org/"><strong>Dwelling Place: Liz's House Transitioning Housing:</strong></a> Transitional housing program. Address: Confidential. Phone: <a href="tel:6164594652">(616) 459-4652</a>. Crisis and Advocacy: <a href="tel:6164263727">(616) 426-3727</a></li>
+                       <li><a href="https://www.ayayouth.org/"><strong>AYA Youth Collective:</strong></a> Services for youth experiencing homelessness or housing instability. Address: 320 State St SE, Grand Rapids, MI 49503. Phone: <a href="tel:6164063945">(616) 406-3945</a></li>
+                       <li><a href="https://arborcircle.org/"><strong>Arbor Circle:</strong></a> Services for children, adults, and families. Address: 1115 Ball Ave. NW. Phone: <a href="tel:6164566571">(616) 456-6571</a></li>
+                       <li><a href="https://www.grhousing.org/"><strong>Grand Rapids Housing Commission:</strong></a> Public housing and rental assistance programs. Address: 1420 Fuller Ave SE. Phone: <a href="tel:6162352600">(616) 235-2600</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-additional-food">Additional Kent County Food Resources</h3>
+                     <ul>
+                       <li><a href="https://www.churchwyoming.org/"><strong>Community Christian Reformed Church:</strong></a> Provides food assistance. Address: 150 Burt St SE, Wyoming. Phone: <a href="tel:6165341779">(616) 534-1779</a></li>
+                       <li><a href="https://fntw.org/"><strong>Family Network of Wyoming:</strong></a> Offers food pantry services. Address: 1029 44th St SW, Wyoming. Phone: <a href="tel:6168859919">(616) 885-9919</a></li>
+                       <li><strong>The Green Apple Pantry:</strong> Food assistance program. Address: 4307 Kalamazoo Ave SE. Phone: <a href="tel:6164559411">(616) 455-9411</a></li>
+                       <li><a href="https://necmgr.org/"><strong>North End Community Ministry:</strong></a> Food pantry at New City Church. Address: 214 Spencer NE. Phone: <a href="tel:6164541097">(616) 454-1097</a></li>
+                       <li><a href="https://www.michigan.gov/mdhhs/inside-mdhhs/county-offices/kent"><strong>Michigan Department of Health & Human Services:</strong></a> Assistance with food benefits and other services. Address: 121 Martin Luther King Jr St. SE, Suite 200. Phone: <a href="tel:6162481000">(616) 248-1000</a></li>
+                     </ul>
+                     
+                     <h3 id="gr-additional-transportation">Additional Kent County Transportation Resources</h3>
+                     <ul>
+                       <li><a href="https://www.feonixmobility.org/"><strong>Feonix Mobility Rising:</strong></a> Transportation services for those in need. Phone: <a href="tel:8336536544">(833) 653-6544</a></li>
+                       <li><a href="https://kdl.org/community-resources/homelessness-food/"><strong>Kent District Library - Homelessness & Food Resources:</strong></a> Comprehensive listing of resources maintained by the Kent District Library system.</li>
+                     </ul>
+                   </section>
+    
+                   <section id="oakland-county-resources" class="resource-section">
+                     <h2>Oakland County Resources</h2>
+                     <p>Resources specifically for residents of Oakland County, Michigan.</p>
+                     
+                     <h3 id="oakland-county-health">Oakland County Health Services</h3>
+                     <ul>
+                       <li><a href="https://www.oakgov.com/health/"><strong>Oakland County Health Division:</strong></a> Provides various health services including cancer screening programs. Address: 1200 N Telegraph Rd, Building 34 East, Pontiac, MI 48341. Phone: <a href="tel:2488581280">(248) 858-1280</a></li>
+                       <li><a href="https://www.beaumont.org/services/cancer"><strong>Beaumont Cancer Center:</strong></a> Comprehensive cancer services at multiple locations throughout Oakland County. Phone: <a href="tel:8006337377">(800) 633-7377</a></li>
+                       <li><a href="https://www.ascension.org/michigan/locations/michigan-oakland-county"><strong>Ascension Providence Hospital:</strong></a> Cancer treatment centers in Novi and Southfield. Phone: <a href="tel:8665013627">(866) 501-3627</a></li>
+                       <li><a href="https://www.henryford.com/locations/west-bloomfield"><strong>Henry Ford West Bloomfield Hospital:</strong></a> Provides cancer treatment and support services. Address: 6777 W Maple Rd, West Bloomfield Township, MI 48322. Phone: <a href="tel:2483251000">(248) 325-1000</a></li>
+                       <li><a href="https://www.karmanos.org/"><strong>Karmanos Cancer Institute:</strong></a> Specialized cancer treatment center with locations in Farmington Hills and other areas. Phone: <a href="tel:8005276266">(800) 527-6266</a></li>
+                       <li><a href="https://www.oakgov.com/community/resources"><strong>Oakland County Community Resources:</strong></a> Comprehensive portal for county resources including healthcare services.</li>
+                     </ul>
+                     
+                     <h3 id="oakland-county-mental-health">Oakland County Mental Health Resources</h3>
+                     <ul>
+                       <li><a href="https://www.michigan.gov/coronavirus/News/2020/04/13/mdhhs-announces-peer-run-warmline-to-aid-persons-with-mental-health-needs-during-covid-19-pandemic"><strong>Michigan Warmline:</strong></a> Connects individuals with certified peer support specialists who have lived experiences of behavioral health issues. Available seven days a week, 10:00am - 2:00pm. Phone: <a href="tel:8887337753">(888) 733-7753</a></li>
+                       <li><a href="https://suicidepreventionlifeline.org/chat/"><strong>National Suicide Prevention Lifeline:</strong></a> 24-hour crisis support. Phone: <a href="tel:8002738255">(800) 273-8255</a></li>
+                       <li><a href="https://commongroundhelps.org/"><strong>Common Ground Crisis Helpline:</strong></a> 24-hour helpline for crisis support. Phone: <a href="tel:8002311127">(800) 231-1127</a></li>
+                       <li><a href="https://www.oaklandchn.org/"><strong>Oakland Community Health Network:</strong></a> Developmental disabilities, mental health, and substance recovery resources.</li>
+                       <li><a href="https://www.morcinc.org/"><strong>Easterseals MORC:</strong></a> Mental health services for adults and children with serious mental illness, emotional disturbances, and substance use disorders. Phone: <a href="tel:8007573257">(800) 75-SEALS</a></li>
+                       <li><a href="https://www.cnshealthcare.org/"><strong>CNS Healthcare:</strong></a> Community behavioral health clinic offering psychiatry, medication management, psychotherapy, and other services. Phone: <a href="tel:8006150411">(800) 615-0411</a></li>
+                       <li><a href="https://www.michigan.gov/staywell"><strong>Michigan Stay Well:</strong></a> Confidential emotional support available 24/7. Phone: <a href="tel:8885356136">(888) 535-6136</a>, press 8</li>
+                       <li><a href="https://www.veteranscrisisline.net/"><strong>Veteran's Crisis Line:</strong></a> Crisis support for veterans. Phone: <a href="tel:8002738255">(800) 273-8255</a>, text 838255</li>
+                       <li><a href="https://www.samhsa.gov/find-help/disaster-distress-helpline"><strong>Disaster Distress Helpline:</strong></a> Crisis support for disaster-related distress. Phone: <a href="tel:8009855990">(800) 985-5990</a> (press 2 for Spanish)</li>
+                     </ul>
+                     
+                     <h3 id="oakland-county-transportation">Oakland County Transportation Resources</h3>
+                     <ul>
+                       <li><a href="https://www.oakgov.com/olhsa/transportation/Pages/default.aspx"><strong>OLHSA Transportation Services:</strong></a> Provides transportation for eligible Oakland County residents to essential services. Phone: <a href="tel:2482092600">(248) 209-2600</a></li>
+                       <li><a href="https://www.myride2.com"><strong>myride2:</strong></a> Personalized transportation service for older adults and people with disabilities in Oakland County. Phone: <a href="tel:8556974332">(855) 697-4332</a></li>
+                       <li><a href="https://www.smartbus.org/"><strong>SMART Bus:</strong></a> Public transportation throughout Oakland County with paratransit options. Phone: <a href="tel:8669625515">(866) 962-5515</a></li>
+                       <li><a href="https://www.rideadvantage.org/"><strong>Advantage Transportation:</strong></a> Door-to-door transportation for seniors and persons with disabilities. Phone: <a href="tel:2483627171">(248) 362-7171</a></li>
+                       <li><a href="https://www.oakgov.com/commcorr/housing/Pages/Transportation-Services.aspx"><strong>Oakland County Transportation Services:</strong></a> Information on various transportation options available to county residents. Phone: <a href="tel:2488580100">(248) 858-0100</a></li>
+                     </ul>
+                     
+                     <h3 id="oakland-county-food">Oakland County Food Assistance</h3>
+                     <ul>
+                       <li><a href="https://www.oakgov.com/olhsa/Pages/Food-Programs.aspx"><strong>OLHSA Food Assistance Programs:</strong></a> Various food support programs for eligible residents. Phone: <a href="tel:2482092600">(248) 209-2600</a></li>
+                       <li><a href="https://www.forgottenharvest.org/"><strong>Forgotten Harvest:</strong></a> Free food distribution at multiple sites throughout Oakland County. Address: 15000 W 8 Mile Rd, Oak Park, MI 48237. Phone: <a href="tel:2489671500">(248) 967-1500</a></li>
+                       <li><a href="https://oaklandfoodpantry.org/"><strong>Oakland County Food Pantry:</strong></a> Provides food assistance to Oakland County residents in need. Phone: <a href="tel:2483321473">(248) 332-1473</a></li>
+                       <li><a href="https://lighthousemi.org/"><strong>Lighthouse Emergency Services:</strong></a> Food pantry locations in Pontiac and Clarkston. Phone: <a href="tel:2489206000">(248) 920-6000</a></li>
+                       <li><a href="https://www.focushope.edu/"><strong>Focus: HOPE:</strong></a> Food program for seniors with a location in Pontiac. Phone: <a href="tel:3134945500">(313) 494-5500</a></li>
+                       <li><a href="https://www.gleaners.org/"><strong>Gleaners Community Food Bank:</strong></a> Food distribution network with partner agencies throughout Oakland County. Phone: <a href="tel:8664532637">(866) 453-2637</a></li>
+                       <li><a href="https://www.mealsonwheelsamerica.org/find-meals"><strong>Meals on Wheels:</strong></a> Home-delivered meals for seniors through local programs in Oakland County. Phone: <a href="tel:8889986325">(888) 998-6325</a></li>
+                     </ul>
+                     
+                     <h3 id="oakland-county-housing">Oakland County Housing Resources</h3>
+                     <ul>
+                       <li><a href="https://www.oakgov.com/commcorr/housing/Pages/default.aspx"><strong>Oakland County Housing Resources:</strong></a> Information on housing assistance programs for county residents. Phone: <a href="tel:2488580493">(248) 858-0493</a></li>
+                       <li><a href="https://www.oakgov.com/olhsa/Pages/Housing-Programs.aspx"><strong>OLHSA Housing Programs:</strong></a> Housing assistance and weatherization programs. Phone: <a href="tel:2482092600">(248) 209-2600</a></li>
+                       <li><a href="https://www.haoc.org/"><strong>Housing Authority of Oakland County:</strong></a> Section 8 vouchers and other housing assistance programs. Address: 735 East Big Beaver Rd., Suite 100, Troy, MI 48083. Phone: <a href="tel:2488581191">(248) 858-1191</a></li>
+                       <li><a href="https://www.communityhousingnetwork.org/"><strong>Community Housing Network:</strong></a> Housing resources and supportive services. Address: 5505 Corporate Drive, Suite 300, Troy, MI 48098. Phone: <a href="tel:2489280111">(248) 928-0111</a></li>
+                       <li><a href="https://www.lighthousemi.org/"><strong>Lighthouse Emergency Services:</strong></a> Emergency housing assistance and homeless prevention. Phone: <a href="tel:2489206000">(248) 920-6000</a></li>
+                       <li><a href="https://www.habitatoakland.org/"><strong>Habitat for Humanity of Oakland County:</strong></a> Affordable housing solutions and home repair programs. Phone: <a href="tel:2483381843">(248) 338-1843</a></li>
+                     </ul>
+                     
+                     <h3 id="oakland-county-utilities">Oakland County Utility Assistance</h3>
+                     <ul>
+                       <li><a href="https://www.oakgov.com/olhsa/Pages/Emergency-Utility-Assistance.aspx"><strong>OLHSA Utility Assistance:</strong></a> Emergency utility payment assistance for eligible Oakland County residents. Phone: <a href="tel:2482092600">(248) 209-2600</a></li>
+                       <li><a href="https://www.thawfund.org/"><strong>The Heat and Warmth Fund (THAW):</strong></a> Energy assistance for Oakland County residents. Phone: <a href="tel:8008668429">(800) 866-8429</a></li>
+                       <li><a href="https://www.oakgov.com/commcorr/housing/Pages/Energy-Assistance.aspx"><strong>Oakland County Energy Assistance Programs:</strong></a> Information on various energy assistance programs available to residents. Phone: <a href="tel:2488580100">(248) 858-0100</a></li>
+                       <li><a href="https://www.consumersenergy.com/residential/programs-and-services/payment-assistance"><strong>Consumers Energy Payment Assistance:</strong></a> Programs for Consumers Energy customers in Oakland County. Phone: <a href="tel:8004775050">(800) 477-5050</a></li>
+                       <li><a href="https://www.dteenergy.com/michigan/en/residential/customer-service/payment-assistance.html"><strong>DTE Energy Payment Assistance:</strong></a> Programs for DTE customers in Oakland County. Phone: <a href="tel:8004774747">(800) 477-4747</a></li>
+                     </ul>
+                     
+                     <h3 id="oakland-county-medical-supplies">Oakland County Medical Equipment & Supplies</h3>
+                     <ul>
+                       <li><a href="https://www.oaklandcountymow.org/"><strong>Oakland Meals on Wheels Medical Equipment Loan Closet:</strong></a> Provides free loan of durable medical equipment to Oakland County residents. Phone: <a href="tel:2486080264">(248) 608-0264</a></li>
+                       <li><a href="https://www.oakgov.com/olhsa/Pages/Senior-Services.aspx"><strong>OLHSA Senior Services:</strong></a> Can provide referrals for medical equipment needs. Phone: <a href="tel:2482092600">(248) 209-2600</a></li>
+                       <li><a href="https://www.beaumont.org/services/home-medical-equipment"><strong>Beaumont Home Medical Equipment:</strong></a> Medical equipment and supplies for purchase or rental. Phone: <a href="tel:2487439600">(248) 743-9600</a></li>
+                       <li><a href="https://www.mrsmedical.com/"><strong>MRS Medical Supply:</strong></a> Medical equipment provider with locations in Troy and Rochester Hills. Phone: <a href="tel:2485658353">(248) 565-8353</a></li>
+                       <li><a href="https://www.dignitymemorial.com/funeral-homes/troy-mi/aj-desmond-sons-funeral-directors/1767"><strong>A.J. Desmond & Sons Funeral Directors:</strong></a> Maintains a medical equipment loan closet. Phone: <a href="tel:2483622500">(248) 362-2500</a></li>
+                     </ul>
+                     
+                     <h3 id="oakland-county-additional">Additional Oakland County Resources</h3>
+                     <ul>
+                       <li><a href="https://www.oakgov.com/community/resources"><strong>The Oakland County Community Resources Portal:</strong></a> Comprehensive portal for county resources including assistance programs for all aspects of support.</li>
+                       <li><a href="https://oaklandrsvp.org/"><strong>Retired and Senior Volunteer Program (RSVP):</strong></a> Volunteer opportunities and services for seniors. Phone: <a href="tel:2485373300">(248) 537-3300</a></li>
+                       <li><a href="https://aaareferral.org/"><strong>Area Agency on Aging 1-B (now AgeWays):</strong></a> Resources for older adults and adults with disabilities in Oakland County. Phone: <a href="tel:8008527795">(800) 852-7795</a></li>
+                       <li><a href="https://oaklandlibrary.org/"><strong>Oakland County Library:</strong></a> Information and resources available through the library system throughout Oakland County.</li>
+                       <li><a href="https://www.oakgov.com/community/veterans/Pages/default.aspx"><strong>Oakland County Veterans' Services:</strong></a> Resources specifically for veterans living in Oakland County. Phone: <a href="tel:2488580785">(248) 858-0785</a></li>
+                       <li><a href="https://www.oaklandfamilyservices.org/"><strong>Oakland Family Services:</strong></a> Counseling and support services for families. Phone: <a href="tel:2488587766">(248) 858-7766</a></li>
+                       <li><a href="https://www.oakgov.com/community/health/partnerships/older-adults"><strong>Oakland County Older Adult Services:</strong></a> Comprehensive services for older adults including health programs, support services, and resources. <strong>Nurse on Call:</strong> Get health information and referrals from a public health nurse. Phone: <a href="tel:8008485533">(800) 848-5533</a>, Email: <a href="mailto:noc@oakgov.com">noc@oakgov.com</a></li>
+                       <li><a href="https://www.oakgov.com/home/showpublisheddocument/10940/638068859499830000"><strong>Oakland County Resource Guide:</strong></a> Downloadable guide to county services and resources.</li>
+                       <li><a href="https://www.oakgov.com/parks"><strong>Oakland County Parks:</strong></a> Information on local parks and recreational areas for physical activity and wellness.</li>
+                       <li><strong>Oakland County Help Hotline:</strong> Offers non-medical information, resources, and local community assistance referrals. Available Monday-Friday, 8:30am-8:00pm. Phone: <a href="tel:2488581000">(248) 858-1000</a>, Email: <a href="mailto:hotline@oakgov.com">hotline@oakgov.com</a></li>
+                     </ul>
+                     
+                     <h3 id="oakland-county-multilingual">Oakland County Multilingual Assistance</h3>
+                     <ul>
+                       <li><a href="https://www.oakgov.com/community/resources"><strong>Oakland County Multilingual Services:</strong></a> Support for language and cultural resources for residents who speak languages other than English.</li>
+                     </ul>
+                     
+                     <h3 id="oakland-county-legal">Oakland County Legal Resources</h3>
+                     <ul>
+                       <li><a href="https://www.oakgov.com/community/resources"><strong>Oakland County Legal Resources:</strong></a> Information on legal records, court information, and legal aid support for county residents.</li>
+                     </ul>
+                     
+                     <h3 id="oakland-county-safety">Oakland County Safety Resources</h3>
+                     <ul>
+                       <li><a href="https://www.oakgov.com/community/resources"><strong>Oakland County Safety Resources:</strong></a> Resources for protecting and keeping residents safe from crime and abuse.</li>
+                     </ul>
+                   </section>
+                 </section>
+               </div>
+           </div>
+       </div>
+   
+       <footer>
+           <div class="footer-container">
+               <div class="footer-section">
+                   <h3>About Us</h3>
+                   <p>Providing a centralized directory of resources for cancer patients and their families.</p>
+               </div>
+               <div class="footer-section">
+                   <h3>Quick Links</h3>
+                   <ul>
+                       <li><a href="index.html#national-resources">National Resources</a></li>
+                       <li><a href="index.html#cancer-resources">Cancer Resources</a></li>
+                       <li><a href="index.html#financial">Financial Assistance</a></li>
+                       <li><a href="index.html#mental-health">Mental Health</a></li>
+                   </ul>
+               </div>
+               <div class="footer-section">
+                   <h3>Contact Us</h3>
+                   <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+                   <div class="social-icons">
+                       <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                       <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                       <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                   </div>
+               </div>
+           </div>
+           <div class="copyright">
+               &copy; <span id="currentYear"></span> Community Resource Directory. All rights reserved.
+           </div>
+       </footer>
+   
+       <div class="back-to-top" onclick="scrollToTop()">
+           <i class="fas fa-arrow-up"></i>
+       </div>
+   
+       <script>
+           // JavaScript for search functionality
+           (function() { // IIFE to prevent global scope pollution
+               function performSearch() {
+                   const query = document.getElementById("siteSearch").value.toLowerCase();
+                   const sections = document.querySelectorAll('.resource-section');
+                   let resultsHtml = '';
+                   let found = false;
+   
+                   sections.forEach(section => {
+                       const sectionTitle = section.querySelector('h2') ? section.querySelector('h2').textContent.toLowerCase() : '';
+                       // Check section title
+                       if (sectionTitle.includes(query)) {
+                           resultsHtml += `<p><a href="#${section.id}">${section.querySelector('h2').textContent}</a></p>`;
+                           found = true;
+                       }
+                       // Check subheadings
+                       const subheadings = section.querySelectorAll('h3, h4'); // Include h4 for sub-subheadings
+                       subheadings.forEach(subheading => {
+                           const subheadingText = subheading.textContent.toLowerCase();
+                           if (subheadingText.includes(query)) {
+                               resultsHtml += `<p><a href="#${subheading.id || subheading.closest('section').id}">${subheading.textContent}</a> in ${section.querySelector('h2').textContent || 'Michigan Resources'}</p>`;
+                               found = true;
+                           }
+                       });
+                       // Check list items
+                       const listItems = section.querySelectorAll('li');
+                       listItems.forEach(item => {
+                           const itemText = item.textContent.toLowerCase();
+                           if (itemText.includes(query)) {
+                               // Find the closest subheading or section title for context
+                               let context = '';
+                               const closestHeading = item.closest('h3') || item.closest('h4') || item.closest('section').querySelector('h2');
+                               if (closestHeading) {
+                                   context = ` in ${closestHeading.textContent}`;
+                               } else if (item.closest('section')) {
+                                   context = ` in ${item.closest('section').querySelector('h2').textContent}`;
+                               }
+                               // Link directly to the resource if it has an anchor or link within the LI, otherwise just show the text.
+                               const itemLink = item.querySelector('a');
+                               if (itemLink && itemLink.href) {
+                                   resultsHtml += `<p><a href="${itemLink.href}">${item.textContent}</a>${context}</p>`;
+                               } else {
+                                   resultsHtml += `<p>${item.textContent}${context}</p>`;
+                               }
+                               found = true;
+                           }
+                       });
+                   });
+   
+                   const searchResultsDiv = document.getElementById("searchResults");
+                   if (found) {
+                       searchResultsDiv.innerHTML = `<h3>Search Results for "${query}"</h3>` + resultsHtml;
+                   } else {
+                       searchResultsDiv.innerHTML = `<p>No results found for "${query}".</p>`;
+                   }
+               }
+   
+               // Back to Top Button functionality
+               const backToTopButton = document.querySelector(".back-to-top");
+   
+               window.addEventListener("scroll", () => {
+                   if (window.scrollY > 100) {
+                       backToTopButton.classList.add("show");
+                   } else {
+                       backToTopButton.classList.remove("show");
+                   }
+               });
+   
+               function scrollToTop() {
+                   window.scrollTo({
+                       top: 0,
+                       behavior: "smooth"
+                   });
+               }
+   
+               // Set current year in footer
+               const currentYearSpan = document.getElementById('currentYear');
+               if (currentYearSpan) {
+                   currentYearSpan.textContent = new Date().getFullYear();
+               }
+   
+               // Expose performSearch to global scope if needed by inline onclick
+               window.performSearch = performSearch;
+           })();
+       </script>
+   </body>
+   </html>
