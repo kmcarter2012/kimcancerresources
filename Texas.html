@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Texas Resources - Community Resource Directory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Root variables for consistent theming */
+    :root {
+        --primary-color: #3a86ff; /* Blue */
+        --secondary-color: #ff006e; /* Pink */
+        --accent-color: #8338ec; /* Purple */
+        --light-color: #f8f9fa; /* Light Gray */
+        --dark-color: #212529; /* Dark Gray */
+        --success-color: #38b000; /* Green */
+        --warning-color: #ffbe0b; /* Yellow */
+        --danger-color: #dc3545; /* Red */
+        --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
+        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
+        /* --texas-gradient: linear-gradient(135deg, #BF0A30, #A00020); /* Texas Red Gradient - Changed for consistency */
+    }
+
+    /* Universal Box-Sizing and Smooth Scrolling */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        scroll-behavior: smooth; /* Enable smooth scrolling for the whole page */
+    }
+
+    /* Body and Typography */
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background-color: #f8f9fa;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+
+    h1, h2, h3, h4 {
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+    /* Hero Section Styling */
+    .hero-section {
+        background: var(--blue-gradient); /* Changed to blue gradient for consistency */
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 250px;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 800px;
+        margin: 0.5rem auto 0;
+    }
+
+    .hero-section::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: white;
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        z-index: 999;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-top: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        list-style: disc;
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Header and Navigation */
+    nav {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .main-navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-navbar li {
+        margin: 0;
+    }
+
+    .main-navbar a, .dropbtn {
+        display: block;
+        color: var(--dark-color);
+        text-align: center;
+        padding: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .main-navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: var(--light-color);
+        color: var(--primary-color);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+    .dropbtn .fa-caret-down {
+        margin-left: 0.3em;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 250px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .dropdown-content a {
+        padding: 0.75rem 1rem;
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Main Content Layout */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .resource-section {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    .resource-section > p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Back Button Specifics */
+    .back-button {
+        display: inline-block;
+        margin: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 500;
+    }
+
+    .back-button:hover {
+        background-color: var(--accent-color);
+        transform: translateX(-5px);
+        text-decoration: none;
+    }
+
+    /* Search Box */
+    .search-container {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-container h2 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 1rem;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+    .search-box input:focus {
+        border-color: var(--primary-color);
+    }
+
+    .search-box button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .search-box button:hover {
+        background-color: var(--accent-color);
+    }
+    #searchResults {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+    #searchResults p {
+        margin-bottom: 0.5rem;
+    }
+    #searchResults a {
+        font-weight: 500;
+    }
+
+    /* Quick Navigation Menu */
+    .quick-nav {
+        position: sticky;
+        top: 85px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+    }
+    .quick-nav h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+    .quick-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+    .quick-nav ul li {
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 0.5rem;
+    }
+    .quick-nav ul li:last-child {
+        border-bottom: none;
+    }
+    .quick-nav ul li a {
+        display: block;
+        color: var(--dark-color);
+        transition: color 0.3s ease;
+    }
+    .quick-nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Two-Column Layout for Desktop */
+    @media (min-width: 992px) {
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+        .main-content {
+            min-width: 0;
+        }
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        color: white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: #adb5bd;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icons a {
+        color: white;
+        background-color: #495057;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #495057;
+        color: #adb5bd;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+        z-index: 1000;
+    }
+    .back-to-top:hover {
+        background-color: var(--accent-color);
+    }
+    .back-to-top.show {
+        opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .container { padding: 1rem; }
+        .hero-title { font-size: 2rem; }
+        h2 { font-size: 1.8rem; }
+        h3 { font-size: 1.3rem; }
+    }
+
+    @media (max-width: 768px) {
+        .main-navbar { flex-direction: column; }
+        .dropdown-content { position: static; width: 100%; box-shadow: none; }
+        .resource-section { padding: 1.5rem; }
+        .hero-section { padding: 3rem 1rem; min-height: 220px; }
+        .hero-title { font-size: 1.8rem; }
+        .hero-subtitle { font-size: 1.05rem; }
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.2rem; }
+        .two-column-layout { grid-template-columns: 1fr; }
+        .quick-nav { position: static; max-height: none; overflow-y: visible; margin-bottom: 1rem; }
+    }
+
+    @media (max-width: 576px) {
+        .search-box { flex-direction: column; }
+        .search-box input, .search-box button { width: 100%; border-radius: 4px; }
+        .search-box button { margin-top: 0.5rem; }
+        .hero-section { padding: 2rem 1rem; min-height: 180px; }
+        .resource-section { padding: 1rem; }
+        .back-button { margin: 1rem; }
+        .footer-container { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+
+  <a href="index.html" class="back-button">← Back to Main Page</a>
+
+  <header>
+    <div class="hero-section">
+        <h1 class="hero-title">Texas Resources</h1>
+        <p class="hero-subtitle">Statewide and County-Specific Support for Cancer Patients</p>
+    </div>
+
+    <nav>
+      <ul class="main-navbar">
+        <li><a href="#texas-state-guides">State Resource Guides</a></li>
+        <li><a href="#texas-housing">Housing</a></li>
+        <li><a href="#texas-utilities">Utilities</a></li>
+        <li><a href="#texas-food">Food & Nutrition</a></li>
+        <li><a href="#texas-dental">Dental</a></li>
+        <li><a href="#texas-cancer-financial">Cancer Financial Assistance</a></li>
+        <li><a href="#texas-seniors">Seniors</a></li>
+        <li><a href="#texas-transportation">Transportation</a></li>
+        <li><a href="#texas-medical-supplies">Medical Equipment</a></li>
+        <li class="dropdown">
+          <button class="dropbtn">Major Areas <i class="fas fa-caret-down"></i></button>
+          <div class="dropdown-content">
+            <a href="#houston-resources">Houston / Harris County</a>
+            <a href="#dallas-resources">Dallas / Dallas County</a>
+            <a href="#austin-resources">Austin / Travis County</a>
+            <a href="#sanantonio-resources">San Antonio / Bexar County</a>
+            <a href="#fortworth-resources">Fort Worth / Tarrant County</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+      <div class="search-container">
+          <h2>Find Resources in Texas</h2>
+          <div class="search-box">
+              <input type="text" id="siteSearch" placeholder="Search for Texas resources...">
+              <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+          </div>
+          <div id="searchResults"></div>
+      </div>
+
+      <div class="two-column-layout">
+          <aside class="quick-nav">
+              <h3>Quick Navigation</h3>
+              <ul>
+                  <li><a href="#texas-state-guides">State Resource Guides</a></li>
+                  <li><a href="#texas-housing">Housing</a></li>
+                  <li><a href="#texas-utilities">Utilities</a></li>
+                  <li><a href="#texas-food">Food & Nutrition</a></li>
+                  <li><a href="#texas-dental">Dental</a></li>
+                  <li><a href="#texas-cancer-financial">Cancer Financial Assistance</a></li>
+                  <li><a href="#texas-seniors">Seniors</a></li>
+                  <li><a href="#texas-transportation">Transportation</a></li>
+                  <li><a href="#texas-medical-supplies">Medical Equipment</a></li>
+                  <li><a href="#houston-resources">Houston / Harris County</a></li>
+                  <li><a href="#dallas-resources">Dallas / Dallas County</a></li>
+                  <li><a href="#austin-resources">Austin / Travis County</a></li>
+                  <li><a href="#sanantonio-resources">San Antonio / Bexar County</a></li>
+                  <li><a href="#fortworth-resources">Fort Worth / Tarrant County</a></li>
+              </ul>
+          </aside>
+
+          <main class="main-content">
+              <section id="texas-state-guides" class="resource-section">
+                <h2>Texas State Resource Guides</h2>
+                <p>Comprehensive guides and directories provided by state agencies to help navigate available resources.</p>
+                <ul>
+                  <li><a href="https://www.211texas.org/"><strong>2-1-1 Texas:</strong></a> Call 211 or visit the website to connect with local resources throughout Texas including housing, utilities, food, health services, and more. This statewide service helps Texas residents find local support 24/7.</li>
+                  <li><a href="https://www.hhs.texas.gov/services"><strong>Texas Health and Human Services Commission (HHSC):</strong></a> State-level guide covering public assistance programs, healthcare resources, and community resources throughout Texas.</li>
+                  <li><a href="https://www.texascancer.info/"><strong>Cancer Resources for Texas:</strong></a> Detailed guide of healthcare navigation resources, medical assistance programs, and support services for cancer patients throughout Texas.</li>
+                  <li><a href="https://www.yourtexasbenefits.com/"><strong>Your Texas Benefits:</strong></a> Texas's online portal to apply for and manage benefits including healthcare, food assistance, cash assistance, and emergency relief.</li>
+                  <li><a href="https://www.dps.texas.gov/section/driver-license/driver-license-frequently-asked-questions"><strong>Texas Department of Public Safety - Driver License Resources:</strong></a> Information on state ID assistance, driver's license resources, and other documentation support.</li>
+                  <li><a href="https://twc.texas.gov/jobseekers/vocational-rehabilitation-services"><strong>Texas Workforce Commission Vocational Rehabilitation Services:</strong></a> Provides specialized employment and education-related services to help individuals with disabilities achieve employment and self-sufficiency.</li>
+                  <li><a href="https://hhs.texas.gov/services/disability/blind-visually-impaired"><strong>Services for People Who Are Blind or Visually Impaired:</strong></a> Resources for visually impaired Texas residents, including rehabilitation services, training, and technological assistance.</li>
+                  <li><a href="https://www.hhs.texas.gov/about/find-us/hhs-regional-local-offices"><strong>Texas HHS Office Locations:</strong></a> Find local HHS offices throughout Texas for in-person assistance with state programs and benefits.</li>
+                  <li><a href="https://www.needhelppayingbills.com/html/texas_assistance_programs.html"><strong>Texas Assistance Programs:</strong></a> Comprehensive listing of assistance programs available to Texas residents.</li>
+                  <li><a href="https://www.tvc.texas.gov/"><strong>Texas Veterans Commission:</strong></a> Resources and benefits for veterans in Texas. Phone: (800) 252-8387</li>
+                  <li><a href="https://www.texaslawhelp.org/"><strong>Texas Law Help:</strong></a> Legal resources and self-help information for low-income Texans. Phone: (800) 733-8394</li>
+                  <li><a href="https://www.211texas.org/search/"><strong>211 Texas Resource Search:</strong></a> Search for food, housing, child care, crisis counseling, substance abuse treatment, and more across Texas via the 2‑1‑1 network.</li>
+                  <li><a href="https://www.211texas.org/guided-search/"><strong>2‑1‑1 Texas Guided Search:</strong></a> Guided wizard to quickly find community assistance programs statewide, including health, housing, and financial support.</li>
+                  <li><a href="https://resources.hhs.texas.gov/pages/find-services"><strong>Texas HHS Find Services:</strong></a> Search by county or ZIP for HHS offices offering WIC, SNAP, TANF, Medicaid, aging, disability, behavioral health, and other services.</li>
+                </ul>
+              </section>
+                
+              <section id="texas-housing" class="resource-section">
+                <h2>Texas Housing Resources</h2>
+                <ul>
+                  <li><a href="https://www.texas.gov/texas-housing-assistance/"><strong>Texas Housing Assistance Programs:</strong></a> Official state portal for housing assistance information, rental help, homeownership programs, and emergency housing resources.</li>
+                  <li><a href="https://www.hud.gov/states/texas"><strong>U.S. Department of Housing and Urban Development (HUD) - Texas:</strong></a> Federal housing resources for Texas residents, including information on rental assistance, homeownership programs, housing counseling, and homelessness prevention programs.</li>
+                  <li><a href="https://texasrentrelief.com"><strong>Texas Rent Relief Program:</strong></a> Direct financial assistance for rent and utilities to qualified Texas tenants. Phone: (833) 989-7368 (833-9TX-RENT)</li>
+                  <li><a href="https://www.tdhca.state.tx.us/texans.htm"><strong>Texas Department of Housing and Community Affairs (TDHCA):</strong></a> Various emergency housing assistance programs including rent, mortgage, and utilities. Phone: (800) 525-0657</li>
+                  <li><a href="https://www.tdhca.state.tx.us/section-8/"><strong>Texas Housing and Community Services:</strong></a> Help finding affordable housing and rental units across the state. Phone: (512) 475-3800</li>
+                  <li><a href="https://www.yourtexasbenefits.com/Learn/Home"><strong>Your Texas Benefits - Housing Resources:</strong></a> Connects individuals experiencing homelessness or housing insecurity with emergency shelter, housing assistance, and related support services throughout Texas.</li>
+                  <li><a href="https://www.tdhca.state.tx.us/"><strong>Texas Department of Housing and Community Affairs (TDHCA):</strong></a> Provides information on affordable housing programs, rental assistance, and homeownership initiatives throughout Texas.</li>
+                  <li><a href="https://www.thn.org/"><strong>Texas Homeless Network:</strong></a> Resources and assistance for individuals and families experiencing homelessness or housing insecurity. Phone: (512) 482-8270</li>
+                  <li><a href="https://catholiccharities.org/housing/"><strong>Catholic Charities Housing Programs:</strong></a> Affordable housing options and assistance for seniors, veterans, and families throughout Texas.</li>
+                  <li><a href="https://www.tdhca.state.tx.us/housing-center/housing-counselors.htm"><strong>Housing Counseling:</strong></a> Connect with housing counselors who can help with foreclosure prevention, homebuyer education, and other housing needs.</li>
+                  <li><a href="https://www.texaslawhelp.org/"><strong>Texas Legal Aid:</strong></a> Free legal help for income-qualified residents facing eviction. Phone: (800) 733-8394</li>
+                  <li><a href="https://www.texastenant.org/"><strong>Tenant Rights in Texas:</strong></a> Resources and information about tenant rights. Phone: (512) 474-1961</li>
+                  <li><a href="https://www.tvc.texas.gov/housing/"><strong>Texas Veterans Commission - Housing Assistance:</strong></a> Housing resources specifically for veterans in Texas. Phone: (800) 252-8387</li>
+                  <li><a href="https://www.texasreentryresources.com/housing"><strong>Texas Reentry Resources - Housing:</strong></a> Housing resources for individuals returning to communities after incarceration.</li>
+                  <li><a href="https://texaslawhelp.org/house-apartment"><strong>Texas Law Help - Housing:</strong></a> Legal resources for housing issues including eviction, foreclosure, and public housing.</li>
+                  <li><a href="https://www.consumerfinance.gov/housing/housing-insecurity/help-for-renters/get-help-paying-rent-and-bills/"><strong>Consumer Financial Protection Bureau Housing Resources:</strong></a> Federal resource for renters seeking assistance with a guide to state programs. Phone: (855) 411-2372</li>
+                  <li><a href="https://www.mytexashousingresearch.org/"><strong>My Texas Housing Search:</strong></a> Free online tool to help find affordable rental housing. Phone: (877) 428-8844</li>
+                  <li><a href="https://www.tsahc.org/"><strong>Texas State Affordable Housing Corporation:</strong></a> Affordable housing programs and rent assistance options. Phone: (512) 477-3555</li>
+                </ul>
+              </section>
+                
+              <section id="texas-utilities" class="resource-section">
+                <h2>Texas Utility Assistance</h2>
+                <ul>
+                  <li><a href="https://www.puc.texas.gov/consumer/lowincome/assistance.aspx"><strong>Public Utility Commission of Texas - Utility Assistance Programs:</strong></a> Comprehensive guide to all state energy assistance programs including the Comprehensive Energy Assistance Program (CEAP), Lite-Up Texas, and weatherization assistance. Includes eligibility information and application links.</li>
+                  <li><a href="https://texasrentrelief.com"><strong>Texas Rent Relief Program:</strong></a> Can provide assistance with utilities in addition to rent for qualified applicants. Phone: (833) 989-7368 (833-9TX-RENT)</li>
+                  <li><a href="https://www.tdhca.state.tx.us/community-affairs/ceap/"><strong>Comprehensive Energy Assistance Program (CEAP):</strong></a> Provides utility bill payment assistance to eligible low-income households throughout Texas.</li>
+                  <li><a href="https://www.tdhca.state.tx.us/community-affairs/wap/"><strong>Weatherization Assistance Program (WAP):</strong></a> Helps reduce energy costs for low-income households by improving energy efficiency of homes.</li>
+                  <li><a href="https://www.needhelppayingbills.com/html/texas_utility_and_cooling_bill.html"><strong>Texas Utility and Cooling Bill Assistance:</strong></a> Information about various utility assistance programs available throughout Texas.</li>
+                  <li><a href="https://www.yourtexasbenefits.com/Learn/Home"><strong>Your Texas Benefits - Emergency Assistance:</strong></a> Apply for emergency utility assistance through Texas's online benefits portal.</li>
+                  <li><a href="https://www.txu.com/help/bill-payment-assistance.aspx"><strong>TXU Energy Payment Assistance:</strong></a> Programs to help TXU Energy customers manage energy bills.</li>
+                  <li><a href="https://www.reliant.com/en/residential/customer-care/special-assistance/bill-payment-assistance.jsp"><strong>Reliant Energy Payment Assistance:</strong></a> Resources for Reliant customers who need help with their electric bills.</li>
+                  <li><a href="https://www.centerpointenergy.com/en-us/residential/customer-service/billing-payment/need-help-paying-your-bill"><strong>CenterPoint Energy Bill Payment Assistance:</strong></a> Programs to help customers pay their natural gas bills.</li>
+                  <li><a href="https://www.211texas.org/"><strong>2-1-1 Texas:</strong></a> Information and referral service for utility assistance programs. Dial 2-1-1 to connect with local resources.</li>
+                </ul>
+              </section>
+                
+              <section id="texas-food" class="resource-section">
+                <h2>Texas Food & Nutrition Resources</h2>
+                <ul>
+                  <li><a href="https://www.hhs.texas.gov/services/food"><strong>Texas HHS Food Assistance Programs:</strong></a> Comprehensive information about all state food assistance programs including SNAP (food stamps), WIC, school meals, senior nutrition programs, and emergency food resources.</li>
+                  <li><a href="https://www.yourtexasbenefits.com/Learn/Home"><strong>Your Texas Benefits - Food Assistance Program:</strong></a> Apply for SNAP (food stamps), medical, and other public benefits through Texas's online portal.</li>
+                  <li><a href="https://www.feedingtexas.org/"><strong>Feeding Texas:</strong></a> Statewide network of food banks serving all 254 counties in Texas.</li>
+                  <li><a href="https://www.houstonpbs.org/lonestarguide/food-pantries-food-banks-texas"><strong>Food Pantries and Food Banks in Texas:</strong></a> Directory of food assistance resources throughout the state.</li>
+                  <li><a href="https://texasfoodbanks.org/"><strong>Texas Food Bank Network:</strong></a> Network coordinating food banks and hunger relief efforts across Texas.</li>
+                  <li><a href="https://texaswic.org/"><strong>Texas WIC Program:</strong></a> Nutrition services for women, infants, and children under five who qualify.</li>
+                  <li><a href="https://www.hhs.texas.gov/services/aging"><strong>Texas Department of Health and Human Services - Aging Services:</strong></a> Provides meals and nutrition services for eligible seniors.</li>
+                  <li><a href="https://squaremeals.org/"><strong>Texas Department of Agriculture - Food and Nutrition Programs:</strong></a> School breakfast, lunch, and summer food programs for children.</li>
+                  <li><a href="https://www.mowaa.org/find-a-program"><strong>Meals on Wheels Association of America:</strong></a> Find local Meals on Wheels programs throughout Texas.</li>
+                </ul>
+              </section>
+                
+              <section id="texas-dental" class="resource-section">
+                <h2>Texas Dental Resources</h2>
+                <p>Explore dental care options and training-based clinics available across Texas.</p>
+                <ul>
+                  <li><a href="https://www.hhs.texas.gov/services/health/medicaid-chip/programs-services/dental-services"><strong>Texas HHS - Dental Services:</strong></a> Information on dental services available through Medicaid and other state programs.</li>
+                  <li><a href="https://yourtexasbenefits.hhsc.texas.gov/programs/health"><strong>Texas Medicaid Dental Coverage:</strong></a> Information about dental benefits available through Texas's Medicaid program, including coverage details and how to find a provider.</li>
+                  <li><a href="https://findahealthcenter.hrsa.gov/?state=TX"><strong>Texas's Federally Qualified Health Centers:</strong></a> These centers provide dental services for people who are low income, uninsured, or undocumented residents.</li>
+                  <li><a href="https://www.utsd.uth.edu/patient-care/"><strong>UT Health School of Dentistry Houston:</strong></a> Provides comprehensive dental care at reduced fees. Phone: (713) 486-4000</li>
+                  <li><a href="https://dentistry.tamu.edu/patients/index.html"><strong>Texas A&M College of Dentistry:</strong></a> Offers dental services through their educational programs. Phone: (214) 828-8100</li>
+                  <li><a href="https://dentistry.uthscsa.edu/patient/index.php"><strong>UT Health San Antonio School of Dentistry:</strong></a> Provides dental care through their teaching clinics. Phone: (210) 450-3700</li>
+                  <li><a href="https://www.tda.org/public/finding-dental-care"><strong>Texas Dental Association - Find a Dental Clinic:</strong></a> Listing of clinics throughout Texas for people with limited financial resources.</li>
+                  <li><a href="http://www.texasdentists.org/"><strong>Texas Mission of Mercy:</strong></a> Provides free dental care at mobile clinics throughout the state.</li>
+                </ul>
+              </section>
+                
+              <section id="texas-cancer-financial" class="resource-section">
+                <h2>Texas Cancer Financial Assistance</h2>
+                <p>Financial resources specifically for cancer patients in Texas.</p>
+                <ul>
+                  <li><a href="https://www.mdanderson.org/patients-family/becoming-our-patient/planning-for-care/insurance-billing-financial-support/financial-support.html"><strong>MD Anderson Cancer Center Financial Assistance:</strong></a> Financial support programs for patients receiving treatment at MD Anderson. Phone: (713) 792-3112</li>
+                  <li><a href="https://www.texasoncology.com/about-us/financial-counseling"><strong>Texas Oncology Financial Counseling:</strong></a> Financial counseling services for patients receiving treatment at Texas Oncology locations. Phone: (888) 864-4226</li>
+                  <li><a href="https://www.bccs.state.tx.us/"><strong>Breast and Cervical Cancer Services (BCCS):</strong></a> Provides free breast and cervical cancer screening and diagnostic services to eligible women. Phone: (512) 776-7796</li>
+                  <li><a href="https://www.texascancer.info/findhelp/money.html"><strong>Cancer Resources for Texas - Financial Help:</strong></a> Comprehensive list of financial assistance programs for cancer patients in Texas.</li>
+                  <li><a href="https://www.cancercareservices.org/"><strong>Cancer Care Services:</strong></a> Provides financial assistance and support services to cancer patients in the Fort Worth area. Phone: (817) 921-0653</li>
+                  <li><a href="https://www.findhelp.org/cancer-assistance-fund-of-north-texas-%28cafnt%29--fort-worth-tx--financial-assistance/4973293816905728"><strong>Cancer Assistance Fund of North Texas (CAFNT):</strong></a> Financial assistance to cancer patients in Tarrant, Johnson, Wise, and Parker counties.</li>
+                  <li><a href="https://mesquaredcancerfoundation.org/who-do-we-help/"><strong>Me Squared Cancer Foundation:</strong></a> Financial aid for newly diagnosed adult cancer patients in Tarrant County.</li>
+                  <li><a href="https://www.theassistancefund.org/"><strong>The Assistance Fund:</strong></a> Helps patients with out-of-pocket costs for FDA-approved medications. Phone: (855) 845-3663</li>
+                  <li><a href="https://www.cancercare.org/financial_assistance"><strong>CancerCare Financial Assistance Program:</strong></a> Offers limited financial assistance for cancer-related costs. Phone: (800) 813-4673</li>
+                  <li><a href="https://www.healthwellfoundation.org/"><strong>HealthWell Foundation:</strong></a> Provides financial assistance for medications and treatment. Phone: (800) 675-8416</li>
+                  <li><a href="https://www.panfoundation.org/"><strong>Patient Access Network Foundation:</strong></a> Helps underinsured patients with out-of-pocket costs. Phone: (866) 316-7263</li>
+                  <li><a href="https://zerocancer.org/help-and-support/financial-resources/"><strong>ZERO - The End of Prostate Cancer:</strong></a> Financial support program specifically for prostate cancer patients. Phone: (844) 244-1309</li>
+                  <li><a href="https://www.pcf.org/patient-resources/patient-navigation/financial-resources/"><strong>Prostate Cancer Foundation Financial Resources:</strong></a> Connects patients with financial assistance programs. Phone: (800) 757-2873</li>
+                  <li><a href="https://www.livestrong.org/what-we-do/program/navigation"><strong>Livestrong Cancer Navigation Services:</strong></a> Helps connect patients to financial resources. Phone: (877) 236-8820</li>
+                  <li><a href="https://www.cancer.org/about-us/local/texas.html"><strong>American Cancer Society - Texas Division:</strong></a> Patient support programs including transportation and lodging assistance. Phone: (800) 227-2345</li>
+                  <li><a href="https://www.texasoncologyfoundation.org/"><strong>Texas Oncology Foundation:</strong></a> Financial assistance for patients receiving treatment at Texas Oncology centers. Phone: (888) 672-6647</li>
+                </ul>
+              </section>
+                
+              <section id="texas-seniors" class="resource-section">
+                <h2>Texas Senior Resources</h2>
+                <p>Explore senior-focused services including benefits, caregiving support, and local aging resources.</p>
+                <ul>
+                  <li><a href="https://www.hhs.texas.gov/services/aging"><strong>Texas Health and Human Services - Aging Services:</strong></a> Complete directory of state programs for older adults including nutrition services, community living support, care management, and caregiver resources.</li>
+                  <li><a href="https://www.dads.state.tx.us/services/index.cfm"><strong>Texas Department of Aging and Disability Services (Legacy - services now under HHS):</strong></a> Information on community-based services for seniors including caregiver support and elder abuse prevention.</li>
+                  <li><a href="https://www.hhs.texas.gov/services/safety/protective-services/adult-protective-services"><strong>Texas Adult Protective Services:</strong></a> Protects older adults and adults with disabilities from abuse, neglect, and exploitation.</li>
+                  <li><a href="https://www.hhs.texas.gov/services/aging/long-term-care/area-agencies-aging-aaa"><strong>Texas Area Agencies on Aging (AAA):</strong></a> Call 1-800-252-9240 to find your local AAA for information on senior programs, benefits, and support services.</li>
+                  <li><a href="https://www.alz.org/texas"><strong>Alzheimer's Association - Texas Chapters:</strong></a> Resources for caregivers and those living with dementia and Alzheimer's disease.</li>
+                  <li><a href="https://hhs.texas.gov/about/your-rights/hhs-office-ombudsman"><strong>Texas HHS Ombudsman:</strong></a> Free advocacy service for recipients of Texas HHS services, including seniors with Medicare or Medicaid.</li>
+                  <li><a href="https://www.hhs.texas.gov/services/aging/long-term-care/community-care-aged-disabled-ccad"><strong>Community Care for Aged/Disabled (CCAD):</strong></a> Information on various benefits available to Texas seniors.</li>
+                  <li><a href="https://tvc.texas.gov/"><strong>Texas Veterans Commission:</strong></a> Services and benefits for senior veterans in Texas.</li>
+                  <li><a href="https://www.hhs.texas.gov/services/health/medicaid-chip/medicaid-chip-programs-services/starplus-medicaid-managed-care-program"><strong>STAR+PLUS Medicaid Managed Care Program:</strong></a> Information on healthcare programs specifically for Texas seniors and adults with disabilities, including nursing facility care and home health services.</li>
+                  <li><a href="https://comptroller.texas.gov/taxes/property-tax/exemptions/"><strong>Texas Property Tax Relief for Seniors:</strong></a> Information about property tax exemptions available to eligible seniors.</li>
+                </ul>
+              </section>
+                
+              <section id="texas-transportation" class="resource-section">
+                <h2>Texas Transportation Resources</h2>
+                <p>Explore transportation options for seniors, people with disabilities, and Medicaid recipients across Texas.</p>
+                <ul>
+                  <li><a href="https://www.211texas.org/"><strong>2-1-1 Texas Transportation Resources:</strong></a> Comprehensive database of transportation options throughout Texas, including medical transport, senior services, and disability assistance. Call 211 or visit the website to find transportation resources in your specific area.</li>
+                  <li><a href="https://www.hhs.texas.gov/services/aging/transportation-services-older-texans"><strong>Texas HHS - Transportation for Seniors:</strong></a> Information on transportation services available to older adults throughout the state.</li>
+                  <li><a href="https://www.txdot.gov/inside-txdot/division/public-transportation.html"><strong>Texas Department of Transportation - Public Transportation:</strong></a> Find local transit services, including specialized services for seniors and people with disabilities.</li>
+                  <li><a href="https://www.hhs.texas.gov/services/health/medicaid-chip/medicaid-chip-members/nonemergency-medical-transportation-program"><strong>Texas Medical Transportation Program (MTP):</strong></a> Transportation assistance for Medicaid recipients traveling to healthcare appointments. Call your Medicaid health plan or 1-877-633-8747 (1-877-MED-TRIP).</li>
+                  <li><a href="https://www.dart.org/riding/paratransit.asp"><strong>DART Paratransit Services (Dallas):</strong></a> Door-to-door transportation service for people with disabilities in the Dallas area.</li>
+                  <li><a href="https://www.ridemetro.org/Pages/Accessibility.aspx"><strong>METROLift (Houston):</strong></a> Complementary paratransit service for individuals with disabilities.</li>
+                  <li><a href="https://www.viainfo.net/service/viatrans/"><strong>VIAtrans (San Antonio):</strong></a> Paratransit service for people with disabilities in the San Antonio area.</li>
+                  <li><a href="https://www.capmetro.org/metroaccess/"><strong>MetroAccess (Austin):</strong></a> Shared-ride paratransit service for people with disabilities.</li>
+                  <li><a href="https://www.hhs.texas.gov/services/aging/long-term-care/area-agencies-aging-aaa"><strong>Area Agencies on Aging:</strong></a> Local agencies that can help seniors access transportation services in their communities. Call 1-800-252-9240.</li>
+                  <li><a href="https://www.aarp.org/auto/driver-safety/"><strong>AARP Driver Safety Program:</strong></a> Resources to help senior drivers stay safe on the road.</li>
+                </ul>
+              </section>
+                
+              <section id="texas-medical-supplies" class="resource-section">
+                <h2>Texas Medical Equipment & Incontinence Supplies</h2>
+                <p>Resources for accessing medical equipment loan closets, incontinence supplies, and other medical necessities across Texas.</p>
+                <ul>
+                  <li><a href="https://www.projectmend.org/"><strong>Project MEND:</strong></a> Provides refurbished medical equipment and assistive technology to people with disabilities and seniors in San Antonio and surrounding areas. Phone: (210) 223-6363</li>
+                  <li><a href="https://www.hhs.texas.gov/services/disability/durable-medical-equipment-dme-reuse-program"><strong>Texas Durable Medical Equipment (DME) Reuse Program:</strong></a> Connects Texans to organizations that accept donations of gently used DME and make it available to those in need.</li>
+                  <li><a href="https://hhs.texas.gov/services/disability"><strong>Texas HHS Disability Services:</strong></a> Information on resources for medical equipment and assistive technology.</li>
+                  <li><a href="https://tmf.org/"><strong>TMF Health Quality Institute (Equipment Connection - may be outdated, check HHS DME Reuse):</strong></a> Connects Texans with disabilities to donated medical equipment and assistive technology. Phone: (512) 328-9900</li>
+                  <li><a href="https://www.mtm-inc.net/texas/"><strong>Medical Transportation Management (MTM):</strong></a> Transportation service for Medicaid recipients that can assist with transport of medical equipment. Phone: (877) 633-8747</li>
+                  <li><a href="https://www.texasdiaperbank.org/"><strong>Texas Diaper Bank:</strong></a> Provides diapers and incontinence supplies to those in need across Texas. Phone: (210) 731-8118</li>
+                  <li><a href="https://www.hhs.texas.gov/services/health/medicaid-chip/medicaid-chip-programs-services/medical-benefits#durable-medical-equipment-and-supplies"><strong>Texas Medicaid - Durable Medical Equipment and Supplies Coverage:</strong></a> Information on how Medicaid may cover medical equipment and incontinence supplies for eligible individuals.</li>
+                  <li><a href="https://www.arcoftexas.org/"><strong>The Arc of Texas:</strong></a> May facilitate or have information on the exchange of gently used medical equipment for individuals with disabilities.</li>
+                  <li><a href="https://www.simonfoundation.org/"><strong>Simon Foundation for Continence:</strong></a> Resources and support for people with incontinence issues, including information on accessing supplies.</li>
+                  <li><a href="https://www.cancersupportcommunity.org/find-location/texas"><strong>Cancer Support Community Texas:</strong></a> May provide referrals to medical equipment loan programs and incontinence supply resources for cancer patients.</li>
+                </ul>
+              </section>
+                
+              <section id="houston-resources" class="resource-section">
+                <h2>Houston / Harris County Resources</h2>
+                <p>Explore support services available to residents of Houston and Harris County, including housing, legal aid, crisis response, and public assistance.</p>
+                <h4 id="houston-housing">Housing & Homelessness</h4>
+                <ul>
+                    <li><a href="https://www.houstontx.gov/housing/"><strong>City of Houston - Housing and Community Development:</strong></a> Comprehensive guide to housing assistance, home repair programs, and housing stability initiatives.</li>
+                    <li><a href="https://www.theharriscenter.org/services/housing-and-homelessness"><strong>The Harris Center - Housing and Homelessness Services:</strong></a> Provides housing services including homeless outreach, rehabilitation support, and placement assistance for adults with behavioral health needs. Phone: 713-970-7000</li>
+                    <li><a href="https://www.cfthhouston.org/CCHP"><strong>Community COVID Housing Program (CCHP):</strong></a> Joint plan by City of Houston, Harris County, and the Coalition for the Homeless to house people experiencing homelessness and prevent housing instability.</li>
+                    <li><a href="https://www.cfthhouston.org/TWH/YHDP"><strong>Youth Homelessness Demonstration Program (YHDP):</strong></a> Program to prevent and end youth homelessness with services including transitional housing and rapid rehousing.</li>
+                    <li><a href="https://catholiccharities.org/"><strong>Catholic Charities of the Archdiocese of Galveston-Houston:</strong></a> Offers the Villa Transitional Housing program for homeless individuals. Phone: 713-526-4611</li>
+                    <li><a href="https://hchatexas.org/"><strong>Harris County Housing Authority (HCHA):</strong></a> Offers affordable housing opportunities throughout Harris County, including housing choice vouchers and affordable housing developments. Phone: 713-578-2100</li>
+                    <li><a href="https://housingforhouston.com/"><strong>Houston Housing Authority (HHA):</strong></a> Provides affordable housing programs including public housing, housing choice vouchers, and tax credit properties. Phone: 713-260-0500</li>
+                    <li><a href="https://hcd.harriscountytx.gov/"><strong>Harris County Housing & Community Development Department:</strong></a> County department that provides affordable housing and development opportunities to create sustainable communities. Phone: 832-927-4700</li>
+                    <li><a href="https://houstontx.gov/housing/"><strong>City of Houston Housing & Community Development Department:</strong></a> City department that manages housing programs, funding for affordable housing, and community development. Phone: 832-394-6200</li>
+                    <li><a href="https://houstontx.gov/housing/rentals.html"><strong>City of Houston Affordable Rental Housing:</strong></a> Directory of affordable rental housing options in Houston, including properties developed with city funding and those serving specific populations like seniors, families, and individuals with special needs. Phone: 832-394-6200</li>
+                    <li><a href="https://www.careconnection.org/housing"><strong>CareConnection Aging & Disability Resource Center:</strong></a> Provides information on housing options for older adults and people with disabilities. Phone: 877-393-1090</li>
+                    <li><a href="https://hchatexas.org/"><strong>HCHA Senior Housing Developments:</strong></a> HCHA is the general partner of seven quality housing developments designed specifically for seniors in Harris County. Phone: 713-578-2100</li>
+                    <li><a href="https://www.hud.gov/program_offices/housing/mfh/progdesc/eld202"><strong>Section 202 Supportive Housing for the Elderly:</strong></a> HUD program that provides housing with supportive services for very low-income elderly. Units include accessibility features and on-site service coordinators.</li>
+                    <li><a href="https://www.seniorhousingnet.com/seniorliving-search/houston_tx/low-income-senior-housing_type"><strong>Low-Income Senior Housing Search Tool:</strong></a> Search tool with 71+ low-income affordable senior housing options in the Houston area.</li>
+                    <li><a href="https://senioridy.com/subsidized-senior-housing-in-houston-texas"><strong>Subsidized Senior Housing in Houston:</strong></a> Information on subsidized senior housing options in Houston, including eligibility requirements and application processes.</li>
+                    <li><a href="https://housingforhouston.com/"><strong>Housing Choice Voucher Program (Section 8):</strong></a> Rental assistance program allowing participants to choose from private housing with vouchers that pay a portion of the rent. Phone: 713-260-0500 (HHA) or 713-578-2100 (HCHA)</li>
+                    <li><a href="https://housingforhouston.com/"><strong>Public Housing Program:</strong></a> Provides affordable apartment units owned and managed by the Houston Housing Authority with rent based on 30% of income. Phone: 713-260-0500</li>
+                    <li><a href="https://affordablehousingonline.com/housing-search/Texas/Harris-County"><strong>Low Income Housing Tax Credit (LIHTC) Properties:</strong></a> Apartments built with tax credits that offer reduced rents for qualifying low-income households.</li>
+                    <li><a href="https://www.tdhca.state.tx.us/section-811-pra/"><strong>Section 811 Project Rental Assistance:</strong></a> Program providing rental assistance for extremely low-income persons with disabilities linked with long-term services.</li>
+                    <li><a href="https://affordablehousinghouston.com/"><strong>Affordable Housing Houston:</strong></a> Public Facilities Corporation (PFC) model of affordable housing with numerous properties in Houston and surrounding areas.</li>
+                    <li><a href="https://csd.harriscountytx.gov/Pages/HomeRepairProgram.aspx"><strong>Harris County Home Repair Program:</strong></a> Provides financial assistance for home repairs in the form of grants or deferred payment loans to qualified homeowners in Harris County. Phone: 832-927-4955, Email: HomeRepair@csd.hctx.net</li>
+                    <li><a href="https://housingforhouston.com/residents/client-services/oahmp-2/"><strong>Houston Housing Authority Older Adult Home Modification Program (OAHMP):</strong></a> Provides low-cost, high-impact home modifications to reduce fall risk and improve accessibility for seniors 62+ to help them age in place.</li>
+                    <li><a href="https://www.houstonhabitat.org/services/critical-repair/"><strong>Houston Habitat for Humanity Critical Home Repair:</strong></a> Serves seniors and veterans with repairs to allow individuals to stay in their homes, preserving existing affordable communities. Phone: 713-671-9993</li>
+                    <li><a href="https://rebuildingtogetherhouston.org"><strong>Rebuilding Together Houston:</strong></a> Provides no-cost home repairs to qualifying seniors in Houston for over 30 years. Phone: 713-659-2511</li>
+                    <li><a href="https://www.texasramps.org/"><strong>Texas Ramp Project:</strong></a> 501(c)(3) nonprofit that provides free wheelchair ramps to low-income older adults and people with disabilities.</li>
+                    <li><a href="https://www.hcp1.net/senior-services"><strong>Minor Repair Assistance Program (Harris County Precinct 1):</strong></a> Program for individuals 62+ or with disabilities offering up to $20,000 for minor repairs including roof repair, electrical, plumbing, and accessibility improvements. Phone: 713-578-2059 (Confirm details with Precinct 1)</li>
+                    <li><a href="https://www.hhs.texas.gov/services/health/medicaid-chip/programs-services/starplus"><strong>Texas STAR Plus Medicaid Program:</strong></a> Medicaid program that can cover the cost of some minor home modifications for seniors and adults with disabilities.</li>
+                    <li><a href="https://www.homelesshouston.org/"><strong>Coalition for the Homeless of Houston/Harris County:</strong></a> Lead agency working to prevent and end homelessness in Harris, Fort Bend, and Montgomery counties. Phone: 713-739-7514</li>
+                    <li><a href="https://www.thewayhomehouston.org/"><strong>The Way Home:</strong></a> Collective effort of over 100 partners working to prevent and end homelessness in the Houston region.</li>
+                    <li><a href="https://endeavors.org/houston-rapid-rehousing/"><strong>Houston Rapid Rehousing - Endeavors:</strong></a> Provides housing and support services to individuals and families experiencing homelessness. Phone: 210-431-6466</li>
+                </ul>
+
+                <h4 id="houston-health">Health Services</h4>
+                <ul>
+                    <li><a href="https://www.houstontx.gov/health/"><strong>Houston Health Department:</strong></a> Offers health services, immunizations, food safety, and other public health programs.</li>
+                    <li><a href="https://www.harrishealth.org/"><strong>Harris Health System:</strong></a> Healthcare services for residents of Harris County, including those without insurance. Phone: (713) 566-6400</li>
+                </ul>
+
+                <h4 id="houston-legal">Legal Aid</h4>
+                <ul>
+                    <li><a href="https://www.lonestarlegal.org/"><strong>Lone Star Legal Aid:</strong></a> Provides free legal assistance to low-income residents of Houston/Harris County facing civil legal issues.</li>
+                </ul>
+
+                <h4 id="houston-community-financial">Community Services & Financial Assistance</h4>
+                <ul>
+                    <li><a href="https://www.unitedwayhouston.org/211/"><strong>211 Greater Houston:</strong></a> Connects residents to essential health and social services, including shelter, food, and mental health support.</li>
+                    <li><a href="https://www.211texas.org/"><strong>211 Texas/United Way Helpline:</strong></a> Comprehensive information and referral service for housing and other resources. Phone: 2-1-1</li>
+                    <li><a href="https://www.bakerripley.org/"><strong>BakerRipley:</strong></a> Offers comprehensive services including utility assistance, housing, food, and financial empowerment programs.</li>
+                    <li><a href="https://csd.harriscountytx.gov/Pages/default.aspx"><strong>Harris County Community Services Department:</strong></a> County-level services for residents including health programs and assistance.</li>
+                    <li><a href="https://www.needhelppayingbills.com/html/harris_county_assistance_progr.html"><strong>Harris County Assistance Programs:</strong></a> List of financial assistance programs and resources for Harris County residents.</li>
+                    <li><a href="https://referral.unitedwayhouston.org/Search.aspx"><strong>United Way of Greater Houston:</strong></a> Provides searchable database of services in the Greater Houston area. Phone: 713-685-2300</li>
+                    <li><a href="https://www.findhelp.org/transit/transportation-for-healthcare--houston-tx"><strong>FindHelp.org:</strong></a> Search engine for healthcare transportation programs in Houston.</li>
+                </ul>
+
+                <h4 id="houston-crisis-mental">Crisis & Mental Health Support</h4>
+                <ul>
+                    <li><a href="https://www.hawc.org/"><strong>Houston Area Women's Center:</strong></a> Domestic violence and sexual assault services. Hotline: (713) 528-2121</li>
+                    <li><a href="https://namigreaterhouston.org/"><strong>NAMI Greater Houston:</strong></a> Mental health support and resources. Phone: (713) 970-4419</li>
+                    <li><a href="https://988lifeline.org/"><strong>National Suicide Prevention Lifeline:</strong></a> Call or text <a href="tel:988">988</a>, or chat online 24/7 for immediate crisis support.</li>
+                </ul>
+
+                <h4 id="houston-food">Food Assistance</h4>
+                <ul>
+                    <li><a href="https://www.houstonfoodbank.org/"><strong>Houston Food Bank:</strong></a> Food assistance for Houston and Southeast Texas residents. Phone: (713) 223-3700</li>
+                </ul>
+
+                <h4 id="houston-seniors">Senior Services</h4>
+                <ul>
+                    <li><a href="https://www.houstonhealth.org/services/aging"><strong>Houston Health Department Aging Services:</strong></a> Programs for seniors including health promotion, nutritional support, and social services. Phone: (832) 393-4301</li>
+                    <li><a href="https://www.houstontx.gov/health/Aging/seniorservices.html"><strong>Houston Health Department Senior Services:</strong></a> Specialized health services, wellness programs, and community resources for seniors. Phone: (832) 393-4301</li>
+                    <li><a href="https://www.h-gac.com/area-agency-on-aging"><strong>Houston-Galveston Area Council - Area Agency on Aging:</strong></a> Services for older adults including benefits counseling, care coordination, and ombudsman services. Phone: (713) 627-3200 or 1-800-437-7396.</li>
+                    <li><a href="https://namonline.org/senior_services"><strong>Northwest Assistance Ministries – Senior Services:</strong></a> NAM's Young at Heart Senior Center serves seniors in northwest Houston with various services, including limited transportation services to NAM. Phone: 281-885-4600</li>
+                </ul>
+
+                <h4 id="houston-transportation">Transportation</h4>
+                <ul>
+                    <li><a href="https://www.gogograndparent.com/location/houston"><strong>GoGoGrandparent:</strong></a> Transportation services for seniors without smartphones, connecting them to Uber and Lyft. Phone: (855) 464-6872</li>
+                    <li><a href="https://www.ridemetro.org/Pages/DiscountedFares.aspx"><strong>METRO Discounted Fare Program:</strong></a> Reduced fares on Houston's public transportation system for seniors 65-69 years old and free fares for those 70+. Phone: (713) 635-4000</li>
+                    <li><a href="https://transit.harriscountytx.gov/Maps-Services/Non-Emergency-Medical-Program"><strong>Harris County Non-Emergency Medical Transportation Program:</strong></a> Free transportation for Harris County Medicaid clients for medical necessity trips such as dialysis, chemotherapy, radiation treatments, and other medical appointments. Phone: 713-578-2000</li>
+                    <li><a href="https://rides.harriscountytx.gov/"><strong>Harris County RIDES:</strong></a> 50% subsidized transportation program for seniors, people with disabilities, and low-income residents. Offers two service options: Shared Ride and Taxi Service. Phone: 713-368-RIDE (7433)</li>
+                    <li><a href="https://www.ridemetro.org/riding-metro/transit-services/metrolift-paratransit"><strong>METROLift (Houston METRO):</strong></a> ADA accessible, shared-ride paratransit service for qualified customers; $1.25–$2.50 per trip. Operates in most of Harris County including portions of Kingwood, Humble, and Clear Lake. Phone: 713-225-0119</li>
+                    <li><a href="https://www.hcp1.net/TransportationService"><strong>Harris County Precinct 1 Transportation Service:</strong></a> Transportation services for adults 50+ coordinated through community organizations, churches, civic associations, and schools. Phone: 713-991-6881</li>
+                    <li><a href="https://www.hhs.texas.gov/services/health/medicaid-chip/medicaid-chip-members/nonemergency-medical-transportation-program"><strong>Medicaid Transportation Program (Statewide):</strong></a> Transportation services for Medicaid recipients to medical appointments. Must call at least two business days before your appointment. Phone: 877-633-8747 (877-MED-TRIP)</li>
+                    <li><a href="https://seniorridesandmore.org/"><strong>Senior Rides and More (formerly Volunteer Interfaith Caregivers - Southwest):</strong></a> Faith-based nonprofit providing free volunteer-based transportation for seniors to medical appointments, pharmacies, and grocery stores in Southwest and Northwest Houston areas. Phone: 713-772-8181</li>
+                    <li><a href="https://www.houstongroundangels.org/"><strong>Houston Ground Angels:</strong></a> Free transportation for local Houston patients and those flying in for medical care at Texas Medical Center, including MD Anderson Cancer Center. Phone: 281-825-0645</li>
+                    <li><a href="https://chariot.org/"><strong>Chariot:</strong></a> Free transportation for non-driving adults 60+ to medical appointments and grocery shopping provided by volunteer drivers. Service is available Monday through Friday based on volunteer availability. Phone: 512-628-4986 (Primarily Austin, check for Houston expansion)</li>
+                    <li><a href="https://www.cancer.org/support-programs-and-services/road-to-recovery.html"><strong>American Cancer Society – Road to Recovery:</strong></a> Free rides to treatment for cancer patients who have no way to get to their cancer treatment. Phone: 1-800-227-2345</li>
+                    <li><a href="https://www.kelseycareadvantage.com/members/plan-benefits/kca-transportation"><strong>KelseyCare Advantage Transportation:</strong></a> Free transportation to/from medical appointments for KelseyCare Advantage members. Call to schedule rides. Phone: 713-KCA-RIDE (522-7433) or 855-931-7433</li>
+                    <li><a href="https://www.lyft.com/healthcare"><strong>Lyft Business Medical Transportation:</strong></a> Non-emergency medical transportation through Medicare Advantage plans and healthcare providers.</li>
+                    <li><a href="https://www.uber.com/us/en/health/"><strong>Uber Health:</strong></a> Healthcare provider-arranged rides for patients.</li>
+                    <li><a href="https://medbridgetransport.com/"><strong>Medbridge Transport:</strong></a> 24/7 assisted transportation for seniors within 30-mile radius of Houston headquarters. Services include wheelchair and ambulatory transport. Phone: 713-766-4441</li>
+                    <li><a href="https://www.looproutes.com/"><strong>Loop Routes:</strong></a> Senior transportation service including wheelchair and ambulatory transport options. Phone: 281-878-5177</li>
+                    <li><a href="https://www.rightathome.net/metro-houston/services/companion-care/transportation"><strong>Right at Home:</strong></a> Senior transportation services as part of home care offerings. Phone: 832-767-4828</li>
+                    <li><a href="https://www.care.com/senior-transportation/houston-tx"><strong>Care.com Caregivers:</strong></a> Platform connecting seniors with caregivers who provide transportation services.</li>
+                    <li><a href="https://www.h-gac.com/mobility-links"><strong>Houston-Galveston Area Council (H-GAC) Mobility Links:</strong></a> Information about public transportation options including non-emergency medical transportation in the Gulf Coast Region. Phone: 713-627-3200</li>
+                </ul>
+              </section>
+    
+              <section id="dallas-resources" class="resource-section">
+                <h2>Dallas / Dallas County Resources</h2>
+                <p>Resources specifically for residents of Dallas and Dallas County areas.</p>
+                 <h4 id="dallas-general">General Assistance</h4>
+                <ul>
+                    <li><a href="https://www.unitedwaydallas.org/"><strong>United Way of Metropolitan Dallas:</strong></a> Connects residents to essential community resources. Phone: (214) 978-0000</li>
+                     <li><a href="https://www.ccadvance.org/"><strong>Community Council of Greater Dallas:</strong></a> Resources for healthcare, transportation, and senior services. Phone: (214) 871-5065</li>
+                     <li><a href="https://www.dallascounty.org/Assets/uploads/docs/hhs/ehap/English-DALLAS-COUNTY-COMMUNITY-REFERRAL-LIST.pdf"><strong>Dallas County Community Referral List:</strong></a> Comprehensive guide to community resources. Phone: (214) 819-2000 (DCHHS)</li>
+                </ul>
+                <h4 id="dallas-housing">Housing & Utilities</h4>
+                <ul>
+                    <li><a href="https://dallascityhall.com/departments/housing-neighborhood-revitalization/Pages/default.aspx"><strong>City of Dallas Housing & Neighborhood Revitalization:</strong></a> Housing assistance programs for Dallas residents. Phone: (214) 670-5988</li>
+                </ul>
+                <h4 id="dallas-health">Health & Mental Health</h4>
+                <ul>
+                    <li><a href="https://www.dallascounty.org/departments/dchhs/"><strong>Dallas County Health and Human Services:</strong></a> Health services, benefits enrollment, and assistance programs. Phone: (214) 819-2000</li>
+                    <li><a href="https://www.metrocareservices.org/"><strong>Metrocare Services:</strong></a> Mental health and developmental disability services. Phone: (214) 743-1200</li>
+                    <li><a href="https://www.parklandhospital.com/"><strong>Parkland Health:</strong></a> Public hospital system serving Dallas County residents. Phone: (214) 590-8000</li>
+                     <li><a href="https://unitedwaydallas.org/resources/healthcare-financial-assistance/"><strong>United Way Dallas Healthcare Financial Assistance:</strong></a> Resources for healthcare costs and financial support. Phone: (214) 978-0000</li>
+                </ul>
+                 <h4 id="dallas-food">Food Assistance</h4>
+                <ul>
+                    <li><a href="https://ntfb.org/"><strong>North Texas Food Bank:</strong></a> Food assistance programs serving Dallas County. Phone: (214) 330-1396</li>
+                </ul>
+                <h4 id="dallas-legal">Legal Aid</h4>
+                <ul>
+                     <li><a href="https://www.dallasbar.org/page/dvap"><strong>Dallas Volunteer Attorney Program:</strong></a> Free legal assistance for low-income residents. Phone: (214) 220-7444</li>
+                </ul>
+                 <h4 id="dallas-crisis">Crisis Support</h4>
+                 <ul>
+                    <li><a href="https://www.familyplace.org/"><strong>The Family Place:</strong></a> Domestic violence support services. 24-Hour Crisis Hotline: (214) 941-1991</li>
+                </ul>
+                 <h4 id="dallas-social-services">Social Services</h4>
+                <ul>
+                    <li><a href="https://ccdallas.org/"><strong>Catholic Charities of Dallas:</strong></a> Comprehensive social services for Dallas residents. Phone: (866) 223-7500</li>
+                </ul>
+                <h4 id="dallas-seniors">Senior Services</h4>
+                <ul>
+                    <li><a href="https://dallascityhall.com/departments/community-care/Pages/seniorservices.aspx"><strong>City of Dallas Senior Services:</strong></a> Programs for Dallas seniors including recreation, transportation, and care management. Phone: (214) 670-5227</li>
+                    <li><a href="https://www.theseniorsource.org/"><strong>The Senior Source:</strong></a> Comprehensive services for seniors including employment assistance, elder financial safety, and guardianship services. Phone: (214) 823-5700</li>
+                    <li><a href="https://vnatexas.org/i-need-help-with/meals-on-wheels/"><strong>VNA Texas Meals on Wheels:</strong></a> Home-delivered meals for homebound seniors in Dallas County. Phone: (214) 689-2639</li>
+                    <li><a href="https://www.dallascounty.org/departments/tax/exemptions.php"><strong>Dallas County Tax Office - Senior Tax Exemptions:</strong></a> Information on property tax exemptions for seniors. Phone: (214) 653-7811</li>
+                </ul>
+              </section>
+                
+              <section id="austin-resources" class="resource-section">
+                <h2>Austin / Travis County Resources</h2>
+                <p>Information for Austin / Travis County is coming soon. Please check back later or search statewide resources.</p>
+              </section>
+    
+              <section id="sanantonio-resources" class="resource-section">
+                <h2>San Antonio / Bexar County Resources</h2>
+                <p>Information for San Antonio / Bexar County is coming soon. Please check back later or search statewide resources.</p>
+              </section>
+    
+              <section id="fortworth-resources" class="resource-section">
+                <h2>Fort Worth / Tarrant County Resources</h2>
+                <p>Resources specifically for residents of Fort Worth and Tarrant County areas.</p>
+                <h4 id="fortworth-general">General Assistance & Community Resources</h4>
+                <ul>
+                  <li><a href="https://www.tarrantcountytx.gov/en/commissioner-2/community-resources.html"><strong>Tarrant County Community Resources:</strong></a> Comprehensive listing of resources available to Tarrant County residents.</li>
+                  <li><a href="https://www.unitedwaytarrant.org/"><strong>United Way of Tarrant County:</strong></a> Emergency financial assistance and referrals to partner agencies. Phone: (817) 258-8000, Dial 2-1-1 for immediate help.</li>
+                  <li><a href="https://www.211texas.org/"><strong>2-1-1 Texas Help In Texas:</strong></a> Connects Texas citizens with over 60,000 state and local health and human services programs. Dial 2-1-1 for assistance. (Alternate Phone: 1-877-541-7905)</li>
+                  <li><a href="https://www.tarrantcounty.com/en/human-services.html"><strong>Tarrant County Human Services:</strong></a> Emergency rent, utility, and basic needs assistance for Tarrant County residents. Phone: (817) 531-5620</li>
+                </ul>
+                <h4 id="fortworth-housing">Housing & Utilities Assistance</h4>
+                <ul>
+                  <li><a href="https://www.tarrantcountytx.gov/en/housing-assistance-office.html"><strong>Tarrant County Housing Assistance Office:</strong></a> Administers rental assistance programs and housing vouchers. Phone: (817) 531-7640</li>
+                  <li><a href="https://www.fortworthtexas.gov/departments/neighborhoods/cap"><strong>City of Fort Worth Community Action Partners (CAP):</strong></a> Rent, mortgage, and utility assistance for eligible Fort Worth residents. Phone: (817) 392-5720</li>
+                  <li><a href="https://www.fwhs.org/housing-choice-voucher"><strong>Fort Worth Housing Solutions (Housing Choice Voucher):</strong></a> Section 8 voucher program for Fort Worth residents. Phone: (817) 333-3400</li>
+                  <li><a href="https://www.arlingtonhousing.us/"><strong>Housing Authority of Arlington:</strong></a> Section 8 vouchers and home repair programs for Arlington residents. Phone: (817) 275-3351 (Main) / (817) 276-6722 (Voucher line)</li>
+                  <li><a href="https://communitylinkmission.org/"><strong>Community Link Mission:</strong></a> Short-term rental assistance, case management, deposit help for households ≤80% AMI. Phone: (817) 847-4554</li>
+                  <li><a href="https://www.tarrantcounty.com/en/community-development.html"><strong>Tarrant County Community Development (Homelessness Prevention):</strong></a> One-time rental assistance plus some late fees to prevent eviction. Phone: (817) 850-7940</li>
+                  <li><a href="https://www.ccfw.org/"><strong>Catholic Charities Fort Worth:</strong></a> Financial assistance, supportive services, and case management, including housing and utility aid. Phone: (817) 534-0814. Help Portal: <a href="https://catholiccharitiesfortworth.org/help/">Catholic Charities Help</a>.</li>
+                  <li><a href="https://salvationarmyntx.org/north-texas/fort-worth"><strong>The Salvation Army – Fort Worth:</strong></a> Emergency financial assistance for rent or utilities. Phone: (817) 344-1800</li>
+                  <li><a href="http://ahomewithhope.org/"><strong>Tarrant County Homeless Coalition:</strong></a> Coordinates homeless services throughout the county. Phone: (817) 509-3635</li>
+                  <li><a href="https://www.journeyhome.org/"><strong>Presbyterian Night Shelter:</strong></a> Emergency housing and transitional housing programs. Phone: (817) 632-7400</li>
+                  <li><a href="https://ugm-tc.org/"><strong>Union Gospel Mission of Tarrant County:</strong></a> Emergency shelter and housing assistance programs. Phone: (817) 339-2553</li>
+                  <li><a href="https://samaritanhouse.org/"><strong>Samaritan House:</strong></a> Housing programs for people with chronic health conditions. Phone: (817) 332-6410</li>
+                   <li><a href="https://www.fwhp.org/"><strong>Fort Worth Housing Partnership:</strong></a> Affordable housing development and rental assistance. Phone: (817) 924-2929</li>
+                  <li><a href="https://www.habitatfw.org/"><strong>Habitat for Humanity of Greater Fort Worth:</strong></a> Affordable homeownership opportunities and home repairs. Phone: (817) 926-9219</li>
+                </ul>
+                 <h4 id="fortworth-food">Food Assistance</h4>
+                <ul>
+                  <li><a href="https://tafb.org/find-food/"><strong>Tarrant Area Food Bank - Find Food:</strong></a> Directory of nearest food pantries in your community. Also offers a Senior Food Box Program.</li>
+                  <li><a href="https://www.missionarlington.org/"><strong>Mission Arlington:</strong></a> Food assistance, healthcare, and crisis intervention for families in need.</li>
+                </ul>
+                <h4 id="fortworth-health-mental">Health & Mental Health</h4>
+                <ul>
+                     <li><a href="https://www.mhmrtarrant.org"><strong>My Health My Resources (MHMR) of Tarrant County:</strong></a> Behavioral health and disability services including crisis response, counseling, and long-term support. Phone: 1-800-866-2465. ICARE Crisis Line (24/7): (817) 335-3022.</li>
+                    <li><a href="https://mhmrtc.org/mha"><strong>Mental Health America – Tarrant County:</strong></a> Mental health advocacy, education, and peer support resources. Phone: (817) 335-5405</li>
+                    <li><a href="https://www.mansfield-texas.com/1057/Mansfield-Cares"><strong>Mansfield Cares Clinic:</strong></a> Free medical, dental, and optical care for the Mansfield in-need community at the Linda Nix Family Caring Place.</li>
+                </ul>
+                <h4 id="fortworth-cancer-financial">Cancer Financial Assistance</h4>
+                 <ul>
+                    <li><a href="https://cancercareservices.org/"><strong>Cancer Care Services (North Texas):</strong></a> Financial assistance for rent, utilities, and other needs specifically for cancer patients in Tarrant County. Phone: (817) 921-0653</li>
+                    <li><a href="https://www.findhelp.org/cancer-assistance-fund-of-north-texas-%28cafnt%29--fort-worth-tx--financial-assistance/4973293816905728"><strong>Cancer Assistance Fund of North Texas (CAFNT):</strong></a> Financial assistance to cancer patients in Tarrant, Johnson, Wise, and Parker counties for treatment-related financial challenges.</li>
+                    <li><a href="https://mesquaredcancerfoundation.org/who-do-we-help/"><strong>Me Squared Cancer Foundation:</strong></a> Financial aid for medical costs, transportation, and lodging for newly diagnosed adult cancer patients (within past six months) in Tarrant County.</li>
+                </ul>
+                 <h4 id="fortworth-disability">Disability Services</h4>
+                <ul>
+                     <li><a href="https://www.reachcils.org"><strong>REACH Resource Center on Independent Living:</strong></a> Advocacy and independent living services for people with disabilities. Phone: (817) 870-9082</li>
+                </ul>
+                <h4 id="fortworth-seniors">Senior Services</h4>
+                <ul>
+                    <li><a href="https://www.unitedwaytarrant.org/get-help/aging-disability-and-caregivers"><strong>Area Agency on Aging of Tarrant County (AAATC):</strong></a> Works with local organizations to develop and provide services that benefit older adults, people with disabilities and caregivers.</li>
+                    <li><a href="https://www.mealsonwheels.org/"><strong>Tarrant County Meals on Wheels:</strong></a> Home-delivered meals, professional case management and other services to elderly and disabled homebound residents.</li>
+                </ul>
+                 <h4 id="fortworth-transportation">Transportation</h4>
+                <ul>
+                    <li><a href="https://ridetrinitymetro.org"><strong>Trinity Metro (The T):</strong></a> Public transportation and ACCESS paratransit services for Tarrant County. Phone: (817) 215-8600</li>
+                    <li><a href="https://tarrantcountyadrc.org/myride/"><strong>My Ride Tarrant County:</strong></a> Transportation coordination program for older adults and people with disabilities. Phone: (682) 587-7099</li>
+                    <li><a href="https://ahomewithhope.org/help/transportation/"><strong>Catholic Charities Transportation Services:</strong></a> Transportation services for medical appointments and essential needs. Phone: (817) 336-8714</li>
+                    <li><a href="https://tarrantcountyadrc.org/wp-content/uploads/2022/06/Get-A-Ride-Guide-2_singlepages_English_FINAL_digital.pdf"><strong>Get-A-Ride Guide:</strong></a> Downloadable guide to local transportation services available to seniors and individuals with disabilities in Tarrant County.</li>
+                </ul>
+                <h4 id="fortworth-legal">Legal Aid</h4>
+                <ul>
+                    <li><a href="https://internet.lanwt.org/"><strong>Legal Aid of NorthWest Texas:</strong></a> Free legal services for housing issues for qualifying residents. Phone: (888) 529-5277 (Main) / (817) 336-3943 (Fort Worth Office)</li>
+                </ul>
+              </section>
+          </main>
+      </div>
+  </div>
+
+  <footer>
+      <div class="footer-container">
+          <div class="footer-section">
+              <h3>About Us</h3>
+              <p>Providing a centralized directory of resources for cancer patients and their families.</p>
+          </div>
+          <div class="footer-section">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="index.html#national-resources">National Resources</a></li>
+                  <li><a href="index.html#cancer-resources">Cancer Resources</a></li>
+                  <li><a href="index.html#financial">Financial Assistance</a></li>
+                  <li><a href="index.html#mental-health">Mental Health</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h3>Contact Us</h3>
+              <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+              <div class="social-icons">
+                  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="copyright">
+          &copy; <span id="currentYear"></span> Community Resource Directory. All rights reserved.
+      </div>
+  </footer>
+
+  <div class="back-to-top" onclick="scrollToTop()">
+      <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // JavaScript for search functionality
+    function performSearch() {
+        const query = document.getElementById("siteSearch").value.toLowerCase().trim();
+        const sections = document.querySelectorAll('.resource-section');
+        let resultsHtml = '';
+        let foundItems = new Set(); 
+        const searchResultsDiv = document.getElementById("searchResults");
+
+        if (query === "") {
+            searchResultsDiv.innerHTML = '<p>Please enter a search term.</p>';
+            return;
+        }
+
+        sections.forEach(section => {
+            const sectionId = section.id;
+            const sectionH2 = section.querySelector('h2');
+            const sectionTitleText = sectionH2 ? sectionH2.textContent : 'Unnamed Section';
+            const sectionTitleLower = sectionTitleText.toLowerCase();
+
+            if (sectionId && sectionTitleLower.includes(query)) {
+                const resultKey = `section-${sectionId}`;
+                if (!foundItems.has(resultKey)) {
+                    resultsHtml += `<p><a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a></p>`;
+                    foundItems.add(resultKey);
+                }
+            }
+
+            const subheadings = section.querySelectorAll('h3[id], h4[id]');
+            subheadings.forEach(subheading => {
+                const subheadingId = subheading.id;
+                const subheadingText = subheading.textContent;
+                if (subheadingText.toLowerCase().includes(query)) {
+                    const resultKey = `subheading-${subheadingId}`;
+                    if (!foundItems.has(resultKey)) {
+                        resultsHtml += `<p><a href="#${subheadingId}" onclick="smoothScrollTo('${subheadingId}'); return false;">${subheadingText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
+                        foundItems.add(resultKey);
+                    }
+                }
+            });
+
+            const contentElements = section.querySelectorAll('li, .resource-section > p'); 
+            contentElements.forEach(element => {
+                const elementText = element.textContent;
+                const elementTextLower = elementText.toLowerCase();
+
+                if (elementTextLower.includes(query)) {
+                    let targetId = sectionId; 
+                    let contextTitle = sectionTitleText;
+
+                    const parentH4 = element.closest('h4[id]');
+                    const parentH3 = element.closest('h3[id]');
+
+                    if (parentH4) {
+                        targetId = parentH4.id;
+                        contextTitle = parentH4.textContent;
+                    } else if (parentH3) {
+                        targetId = parentH3.id;
+                        contextTitle = parentH3.textContent;
+                    }
+                    
+                    const itemLink = element.querySelector('a');
+                    let tempDiv = document.createElement("div");
+                    tempDiv.innerHTML = element.innerHTML; 
+                    let cleanTextContent = (tempDiv.textContent || tempDiv.innerText || "").trim();
+                    let displayText = cleanTextContent.length > 120 ? cleanTextContent.substring(0, 117) + "..." : cleanTextContent;
+                    
+                    const resultKey = `content-${targetId}-${displayText.substring(0,30)}`; 
+
+                    if (!foundItems.has(resultKey)) {
+                        if (itemLink && itemLink.href && !itemLink.href.startsWith('#')) { 
+                            resultsHtml += `<p><a href="${itemLink.href}" target="_blank" rel="noopener noreferrer">${displayText}</a> (in <a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${contextTitle}</a>)</p>`;
+                        } else { 
+                            resultsHtml += `<p><a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${displayText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
+                        }
+                        foundItems.add(resultKey);
+                    }
+                }
+            });
+        });
+
+        if (foundItems.size > 0) {
+            searchResultsDiv.innerHTML = `<h3>Search Results for "${document.getElementById("siteSearch").value}"</h3>${resultsHtml}`;
+        } else {
+            searchResultsDiv.innerHTML = `<p>No results found for "${document.getElementById("siteSearch").value}".</p>`;
+        }
+    }
+
+    function smoothScrollTo(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            const headerOffset = document.querySelector('nav') ? document.querySelector('nav').offsetHeight + 20 : 80; 
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    }
+
+    const backToTopButton = document.querySelector(".back-to-top");
+    if (backToTopButton) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+    }
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const currentYearSpan = document.getElementById("currentYear");
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    const searchInput = document.getElementById("siteSearch");
+    if (searchInput) {
+        searchInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                performSearch();
+            }
+        });
+    }
+
+    document.querySelectorAll('.main-navbar a[href^="#"], .quick-nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const hrefAttribute = this.getAttribute('href');
+            if (hrefAttribute && hrefAttribute !== "#") { 
+                if (hrefAttribute.startsWith("#") && hrefAttribute.length > 1) {
+                    const targetId = hrefAttribute.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        smoothScrollTo(targetId);
+                    }
+                }
+            }
+        });
+    });
+
+    document.querySelectorAll('.resource-section a').forEach(link => {
+        if (link.href && (link.hostname !== window.location.hostname )) { 
+             if (link.protocol !== "tel:" && link.protocol !== "mailto:") { 
+                 link.setAttribute('target', '_blank');
+                 link.setAttribute('rel', 'noopener noreferrer');
+            }
+        }
+    });
+  </script>
+</body>
+</html>
