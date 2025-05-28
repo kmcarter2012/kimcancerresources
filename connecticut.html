@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connecticut Resources - Community Resource Directory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Root variables for consistent theming */
+    :root {
+        --primary-color: #3a86ff;
+        --secondary-color: #ff006e;
+        --accent-color: #8338ec;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --success-color: #38b000;
+        --warning-color: #ffbe0b;
+        --danger-color: #dc3545;
+        --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
+        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
+    }
+
+    /* Universal Box-Sizing */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body and Typography */
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background-color: #f8f9fa;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+
+    h1, h2, h3, h4 {
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+    /* Hero Section Styling (Adapted for Connecticut page) */
+    .hero-section {
+        background: var(--blue-gradient); /* Using the primary gradient */
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 250px;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 800px;
+        margin: 0.5rem auto 0;
+    }
+
+    /* Pointed bottom shape for the hero */
+    .hero-section::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: white; /* To blend with the nav */
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        z-index: 999;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .site-title { /* Used for the main title in the header on this page */
+        font-size: 2.2rem; /* Slightly smaller than main hero title */
+        color: var(--dark-color);
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-top: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem; /* Indent lists slightly */
+        list-style: disc; /* Keep default bullet points for readability */
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Header and Navigation */
+    nav {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .main-navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-navbar li {
+        margin: 0;
+    }
+
+    .main-navbar a, .dropbtn {
+        display: block;
+        color: var(--dark-color);
+        text-align: center;
+        padding: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .main-navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: var(--light-color);
+        color: var(--primary-color);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 250px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .dropdown-content a {
+        padding: 0.75rem 1rem;
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Main Content Layout */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .resource-section {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .resource-section > p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Back Button Specifics */
+    .back-button {
+        display: inline-block;
+        margin: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 500;
+    }
+
+    .back-button:hover {
+        background-color: var(--accent-color);
+        transform: translateX(-5px);
+        text-decoration: none;
+    }
+
+    /* Search Box (main content search) */
+    .search-container {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-container h2 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 1rem;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    .search-box input:focus {
+        border-color: var(--primary-color);
+    }
+
+    .search-box button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-box button:hover {
+        background-color: var(--accent-color);
+    }
+
+    #searchResults {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    /* Quick Navigation Menu */
+    .quick-nav {
+        position: sticky;
+        top: 70px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+    }
+
+    .quick-nav h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+
+    .quick-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .quick-nav ul li {
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 0.5rem;
+    }
+
+    .quick-nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    .quick-nav ul li a {
+        display: block;
+        color: var(--dark-color);
+        transition: color 0.3s ease;
+    }
+
+    .quick-nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Two-Column Layout for Desktop */
+    @media (min-width: 992px) {
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+        border-radius: 10px 10px 0 0; /* Rounded top corners for footer */
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        color: white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: #adb5bd;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icons a {
+        color: white;
+        background-color: #495057;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #495057;
+        color: #adb5bd;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+        z-index: 1000;
+    }
+
+    .back-to-top:hover {
+        background-color: var(--accent-color);
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .container {
+            padding: 1rem;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main-navbar {
+            flex-direction: column;
+        }
+
+        .dropdown-content {
+            position: static;
+            width: 100%;
+            box-shadow: none;
+        }
+
+        .resource-section {
+            padding: 1.5rem;
+        }
+
+        .hero-section {
+            padding: 3rem 1rem;
+            min-height: 220px; /* Adjusted for smaller screens */
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem; /* Slightly smaller for mobile */
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+        }
+
+        .two-column-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .quick-nav {
+            position: static;
+            max-height: none;
+            overflow-y: visible;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .search-box {
+            flex-direction: column;
+        }
+
+        .search-box input, .search-box button {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .search-box button {
+            margin-top: 0.5rem;
+        }
+
+        .hero-section {
+            padding: 2rem 1rem;
+            min-height: 180px; /* Further adjusted for very small screens */
+        }
+
+        .resource-section {
+            padding: 1rem;
+        }
+    }
+  </style>
+</head>
+<body>
+   <div id="top"></div>
+
+   <a href="index.html" class="back-button">← Back to Main Page</a>
+
+   <header>
+     <div class="hero-section">
+         <h1 class="hero-title">Connecticut Resources</h1>
+         <p class="hero-subtitle">Statewide and County-Specific Support for Cancer Patients</p>
+     </div>
+
+     <nav>
+       <ul class="main-navbar">
+         <li><a href="#connecticut-resources">Connecticut Statewide</a></li>
+         <li><a href="#connecticut-housing">Housing</a></li>
+         <li><a href="#connecticut-utilities">Utilities</a></li>
+         <li><a href="#connecticut-food">Food & Nutrition</a></li>
+         <li><a href="#connecticut-dental">Dental</a></li>
+         <li><a href="#connecticut-senior-resources">Seniors</a></li>
+         <li><a href="#connecticut-transportation">Transportation</a></li>
+         <li><a href="#hartford-resources">Hartford Resources</a></li>
+         <li class="dropdown">
+           <button class="dropbtn">Counties</button>
+           <div class="dropdown-content">
+          
+           </div>
+         </li>
+       </ul>
+     </nav>
+   </header>
+
+   <div class="container">
+       <div class="search-container">
+           <h2>Find Resources</h2>
+           <div class="search-box">
+               <input type="text" id="siteSearch" placeholder="Search for resources...">
+               <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+           </div>
+           <div id="searchResults"></div>
+       </div>
+
+       <div class="two-column-layout">
+           <div class="quick-nav">
+               <h3>Quick Navigation</h3>
+               <ul>
+                   <li><a href="#connecticut-resources">Connecticut Statewide</a></li>
+                   <li><a href="#connecticut-housing">Housing</a></li>
+                   <li><a href="#connecticut-utilities">Utilities</a></li>
+                   <li><a href="#connecticut-food">Food & Nutrition</a></li>
+                   <li><a href="#connecticut-dental">Dental</a></li>
+                   <li><a href="#connecticut-senior-resources">Seniors</a></li>
+                   <li><a href="#connecticut-transportation">Transportation</a></li>
+                   <li><a href="#hartford-resources">Hartford Resources</a></li>
+                
+           </div>
+
+           <div class="main-content">
+               <section id="connecticut-resources" class="resource-section">
+                   <h2>Connecticut Resources</h2>
+                   <p>Explore a variety of programs and services available specifically for Connecticut residents.</p>
+
+                   <h3>Connecticut Resource Search Portals</h3>
+                   <ul>
+                       <li><a href="https://www.211ct.org/"><strong>United Way 211 Connecticut:</strong></a> Statewide resource hotline and website connecting residents to health and human service needs. Call <a href="tel:211">211</a> for assistance.</li>
+                       <li><a href="https://www.findhelp.org/ct"><strong>FindHelp.org Connecticut:</strong></a> Search for free and reduced-cost services in your area across Connecticut.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Topics-A-Z/MyPlaceCT"><strong>MyPlaceCT:</strong></a> Connecticut's Aging and Disability Resource Center. Call <a href="tel:18002031234">1-800-203-1234</a> for information and referrals.</li>
+                       <li><a href="https://www.connect.ct.gov/"><strong>ConneCT Portal:</strong></a> Apply for healthcare, food assistance, and other benefits through this state portal.</li>
+                       <li><a href="https://www.ctfairhousing.org/"><strong>Connecticut Fair Housing Center:</strong></a> Centralized resource for housing assistance in Connecticut.</li>
+                   </ul>
+
+                   <h3 id="connecticut-housing">Connecticut Housing Resources</h3>
+                   <ul>
+                       <li><a href="https://www.chfa.org/"><strong>Connecticut Housing Finance Authority (CHFA):</strong></a> Connecticut's housing finance agency offering affordable housing programs, rental assistance, and homebuyer resources.</li>
+                       <li><a href="https://portal.ct.gov/DOH/DOH/Programs/Rental-Assistance-Program"><strong>Rental Assistance Program:</strong></a> Comprehensive guide to rental assistance programs throughout Connecticut.</li>
+                       <li><a href="https://www.chfa.org/homeowners/maintenance-repairs/"><strong>Home Repair Programs:</strong></a> Assistance for home modifications, repairs, and weatherization.</li>
+                       <li><a href="https://www.chfa.org/homebuyers/first-time-homebuyer-programs/"><strong>First-Time Homebuyer Program:</strong></a> Down payment assistance and affordable mortgages for first-time homebuyers.</li>
+                       <li><a href="https://www.ctcadv.org/housing-services"><strong>Coordinated Access Network:</strong></a> Single point of entry for individuals and families experiencing homelessness.</li>
+                       <li><a href="https://www.columbushouse.org/"><strong>Columbus House:</strong></a> Housing and supportive services for individuals and families experiencing homelessness.</li>
+                       <li><a href="https://www.cafca.org/agencies/"><strong>Community Action Agencies:</strong></a> Housing assistance through local community action programs.</li>
+                       <li><a href="https://www.lisc.org/connecticut/"><strong>Local Initiatives Support Corporation (LISC):</strong></a> Support for community-based organizations providing affordable housing options.</li>
+                   </ul>
+    
+                   <h3 id="connecticut-utilities">Connecticut Utility Assistance</h3>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/DSS/Economic-Security/Winter-Heating-Assistance/Energy-Assistance---Winter-Heating"><strong>Connecticut Energy Assistance Program (CEAP):</strong></a> Helps low-income households with heating costs during winter months.</li>
+                       <li><a href="https://portal.ct.gov/DSS/Economic-Security/Winter-Heating-Assistance/Weatherization-Assistance-Program"><strong>Weatherization Assistance Program (WAP):</strong></a> Free weatherization services to reduce energy costs for eligible households.</li>
+                       <li><a href="https://www.eversource.com/content/ct-c/residential/account-billing/payment-assistance"><strong>Eversource Payment Assistance Programs:</strong></a> Discount rates, budget billing, and payment plans for eligible customers.</li>
+                       <li><a href="https://www.eversource.com/content/ct-c/residential/account-billing/payment-assistance/protection-programs"><strong>Eversource Protection Programs:</strong></a> Shutoff protections for seniors, disabled individuals, and households with medical needs.</li>
+                       <li><a href="https://www.cafca.org/programs-services/energy-assistance/"><strong>Community Action Agencies Utility Assistance:</strong></a> Emergency utility assistance through local CAP agencies.</li>
+                       <li><a href="https://www.ccaoh.org/programs/basic-needs/"><strong>Catholic Charities Emergency Utility Assistance:</strong></a> Help with utility bills for eligible households.</li>
+                       <li><a href="https://ctri.salvationarmy.org/SNE/UtilityAssistance"><strong>Salvation Army Emergency Assistance:</strong></a> Emergency utility assistance programs in Connecticut.</li>
+                       <li><a href="https://www.211ct.org/search?term=utility%20bill%20assistance&page=1&location=Connecticut&taxonomies=255795&service_area=connecticut"><strong>United Way Utility Bill Assistance:</strong></a> Referrals to utility assistance programs through 211.</li>
+                   </ul>
+    
+                   <h3 id="connecticut-food">Connecticut Food & Nutrition Resources</h3>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/dss/SNAP/Supplemental-Nutrition-Assistance-Program---SNAP"><strong>Supplemental Nutrition Assistance Program (SNAP):</strong></a> Food assistance benefits for eligible low-income individuals and families.</li>
+                       <li><a href="https://www.connect.ct.gov/access/jsp/access/Home.jsp"><strong>ConneCT - Apply for SNAP:</strong></a> Online portal to apply for SNAP benefits.</li>
+                       <li><a href="https://www.ctfoodbank.org/get-help/find-a-pantry/"><strong>Connecticut Food Bank:</strong></a> Network of food pantries throughout the state. Call <a href="tel:2034695000">203-469-5000</a> for assistance.</li>
+                       <li><a href="https://portal.ct.gov/DPH/WIC/WIC"><strong>Women, Infants, and Children (WIC):</strong></a> Nutrition program for pregnant women, new mothers, and young children.</li>
+                       <li><a href="https://www.cafca.org/programs-services/commodities/"><strong>Commodity Supplemental Food Program:</strong></a> Monthly food packages for low-income seniors through local Community Action Agencies.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Elderly-Nutrition-Program"><strong>Senior Farmers Market Nutrition Program:</strong></a> Vouchers for seniors to purchase fresh produce at farmers markets.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Elderly-Nutrition-Program"><strong>Elderly Nutrition Program:</strong></a> Congregate meals at senior centers and home-delivered meals for eligible seniors.</li>
+                       <li><a href="https://www.mealsonwheelsamerica.org/find-meals?filter=Connecticut"><strong>Meals on Wheels Connecticut:</strong></a> Home-delivered meals for homebound seniors and adults with disabilities.</li>
+                       <li><a href="https://portal.ct.gov/SDE/Nutrition/National-School-Lunch-Program"><strong>School Meals Programs:</strong></a> Free and reduced-price meals for eligible children in Connecticut schools.</li>
+                       <li><a href="https://www.endhunerct.org/summer-meals"><strong>Summer Meals Program:</strong></a> Free summer meals for children when school is not in session.</li>
+                   </ul>
+       
+                   <h3 id="connecticut-dental">Connecticut Dental Resources</h3>
+                   <p>Explore dental care options and training-based clinics available across Connecticut.</p>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/DPH/Oral-Health/Office-of-Oral-Health/Safety-Net-Dental-Clinics"><strong>Connecticut Department of Public Health Dental Clinics:</strong></a> Find low-cost dental providers throughout the state.</li>
+                       <li><a href="https://findahealthcenter.hrsa.gov/"><strong>Federally Qualified Health Centers:</strong></a> Community health centers providing dental services to underserved populations.</li>
+                       <li><a href="https://dentallifeline.org/connecticut/"><strong>Dental Lifeline Network (DLN):</strong></a> Free dental care for elderly, disabled, and medically compromised individuals who cannot afford treatment.</li>
+                       <li><a href="https://dentalmedicine.uconn.edu/patients/"><strong>UConn School of Dental Medicine:</strong></a> Reduced-cost dental services at Connecticut's dental teaching facility.</li>
+                       <li><a href="https://portal.ct.gov/DSS/Health-And-Home-Care/Connecticut-Dental-Health-Partnership"><strong>Connecticut Dental Health Partnership:</strong></a> Dental services for HUSKY Health/Medicaid members.</li>
+                       <li><a href="https://www.chc1.com/services/dental-services/"><strong>Community Health Center, Inc. Dental Services:</strong></a> Sliding fee scale dental care for low-income patients.</li>
+                       <li><a href="https://www.wheelerclinic.org/services/health-wellness/dental-care"><strong>Wheeler Clinic Dental Services:</strong></a> Comprehensive dental care with sliding fee discounts.</li>
+                       <li><a href="https://portal.ct.gov/HUSKY/Dental"><strong>HUSKY Dental:</strong></a> Dental coverage for children and adults enrolled in Connecticut Medicaid.</li>
+                   </ul>
+     
+                   <h3 id="connecticut-senior-resources">Connecticut Senior Resources</h3>
+                   <p>Explore senior-focused services including benefits, caregiving support, and local aging resources.</p>
+     
+                   <h4>Connecticut State Department on Aging and Disability Services</h4>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/AgingandDisability"><strong>Department on Aging and Disability Services:</strong></a> Connecticut's state agency dedicated to serving older adults.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Programs-and-Services-for-Older-Adults"><strong>Programs and Services for Older Adults:</strong></a> Central resource for all aging programs and services.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Contact-Us"><strong>Contact Information:</strong></a> Call <a href="tel:8604245055">860-424-5055</a> to reach the main office for information and assistance.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Topics-A-Z/MyPlaceCT"><strong>MyPlaceCT:</strong></a> Connecticut's Aging and Disability Resource Center. Call <a href="tel:18002031234">1-800-203-1234</a> for personalized assistance.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/CHOICES-Counseling"><strong>CHOICES Program:</strong></a> Health insurance assistance for Medicare beneficiaries.</li>
+                   </ul>
+     
+                   <h4>Connecticut Senior Hotlines and Helplines</h4>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Protective-Services-for-the-Elderly"><strong>Elder Abuse/Neglect Reporting Line:</strong></a> Report elder abuse 24/7 at <a href="tel:18883854225">1-888-385-4225</a>.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/CHOICES-Counseling"><strong>Connecticut SHIP Medicare Counseling:</strong></a> Free Medicare assistance at <a href="tel:18009949422">1-800-994-9422</a>.</li>
+                       <li><a href="https://portal.ct.gov/OHA/Consumers/Consumer-Help/Consumer-Help---Contact-Us"><strong>Office of the Healthcare Advocate:</strong></a> Call <a href="tel:18664664446">1-866-466-4446</a> for health insurance questions.</li>
+                       <li><a href="https://portal.ct.gov/ltcop"><strong>CT Long-Term Care Ombudsman:</strong></a> Call <a href="tel:18663881888">1-866-388-1888</a> for concerns about long-term care facilities.</li>
+                       <li><a href="https://www.211ct.org/"><strong>United Way 2-1-1:</strong></a> Call <a href="tel:211">211</a> for 24/7 information and referrals to health and human services.</li>
+                       <li><a href="https://portal.ct.gov/DMHAS/Programs-and-Services/Finding-Services/Crisis-Services"><strong>Mental Health Crisis Hotline:</strong></a> Call <a href="tel:18004673135">1-800-HOPE-135 (1-800-467-3135)</a> for mental health crisis assistance.</li>
+                       <li><a href="https://www.ctfoodbank.org/get-help/connecticut-food-assistance/"><strong>CT Food Bank Helpline:</strong></a> Call <a href="tel:2034695000">203-469-5000</a> for food assistance information.</li>
+                   </ul>
+     
+                   <h4>Connecticut Senior Benefits and Financial Assistance</h4>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/DSS/Economic-Security/Winter-Heating-Assistance/Energy-Assistance---Winter-Heating"><strong>Connecticut Energy Assistance Program (CEAP):</strong></a> Help with heating costs for eligible seniors.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Medicare-Savings-Program"><strong>Medicare Savings Program:</strong></a> Assistance with Medicare premiums for eligible seniors.</li>
+                       <li><a href="https://portal.ct.gov/dss/SNAP/Supplemental-Nutrition-Assistance-Program---SNAP"><strong>Supplemental Nutrition Assistance Program (SNAP):</strong></a> Food assistance with special rules for older adults.</li>
+                       <li><a href="https://portal.ct.gov/DRS/Individuals/Individual-Tax-Page/Property-Tax-Credit"><strong>Property Tax Credit:</strong></a> Tax credit for eligible elderly homeowners and renters.</li>
+                       <li><a href="https://portal.ct.gov/DSS/Health-And-Home-Care/Medicaid-Long-Term-Care-Services"><strong>Long Term Services and Supports:</strong></a> Financial assistance for long-term care needs.</li>
+                       <li><a href="https://ctelderlaw.org/"><strong>Connecticut Legal Services:</strong></a> Free legal services for income-eligible seniors.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Senior-Community-Service-Employment-Program"><strong>Senior Community Service Employment Program:</strong></a> Work opportunities for low-income older adults.</li>
+                       <li><a href="https://www.eversource.com/content/ct-c/residential/account-billing/payment-assistance/discount-rate"><strong>Eversource Discount Rates:</strong></a> Reduced utility rates for eligible seniors.</li>
+                   </ul>
+     
+                   <h4>Connecticut Senior Healthcare Resources</h4>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/CHOICES-Counseling"><strong>CHOICES Program (SHIP):</strong></a> Free, unbiased Medicare counseling.</li>
+                       <li><a href="https://www.accesshealthct.com/"><strong>Access Health CT:</strong></a> Connecticut's health insurance marketplace for those under 65.</li>
+                       <li><a href="https://portal.ct.gov/DSS/Health-And-Home-Care/Medicaid-Waiver-Applications/Connecticut-Home-Care-Program-for-Elders-CHCPE"><strong>Connecticut Home Care Program for Elders:</strong></a> Home care services for eligible seniors.</li>
+                       <li><a href="https://portal.ct.gov/DCP/Drug-Control-Division/Drug-Control/Connecticut-Prescription-Assistance-Contract"><strong>Connecticut Prescription Assistance Program:</strong></a> Help with prescription drug costs.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Health-Promotion-Programs"><strong>Chronic Disease Self-Management Programs:</strong></a> Free workshops to help manage chronic conditions.</li>
+                       <li><a href="https://portal.ct.gov/DPH/Health-Education-Management--Surveillance/The-Office-of-Injury-Prevention/Falls-Prevention"><strong>Fall Prevention Programs:</strong></a> Education and resources to prevent falls among seniors.</li>
+                       <li><a href="https://www.trinityhealthofne.org/find-a-service-or-specialty/senior-care/pace"><strong>PACE (Program of All-Inclusive Care for the Elderly):</strong></a> Comprehensive care to help seniors remain at home.</li>
+                       <li><a href="https://www.chcact.org/find-a-health-center-2/"><strong>Community Health Centers:</strong></a> Primary care services for seniors regardless of ability to pay.</li>
+                   </ul>
+     
+                   <h4>Connecticut Senior Housing and Living Arrangements</h4>
+                   <ul>
+                       <li><a href="https://www.chfa.org/homeowners/all-programs/?housing=elderly"><strong>CHFA Elderly Housing:</strong></a> Affordable housing options for Connecticut seniors.</li>
+                       <li><a href="https://www.chfa.org/homeowners/maintenance-repairs/"><strong>Home Repair Programs:</strong></a> Assistance for home modifications and repairs for older homeowners.</li>
+                       <li><a href="https://portal.ct.gov/DOH/DOH/Programs/Rental-Assistance-Program"><strong>Rental Assistance Program:</strong></a> Housing assistance for eligible seniors.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Housing-Options"><strong>Senior Housing Options:</strong></a> Information on housing options and assistance programs.</li>
+                       <li><a href="https://www.chfa.org/landlords/all-landlord-programs/"><strong>Rental Housing Resources:</strong></a> Information on affordable rental options throughout Connecticut.</li>
+                       <li><a href="https://portal.ct.gov/DOH/DOH/Programs/UniteCT"><strong>UniteCT:</strong></a> Rental and utility assistance for eligible Connecticut residents.</li>
+                       <li><a href="https://portal.ct.gov/DSS/Health-And-Home-Care/Medicaid-Long-Term-Care-Services"><strong>Long-Term Care Options:</strong></a> Information on nursing homes, assisted living, and other long-term care settings.</li>
+                       <li><a href="https://www.pschousing.org/"><strong>Partnership for Strong Communities:</strong></a> Coalition addressing housing needs in Connecticut.</li>
+                   </ul>
+     
+                   <h3 id="connecticut-transportation">Connecticut Senior Transportation</h3>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/DOT/Publictrans/Bureau-of-Public-Transportation/Reduced-Fare-Program"><strong>CT Transit Reduced Fare Program:</strong></a> Free or reduced fares for seniors on Connecticut public transit.</li>
+                       <li><a href="https://www.cttransit.com/services/ada-paratransit"><strong>ADA Paratransit Service:</strong></a> ADA paratransit service for eligible seniors and people with disabilities.</li>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Transportation"><strong>Senior Transportation Programs:</strong></a> Various transportation assistance options for Connecticut seniors.</li>
+                       <li><a href="https://portal.ct.gov/DSS/Health-And-Home-Care/Non-Emergency-Medical-Transportation"><strong>Non-Emergency Medical Transportation:</strong></a> Transportation for Medicaid recipients to medical appointments.</li>
+                       <li><a href="https://www.alzsct.org/"><strong>Alzheimer's Association Transportation Resources:</strong></a> Transportation services for individuals with dementia.</li>
+                       <li><a href="https://www.theagencect.org/services/#aging"><strong>Eastern Connecticut Transportation Consortium:</strong></a> Transportation services in Eastern Connecticut communities.</li>
+                       <li><a href="https://westhartfordct.gov/town-departments/social-services/older-adult-services/dial-a-ride"><strong>Dial-A-Ride Services:</strong></a> Local transportation services for seniors in various Connecticut towns.</li>
+                       <li><a href="https://www.cafca.org/agencies/"><strong>Community Action Agency Transportation:</strong></a> Transportation services through local community action agencies.</li>
+                   </ul>
+     
+                   <h4>Connecticut Senior Nutrition Programs</h4>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Elderly-Nutrition-Program"><strong>Elderly Nutrition Program:</strong></a> Congregate and home-delivered meals for seniors 60+.</li>
+                       <li><a href="https://www.ctfoodbank.org/get-help/find-a-pantry/"><strong>Connecticut Food Bank:</strong></a> Food pantries and meal sites throughout the state.</li>
+                       <li><a href="https://portal.ct.gov/dss/SNAP/Supplemental-Nutrition-Assistance-Program---SNAP"><strong>SNAP Benefits for Seniors:</strong></a> Special application process for adults 60+.</li>
+                       <li><a href="https://www.cafca.org/programs-services/commodities/"><strong>Commodity Supplemental Food Program:</strong></a> Monthly food boxes for low-income seniors.</li>
+                       <li><a href="https://portal.ct.gov/DOAG/ADaRC/Publications/Farmers-Market-Nutrition-Program-for-Seniors"><strong>Senior Farmers Market Nutrition Program:</strong></a> Vouchers for fresh produce at farmers markets.</li>
+                       <li><a href="https://www.mealsonwheelsamerica.org/find-meals?filter=Connecticut"><strong>Meals on Wheels Connecticut:</strong></a> Home-delivered meals for homebound seniors. Find your local program.</li>
+                       <li><a href="https://cthealthyliving.org/nutrition-services/"><strong>Healthy Living Collective Nutrition Services:</strong></a> Nutrition education and meal services for seniors with specialized diets.</li>
+                       <li><a href="https://www.endhunerct.org/resources-for-seniors"><strong>End Hunger Connecticut:</strong></a> Resources to help seniors access nutritious food.</li>
+                   </ul>
+     
+                   <h4>Connecticut Senior Activities and Engagement</h4>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Senior-Centers"><strong>Senior Centers Directory:</strong></a> Find local senior centers throughout Connecticut.</li>
+                       <li><a href="https://www.nationalservice.gov/programs/senior-corps/senior-corps-programs/rsvp"><strong>RSVP Volunteer Program:</strong></a> Volunteer opportunities for seniors 55 and older.</li>
+                       <li><a href="https://agefriendlyct.org/"><strong>Age-Friendly Connecticut:</strong></a> Statewide initiative to create livable communities for older adults.</li>
+                       <li><a href="https://learnmore.uconn.edu/olli/"><strong>Osher Lifelong Learning Institute (OLLI):</strong></a> Educational programs for adults 50+ at University of Connecticut.</li>
+                       <li><a href="https://www.hartford.gov/704/Active-Adult-Programming"><strong>Hartford Department of Parks Recreation Senior Programs:</strong></a> Activities for seniors in Hartford.</li>
+                       <li><a href="https://www.ctphilanthropy.org/resources/aging"><strong>CT Philanthropy Aging Initiatives:</strong></a> Programs promoting senior engagement and activity.</li>
+                       <li><a href="https://ctarts.org/supporting-creativity-across-the-lifespan/"><strong>CT Office of the Arts - Creative Aging:</strong></a> Arts programs for older adults.</li>
+                       <li><a href="https://cptv.org/learning/adults/"><strong>Connecticut Public Television Adult Learning:</strong></a> Educational resources and programming for older adults.</li>
+                   </ul>
+     
+                   <h4>Connecticut Senior Technology Support</h4>
+                   <ul>
+                       <li><a href="https://portal.ct.gov/AgingandDisability/Content-Pages/Programs/Technology-Initiatives"><strong>Digital Equity Programs:</strong></a> Technology training and support for older adults.</li>
+                       <li><a href="https://seniorplanet.org/locations/connecticut/"><strong>Senior Planet Connecticut:</strong></a> Free tech tutoring for seniors by trained mentors.</li>
+                       <li><a href="https://aarpfoundation.org/seniorplanet/"><strong>Senior Planet from AARP:</strong></a> Technology classes and resources for older adults.</li>
+                       <li><a href="https://www.publiclibraries.com/state/connecticut"><strong>Connecticut Public Libraries:</strong></a> Many offer computer classes and technology assistance.</li>
+                       <li><a href="https://www.vantageaging.org/programs-and-services/workforce-solutions/scsep/"><strong>Senior Community Service Employment Program (SCSEP):</strong></a> Includes technology training for employment.</li>
+                       <li><a href="https://www.lifespan.org/centers-services/lifespan-connects"><strong>Lifespan Connects:</strong></a> Telehealth and technology assistance for older patients.</li>
+                       <li><a href="https://www.aging2.com/CT/"><strong>Aging 2.0 Connecticut:</strong></a> Innovation in aging services including technology solutions.</li>
+                       <li><a href="https://www.ct.gov/dot/cwp/view.asp?a=1384&Q=591782"><strong>CTDOT Technology for Seniors:</strong></a> Resources and programs related to technology access for seniors.</li>
+                   </ul>
+     
+                   <h4>Connecticut Senior Legal Resources</h4>
+                   <ul>
+                       <li><a href="https://ctelderlaw.org/"><strong>Connecticut Legal Services:</strong></a> Free legal assistance for income-eligible seniors.</li>
+                   </ul>
+               </section>
+
+               <section id="hartford-resources" class="resource-section">
+                   <h2>Hartford Resources</h2>
+                   <p>Specific resources for residents of Hartford, Connecticut.</p>
+                   <ul>
+                       <li><a href="https://www.hartford.gov/government/departments/health-human-services/senior-services"><strong>Hartford Department of Health & Human Services Senior Services:</strong></a> Comprehensive services for Hartford seniors.</li>
+                       <li><a href="https://www.hartford.gov/704/Active-Adult-Programming"><strong>Hartford Department of Parks Recreation Senior Programs:</strong></a> Activities and programs for seniors in Hartford.</li>
+                       <li><a href="https://www.hartford.gov/government/departments/housing-community-development"><strong>Hartford Department of Housing & Community Development:</strong></a> Housing assistance programs within Hartford.</li>
+                       <li><a href="https://www.hartford.gov/704/Transportation-Services"><strong>Hartford Transportation Services:</strong></a> Local transportation options for Hartford residents.</li>
+                       <li><a href="https://www.hartford.gov/704/Food-Assistance"><strong>Hartford Food Assistance:</strong></a> Food resources and programs in Hartford.</li>
+                   </ul>
+               </section>
+
+            
+             
+               </div>
+       </div>
+   </div>
+
+   <footer>
+       <div class="footer-container">
+           <div class="footer-section">
+               <h3>About Us</h3>
+               <p>Providing a centralized directory of resources for cancer patients and their families.</p>
+           </div>
+           <div class="footer-section">
+               <h3>Quick Links</h3>
+               <ul>
+                   <li><a href="index.html#national-resources">National Resources</a></li>
+                   <li><a href="index.html#cancer-resources">Cancer Resources</a></li>
+                   <li><a href="index.html#financial">Financial Assistance</a></li>
+                   <li><a href="index.html#mental-health">Mental Health</a></li>
+               </ul>
+           </div>
+           <div class="footer-section">
+               <h3>Contact Us</h3>
+               <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+               <div class="social-icons">
+                   <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                   <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                   <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+               </div>
+           </div>
+       </div>
+       <div class="copyright">
+           &copy; <span id="currentYear"></span> Community Resource Directory. All rights reserved.
+       </div>
+   </footer>
+
+   <div class="back-to-top" onclick="scrollToTop()">
+       <i class="fas fa-arrow-up"></i>
+   </div>
+
+   <script>
+       // JavaScript for search functionality
+       (function() { // IIFE to prevent global scope pollution
+           function performSearch() {
+               const query = document.getElementById("siteSearch").value.toLowerCase();
+               const sections = document.querySelectorAll('.resource-section');
+               let resultsHtml = '';
+               let found = false;
+
+               sections.forEach(section => {
+                   const sectionTitle = section.querySelector('h2') ? section.querySelector('h2').textContent.toLowerCase() : '';
+                   // Check section title
+                   if (sectionTitle.includes(query)) {
+                       resultsHtml += `<p><a href="#${section.id}">${section.querySelector('h2').textContent}</a></p>`;
+                       found = true;
+                   }
+                   // Check subheadings
+                   const subheadings = section.querySelectorAll('h3, h4'); // Include h4 for sub-subheadings
+                   subheadings.forEach(subheading => {
+                       const subheadingText = subheading.textContent.toLowerCase();
+                       if (subheadingText.includes(query)) {
+                           resultsHtml += `<p><a href="#${subheading.id || subheading.closest('section').id}">${subheading.textContent}</a> in ${section.querySelector('h2').textContent || 'Connecticut Resources'}</p>`;
+                           found = true;
+                       }
+                   });
+                   // Check list items
+                   const listItems = section.querySelectorAll('li');
+                   listItems.forEach(item => {
+                       const itemText = item.textContent.toLowerCase();
+                       if (itemText.includes(query)) {
+                           // Find the closest subheading or section title for context
+                           let context = '';
+                           const closestHeading = item.closest('h3') || item.closest('h4') || item.closest('section').querySelector('h2');
+                           if (closestHeading) {
+                               context = ` in ${closestHeading.textContent}`;
+                           } else if (item.closest('section')) {
+                               context = ` in ${item.closest('section').querySelector('h2').textContent}`;
+                           }
+                           // Link directly to the resource if it has an anchor or link within the LI, otherwise just show the text.
+                           const itemLink = item.querySelector('a');
+                           if (itemLink && itemLink.href) {
+                               resultsHtml += `<p><a href="${itemLink.href}">${item.textContent}</a>${context}</p>`;
+                           } else {
+                               resultsHtml += `<p>${item.textContent}${context}</p>`;
+                           }
+                           found = true;
+                       }
+                   });
+               });
+
+               const searchResultsDiv = document.getElementById("searchResults");
+               if (found) {
+                   searchResultsDiv.innerHTML = `<h3>Search Results for "${query}"</h3>` + resultsHtml;
+               } else {
+                   searchResultsDiv.innerHTML = `<p>No results found for "${query}".</p>`;
+               }
+           }
+
+           // Back to Top Button functionality
+           const backToTopButton = document.querySelector(".back-to-top");
+
+           window.addEventListener("scroll", () => {
+               if (window.scrollY > 100) {
+                   backToTopButton.classList.add("show");
+               } else {
+                   backToTopButton.classList.remove("show");
+               }
+           });
+
+           function scrollToTop() {
+               window.scrollTo({
+                   top: 0,
+                   behavior: "smooth"
+               });
+           }
+
+           // Set current year in footer
+           const currentYearSpan = document.getElementById('currentYear');
+           if (currentYearSpan) {
+               currentYearSpan.textContent = new Date().getFullYear();
+           }
+
+           // Expose performSearch to global scope if needed by inline onclick
+           window.performSearch = performSearch;
+       })();
+   </script>
+</body>
+</html>
