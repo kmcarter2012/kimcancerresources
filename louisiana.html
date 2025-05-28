@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Louisiana Resources - Community Resource Directory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Root variables for consistent theming */
+    :root {
+        --primary-color: #3a86ff; /* Blue */
+        --secondary-color: #ff006e; /* Pink */
+        --accent-color: #8338ec; /* Purple */
+        --light-color: #f8f9fa; /* Light Gray */
+        --dark-color: #212529; /* Dark Gray */
+        --success-color: #38b000; /* Green */
+        --warning-color: #ffbe0b; /* Yellow */
+        --danger-color: #dc3545; /* Red */
+        --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
+        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
+    }
+
+    /* Universal Box-Sizing and Smooth Scrolling */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        scroll-behavior: smooth; /* Enable smooth scrolling for the whole page */
+    }
+
+    /* Body and Typography */
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background-color: #f8f9fa;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+
+    h1, h2, h3, h4 {
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+    /* Hero Section Styling */
+    .hero-section {
+        background: var(--purple-gradient); /* Using the purple gradient for Louisiana */
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 250px;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 800px;
+        margin: 0.5rem auto 0;
+    }
+
+    .hero-section::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: white;
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        z-index: 999; /* Ensure it's above other elements but below nav if needed */
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .site-title { /* Not used directly on this page, but kept for consistency if header structure changes */
+        font-size: 2.2rem;
+        color: var(--dark-color);
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-top: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        list-style: disc;
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Header and Navigation */
+    nav {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Ensure nav is above hero pseudo-element */
+        border-radius: 0 0 8px 8px;
+    }
+
+    .main-navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-navbar li {
+        margin: 0;
+    }
+
+    .main-navbar a, .dropbtn {
+        display: block;
+        color: var(--dark-color);
+        text-align: center;
+        padding: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .main-navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: var(--light-color);
+        color: var(--primary-color);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+    .dropbtn .fa-caret-down { /* Style for the caret icon */
+        margin-left: 0.3em;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 250px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1; /* Ensure dropdown is above other content */
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .dropdown-content a {
+        padding: 0.75rem 1rem;
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Main Content Layout */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .resource-section {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    .resource-section > p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Back Button Specifics */
+    .back-button {
+        display: inline-block;
+        margin: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 500;
+    }
+
+    .back-button:hover {
+        background-color: var(--accent-color);
+        transform: translateX(-5px);
+        text-decoration: none;
+    }
+
+    /* Search Box */
+    .search-container {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-container h2 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 1rem;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+    .search-box input:focus {
+        border-color: var(--primary-color);
+    }
+
+    .search-box button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .search-box button:hover {
+        background-color: var(--accent-color);
+    }
+    #searchResults {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+    #searchResults p {
+        margin-bottom: 0.5rem;
+    }
+    #searchResults a {
+        font-weight: 500;
+    }
+
+
+    /* Quick Navigation Menu */
+    .quick-nav {
+        position: sticky;
+        top: 85px; /* Adjusted for nav height + some breathing room */
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        max-height: calc(100vh - 120px); /* Adjusted for more robust calculation */
+        overflow-y: auto;
+    }
+    .quick-nav h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+    .quick-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+    .quick-nav ul li {
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 0.5rem;
+    }
+    .quick-nav ul li:last-child {
+        border-bottom: none;
+    }
+    .quick-nav ul li a {
+        display: block;
+        color: var(--dark-color);
+        transition: color 0.3s ease;
+    }
+    .quick-nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Two-Column Layout for Desktop */
+    @media (min-width: 992px) {
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+        .main-content {
+            min-width: 0; /* Prevents overflow issues with grid items */
+        }
+    }
+
+
+    /* Footer */
+    footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        color: white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: #adb5bd;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icons a {
+        color: white;
+        background-color: #495057;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #495057;
+        color: #adb5bd;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+        z-index: 1000;
+    }
+    .back-to-top:hover {
+        background-color: var(--accent-color);
+    }
+    .back-to-top.show {
+        opacity: 1;
+    }
+
+
+    /* Responsive Design */
+    @media (max-width: 992px) { /* Tablet and below */
+        .container {
+            padding: 1rem;
+        }
+        .hero-title {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.8rem;
+        }
+        h3 {
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (max-width: 768px) { /* Mobile */
+        .main-navbar {
+            flex-direction: column;
+        }
+        .dropdown-content {
+            position: static;
+            width: 100%;
+            box-shadow: none;
+        }
+        .resource-section {
+            padding: 1.5rem;
+        }
+        .hero-section {
+            padding: 3rem 1rem;
+            min-height: 220px;
+        }
+        .hero-title {
+            font-size: 1.8rem;
+        }
+        .hero-subtitle {
+            font-size: 1.05rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+        }
+        .two-column-layout {
+            grid-template-columns: 1fr; /* Stack columns */
+        }
+        .quick-nav {
+            position: static; /* Remove sticky positioning */
+            max-height: none;
+            overflow-y: visible;
+            margin-bottom: 1rem; /* Adjust margin when stacked */
+        }
+    }
+
+    @media (max-width: 576px) { /* Small mobile */
+        .search-box {
+            flex-direction: column;
+        }
+        .search-box input, .search-box button {
+            width: 100%;
+            border-radius: 4px;
+        }
+        .search-box button {
+            margin-top: 0.5rem;
+        }
+        .hero-section {
+            padding: 2rem 1rem;
+            min-height: 180px;
+        }
+        .resource-section {
+            padding: 1rem;
+        }
+        .back-button {
+            margin: 1rem; /* Adjust margin for smaller screens */
+        }
+        .footer-container {
+            padding: 0 1rem; /* Add padding to footer content on small screens */
+        }
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div> <a href="index.html" class="back-button">← Back to Main Page</a>
+
+  <header>
+    <div class="hero-section">
+        <h1 class="hero-title">Louisiana Resources</h1>
+        <p class="hero-subtitle">Statewide and Parish-Specific Support for Cancer Patients</p>
+    </div>
+
+    <nav>
+      <ul class="main-navbar">
+        <li><a href="#louisiana-statewide">Louisiana Statewide</a></li>
+        <li><a href="#louisiana-housing">Housing</a></li>
+        <li><a href="#louisiana-utilities">Utilities</a></li>
+        <li><a href="#louisiana-food">Food & Nutrition</a></li>
+        <li><a href="#louisiana-healthcare">Healthcare & Dental</a></li>
+        <li><a href="#louisiana-seniors">Seniors</a></li>
+        <li><a href="#louisiana-transportation">Transportation</a></li>
+        <li><a href="#orleans-parish-resources">New Orleans / Orleans Parish</a></li>
+        </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+      <div class="search-container">
+          <h2>Find Resources in Louisiana</h2>
+          <div class="search-box">
+              <input type="text" id="siteSearch" placeholder="Search for Louisiana resources...">
+              <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+          </div>
+          <div id="searchResults"></div>
+      </div>
+
+      <div class="two-column-layout">
+          <aside class="quick-nav">
+              <h3>Quick Navigation</h3>
+              <ul>
+                  <li><a href="#louisiana-statewide">Louisiana Statewide</a></li>
+                  <li><a href="#louisiana-housing">Housing</a></li>
+                  <li><a href="#louisiana-utilities">Utilities</a></li>
+                  <li><a href="#louisiana-food">Food & Nutrition</a></li>
+                  <li><a href="#louisiana-healthcare">Healthcare & Dental</a></li>
+                  <li><a href="#louisiana-seniors">Seniors</a></li>
+                  <li><a href="#louisiana-transportation">Transportation</a></li>
+                  <li><a href="#orleans-parish-resources">New Orleans / Orleans Parish</a></li>
+                  </ul>
+          </aside>
+
+          <main class="main-content">
+              <section id="louisiana-statewide" class="resource-section">
+                  <h2>Louisiana Statewide Resources</h2>
+                  <p>Explore a variety of programs and services available specifically for Louisiana residents.</p>
+
+                  <h3 id="la-search-portals">Louisiana Resource Search Portals</h3>
+                  <ul>
+                      <li><a href="https://www.unitedwaynela.org/211" target="_blank" rel="noopener noreferrer"><strong>Louisiana 211 / United Way:</strong></a> Dial 211, text your ZIP code to 898-211, or visit their online database. Connects to health and human services, crisis support, and more.</li>
+                      <li><a href="https://ldh.la.gov/" target="_blank" rel="noopener noreferrer"><strong>Louisiana Department of Health (LDH):</strong></a> Official source for public health information, services, and programs.</li>
+                      <li><a href="http://www.dcfs.louisiana.gov/" target="_blank" rel="noopener noreferrer"><strong>Louisiana Department of Children & Family Services (DCFS):</strong></a> Administers programs like SNAP, FITAP, child welfare, and other support services. Customer Service: 1-888-LA-HELP-U (1-888-524-3578).</li>
+                  </ul>
+
+                  <h3 id="louisiana-housing">Louisiana Housing Resources</h3>
+                   <p>Information on housing assistance, affordable housing, and homelessness prevention programs in Louisiana.</p>
+                  <ul>
+                      <li><a href="https://www.lhc.la.gov/" target="_blank" rel="noopener noreferrer"><strong>Louisiana Housing Corporation (LHC):</strong></a> Offers programs for affordable housing development, rental assistance, and homeowner assistance. Phone: (225) 763-8700 or (888) 454-2001.</li>
+                      <li><a href="https://lacovidhousing.com/" target="_blank" rel="noopener noreferrer"><strong>Louisiana Emergency Rental Assistance Program (ERAP):</strong></a> Provides rental and utility assistance for those impacted by COVID-19 (check for current status and eligibility).</li>
+                      <li><a href="https://www.lahomelesscoalition.org/" target="_blank" rel="noopener noreferrer"><strong>Louisiana Coalition to Prevent Homelessness:</strong></a> Advocacy and resource information. (Note: Direct shelter directories often found via 211 or local agencies).</li>
+                  </ul>
+
+                  <h3 id="louisiana-utilities">Louisiana Utility Assistance</h3>
+                  <p>Find help with energy bills, water bills, and weatherization services.</p>
+                  <ul>
+                      <li><a href="https://www.lhc.la.gov/energy-assistance" target="_blank" rel="noopener noreferrer"><strong>Low-Income Home Energy Assistance Program (LIHEAP) - LHC:</strong></a> Administered by the Louisiana Housing Corporation and distributed by local community action agencies. Helps with heating/cooling costs.</li>
+                      <li><a href="https://billtoolkit.entergy.com/louisiana/help-paying/" target="_blank" rel="noopener noreferrer"><strong>Entergy Louisiana - Bill Assistance:</strong></a> Offers programs like The Power to Care, deferred payments, and payment extensions. Call 1-800-ENTERGY (1-800-368-3749).</li>
+                      <li><a href="https://www.cleco.com/customer-assistance-programs" target="_blank" rel="noopener noreferrer"><strong>Cleco - Customer Assistance:</strong></a> Programs like the Power of Sharing Fund. Call 1-800-622-6537.</li>
+                  </ul>
+
+                  <h3 id="louisiana-food">Louisiana Food & Nutrition Resources</h3>
+                  <p>Access to food pantries, SNAP (food stamps), WIC, and other nutrition programs.</p>
+                  <ul>
+                      <li><a href="http://www.dcfs.louisiana.gov/page/snap-how-to-apply" target="_blank" rel="noopener noreferrer"><strong>Louisiana SNAP (Supplemental Nutrition Assistance Program):</strong></a> Apply online via the DCFS CAFÉ portal or call 1-888-LA-HELP-U.</li>
+                      <li><a href="https://ldh.la.gov/page/964" target="_blank" rel="noopener noreferrer"><strong>Louisiana WIC Program (Women, Infants, and Children):</strong></a> Nutritional support for pregnant women, new mothers, and young children. Apply through local WIC clinics.</li>
+                      <li><a href="https://www.feedinglouisiana.org/" target="_blank" rel="noopener noreferrer"><strong>Feeding Louisiana:</strong></a> Network of Louisiana's five regional Feeding America Food Banks. Find a local food bank or pantry.</li>
+                  </ul>
+
+                  <h3 id="louisiana-healthcare">Louisiana Healthcare & Dental Resources</h3>
+                  <p>Find healthcare services, Medicaid information, and dental resources.</p>
+                  <ul>
+                      <li><a href="https://ldh.la.gov/page/apply" target="_blank" rel="noopener noreferrer"><strong>Louisiana Medicaid:</strong></a> Apply online via the Self-Service Portal or call 1-888-342-6207 for assistance.</li>
+                      <li><a href="https://findahealthcenter.hrsa.gov/" target="_blank" rel="noopener noreferrer"><strong>Find a Health Center (HRSA):</strong></a> Locate Federally Qualified Health Centers (FQHCs) in Louisiana for affordable primary care.</li>
+                      <li><a href="https://ldh.la.gov/page/289" target="_blank" rel="noopener noreferrer"><strong>LDH Dental Health Services:</strong></a> Information on dental programs and finding care.</li>
+                       <li><a href="https://ldh.la.gov/page/louisiana-breast-and-cervical-health-program-lbchp" target="_blank" rel="noopener noreferrer"><strong>Louisiana Breast & Cervical Health Program (LBCHP):</strong></a> Provides no-cost breast and cervical cancer screenings for eligible women. Hotline: 1-888-599-1073.</li>
+                  </ul>
+                  
+                  <h3 id="louisiana-seniors">Louisiana Senior Resources</h3>
+                  <p>Services for older adults, including in-home care, nutrition, and benefits assistance.</p>
+                  <ul>
+                      <li><a href="https://gov.louisiana.gov/page/elderly-affairs" target="_blank" rel="noopener noreferrer"><strong>Louisiana Governor's Office of Elderly Affairs (GOEA):</strong></a> State unit on aging, oversees programs and services for seniors.</li>
+                      <li><a href="http://goea.louisiana.gov/index.cfm?md=pagebuilder&tmp=home&pid=105" target="_blank" rel="noopener noreferrer"><strong>Louisiana Area Agencies on Aging (AAA) Directory:</strong></a> Find your local AAA for services like meals, transportation, and in-home care. (Or search via GOEA website).</li>
+                  </ul>
+
+                  <h3 id="louisiana-transportation">Louisiana Transportation Resources</h3>
+                  <p>Information on public transit, paratransit, and medical transportation.</p>
+                  <ul>
+                      <li><strong>Louisiana Medicaid Non-Emergency Medical Transportation (NEMT):</strong> Typically arranged through your Medicaid health plan. Contact your plan's member services or call Louisiana Medicaid Customer Service at 1-888-342-6207 for guidance.</li>
+                      <li>Paratransit services are often managed by local/regional transit authorities. Search for "paratransit [your city/parish] Louisiana".</li>
+                  </ul>
+                   <h3 id="louisiana-cancer-specific">Cancer-Specific Support (Louisiana)</h3>
+                  <p>Organizations providing support and financial assistance to cancer patients in Louisiana.</p>
+                  <ul>
+                      <li><a href="https://www.cancer.org/about-us/local/louisiana.html" target="_blank" rel="noopener noreferrer"><strong>American Cancer Society - Louisiana:</strong></a> Programs, services, and 24/7 helpline at 1-800-227-2345.</li>
+                      <li><a href="https://www.komen.org/" target="_blank" rel="noopener noreferrer"><strong>Susan G. Komen:</strong></a> Provides resources and support for breast cancer. Check for local Louisiana events or contacts through the main Komen website (previous affiliate structure may have changed).</li>
+                      <li><a href="https://marybird.org/" target="_blank" rel="noopener noreferrer"><strong>Mary Bird Perkins Cancer Center:</strong></a> Multiple locations in Louisiana, offers comprehensive cancer care and support services.</li>
+                      <li><a href="https://www.cancerservices.org/" target="_blank" rel="noopener noreferrer"><strong>Cancer Services of Greater Baton Rouge:</strong></a> Financial and emotional support for cancer patients in the Baton Rouge area.</li>
+                      <li><a href="https://milesperret.org/" target="_blank" rel="noopener noreferrer"><strong>Miles Perret Cancer Services (Acadiana & surrounding areas):</strong></a> Resource center providing support, supplies, and consultations.</li>
+                  </ul>
+              </section>
+
+              <section id="orleans-parish-resources" class="resource-section">
+                  <h2>New Orleans / Orleans Parish Resources</h2>
+                  <p>Explore comprehensive support services available to residents of New Orleans and Orleans Parish.</p>
+                  <h3 id="orleans-general">General Assistance</h3>
+                  <ul>
+                      <li><strong>ViaLink/211:</strong> Dial 211 or (504) 269-2673 for resources in the Greater New Orleans area.</li>
+                      <li><a href="https://nola.gov/health/" target="_blank" rel="noopener noreferrer"><strong>New Orleans Health Department:</strong></a> Information on city health initiatives and services.</li>
+                  </ul>
+                  <h3 id="orleans-housing">Housing & Shelter</h3>
+                  <ul>
+                      <li><a href="https://www.hano.org/" target="_blank" rel="noopener noreferrer"><strong>Housing Authority of New Orleans (HANO):</strong></a> Administers public housing and voucher programs.</li>
+                      <li><a href="https://unitygno.org/" target="_blank" rel="noopener noreferrer"><strong>UNITY of Greater New Orleans:</strong></a> Lead agency for the homeless continuum of care; coordinates services and shelter.</li>
+                      <li><a href="https://www.nolashelter.org/" target="_blank" rel="noopener noreferrer"><strong>New Orleans Women & Children's Shelter:</strong></a> Provides shelter and services.</li>
+                  </ul>
+                   <h3 id="orleans-food">Food Assistance</h3>
+                  <ul>
+                      <li><a href="https://no-hunger.org/" target="_blank" rel="noopener noreferrer"><strong>Second Harvest Food Bank of Greater New Orleans and Acadiana:</strong></a> Serves Orleans Parish. Find partner pantries on their website.</li>
+                  </ul>
+                  <h3 id="orleans-healthcare">Healthcare</h3>
+                  <ul>
+                      <li><a href="https://www.lcmchealth.org/umc/" target="_blank" rel="noopener noreferrer"><strong>University Medical Center New Orleans (UMCNO):</strong></a> Comprehensive hospital with cancer care services.</li>
+                      <li><a href="https://www.ochsner.org/locations/ochsner-cancer-institute" target="_blank" rel="noopener noreferrer"><strong>Ochsner Cancer Institute:</strong></a> Major cancer treatment center in New Orleans.</li>
+                      <li>Search for FQHCs in New Orleans via <a href="https://findahealthcenter.hrsa.gov/" target="_blank" rel="noopener noreferrer">HRSA Find a Health Center</a>.</li>
+                  </ul>
+              </section>
+
+              </main>
+      </div>
+  </div>
+
+  <footer>
+      <div class="footer-container">
+          <div class="footer-section">
+              <h3>About Us</h3>
+              <p>Providing a centralized directory of resources for cancer patients and their families.</p>
+          </div>
+          <div class="footer-section">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="index.html#national-resources">National Resources</a></li>
+                  <li><a href="index.html#cancer-resources">Cancer Resources</a></li>
+                  <li><a href="index.html#financial">Financial Assistance</a></li>
+                  <li><a href="index.html#mental-health">Mental Health</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h3>Contact Us</h3>
+              <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+              <div class="social-icons">
+                  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="copyright">
+          &copy; <span id="currentYear"></span> Community Resource Directory. All rights reserved.
+      </div>
+  </footer>
+
+  <div class="back-to-top" onclick="scrollToTop()">
+      <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // JavaScript for search functionality
+    function performSearch() {
+        const query = document.getElementById("siteSearch").value.toLowerCase().trim();
+        const sections = document.querySelectorAll('.resource-section');
+        let resultsHtml = '';
+        let foundItems = new Set(); // To store found item descriptions + context to avoid duplicates
+        const searchResultsDiv = document.getElementById("searchResults");
+
+        if (query === "") {
+            searchResultsDiv.innerHTML = '<p>Please enter a search term.</p>';
+            return;
+        }
+
+        sections.forEach(section => {
+            const sectionId = section.id;
+            const sectionH2 = section.querySelector('h2');
+            const sectionTitleText = sectionH2 ? sectionH2.textContent : 'Unnamed Section';
+            const sectionTitleLower = sectionTitleText.toLowerCase();
+
+            // Check section title itself
+            if (sectionId && sectionTitleLower.includes(query)) {
+                const resultKey = `section-${sectionId}`;
+                if (!foundItems.has(resultKey)) {
+                    resultsHtml += `<p><a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a></p>`;
+                    foundItems.add(resultKey);
+                }
+            }
+
+            // Check subheadings (h3, h4) with IDs
+            const subheadings = section.querySelectorAll('h3[id], h4[id]');
+            subheadings.forEach(subheading => {
+                const subheadingId = subheading.id;
+                const subheadingText = subheading.textContent;
+                if (subheadingText.toLowerCase().includes(query)) {
+                    const resultKey = `subheading-${subheadingId}`;
+                    if (!foundItems.has(resultKey)) {
+                        resultsHtml += `<p><a href="#${subheadingId}" onclick="smoothScrollTo('${subheadingId}'); return false;">${subheadingText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
+                        foundItems.add(resultKey);
+                    }
+                }
+            });
+
+            // Check list items (li) and paragraphs (p) within sections for content
+            const contentElements = section.querySelectorAll('li, .resource-section > p'); 
+            contentElements.forEach(element => {
+                const elementText = element.textContent;
+                const elementTextLower = elementText.toLowerCase();
+
+                if (elementTextLower.includes(query)) {
+                    let targetId = sectionId; 
+                    let contextTitle = sectionTitleText;
+
+                    const parentH4 = element.closest('h4[id]');
+                    const parentH3 = element.closest('h3[id]');
+
+                    if (parentH4) {
+                        targetId = parentH4.id;
+                        contextTitle = parentH4.textContent;
+                    } else if (parentH3) {
+                        targetId = parentH3.id;
+                        contextTitle = parentH3.textContent;
+                    }
+                    
+                    const itemLink = element.querySelector('a');
+                    let tempDiv = document.createElement("div");
+                    tempDiv.innerHTML = element.innerHTML; 
+                    let cleanTextContent = (tempDiv.textContent || tempDiv.innerText || "").trim();
+                    let displayText = cleanTextContent.length > 120 ? cleanTextContent.substring(0, 117) + "..." : cleanTextContent;
+                    
+                    const resultKey = `content-${targetId}-${displayText.substring(0,30)}`; 
+
+                    if (!foundItems.has(resultKey)) {
+                        if (itemLink && itemLink.href && !itemLink.href.startsWith('#')) { 
+                            resultsHtml += `<p><a href="${itemLink.href}" target="_blank" rel="noopener noreferrer">${displayText}</a> (in <a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${contextTitle}</a>)</p>`;
+                        } else { 
+                            resultsHtml += `<p><a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${displayText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
+                        }
+                        foundItems.add(resultKey);
+                    }
+                }
+            });
+        });
+
+        if (foundItems.size > 0) {
+            searchResultsDiv.innerHTML = `<h3>Search Results for "${query}"</h3>${resultsHtml}`;
+        } else {
+            searchResultsDiv.innerHTML = `<p>No results found for "${query}".</p>`;
+        }
+    }
+
+    // Smooth scroll to element function
+    function smoothScrollTo(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            const headerOffset = document.querySelector('nav') ? document.querySelector('nav').offsetHeight + 20 : 80; 
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    }
+
+    // Back to Top Button functionality
+    const backToTopButton = document.querySelector(".back-to-top");
+    if (backToTopButton) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+    }
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Set current year in footer
+    const currentYearSpan = document.getElementById("currentYear");
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Search on Enter key press
+    const searchInput = document.getElementById("siteSearch");
+    if (searchInput) {
+        searchInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                performSearch();
+            }
+        });
+    }
+
+    // Add smooth scrolling to all internal nav links (main nav and quick nav)
+    document.querySelectorAll('.main-navbar a[href^="#"], .quick-nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const hrefAttribute = this.getAttribute('href');
+            if (hrefAttribute && hrefAttribute !== "#") { 
+                if (hrefAttribute.startsWith("#") && hrefAttribute.length > 1) {
+                    const targetId = hrefAttribute.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        smoothScrollTo(targetId);
+                    }
+                }
+            }
+        });
+    });
+
+    // Add target="_blank" to all external links in resource sections for safety and UX
+    document.querySelectorAll('.resource-section a').forEach(link => {
+        if (link.href && (link.hostname !== window.location.hostname )) { 
+             if (link.protocol !== "tel:" && link.protocol !== "mailto:") { 
+                 link.setAttribute('target', '_blank');
+                 link.setAttribute('rel', 'noopener noreferrer');
+            }
+        }
+    });
+  </script>
+</body>
+</html>
