@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Illinois Resources - Community Resource Directory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Root variables for consistent theming */
+    :root {
+        --primary-color: #3a86ff;
+        --secondary-color: #ff006e;
+        --accent-color: #8338ec;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --success-color: #38b000;
+        --warning-color: #ffbe0b;
+        --danger-color: #dc3545;
+        --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
+        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
+    }
+
+    /* Universal Box-Sizing and Smooth Scrolling */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        scroll-behavior: smooth; /* Enable smooth scrolling for the whole page */
+    }
+
+    /* Body and Typography */
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background-color: #f8f9fa;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+
+    h1, h2, h3, h4 {
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+    /* Hero Section Styling */
+    .hero-section {
+        background: var(--blue-gradient);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 250px;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 800px;
+        margin: 0.5rem auto 0;
+    }
+
+    .hero-section::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: white;
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        z-index: 999; /* Ensure it's above other elements but below nav if needed */
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    .site-title {
+        font-size: 2.2rem;
+        color: var(--dark-color);
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-top: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        list-style: disc;
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Header and Navigation */
+    nav {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Ensure nav is above hero pseudo-element */
+        border-radius: 0 0 8px 8px;
+    }
+
+    .main-navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-navbar li {
+        margin: 0;
+    }
+
+    .main-navbar a, .dropbtn {
+        display: block;
+        color: var(--dark-color);
+        text-align: center;
+        padding: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .main-navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: var(--light-color);
+        color: var(--primary-color);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+    .dropbtn .fa-caret-down { /* Style for the caret icon */
+        margin-left: 0.3em;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 250px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1; /* Ensure dropdown is above other content */
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .dropdown-content a {
+        padding: 0.75rem 1rem;
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Main Content Layout */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .resource-section {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    .resource-section > p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Back Button Specifics */
+    .back-button {
+        display: inline-block;
+        margin: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 500;
+    }
+
+    .back-button:hover {
+        background-color: var(--accent-color);
+        transform: translateX(-5px);
+        text-decoration: none;
+    }
+
+    /* Search Box */
+    .search-container {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-container h2 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 1rem;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+    .search-box input:focus {
+        border-color: var(--primary-color);
+    }
+
+    .search-box button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .search-box button:hover {
+        background-color: var(--accent-color);
+    }
+    #searchResults {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+    #searchResults p {
+        margin-bottom: 0.5rem;
+    }
+    #searchResults a {
+        font-weight: 500;
+    }
+
+
+    /* Quick Navigation Menu */
+    .quick-nav {
+        position: sticky;
+        top: 85px; /* Adjusted for nav height + some breathing room */
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        max-height: calc(100vh - 120px); /* Adjusted for more robust calculation */
+        overflow-y: auto;
+    }
+    .quick-nav h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+    .quick-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+    .quick-nav ul li {
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 0.5rem;
+    }
+    .quick-nav ul li:last-child {
+        border-bottom: none;
+    }
+    .quick-nav ul li a {
+        display: block;
+        color: var(--dark-color);
+        transition: color 0.3s ease;
+    }
+    .quick-nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Two-Column Layout for Desktop */
+    @media (min-width: 992px) {
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+        .main-content {
+            min-width: 0; /* Prevents overflow issues with grid items */
+        }
+    }
+
+
+    /* Footer */
+    footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        color: white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: #adb5bd;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icons a {
+        color: white;
+        background-color: #495057;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #495057;
+        color: #adb5bd;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+        z-index: 1000;
+    }
+    .back-to-top:hover {
+        background-color: var(--accent-color);
+    }
+    .back-to-top.show {
+        opacity: 1;
+    }
+
+
+    /* Responsive Design */
+    @media (max-width: 992px) { /* Tablet and below */
+        .container {
+            padding: 1rem;
+        }
+        .hero-title {
+            font-size: 2rem;
+        }
+        h2 {
+            font-size: 1.8rem;
+        }
+        h3 {
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (max-width: 768px) { /* Mobile */
+        .main-navbar {
+            flex-direction: column;
+        }
+        .dropdown-content {
+            position: static;
+            width: 100%;
+            box-shadow: none;
+        }
+        .resource-section {
+            padding: 1.5rem;
+        }
+        .hero-section {
+            padding: 3rem 1rem;
+            min-height: 220px;
+        }
+        .hero-title {
+            font-size: 1.8rem;
+        }
+        .hero-subtitle {
+            font-size: 1.05rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+        }
+        h3 {
+            font-size: 1.2rem;
+        }
+        .two-column-layout {
+            grid-template-columns: 1fr; /* Stack columns */
+        }
+        .quick-nav {
+            position: static; /* Remove sticky positioning */
+            max-height: none;
+            overflow-y: visible;
+            margin-bottom: 1rem; /* Adjust margin when stacked */
+        }
+    }
+
+    @media (max-width: 576px) { /* Small mobile */
+        .search-box {
+            flex-direction: column;
+        }
+        .search-box input, .search-box button {
+            width: 100%;
+            border-radius: 4px;
+        }
+        .search-box button {
+            margin-top: 0.5rem;
+        }
+        .hero-section {
+            padding: 2rem 1rem;
+            min-height: 180px;
+        }
+        .resource-section {
+            padding: 1rem;
+        }
+        .back-button {
+            margin: 1rem; /* Adjust margin for smaller screens */
+        }
+        .footer-container {
+            padding: 0 1rem; /* Add padding to footer content on small screens */
+        }
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div> <a href="index.html" class="back-button">← Back to Main Page</a>
+
+  <header>
+    <div class="hero-section">
+        <h1 class="hero-title">Illinois Resources</h1>
+        <p class="hero-subtitle">Statewide and County-Specific Support for Cancer Patients</p>
+    </div>
+
+    <nav>
+      <ul class="main-navbar">
+        <li><a href="#illinois-resources">Illinois Statewide</a></li>
+        <li><a href="#illinois-housing">Housing</a></li>
+        <li><a href="#illinois-utilities">Utilities</a></li>
+        <li><a href="#illinois-food">Food & Nutrition</a></li>
+        <li><a href="#illinois-dental">Dental</a></li>
+        <li><a href="#illinois-senior-resources">Seniors</a></li>
+        <li><a href="#illinois-transportation">Transportation</a></li>
+        <li><a href="#cook-county-chicago-resources">Chicago / Cook County</a></li>
+        <li class="dropdown">
+          <button class="dropbtn">Other Counties <i class="fas fa-caret-down"></i></button>
+          <div class="dropdown-content">
+            <a href="#dupage-county">DuPage County</a>
+            <a href="#lake-county">Lake County</a>
+            <a href="#will-county">Will County</a>
+            <a href="#kane-county">Kane County</a>
+            <a href="#mchenry-county">McHenry County</a>
+            <a href="#st-clair-county-resources">St. Clair County</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+      <div class="search-container">
+          <h2>Find Resources</h2>
+          <div class="search-box">
+              <input type="text" id="siteSearch" placeholder="Search for resources...">
+              <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+          </div>
+          <div id="searchResults"></div>
+      </div>
+
+      <div class="two-column-layout">
+          <aside class="quick-nav">
+              <h3>Quick Navigation</h3>
+              <ul>
+                  <li><a href="#illinois-resources">Illinois Statewide</a></li>
+                  <li><a href="#illinois-housing">Housing</a></li>
+                  <li><a href="#illinois-utilities">Utilities</a></li>
+                  <li><a href="#illinois-food">Food & Nutrition</a></li>
+                  <li><a href="#illinois-dental">Dental</a></li>
+                  <li><a href="#illinois-senior-resources">Seniors</a></li>
+                  <li><a href="#illinois-transportation">Transportation</a></li>
+                  <li><a href="#cook-county-chicago-resources">Chicago / Cook County</a></li>
+                  <li><a href="#mchenry-county">McHenry County</a></li>
+                  <li><a href="#st-clair-county-resources">St. Clair County</a></li>
+                  <li><a href="#dupage-county">DuPage County</a></li>
+                  <li><a href="#lake-county">Lake County</a></li>
+                  <li><a href="#will-county">Will County</a></li>
+                  <li><a href="#kane-county">Kane County</a></li>
+              </ul>
+          </aside>
+
+          <main class="main-content">
+              <section id="illinois-resources" class="resource-section">
+                  <h2>Illinois Resources</h2>
+                  <p>Explore a variety of programs and services available specifically for Illinois residents.</p>
+
+                  <h3 id="illinois-search-portals">Illinois Resource Search Portals</h3>
+                  <ul>
+                      <li><a href="https://onechifam.resources.uniteus.io/search?locale=en"><strong>OneCHIFAM Resource Portal:</strong></a> A unified platform to search for health and social services in Cook County and surrounding regions via Unite Us.</li>
+                      <li><a href="https://211metrochicago.org/search-for-resources/"><strong>211 Metro Chicago Resource Search:</strong></a> Find food, utility, housing, and other community assistance programs across the Chicago metro area.</li>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=29734"><strong>Illinois DHS Find Help:</strong></a> Official Illinois Department of Human Services portal to locate benefits and support services statewide.</li>
+                  </ul>
+
+                  <h3 id="illinois-housing">Illinois Housing Resources</h3>
+                  <ul>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=29723"><strong>Illinois Department of Human Services:</strong></a> Provides information on homeless prevention and support services for Illinois residents.</li>
+                      <li><a href="https://www.ihda.org/rental-housing-main/rental-housing/"><strong>Illinois Housing Development Authority:</strong></a> Offers resources for affordable rental housing throughout Illinois.</li>
+                      <li><a href="https://dceo.illinois.gov/communityservices/housingassistance.html"><strong>DCEO Housing Assistance:</strong></a> Provides various housing assistance programs through the Illinois Department of Commerce and Economic Opportunity.</li>
+                      <li><a href="https://www.illinoishousinghelp.org/"><strong>Illinois Housing Help:</strong></a> Offers resources for rental assistance, mortgage assistance, and homelessness prevention.</li>
+                      <li><a href="https://www.ilhousingsearch.org"><strong>ILHousingSearch.org:</strong></a> Phone: (877) 428-8844. Search tool for affordable, subsidized, and market-rate units.</li>
+                  </ul>
+
+                  <h3 id="illinois-utilities">Illinois Utility Assistance</h3>
+                  <ul>
+                      <li><a href="https://dceo.illinois.gov/communityservices/utilitybillassistance.html"><strong>DCEO Utility Bill Assistance:</strong></a> Information on Illinois programs that help with utility bills through the Department of Commerce and Economic Opportunity.</li>
+                      <li><a href="https://dceo.illinois.gov/communityservices/utilitybillassistance/howtoapply.html"><strong>How to Apply for Utility Assistance:</strong></a> Step-by-step guidance on applying for utility bill assistance in Illinois.</li>
+                      <li><a href="https://dceo.illinois.gov/communityservices/homeweatherization/communityactionagencies/"><strong>Home Weatherization & Community Action Agencies:</strong></a> Resources for home weatherization assistance and local community action agencies that can help.</li>
+                      <li><a href="https://www.cedaorg.net/find-services/gas-and-electric/"><strong>CEDA Gas and Electric Assistance:</strong></a> The Community and Economic Development Association offers help with gas and electric bills for eligible residents.</li>
+                      <li><a href="https://www.helpillinoisfamilies.com/"><strong>Help Illinois Families:</strong></a> Provides information about various assistance programs for Illinois families, including utility assistance.</li>
+                      <li><a href="https://www.catholiccharities.net/"><strong>Catholic Charities:</strong></a> Offers various assistance programs including utility bill help for those in need.</li>
+                      <li><a href="https://www.usa.gov/help-with-energy-bills"><strong>USA.gov Help with Energy Bills:</strong></a> Federal resources for energy bill assistance that Illinois residents can access.</li>
+                  </ul>
+
+                  <h3 id="illinois-food">Illinois Food & Nutrition Resources</h3>
+                  <ul>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=33698"><strong>Illinois DHS – Apply for Benefits:</strong></a> Apply for SNAP, medical, and cash assistance through the Department of Human Services.</li>
+                      <li><a href="https://www.abe.illinois.gov/"><strong>ABE Illinois (Application for Benefits Eligibility):</strong></a> Use this online portal to apply for SNAP (food stamps), medical, and other public benefits.</li>
+                      <li><a href="https://www.illinois.gov/services/service.senior-ride-free-program.html"><strong>Illinois.gov – Apply for SNAP and Medical Assistance:</strong></a> Direct access to state services for food and healthcare benefits.</li>
+                      <li><a href="https://solvehungertoday.org/snap-food-stamps/"><strong>Northern Illinois Food Bank – SNAP Help:</strong></a> Offers help applying for SNAP benefits and information on local food resources.</li>
+                      <li><a href="https://wegotyouillinois.org/snap/"><strong>We Got You Illinois – SNAP Support:</strong></a> A campaign helping individuals understand and enroll in SNAP food benefits.</li>
+                      <li><a href="https://ilaging.illinois.gov/programs/nutrition/nutrition.html"><strong>Illinois Department on Aging – Nutrition Programs:</strong></a> Statewide senior nutrition services including home-delivered and group meals.</li>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=30521"><strong>Illinois DHS – Food Assistance Programs:</strong></a> Overview of food-related programs including SNAP and child nutrition.</li>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=31874"><strong>Illinois DHS – Nutrition Programs for Women, Infants, and Children (WIC):</strong></a> Resources for WIC services across the state for pregnant women, infants, and children under five.</li>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=30366"><strong>Illinois DHS – Emergency Food Program:</strong></a> Provides emergency food support through local food pantries and community agencies.</li>
+                      <li><a href="https://eat-move-save.extension.illinois.edu/#find-food-il"><strong>Eat Move Save Illinois Food Finder:</strong></a> Find local food resources and healthy eating tips.</li>
+                  </ul>
+
+                  <h3 id="illinois-dental">Illinois Dental Resources</h3>
+                  <p>Explore dental care options and training-based clinics available across Illinois.</p>
+                  <ul>
+                      <li><a href="https://www.isds.org/for-the-public/find-a-dental-clinic"><strong>Find a Dental Clinic (ISDS):</strong></a> A listing of clinics for people with limited financial ability provided by the Illinois State Dental Society.</li>
+                      <li><a href="https://findahealthcenter.hrsa.gov"><strong>Illinois' Federally Qualified Health Centers:</strong></a> These centers are for people who are low income, uninsured, or are undocumented residents.</li>
+                      <li><a href="https://dentistry.uic.edu/patients/appointments"><strong>University of Illinois - Chicago:</strong></a> Provides urgent dental care and services. Call: 312-996-8636</li>
+                      <li><a href="https://www.siue.edu/dental/patient-clinics/index.shtml"><strong>Southern Illinois University - Alton:</strong></a> Offers dental services through their educational programs. Call: 618-474-7000</li>
+                      <li><a href="https://www.mwuclinics.com/illinois/services/dental"><strong>Midwestern University - Downers Grove:</strong></a> Provides dental care through their teaching clinics. Call: 630-743-4500</li>
+                  </ul>
+
+                  <h3 id="illinois-senior-resources">Illinois Senior Resources</h3>
+                  <p>Explore senior-focused services including benefits, caregiving support, and local aging resources.</p>
+                  <ul>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=29738"><strong>Illinois DHS – Senior Services:</strong></a> Offers community-based services for seniors including caregiver support and elder abuse prevention.</li>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=60122"><strong>DHS Adult Protective Services:</strong></a> Protects older adults and adults with disabilities from abuse, neglect, and exploitation.</li>
+                      <li><a href="https://ilaging.illinois.gov/resources/helpline-main.html"><strong>Illinois Department on Aging Helpline:</strong></a> Call 1-800-252-8966 for information on senior programs, benefits, and support services.</li>
+                      <li><a href="https://www.elderwerks.org/directory/index.html"><strong>Elderwerks Directory:</strong></a> Search senior housing, home care, and supportive services across Illinois.</li>
+                      <li><a href="https://www.elderwerks.org/resources/partners.aspx"><strong>Elderwerks Partner Resources:</strong></a> Explore connections to trusted service providers for older adults in Illinois.</li>
+                      <li><a href="https://ilaging.illinois.gov/content/dam/soi/en/web/aging/resources/newsandpublications/publications/documents/state-federal_book.pdf"><strong>Illinois State & Federal Resource Guide for Older Adults:</strong></a> Comprehensive PDF guide to programs and services for seniors statewide.</li>
+                  </ul>
+
+                  <h3 id="illinois-transportation">Illinois Transportation Resources</h3>
+                  <p>Explore transportation options for seniors, people with disabilities, and Medicaid recipients across Illinois.</p>
+                  <ul>
+                      <li><a href="https://www.pacebus.com/riders-disabilities"><strong>Pace ADA Paratransit Services:</strong></a> Provides accessible transportation for riders with disabilities in suburban Chicago, including Ride Free and Reduced Fare programs.</li>
+                      <li><a href="https://www.pacebus.com/ada"><strong>Pace ADA Certification:</strong></a> Learn how to get certified for paratransit services and schedule accessible rides through Pace.</li>
+                      <li><a href="https://www.rtachicago.org/riders"><strong>Regional Transportation Authority (RTA):</strong></a> Offers reduced fare and Ride Free programs for seniors and riders with disabilities in the Chicago area.</li>
+                      <li><a href="https://www.illinois.gov/services/service.senior-ride-free-program.html"><strong>Illinois Senior Ride Free Program:</strong></a> Allows eligible seniors and people with disabilities to ride public transportation free of charge statewide.</li>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=35567"><strong>IDHS Transportation Programs:</strong></a> Provides non-emergency transportation services for medical visits and other essential appointments.</li>
+                      <li><a href="https://hfs.illinois.gov/medicalclients/medicaltransportationnonemergency.html"><strong>Illinois HFS – Non-Emergency Medical Transportation:</strong></a> Offers transport services for eligible Medicaid recipients traveling to healthcare appointments.</li>
+                      <li><a href="https://www.accessliving.org/defending-our-rights/accessible-transportation/disability-transit-resources-for-the-chicagoland-area/"><strong>Access Living – Chicago Transit Resources:</strong></a> Detailed guides on accessible transit services for people with disabilities in the Chicagoland area.</li>
+                      <li><a href="https://www.chicago.gov/city/en/depts/mopd/supp_info/accessible_transportationinformationforpeoplewithdisabilities.html"><strong>City of Chicago MOPD – Accessible Transportation:</strong></a> Resources on accessible taxis, public transit, and paratransit for people with disabilities.</li>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=29732"><strong>Illinois Department of Human Services (IDHS) - Rehabilitation Services:</strong></a> Phone: (618) 583-2125. May provide free transportation for clients enrolled in vocational rehabilitation programs.</li>
+                      <li><a href="https://hfs.illinois.gov/medicalclients/medicaltransportationnonemergency.html"><strong>Medicaid Non-Emergency Medical Transportation:</strong></a> Phone: (866) 503-9040. Free transportation to medical appointments for Medicaid recipients.</li>
+                      <li><a href="https://www.va.gov/health-care/getting-care/transportation/"><strong>Veterans Transportation Program:</strong></a> Phone: (618) 202-8387. Free transportation for eligible veterans to VA medical facilities.</li>
+                  </ul>
+              </section>
+
+              <section id="cook-county-chicago-resources" class="resource-section">
+                  <h2>Cook County / Chicago Resources</h2>
+                  <p>Explore comprehensive support services available to residents of Chicago and Cook County.</p>
+
+                  <h3 id="cook-general-assistance">General Assistance & Search Portals</h3>
+                  <ul>
+                      <li><a href="https://www.chicago.gov/city/en/sites/resilient-communities-pilot/home/resources-residents.html"><strong>City of Chicago – Resident Resources:</strong></a> Comprehensive guide to housing, food, healthcare, and financial assistance programs.</li>
+                      <li><a href="https://211metrochicago.org/"><strong>211 Metro Chicago:</strong></a> Connects residents to essential health and social services, including shelter, food, and mental health support.</li>
+                      <li><a href="https://www.chicago.gov/city/en/depts/fss/provdrs/emerg/supp_info/community_servicecenters.html"><strong>DFSS Community Service Centers:</strong></a> Six centers offering in-person benefit assessments, shelter, food, clothing, and job training. Open Monday–Friday, 9am–5pm.</li>
+                  </ul>
+
+                  <h3 id="cook-mental-health">Mental Health Services</h3>
+                  <ul>
+                      <li><strong>NAMI Chicago:</strong> A nonprofit that operates a free and confidential hotline staffed by clinicians and peers who can help you find treatment and provide free resources to those in need of mental health support. To reach the hotline, call <a href="tel:18009506264">1.800.950-NAMI</a>.</li>
+                      <li><a href="https://mentalhealth.chicago.gov/find-mental-health-support/"><strong>Find other mental health resources here:</strong></a> Visit this link to find additional mental health support.</li>
+                  </ul>
+
+                  <h3 id="cook-disabilities-services">Services for People with Disabilities</h3>
+                  <ul>
+                      <li><a href="https://www.chicago.gov/city/en/depts/mopd.html"><strong>Mayor's Office for People with Disabilities (MOPD):</strong></a> Can offer personal assistant services, assistive devices, home-delivered meals, home modification and benefits counseling for people with disabilities living in the City of Chicago under the age of 60. To learn more about services offered, call <a href="tel:3127447050">312-744-7050</a> or visit the MOPD website.</li>
+                  </ul>
+
+                  <h3 id="cook-transportation">Transportation Resources</h3>
+                  <ul>
+                      <li><a href="https://www.cookcountyil.gov/service/transportation-information"><strong>Cook County Department of Transportation and Highways Senior Services:</strong></a> Provides transportation resources and services specifically for seniors throughout Cook County.</li>
+                      <li><a href="https://www.chicago.gov/city/en/depts/fss/provdrs/senior.html"><strong>Chicago Department of Family & Support Services Senior Services Division:</strong></a> Offers transportation assistance and referrals for seniors residing in Chicago.</li>
+                      <li><a href="https://www.rtachicago.org/rider-resources/reduced-fare-free-ride-programs"><strong>Regional Transportation Authority (RTA) Reduced Fare and Ride Free Programs:</strong></a> Administers programs allowing seniors 65+ to ride for free or at reduced rates on CTA, Metra, and Pace.</li>
+                      <li><a href="https://www.transitchicago.com/accessibility/"><strong>Chicago Transit Authority (CTA) Accessibility Services:</strong></a> Provides accessible transportation options for seniors and individuals with disabilities.</li>
+                      <li><a href="https://www.pacebus.com/paratransit"><strong>Pace Paratransit Services:</strong></a> Offers door-to-door transportation services for eligible seniors and people with disabilities.</li>
+                      <li><a href="https://www.pacebus.com/dial-ride"><strong>Cook County Dial-a-Ride Programs:</strong></a> Provides on-demand, shared-ride services in various Cook County communities.</li>
+                      <li><a href="https://www.ageoptions.org/services-and-programs/transportation/"><strong>AgeOptions Transportation Assistance Programs:</strong></a> Connects seniors to transportation resources through the suburban Cook County Area Agency on Aging.</li>
+                      <li><a href="https://www.catholiccharities.net/services/senior-services/"><strong>Catholic Charities Elder Services Transportation:</strong></a> Offers transportation assistance for seniors to medical appointments, grocery shopping, and other essential needs.</li>
+                      <li><a href="https://www.nssc.org/escorted-transportation-service"><strong>North Shore Senior Center Escorted Transportation Service:</strong></a> Provides volunteer-based transportation for seniors in northern Cook County suburbs.</li>
+                      <li><a href="https://www.kennethyoung.org/transportation"><strong>Kenneth Young Center Senior Transportation:</strong></a> Offers transportation services for seniors in northwest suburban Cook County.</li>
+                      <li><a href="https://pacebus.com/paratransit"><strong>Pace Suburban Bus:</strong></a> Phone: (800) 606-1282. Provides paratransit services for people with disabilities in Cook County who are unable to use regular fixed-route public transportation.</li>
+                      <li><a href="https://transitchicago.com/ada-paratransit"><strong>Chicago Transit Authority (CTA):</strong></a> Phone: (888) 968-7282. Offers ADA Paratransit Service for people with disabilities in Chicago and suburban Cook County, providing transportation to medical appointments, work, and other necessary destinations.</li>
+                      <li><a href="https://chicago.gov/city/en/depts/fss/supp_info/senior_ride_program.html"><strong>Senior Ride Program:</strong></a> Phone: (312) 744-4016. A service provided by the City of Chicago Department of Family and Support Services offering free rides for seniors aged 60+ who live in Chicago for medical appointments, grocery shopping, and other necessary destinations.</li>
+                      <li><strong>Township Senior Services:</strong> Many townships in Cook County offer transportation services for seniors. For example, Evanston Township Senior Services provides free transportation for seniors aged 60+ who live in Evanston.</li>
+                      <li><a href="https://www2.illinois.gov/aging/BenefitsAccess/Pages/Ride-Free.aspx"><strong>Ride Free Illinois:</strong></a> Allows eligible seniors and people with disabilities to ride public transportation for free. To qualify, individuals must be aged 65+, have a disability, or have a Medicare card.</li>
+                      <li><a href="https://bcbsil.com/bcchp/benefits-and-coverage/transportation-services"><strong>ModivCare:</strong></a> Phone: 1-877-831-3438. Provides non-emergency medical transportation services for Blue Cross Community Health Plans members. Available 24/7 with 3 business days advance scheduling.</li>
+                      <li><a href="https://calumetcity.org/temporary-senior-transportation-program"><strong>Calumet City Temporary Senior Transportation Program:</strong></a> Phone: (708) 891-8190. Offers transportation for eligible seniors residing in Calumet City for essential trips such as medical appointments, grocery shopping, and other necessary services.</li>
+                  </ul>
+
+                  <h3 id="cook-food">Food Resources</h3>
+                  <ul>
+                      <li><a href="https://ilaging.illinois.gov/programs/nutrition/commodity.html"><strong>Commodity Supplemental Food Program:</strong></a> Provides nutritious USDA food packages to low-income Illinois seniors aged 60+. Participants receive various foods including cereal, milk, cheese, canned meat, fruits, vegetables, and more.</li>
+                      <li><a href="https://www.chicagosfoodbank.org/find-food/"><strong>Greater Chicago Food Depository:</strong></a> Address: 4100 West Ann Lurie Place, Chicago, IL 60632. Phone: <a href="tel:7732473663">773-247-3663</a>. Email: olderadults@gcfd.org. Find a food pantry, soup kitchen, shelter or mobile program in your community by calling <a href="tel:7732473663">773.247.3663</a> or visiting: <a href="https://www.chicagosfoodbank.org/find-food/">https://www.chicagosfoodbank.org/find-food/</a>. Counties served: Cook.</li>
+                      <li><a href="https://wic.fns.usda.gov/wps/pages/preScreenTool.xhtml"><strong>Public Assistance: Women, Infants and Children (WIC):</strong></a> Helps pregnant women, new mothers and young children eat well and stay healthy. Find out if you are eligible here: <a href="https://wic.fns.usda.gov/wps/pages/preScreenTool.xhtml">https://wic.fns.usda.gov/wps/pages/preScreenTool.xhtml</a>. To apply, call the state WIC office at <a href="tel:2177822166">217.782.2166</a> or visit the online office locator to find the nearest enrollment office.</li>
+                      <li><a href="https://fscalc.dhs.illinois.gov/FSCalc/"><strong>Public Assistance: Supplemental Nutrition Assistance Program (SNAP):</strong></a> Helps low-income households to purchase groceries. Find out if you are eligible here: <a href="https://fscalc.dhs.illinois.gov/FSCalc/">https://fscalc.dhs.illinois.gov/FSCalc/</a>. To apply, call the state hotline at <a href="tel:8008436154">800.843.6154</a> or visit the online application portal.</li>
+                  </ul>
+
+                  <h3 id="cook-utilities">Utility Assistance</h3>
+                  <ul>
+                      <li><a href="https://dceo.illinois.gov/communityservices/utilitybillassistance.html"><strong>Low Income Home Energy Assistance Program (LIHEAP):</strong></a> Hotline: <a href="tel:18774119276">1-877-411-WARM (9276)</a>. Provides financial assistance to eligible low-income households to manage energy bills.</li>
+                      <li><a href="https://cedaorg.net/find-services/gas-and-electric/"><strong>Community and Economic Development Association (CEDA):</strong></a> Offers programs to assist residents with gas and electric bills, including LIHEAP application support and furnace assistance.</li>
+                      <li><a href="https://chicago.gov/city/en/depts/fin/provdrs/utility_billing/svcs/utility-bill-relief-program.html"><strong>Utility Billing Relief (UBR) Program:</strong></a> Provides low-income Chicago residents with reduced rates on water, sewer, and water-sewer tax bills, plus potential debt relief.</li>
+                      <li><a href="https://centralusa.salvationarmy.org/usc/utilityassistance"><strong>The Salvation Army Utility Assistance Programs:</strong></a> Offers emergency assistance for utilities to prevent service disconnections during financial hardships.</li>
+                      <li><a href="https://comed.com/MyAccount/CustomerSupport/Pages/ResidentialHardship.aspx"><strong>ComEd Residential Special Hardship Program:</strong></a> Provides grants to eligible residential customers experiencing financial hardship to help pay past-due electric bills.</li>
+                      <li><a href="https://peoplesgasdelivery.com/payment-bill/assistance"><strong>Peoples Gas Share the Warmth Program:</strong></a> Provides matching grants to help income-eligible customers pay heating bills during colder months.</li>
+                      <li><a href="https://catholiccharities.net/food-and-basic-needs/food-rent-and-utility-assistance"><strong>Catholic Charities - Emergency Assistance:</strong></a> Offers support to individuals and families facing financial crises, including assistance with utility bills.</li>
+                      <li><a href="https://nhschicago.org/your-neighbor-fund"><strong>Your Neighbor Fund - ComEd:</strong></a> Funded by ComEd employees, provides grants up to $180 for past-due electric bills.</li>
+                      <li><a href="https://fcc.gov/acp"><strong>Affordable Connectivity Program (ACP):</strong></a> Offers eligible households discounts on internet service and connected devices.</li>
+                  </ul>
+
+                  <h3 id="cook-legal">Legal Assistance Resources</h3>
+                  <ul>
+                      <li><a href="https://www.cookcountylegalaid.org/"><strong>Eviction Legal Assistance:</strong></a> Contact Cook County Legal Aid for Housing and Debt at <a href="tel:8559565763">855-956-5763</a> for support with eviction and housing debt.</li>
+                      <li><a href="https://www.icc.illinois.gov/consumers/complaint"><strong>Illinois Commerce Commission - Consumer Services Division:</strong></a> Phone: <a href="tel:18005240795">1-800-524-0795</a>. Help with utility company disputes; information on consumer rights.</li>
+                      <li><a href="https://www.hdadvocates.org/"><strong>Health & Disability Advocates:</strong></a> Phone: <a href="tel:3122239600"> (312) 223-9600</a>. Assistance for cancer patients with utility issues.</li>
+                      <li><strong>Legal Advocates for Utility Reform:</strong> Phone: <a href="tel:7733426210"> (773) 342-6210</a>. Advocacy for medical hardship cases.</li>
+                      <li><a href="https://www.chicago.gov/city/en/depts/fss/provdrs/emerg/svcs/homeless_prevention.html"><strong>Illinois Emergency Homeowner Assistance Fund (ILHAF):</strong></a> Provides up to $60,000 in mortgage assistance to eligible homeowners. Visit <a href="https://www.illinoishousinghelp.org">illinoishousinghelp.org</a> to learn more. Applications for ILHAF opened November 2022 and will remain open until funds are exhausted.</li>
+                      <li><a href="https://www.chicago.gov/city/en/depts/fss/provdrs/emerg/svcs/homeless_prevention.html"><strong>Department of Family and Support Services (DFSS) Rental Assistance Program (RAP):</strong></a> Provides cash assistance to low-income households at risk of becoming homeless due to eviction, loss of income or another emergency. To learn more and apply online, visit the <a href="https://www.chicago.gov/city/en/depts/fss/provdrs/emerg/svcs/homeless_prevention.html">RAP webpage</a> or visit one of the <a href="https://www.chicago.gov/city/en/depts/fss/provdrs/emerg/supp_info/community_servicecenters.html">Community Service Centers</a> for in-person assistance.</li>
+                      <li><a href="https://rentervention.com"><strong>Rentervention:</strong></a> Legal support for tenants. Visit <a href="https://rentervention.com">rentervention.com</a> or text "hi" to <a href="tel:8667736837">866-773-6837</a>.</li>
+                  </ul>
+
+                  <h3 id="cook-housing">Housing Resources</h3>
+                  <ul>
+                      <li><a href="https://www.chicago.gov/city/en/depts/fss/provdrs/emerg/svcs/homeless_prevention.html"><strong>Homelessness Prevention Call Center:</strong></a> Call <a href="tel:3127445000">312-744-5000</a> for housing instability and emergency shelter resources.</li>
+                      <li><a href="https://www.chicago.gov/city/en/depts/fss/provdrs/emerg/svcs/homeless_prevention.html"><strong>Department of Family and Support Services (DFSS) Shelter Programs:</strong></a> Oversees a network of overnight and interim housing shelter programs that provide over 3,000 shelter beds at 50 separate facilities. To find a shelter, call <a href="tel:311">3-1-1</a> or <a href="tel:3127445000">312-744-5000</a> and ask for “short-term help.”</li>
+                  </ul>
+
+                  <h3 id="cook-seniors">Senior Services</h3>
+                  <ul>
+                      <li><a href="https://www.chicago.gov/city/en/depts/fss/provdrs/senior.html"><strong>Chicago Senior Services Hotline:</strong></a> Call <a href="tel:3127444016">312-744-4016</a>, Mon–Fri, 8:30am–4:30pm, for services and support tailored to older adults.</li>
+                      <li><a href="https://www.ageoptions.org/"><strong>AgeOptions:</strong></a> Serves Suburban Cook County.</li>
+                  </ul>
+
+                  <h3 id="cook-crisis-support">Crisis & Mental Health Support</h3>
+                  <ul>
+                      <li><a href="https://www.chicago.gov/city/en/depts/fss/provdrs/violence/supp_info/domestic_violence.html"><strong>Illinois Domestic Violence Helpline:</strong></a> Call <a href="tel:18778636338">1-877-863-6338</a> for 24/7 confidential support and referrals.</li>
+                      <li><a href="https://www.nami.org/help"><strong>NAMI Mental Health Helpline:</strong></a> Contact <a href="tel:8009506264">1-800-950-NAMI</a>, Mon–Fri, 9am–5pm, for mental health information and resources.</li>
+                      <li><a href="https://www.helplineil.org/app/home"><strong>Illinois Opioid and Substance Use Helpline:</strong></a> Call <a href="tel:1833234634357">1-833-2FINDHELP</a> for treatment referrals and recovery support.</li>
+                      <li><a href="https://988lifeline.org/"><strong>National Suicide Prevention Lifeline:</strong></a> Call or text <a href="tel:988">988</a>, or chat online 24/7 for immediate crisis support.</li>
+                  </ul>
+              </section>
+
+              <section id="mchenry-county" class="resource-section">
+                  <h2>McHenry County Resources</h2>
+                  <h3 id="mchenry-utilities">Utilities Assistance</h3>
+                  <ul>
+                      <li><a href="https://mchenrycountyhousing.org/liheap"><strong>McHenry County Housing Authority - LIHEAP Program:</strong></a> Phone: (815) 338-7752. Energy assistance for income-eligible households; helps with heating and cooling bills.</li>
+                      <li><a href="https://communityconnectionpoint.org"><strong>Community Connection Point (LIHEAP Application Site):</strong></a> Phone: (815) 338-5571. Application assistance for LIHEAP and other utility programs.</li>
+                      <li><a href="https://comed.com/MyAccount/CustomerSupport/Pages/AssistancePrograms.aspx"><strong>ComEd CARE Programs:</strong></a> Phone: (800) 334-7661. Bill payment assistance, grants for seniors and low-income residents.</li>
+                      <li><a href="https://nicorgas.com/residential/billing-and-payment-options/financial-assistance-programs.html"><strong>Nicor Gas Sharing Program:</strong></a> Phone: (888) 642-6748. Energy assistance for income-eligible customers.</li>
+                      <li><a href="https://centralusa.salvationarmy.org/mchenrycounty"><strong>Salvation Army - McHenry County:</strong></a> Phone: (815) 455-2769. Emergency utility bill assistance for residents facing disconnection.</li>
+                      <li><a href="https://catholiccharities.net/GetHelp/OurServices/EmergencyAssistance.aspx"><strong>Catholic Charities - McHenry County:</strong></a> Phone: (815) 344-6956. Emergency financial assistance for utilities and other essential needs.</li>
+                      <li><a href="https://svdpusa.org/Assistance-Services"><strong>St. Vincent de Paul Society:</strong></a> Multiple parish locations: St. Thomas the Apostle: (815) 455-5400, St. Elizabeth Ann Seton: (815) 459-3033. Emergency utility assistance for residents in financial crisis.</li>
+                      <li><a href="https://mchenrytownship.com/general-assistance"><strong>McHenry Township General Assistance:</strong></a> Phone: (815) 385-5605. Emergency assistance for utilities and essential needs.</li>
+                  </ul>
+                  <h3 id="mchenry-cancer">Cancer Resources</h3>
+                  <ul>
+                      <li><a href="https://cancercare.org/financial"><strong>CancerCare Financial Assistance Program:</strong></a> Phone: (800) 813-HOPE (4673). Limited financial assistance for cancer-related costs including transportation, home care, and childcare.</li>
+                      <li><a href="https://copays.org"><strong>Patient Advocate Foundation Co-Pay Relief Program:</strong></a> Phone: (866) 512-3861. Financial assistance for co-payments, co-insurance, and deductibles for patients with cancer.</li>
+                      <li><a href="https://pinkfund.org/get-help"><strong>The Pink Fund:</strong></a> Phone: (877) 234-7465. Financial assistance for breast cancer patients covering utilities, housing, and transportation.</li>
+                      <li><a href="https://komen.org/treatment-assistance-program"><strong>Susan G. Komen Treatment Assistance Program:</strong></a> Helpline: 1-877-GO-KOMEN (1-877-465-6636). Financial assistance for breast cancer patients up to $300 for utilities, food, transportation.</li>
+                      <li><a href="https://thesamfund.org"><strong>The Samfund:</strong></a> Email: grants@thesamfund.org. Financial assistance for young adults recovering from cancer treatment.</li>
+                      <li><a href="https://patientadvocate.org/connect-with-services/financial-aid-funds"><strong>Patient Advocate Foundation - Financial Aid Funds:</strong></a> Phone: (800) 532-5274. Multiple financial assistance programs for patients with specific diagnoses.</li>
+                      <li><a href="https://kidneycancer.org/get-support/financial-assistance"><strong>KidneyCAN Financial Assistance Program:</strong></a> Phone: (800) 850-9132. Financial assistance for kidney cancer patients covering treatment-related expenses.</li>
+                      <li><a href="https://nm.org/locations/mchenry-hospital-sage-cancer-center"><strong>Centegra Sage Cancer Center (now Northwestern Medicine McHenry Hospital Sage Cancer Center):</strong></a> Phone: (815) 356-6149. Comprehensive cancer services including financial counseling.</li>
+                      <li><a href="https://hpclinic.org"><strong>Family Health Partnership Clinic:</strong></a> Phone: (815) 334-8987. Low-cost healthcare services including cancer screenings.</li>
+                      <li><a href="https://livingwellcrc.org"><strong>Wellness Place - Living Well Cancer Resource Center (serves area):</strong></a> Phone: (630) 262-1111. Cancer support services. (Main office in Geneva, serves wider area including parts of McHenry)</li>
+                      <li><a href="https://hosparrow.org"><strong>Home of the Sparrow:</strong></a> Phone: (815) 271-5444. Housing assistance for women (including those with cancer) and their families.</li>
+                      <li><a href="https://cancer.org/about-us/local/illinois.html"><strong>American Cancer Society - Illinois Chapter:</strong></a> Phone: (800) 227-2345. Information, resources, and support programs for cancer patients.</li>
+                  </ul>
+                  <h3 id="mchenry-transportation">Transportation Resources</h3>
+                  <ul>
+                      <li><a href="https://cancer.org/support-programs-and-services/road-to-recovery.html"><strong>American Cancer Society Road to Recovery:</strong></a> Phone: (800) 227-2345. Free transportation to treatment for cancer patients.</li>
+                      <li><a href="https://scvnmchenrycounty.org/our-services/transportation"><strong>Senior Care Volunteer Network:</strong></a> Phone: (815) 455-3120. Free transportation to medical appointments for seniors (including those with cancer).</li>
+                      <li><a href="https://mchenrycountyil.gov/county-government/departments-a-i/division-of-transportation/transit/mcride-dial-a-ride"><strong>McHenry County Division of Transportation - MCRide:</strong></a> Phone: (800) 462-0541 or (815) 334-4981. Dial-a-ride transportation throughout McHenry County for seniors and individuals with disabilities.</li>
+                      <li><a href="https://familyallianceinc.org/services/transportation"><strong>Family Alliance Transportation Program:</strong></a> Phone: (815) 338-3590. Transportation for medical appointments and adult day services.</li>
+                      <li><a href="https://fiamchenrycounty.org"><strong>Faith in Action of McHenry County:</strong></a> Phone: (815) 455-3120. Volunteer-based transportation to medical appointments and essential errands.</li>
+                      <li><a href="https://pacebus.com/senior-services"><strong>Pace Bus Service:</strong></a> Phone: (847) 364-7223. Fixed routes and reduced fares for seniors 65+.</li>
+                      <li><a href="https://mchenrycountyil.gov/county-government/departments-j-z/veterans-assistance-commission"><strong>Veterans Assistance Commission - McHenry County:</strong></a> Phone: (815) 334-4229. Transportation to VA medical appointments for veterans.</li>
+                  </ul>
+                  <h3 id="mchenry-food">Food Assistance</h3>
+                  <ul>
+                      <li><a href="https://clfoodpantry.org"><strong>Crystal Lake Food Pantry:</strong></a> Phone: (815) 455-0961. Groceries for McHenry County residents in need.</li>
+                      <li><a href="https://fishofmchenry.org"><strong>FISH of McHenry Food Pantry:</strong></a> Phone: (815) 344-4717. Emergency food assistance and some personal care items.</li>
+                      <li><a href="https://solvehungertoday.org/get-help/snap-food-stamps"><strong>Northern Illinois Food Bank - SNAP Outreach:</strong></a> Phone: (844) 600-7627. SNAP application assistance and information.</li>
+                      <li><a href="https://seniorservicesassoc.org"><strong>McHenry County Senior Services - Senior Farmers Market Nutrition Program:</strong></a> Phone: (815) 344-3555. Vouchers for fresh produce at farmers markets for eligible seniors.</li>
+                      <li><a href="https://catholiccharities.net/GetHelp/OurServices/SeniorServices/SeniorNutrition.aspx"><strong>Catholic Charities Senior Nutrition Program (Rockford Diocese, serves McHenry):</strong></a> Phone: (815) 344-6956 (McHenry Office). Home-delivered meals for homebound seniors.</li>
+                  </ul>
+                  <h3 id="mchenry-inhomecare">In-Home Care & Caregiver Support</h3>
+                  <ul>
+                      <li><a href="https://ilaging.illinois.gov/programs/caregiver/in-home-care.html#inhomecareassistance"><strong>Illinois Department on Aging - Community Care Program:</strong></a> Phone: (800) 252-8966. In-home care assistance for seniors including homemaker services, adult day services, and emergency home response. Contact local Area Agency on Aging for McHenry County.</li>
+                       <li><a href="https://www.scvnmchenrycounty.org/"><strong>Senior Care Volunteer Network:</strong></a> Phone: (815) 455-3120. Provides various support services for seniors.</li>
+                  </ul>
+                  <h3 id="mchenry-legal">Legal Assistance</h3>
+                  <ul>
+                      <li><a href="https://pslegal.org"><strong>Prairie State Legal Services (Woodstock Office):</strong></a> Phone: (815) 344-9113. Free legal assistance for low-income residents and seniors.</li>
+                      <li><a href="https://mchenrycountylegalaid.org"><strong>McHenry County Bar Association - Legal Aid:</strong></a> Offers lawyer referral services; some may offer pro bono or reduced fee. (Check website for current programs)</li>
+                      <li><a href="https://illinoislegalaid.org"><strong>Illinois Legal Aid Online:</strong></a> Online legal information, forms, and resources for Illinois residents.</li>
+                  </ul>
+              </section>
+
+              <section id="st-clair-county-resources" class="resource-section">
+                  <h2>East St. Louis & St. Clair County Resources</h2>
+                  <h3 id="stclair-food">Food Resources</h3>
+                  <h4 id="stclair-food-pantries">Food Pantries & Meal Programs</h4>
+                  <ul>
+                      <li><a href="https://catholicurbanprograms.org/programs/holy-angels-food-pantry/"><strong>Catholic Urban Programs:</strong></a> Phone: (618) 398-5616. Address: 13 S. 4th Street, East St. Louis, IL 62201. Operates a food pantry and meal service.</li>
+                      <li><a href="https://centralusa.salvationarmy.org/metro/eastlouisilcorps/"><strong>Salvation Army East St. Louis Corps:</strong></a> Phone: (618) 874-3136. Address: 616 N. 16th Street, East St. Louis, IL 62205. Provides food assistance and hot meals.</li>
+                      <li><a href="https://www.ulstl.com/"><strong>Urban League of Metropolitan St. Louis:</strong></a> Phone: (618) 274-1150. Address: 10 Collinsville Avenue, East St. Louis, IL 62201. Food pantry services.</li>
+                      <li><strong>Community Lifeline:</strong> Phone: (618) 482-2950. Address: 1764 State Street, East St. Louis, IL 62205. Offers emergency food boxes.</li>
+                      <li><a href="https://cacesl.org/"><strong>Christian Activity Center:</strong></a> Phone: (618) 874-5615. Address: 540 N. 6th Street, East St. Louis, IL 62201. After-school meals for youth.</li>
+                  </ul>
+                  <h4 id="stclair-food-gov">Government Food Assistance</h4>
+                  <ul>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=30357"><strong>Illinois SNAP Benefits Application Center:</strong></a> Phone: (800) 843-6154. Supplemental Nutrition Assistance Program.</li>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=30513"><strong>East St. Louis WIC Office:</strong></a> Phone: (618) 482-3841. Address: 737 N. 29th Street, East St. Louis, IL 62205. Nutritional support for pregnant women, new mothers, and young children.</li>
+                      <li><strong>East St. Louis Township General Assistance:</strong> Phone: (618) 874-4041. Address: 6755 State Street, East St. Louis, IL 62203. Emergency food support.</li>
+                  </ul>
+                  <h4 id="stclair-food-banks">Food Banks & Distribution Centers</h4>
+                  <ul>
+                      <li><a href="https://stlfoodbank.org/"><strong>St. Louis Area Foodbank:</strong></a> Phone: (314) 292-6262. Pantry Finder: <a href="https://stlfoodbank.org/find-food/pantry-locations/#googtrans(en|en)">https://stlfoodbank.org/find-food/pantry-locations/#googtrans(en|en)</a>. Serves St. Clair County residents.</li>
+                      <li><a href="https://www.operationfoodsearch.org/"><strong>Operation Food Search:</strong></a> Phone: (314) 726-5355. Distributes food through partner agencies.</li>
+                  </ul>
+
+                  <h3 id="stclair-utilities">Utilities Assistance</h3>
+                  <h4 id="stclair-utilities-statefed">State & Federal Assistance Programs</h4>
+                  <ul>
+                      <li><strong>LIHEAP (Low Income Home Energy Assistance Program):</strong> Phone: (618) 874-0371. LIHEAP Hotline: <a href="tel:18774119276">1-877-411-WARM (9276)</a>. Address: St. Clair County Intergovernmental Grants Department, 19 Public Square, Suite 200, Belleville, IL 62220. Website: <a href="https://www2.illinois.gov/dceo/CommunityServices/UtilityBillAssistance/">https://www2.illinois.gov/dceo/CommunityServices/UtilityBillAssistance/</a>. St. Clair County Contact: (618) 277-6790, ext. 2200. Check Status: <a href="https://liheapapp.com/status">https://liheapapp.com/status</a>. Direct payment toward utility bills; medical priority program for cancer patients.</li>
+                      <li><a href="https://www2.illinois.gov/keepwarm/"><strong>Keep Warm Illinois:</strong></a> Hotline: <a href="tel:18774119276">1-877-411-WARM (9276)</a>. One-stop resource for all winter heating assistance programs; connects residents to multiple energy assistance programs; information on weatherization and energy conservation.</li>
+                      <li><a href="https://www.cedaorg.net/"><strong>CEDA (Community and Economic Development Association):</strong></a> Main: <a href="tel:3127822332"> (312) 782-CEDA (2332)</a>. Toll Free: <a href="tel:8005712332"> (800) 571-CEDA (2332)</a>. Address: 567 W. Lake Street, Suite 1200, Chicago, IL 60661. While primarily serving Cook County, they provide statewide referrals and can connect St. Clair County residents with local assistance.</li>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=29713"><strong>Illinois Department of Human Services Helpline:</strong></a> Phone: <a href="tel:18008436154">1-800-843-6154</a>. Connects residents to multiple assistance programs; referrals to local emergency assistance resources; help applying for benefits.</li>
+                      <li><a href="https://www.illinois.gov/helpline"><strong>Illinois Help Line for Healthcare and Human Services:</strong></a> Phone: <a href="tel:18332346343">1-833-2-FIND-HELP (1-833-234-6343)</a>. Text: zip code to 898-211. Assistance navigating state services.</li>
+                      <li><a href="https://www2.illinois.gov/dceo/CommunityServices/HomeWeatherization/CommunityActionAgencies/"><strong>Help Illinois Families Program:</strong></a> Applied through St. Clair County Community Action Agency: (618) 277-6790. Emergency direct financial assistance.</li>
+                      <li><a href="https://www2.illinois.gov/dceo/CommunityServices/HomeWeatherization/"><strong>Illinois Home Weatherization Assistance Program:</strong></a> St. Clair County contact: (618) 277-6790. Home improvements to reduce energy costs.</li>
+                      <li><a href="https://www2.illinois.gov/dceo/CommunityServices/"><strong>Illinois Office of Community Assistance:</strong></a> Phone: (217) 785-6142. Multiple utility assistance programs.</li>
+                      <li><a href="https://www2.illinois.gov/dceo/CommunityServices/UtilityBillAssistance/Pages/PIPP.aspx"><strong>Percentage of Income Payment Plan (PIPP):</strong></a> Phone: (618) 277-6790. Allows eligible customers to pay a percentage of their income toward utility bills; applied through local Community Action Agency.</li>
+                  </ul>
+                  <h4 id="stclair-utilities-providers">Major Utility Providers for East St. Louis & St. Clair County</h4>
+                  <ul>
+                      <li><a href="https://www.amerenillinois.com/energyassistance"><strong>Ameren Illinois (Electricity and Gas):</strong></a> Phone: <a href="tel:8007555000"> (800) 755-5000</a>. Primary provider of electricity and natural gas; offers Warm Neighbors Cool Friends program, medical hardship programs with extended payment arrangements, and budget billing options.</li>
+                      <li><a href="https://www.amwater.com/ilaw/customer-service-billing/low-income-program"><strong>Illinois American Water (Water):</strong></a> Phone: <a href="tel:8004222782"> (800) 422-2782</a>. Primary water provider for East St. Louis; offers H2O Help to Others program for bill assistance and payment plans for medical hardship.</li>
+                      <li><strong>East St. Louis Public Works (Water Billing Issues):</strong> Phone: (618) 482-6858. For city-specific water service issues.</li>
+                  </ul>
+                  <h4 id="stclair-utilities-local">St. Clair County Local Assistance Programs</h4>
+                  <ul>
+                      <li><a href="https://www.co.st-clair.il.us/departments/grants/community-action-agency"><strong>St. Clair County Community Action Agency:</strong></a> Phone: (618) 277-6790. Address: 19 Public Square, Suite 200, Belleville, IL 62220. Central agency for utility assistance programs; LIHEAP application processing.</li>
+                      <li><a href="https://www.co.st-clair.il.us/departments/grants/community-action-agency"><strong>St. Clair County Intergovernmental Grants Department:</strong></a> Phone: (618) 277-6790. Address: 19 Public Square, Suite 200, Belleville, IL 62220. Administers multiple assistance programs.</li>
+                      <li><a href="https://cc.dio.org/"><strong>Catholic Charities of Southern Illinois:</strong></a> Phone: (618) 394-5616. Address: 8601 W. Main St., Belleville, IL 62223. Emergency utility and rent assistance.</li>
+                      <li><a href="https://eaststreetlouis.satruck.org/"><strong>Salvation Army - East St. Louis Corps:</strong></a> Phone: (618) 874-3136. Address: 616 N. 16th St., East St. Louis, IL 62205. Emergency utility assistance program.</li>
+                      <li><a href="https://www.ulstl.com/emergency-assistance"><strong>Urban League of Metropolitan St. Louis - St. Clair County:</strong></a> Phone: (618) 274-1150. Address: 10 Collinsville Ave., East St. Louis, IL 62201. Emergency utility assistance program.</li>
+                      <li><strong>Community Lifeline:</strong> Phone: (618) 482-2950. Address: 1764 State St., East St. Louis, IL 62205. Utility and rent assistance program.</li>
+                      <li><a href="https://svdpsouthil.org/"><strong>St. Vincent de Paul Society:</strong></a> Phone: (618) 394-0126. St. Augustine of Canterbury Conference (Belleville). Emergency utility assistance.</li>
+                      <li><a href="https://catholicurbanprograms.org/"><strong>Catholic Urban Programs - Emergency Assistance:</strong></a> Phone: (618) 398-5616. Address: 13 S. 4th Street, East St. Louis, IL 62201. Emergency assistance including utilities.</li>
+                      <li><a href="https://211helps.org/"><strong>St. Clair County 211:</strong></a> Phone: <a href="tel:211">Dial 211</a>. Referral service to local assistance programs.</li>
+                  </ul>
+
+                  <h3 id="stclair-transportation">Transportation for People with Disabilities</h3>
+                  <h4 id="stclair-transportation-public">Public Transit Services</h4>
+                  <ul>
+                      <li><a href="https://scctd.org/ada-complementary-paratransit/"><strong>St. Clair County Transit District - ADA Complementary Paratransit:</strong></a> Phone: (618) 628-8090. Door-to-door service for qualified individuals with disabilities who cannot use regular bus service.</li>
+                      <li><a href="https://www.metrostlouis.org/accessibility/"><strong>MetroLink Light Rail and MetroBus:</strong></a> Phone: <a href="tel:3142312345"> (314) 231-2345</a> (Customer Service). ADA Services: <a href="tel:3149821510"> (314) 982-1510</a>. Accessible public transportation with reduced fares for persons with disabilities.</li>
+                  </ul>
+                  <h4 id="stclair-transportation-free">Free & Low-Cost Transportation</h4>
+                  <ul>
+                      <li><a href="https://www.dhs.state.il.us/page.aspx?item=29732"><strong>Illinois Department of Human Services (IDHS) - Rehabilitation Services:</strong></a> Phone: <a href="tel:6185832125"> (618) 583-2125</a>. May provide free transportation for clients enrolled in vocational rehabilitation programs.</li>
+                      <li><a href="https://hfs.illinois.gov/medicalclients/medicaltransportationnonemergency.html"><strong>Medicaid Non-Emergency Medical Transportation:</strong></a> Phone: <a href="tel:8665039040"> (866) 503-9040</a>. Free transportation to medical appointments for Medicaid recipients.</li>
+                      <li><a href="https://www.va.gov/health-care/getting-care/transportation/"><strong>Veterans Transportation Program:</strong></a> Phone: <a href="tel:6182028387"> (618) 202-8387</a>. Free transportation for eligible veterans to VA medical facilities.</li>
+                      <li><a href="https://www.AgeSmart.org"><strong>Area Agency on Aging of Southwestern Illinois:</strong></a> Phone: <a href="tel:6182222561"> (618) 222-2561</a>. May provide free transportation services for seniors and disabled individuals for essential trips.</li>
+                  </ul>
+                  <h4 id="stclair-transportation-specialized">Specialized Transportation Programs</h4>
+                  <ul>
+                      <li><a href="https://www.lincinc.org/"><strong>LINC (Living Independently Now Center) Transportation Services:</strong></a> Phone: <a href="tel:6182359988"> (618) 235-9988</a>. Transportation assistance for people with disabilities.</li>
+                      <li><strong>St. Clair County Office on Aging Transportation:</strong> Phone: <a href="tel:6182344410"> (618) 234-4410 ext. 7036</a>. Transportation services for seniors and persons with disabilities.</li>
+                      <li><a href="https://www.impactcil.org/"><strong>IMPACT CIL (Center for Independent Living):</strong></a> Phone: <a href="tel:6184621411"> (618) 462-1411</a>. Transportation resources and referrals for people with disabilities.</li>
+                      <li><strong>Alternative Transportation System (ATS):</strong> Phone: <a href="tel:6187974600"> (618) 797-4600</a>. Transportation service for people with disabilities and elderly.</li>
+                      <li><a href="https://www.ridesmtd.com/"><strong>RIDES Mass Transit District:</strong></a> Phone: <a href="tel:8442201243"> (844) 220-1243</a>. Demand-response public transportation service.</li>
+                  </ul>
+
+                  <h3 id="stclair-housing">Housing Resources</h3>
+                  <h4 id="stclair-housing-rentalassist">Emergency Rental Assistance</h4>
+                  <ul>
+                      <li><a href="https://www.illinoishousinghelp.org"><strong>Illinois Court-Based Rental Assistance Program (CBRAP):</strong></a> For tenants with pending eviction court cases; up to $15,000 in emergency rental payments.</li>
+                      <li><a href="https://www.illinoishousinghelp.org/providers"><strong>IDHS Rental Assistance:</strong></a> For households behind on rent but not yet in eviction proceedings.</li>
+                  </ul>
+                  <h4 id="stclair-housing-authorities">Housing Authorities</h4>
+                  <ul>
+                      <li><a href="https://eslha.org/"><strong>East St. Louis Housing Authority:</strong></a> Phone: <a href="tel:6184826991"> (618) 482-6991</a>. Address: 700 N. 20th Street, East St. Louis, IL 62205. Administers public housing and Section 8 vouchers.</li>
+                      <li><a href="https://www.sccha.org/"><strong>St. Clair County Housing Authority:</strong></a> Phone: <a href="tel:6182773290"> (618) 277-3290</a>. Address: 1790 S. 74th Street, Belleville, IL 62223. Administers public housing and Section 8 vouchers.</li>
+                  </ul>
+                  <h4 id="stclair-housing-local">Local Housing Resources</h4>
+                  <ul>
+                      <li><a href="https://centralusa.salvationarmy.org/belleville/"><strong>Salvation Army - St. Clair County:</strong></a> Phone: <a href="tel:6182377378"> (618) 237-7378</a>. Emergency shelter assistance, rental assistance to prevent eviction.</li>
+                      <li><a href="https://catholicurbanprograms.org/"><strong>Catholic Urban Programs:</strong></a> Phone: <a href="tel:6183985616"> (618) 398-5616</a>. Homeless prevention assistance, emergency rent and mortgage assistance.</li>
+                      <li><a href="http://www.eaststl.com/departments/community-development/"><strong>CDBG Operations Corporation:</strong></a> Phone: <a href="tel:6182747832"> (618) 274-7832</a>. Housing rehabilitation assistance, first-time homebuyer assistance.</li>
+                      <li><a href="https://www.eaststl.com/departments/township-government/general-assistance/"><strong>East St. Louis Township General Assistance:</strong></a> Phone: <a href="tel:6188744041"> (618) 874-4041</a>. Address: 6755 State Street, East St. Louis, IL 62203. Various forms of emergency assistance.</li>
+                  </ul>
+                  <h4 id="stclair-housing-legal">Legal Aid for Housing</h4>
+                  <ul>
+                      <li><strong>Eviction Help Illinois:</strong> Phone: <a href="tel:8556310811"> (855) 631-0811</a>. Free legal aid to avoid eviction.</li>
+                      <li><strong>Illinois Housing Development Authority Hotline:</strong> Phone: <a href="tel:18882528938">1-888-252-8938</a>. For immediate housing emergencies.</li>
+                  </ul>
+                  <h4 id="stclair-housing-search">Housing Search Resources</h4>
+                  <ul>
+                      <li><a href="https://www.ilhousingsearch.org"><strong>ILHousingSearch.org:</strong></a> Phone: <a href="tel:8774288844"> (877) 428-8844</a>. Search tool for affordable, subsidized, and market-rate units.</li>
+                      <li><a href="https://www.hud.gov/states/illinois/renting"><strong>HUD Illinois Renting Resources:</strong></a> Federal housing information and resources.</li>
+                      <li><a href="https://www.ihda.org/rental-housing-main/rental-housing/"><strong>Illinois Housing Development Authority:</strong></a> State housing resources and programs.</li>
+                  </ul>
+
+                  <h3 id="stclair-cancer">Breast & Ovarian Cancer Resources</h3>
+                  <h4 id="stclair-cancer-local">Local Resources</h4>
+                  <ul>
+                      <li><a href="https://www.bjc.org/Memorial-Hospital/About-Memorial/Memorial-Foundation/Cancer-Care-Programs"><strong>Memorial Foundation Cancer Care Programs:</strong></a> Phone: <a href="tel:6182575675"> (618) 257-5675</a>. Financial assistance for cancer patients, including breast cancer.</li>
+                      <li><a href="https://www.sihf.org/our-services/womens-health/breast-health-center/"><strong>Southern Illinois Healthcare Foundation - Breast Health Center:</strong></a> Phone: <a href="tel:6183326130"> (618) 332-6130</a>. Address: 6000 Bond Ave, Centreville, IL 62207. Provides breast health services and connects patients with financial resources.</li>
+                      <li><a href="https://eastsidehealthdistrict.org/"><strong>East Side Health District - Illinois Breast & Cervical Cancer Program:</strong></a> Phone: <a href="tel:6182718722"> (618) 271-8722 ext. 125</a>. Address: 650 N. 20th Street, East St. Louis, IL 62205. Free mammograms and follow-up care for eligible women.</li>
+                  </ul>
+                  <h4 id="stclair-cancer-financial">Cancer-Specific Financial Assistance Programs</h4>
+                  <ul>
+                      <li><a href="https://www.nationalbreastcancer.org/nbcf-programs/patient-relief-program/"><strong>National Breast Cancer Foundation Patient Relief Program:</strong></a> Phone: <a href="tel:9722489200"> (972) 248-9200</a>. Direct financial assistance for breast cancer patients in treatment; helps with utilities, housing, transportation.</li>
+                      <li><a href="https://www.komen.org/treatment-assistance-program/"><strong>Susan G. Komen Treatment Assistance Program:</strong></a> Helpline: <a href="tel:18774656636">1-877-GO-KOMEN (1-877-465-6636)</a>. Financial assistance for breast cancer patients; up to $300 for utilities, food, transportation.</li>
+                      <li><a href="https://www.pinkfund.org/get-help/"><strong>The Pink Fund:</strong></a> Phone: <a href="tel:8772347465"> (877) 234-7465</a>. Financial assistance for non-medical expenses during treatment; covers utilities, housing, and transportation.</li>
+                      <li><a href="https://www.thedonnafoundation.org"><strong>The DONNA Foundation:</strong></a> Phone: <a href="tel:8772366626"> (877) 236-6626</a>. Financial assistance for breast cancer patients.</li>
+                      <li><a href="https://www.ocrahope.org/patients/financial-assistance/"><strong>Ovarian Cancer Research Alliance (OCRA) Financial Assistance Program:</strong></a> Phone: <a href="tel:2122681002"> (212) 268-1002</a>. Financial assistance specifically for ovarian cancer patients.</li>
+                      <li><a href="https://www.clearityfoundation.org/patient-support/financial-assistance/"><strong>Clearity Foundation Financial Assistance Program:</strong></a> Phone: <a href="tel:8586570282"> (858) 657-0282</a>. Financial assistance specifically for ovarian cancer patients.</li>
+                      <li><a href="https://www.thesamfund.org/"><strong>The Samfund:</strong></a> Email: grants@thesamfund.org. Financial assistance for young adults with cancer.</li>
+                      <li><a href="https://www.patientadvocate.org/connect-with-services/financial-aid-funds/"><strong>Patient Advocate Foundation – Metastatic Breast Cancer Financial Aid Fund:</strong></a> Phone: <a href="tel:8005325274"> (800) 532-5274</a>. Assistance with utilities, housing, transportation.</li>
+                      <li><a href="https://www.cancercare.org/financial"><strong>CancerCare Financial Assistance Program:</strong></a> Phone: <a href="tel:8008134673"> (800) 813-HOPE (4673)</a>. Limited financial assistance for cancer-related costs.</li>
+                      <li><a href="https://www.copays.org/"><strong>Patient Advocate Foundation Co-Pay Relief Program:</strong></a> Phone: <a href="tel:8665123861"> (866) 512-3861</a>. Co-pay assistance for breast cancer patients.</li>
+                      <li><a href="https://www.dph.illinois.gov/topics-services/life-stages-populations/womens-health-services/ibccp"><strong>Illinois Breast and Cervical Cancer Program (IBCCP):</strong></a> Phone: <a href="tel:18885221282">1-888-522-1282</a>. Free breast and cervical cancer screenings and treatment for eligible women.</li>
+                  </ul>
+                  <h4 id="stclair-general-assistance">General Assistance</h4>
+                  <ul>
+                      <li><a href="https://www.211helps.org/"><strong>United Way 211:</strong></a> Phone: <a href="tel:211">Dial 211</a>. Connects residents to various assistance programs.</li>
+                      <li><a href="https://eastsidehealthdistrict.org/"><strong>East Side Health District:</strong></a> Phone: <a href="tel:6182718722"> (618) 271-8722</a>. Address: 650 N. 20th Street, East St. Louis, IL 62205. Health services and referrals.</li>
+                      <li><strong>East St. Louis Township General Assistance:</strong> Phone: <a href="tel:6188744041"> (618) 874-4041</a>. Address: 6755 State Street, East St. Louis, IL 62203. Various forms of emergency assistance.</li>
+                  </ul>
+              </section>
+              <section id="dupage-county" class="resource-section">
+                <h2>DuPage County Resources</h2>
+                <p>Explore a variety of programs and services available for DuPage County residents.</p>
+                <h3 id="dupage-general-assistance">General Assistance & Information</h3>
+                <ul>
+                    <li><a href="https://www.211dupage.gov" target="_blank" rel="noopener noreferrer"><strong>211 DuPage:</strong></a> Call 211 or visit website. Comprehensive information and referral service for health and social services including housing, utilities, food, transportation, health, mental health, and more.</li>
+                    <li><a href="https://www.dupagecounty.gov/community" target="_blank" rel="noopener noreferrer"><strong>DuPage County Community Services:</strong></a> Phone: (630) 407-6500. Offers a wide range of programs.
+                        <ul>
+                            <li>Adult Protective Services</li>
+                            <li>Housing Assistance (payments and home repairs)</li>
+                            <li>Utility and Home Energy Assistance (LIHEAP)</li>
+                            <li>Financial Self-Sufficiency Programs</li>
+                            <li>Caregiver Resources & Parenting Resources</li>
+                            <li>Transportation Assistance Program</li>
+                            <li>Senior Services & Community Care Program</li>
+                        </ul>
+                    </li>
+                </ul>
+                <h3 id="dupage-food">Food Assistance</h3>
+                <ul>
+                    <li><a href="https://www.peoplesrc.org/" target="_blank" rel="noopener noreferrer"><strong>People's Resource Center (PRC):</strong></a> Phone: (630) 682-5402 (Wheaton) / (630) 783-6600 (Westmont). Offers food pantry, clothes closet, job assistance, computer training, financial assistance, and social services. Multiple locations.</li>
+                    <li><a href="https://www.loaves-fishes.org/" target="_blank" rel="noopener noreferrer"><strong>Loaves & Fishes Community Services (Naperville):</strong></a> Phone: (630) 355-3663. Food and nutrition programs, emergency assistance, job search assistance, public benefits assistance.</li>
+                     <li>Refer to <a href="#illinois-food">Illinois Statewide Food & Nutrition Resources</a> for SNAP and WIC information.</li>
+                </ul>
+                <h3 id="dupage-housing-shelter">Housing & Shelter Assistance</h3>
+                <ul>
+                    <li><a href="https://dupagepads.org/" target="_blank" rel="noopener noreferrer"><strong>DuPagePads:</strong></a> Phone: (630) 682-3846. Interim housing, supportive housing, and career solutions for individuals and families experiencing homelessness.</li>
+                    <li><a href="https://www.bridgecommunities.org/" target="_blank" rel="noopener noreferrer"><strong>Bridge Communities:</strong></a> Phone: (630) 545-0610. Transitional housing and mentoring programs for homeless families.</li>
+                    <li><a href="https://www.peoplesrc.org/emergency-rent-and-mortgage/" target="_blank" rel="noopener noreferrer"><strong>People's Resource Center - Emergency Rent and Mortgage Assistance:</strong></a> Phone: (630) 682-5402.</li>
+                    <li><a href="https://www.catholiccharitiesjoliet.org/daybreak-center/" target="_blank" rel="noopener noreferrer"><strong>Catholic Charities, Diocese of Joliet - Daybreak Center (serves region):</strong></a> Phone: (815) 774-4663 (Joliet). Emergency housing and supportive services. Emergency Services/Homelessness Prevention (DuPage): (630) 495-8008.</li>
+                </ul>
+                 <h3 id="dupage-utilities">Utility Assistance</h3>
+                <ul>
+                    <li><strong>DuPage County Community Services LIHEAP:</strong> Phone: (630) 407-6500. Low Income Home Energy Assistance Program.</li>
+                    <li><a href="https://www.peoplesrc.org/services/financial-assistance-social-services/" target="_blank" rel="noopener noreferrer"><strong>People's Resource Center - Financial Assistance:</strong></a> May assist with utility bills. Phone: (630) 682-5402.</li>
+                </ul>
+                <h3 id="dupage-health-mental-health">Health & Mental Health</h3>
+                <ul>
+                    <li><a href="https://www.dupagehealth.org/" target="_blank" rel="noopener noreferrer"><strong>DuPage County Health Department:</strong></a> Phone: (630) 682-7400. Offers various health services including behavioral health and crisis services.</li>
+                    <li><strong>DuPage County Crisis Services:</strong> Phone: (630) 627-1700 (24/7). Walk-in support at 115 N. County Farm Road, Wheaton.</li>
+                </ul>
+                <h3 id="dupage-senior-services">Senior Services</h3>
+                <ul>
+                    <li><strong>DuPage County Community Services - Senior Services:</strong> Phone: (630) 407-6500 or (800) 942-9412. Community Care Program, caregiver support, and other resources.</li>
+                </ul>
+              </section>
+
+              <section id="lake-county" class="resource-section">
+                <h2>Lake County Resources</h2>
+                <p>Explore a variety of programs and services available for Lake County residents.</p>
+                <h3 id="lake-general-assistance">General Assistance & Information</h3>
+                <ul>
+                    <li><a href="https://211lakecounty.org/" target="_blank" rel="noopener noreferrer"><strong>211 Lake County:</strong></a> Call 211 or visit website. Free, confidential, 24/7 information and referral helpline for local resources.</li>
+                    <li><a href="https://www.lakecountyil.gov/2805/Assistance-Programs" target="_blank" rel="noopener noreferrer"><strong>Lake County Assistance Programs:</strong></a> Official county page listing various assistance programs including housing, rent, tax relief, and veterans services.</li>
+                    <li><a href="https://www.caplakecounty.org/" target="_blank" rel="noopener noreferrer"><strong>Community Action Partnership of Lake County (CAPOLC):</strong></a> Phone: (847) 249-4330 or (224) 412-8945. Provides services like LIHEAP (energy assistance), housing counseling, emergency assistance, Head Start, and more. Main office: 1200 W. Glen Flora Ave., Waukegan, IL 60085.</li>
+                </ul>
+                <h3 id="lake-housing-homelessness">Housing & Homelessness</h3>
+                <ul>
+                    <li><strong>Lake County Homelessness Programs:</strong> Information available through <a href="https://www.lakecountyil.gov/2805/Assistance-Programs" target="_blank" rel="noopener noreferrer">Lake County Assistance Programs</a>. Includes emergency shelters, transitional housing, and permanent supportive housing.</li>
+                    <li><a href="https://www.lakecountyil.gov/2019/Housing" target="_blank" rel="noopener noreferrer"><strong>Lake County Housing Authority:</strong></a> Phone: (847) 223-1170. Administers housing choice voucher program (Section 8) and public housing.</li>
+                    <li><strong>PADS Lake County:</strong> Phone: (847) 689-4357. Shelter and supportive services for individuals and families experiencing homelessness.</li>
+                </ul>
+                <h3 id="lake-food-assistance">Food Assistance</h3>
+                <ul>
+                    <li><a href="https://www.lakecountyil.gov/4158/Food-Pantries" target="_blank" rel="noopener noreferrer"><strong>Lake County Food Pantry Locator:</strong></a> Find local food pantries through the county website or 211.</li>
+                    <li><a href="https://solvehungertoday.org/" target="_blank" rel="noopener noreferrer"><strong>Northern Illinois Food Bank:</strong></a> Serves Lake County. Provides food to a network of pantries and programs.</li>
+                    <li>Refer to <a href="#illinois-food">Illinois Statewide Food & Nutrition Resources</a> for SNAP and WIC information.</li>
+                </ul>
+                 <h3 id="lake-utilities">Utility Assistance</h3>
+                <ul>
+                    <li><a href="https://www.caplakecounty.org/programs-and-services/energy-assistance-liheap/" target="_blank" rel="noopener noreferrer"><strong>Community Action Partnership of Lake County (CAPOLC) - LIHEAP:</strong></a> Phone: (847) 249-4330. Low Income Home Energy Assistance Program.</li>
+                </ul>
+                <h3 id="lake-health-mental-health">Health & Mental Health</h3>
+                <ul>
+                    <li><a href="https://www.lakecountyil.gov/health" target="_blank" rel="noopener noreferrer"><strong>Lake County Health Department & Community Health Center:</strong></a> Phone: (847) 377-8000. Provides a wide range of health services, including behavioral health, substance abuse programs, and crisis care.</li>
+                    <li><strong>Lake County Crisis Care Program (CCP):</strong> Phone: (847) 377-8088 (24/7). For mental health emergencies.</li>
+                    <li><a href="https://namilake-il.org/lake-county-resources" target="_blank" rel="noopener noreferrer"><strong>NAMI Lake County Resources:</strong></a> Lists various mental health services, crisis lines, and support.</li>
+                </ul>
+                <h3 id="lake-veterans-services">Veterans Services</h3>
+                <ul>
+                    <li><a href="https://www.lakecountyil.gov/194/Veterans-Assistance-Commission" target="_blank" rel="noopener noreferrer"><strong>Veterans Assistance Commission of Lake County (VAC):</strong></a> Phone: (847) 377-3344. Helps veterans apply for financial, medical aid, find jobs, and more.</li>
+                </ul>
+              </section>
+
+              <section id="will-county" class="resource-section">
+                <h2>Will County Resources</h2>
+                <p>Explore a variety of programs and services available for Will County residents.</p>
+                <h3 id="will-general-assistance">General Assistance & Information</h3>
+                <ul>
+                    <li><a href="https://www.willcountyillinois.com/Social-Services" target="_blank" rel="noopener noreferrer"><strong>Will County Social Services:</strong></a> Official county page with links to various social service agencies.</li>
+                    <li><a href="https://www.uwwill.org/" target="_blank" rel="noopener noreferrer"><strong>United Way of Will County:</strong></a> Phone: (815) 723-2500. Works with local volunteers to identify and solve critical issues.</li>
+                    <li><a href="https://wcccc.net/" target="_blank" rel="noopener noreferrer"><strong>Will County Center for Community Concerns (WCCCC):</strong></a> Phone: (815) 722-0722. Address: 2455 Glenwood Ave, Joliet, IL 60435. Offers LIHEAP, rental assistance, housing counseling, weatherization.</li>
+                </ul>
+                <h3 id="will-housing-shelter">Housing & Shelter</h3>
+                <ul>
+                    <li><a href="https://catholiccharitiesjoliet.org/daybreak-center/" target="_blank" rel="noopener noreferrer"><strong>Catholic Charities, Diocese of Joliet - Daybreak Center:</strong></a> Phone: (815) 774-4663. Address: 611 E Cass St, Joliet, IL 60432. Shelter for the homeless, emergency financial assistance, transitional housing.</li>
+                    <li><a href="https://morningstarmission.org/" target="_blank" rel="noopener noreferrer"><strong>MorningStar Mission:</strong></a> Phone: (815) 722-5780. Address: 350 E Washington St, Joliet, IL 60433. Shelter, meals, and recovery programs.</li>
+                    <li><a href="https://www.hud.gov/states/illinois/renting" target="_blank" rel="noopener noreferrer"><strong>HUD Rental Assistance in Illinois:</strong></a> Information on federal housing programs.</li>
+                     <li><a href="https://wcccc.net/housing-counseling/" target="_blank" rel="noopener noreferrer"><strong>WCCCC - Housing Counseling & Rental Assistance:</strong></a> Phone: (815) 722-0722.</li>
+                </ul>
+                <h3 id="will-food-assistance">Food Assistance</h3>
+                <ul>
+                    <li><strong>Catholic Charities, Diocese of Joliet:</strong> Provides food assistance. Phone: (815) 723-3405.</li>
+                    <li><strong>MorningStar Mission:</strong> Provides meals. Phone: (815) 722-5780.</li>
+                    <li><a href="https://www.jolietsalvationarmy.org/" target="_blank" rel="noopener noreferrer"><strong>The Salvation Army - Joliet Corps:</strong></a> Phone: (815) 726-4834. Food pantry and meal programs.</li>
+                    <li>Refer to <a href="#illinois-food">Illinois Statewide Food & Nutrition Resources</a> for SNAP and WIC information.</li>
+                </ul>
+                 <h3 id="will-utilities">Utility Assistance</h3>
+                <ul>
+                     <li><a href="https://wcccc.net/utility-assistance/" target="_blank" rel="noopener noreferrer"><strong>Will County Center for Community Concerns (WCCCC) - LIHEAP:</strong></a> Phone: (815) 722-0722.</li>
+                </ul>
+                <h3 id="will-health-mental-health">Health & Mental Health</h3>
+                <ul>
+                    <li><a href="https://willcountyhealth.org/" target="_blank" rel="noopener noreferrer"><strong>Will County Health Department:</strong></a> Main Phone: (815) 727-8480. Offers various public health services. Community Health Center: (815) 727-8670 for appointments.</li>
+                    <li><strong>Crisis Line of Will County:</strong> Phone: (815) 722-3344.</li>
+                    <li><a href="https://www.thecsc.org/" target="_blank" rel="noopener noreferrer"><strong>Community Service Council of Northern Will County:</strong></a> Phone: (815) 886-5000 or (630) 759-9494. Family, marital, and individual counseling.</li>
+                </ul>
+                <h3 id="will-senior-services">Senior Services</h3>
+                <ul>
+                    <li><a href="https://willcountyseniors.org/" target="_blank" rel="noopener noreferrer"><strong>Senior Services Center of Will County:</strong></a> Phone: (815) 723-9713. Information, assistance, and programs for seniors.</li>
+                </ul>
+                <h3 id="will-legal-assistance">Legal & Advocacy</h3>
+                <ul>
+                    <li><a href="https://www.gacsprograms.org/" target="_blank" rel="noopener noreferrer"><strong>Guardian Angel Community Services:</strong></a> Phone: (815) 729-0930. Services for victims of domestic violence, sexual assault, and child abuse.</li>
+                     <li><a href="https://www.casaofwillcounty.org/" target="_blank" rel="noopener noreferrer"><strong>CASA of Will County:</strong></a> Phone: (815) 730-7072. Advocates for abused and neglected children in the juvenile court system.</li>
+                </ul>
+              </section>
+
+              <section id="kane-county" class="resource-section">
+                <h2>Kane County Resources</h2>
+                <p>Explore a variety of programs and services available for Kane County residents.</p>
+                <h3 id="kane-general-assistance">General Assistance & Information</h3>
+                <ul>
+                    <li><strong>211 Kane County:</strong> Call 211 or visit their local United Way portal for referrals to community services like food pantries, mental health support, and job assistance.</li>
+                    <li><a href="https://www.kanehealth.com/Pages/Resources.aspx" target="_blank" rel="noopener noreferrer"><strong>Kane County Health Department - Resources Page:</strong></a> Comprehensive list of resources categorized by need (e.g., Food, Housing, Mental Health, Senior Services).</li>
+                    <li><a href="https://casakanecounty.org/community-resources/" target="_blank" rel="noopener noreferrer"><strong>CASA Kane County - Community Resources:</strong></a> Lists various local organizations for support services.</li>
+                </ul>
+                 <h3 id="kane-food-assistance">Food Assistance</h3>
+                <ul>
+                    <li><a href="https://www.auroraareainterfaithfoodpantry.org/" target="_blank" rel="noopener noreferrer"><strong>Aurora Area Interfaith Food Pantry:</strong></a> Phone: (630) 897-2127. Address: 1110 Jericho Rd, Aurora, IL 60506.</li>
+                    <li><a href="https://bataviafoodpantry.org/" target="_blank" rel="noopener noreferrer"><strong>Batavia Interfaith Food Pantry:</strong></a> Phone: (630) 879-3784. Address: 100 Flinn St, Batavia, IL 60510.</li>
+                    <li><a href="https://foodforgreaterelgin.org/" target="_blank" rel="noopener noreferrer"><strong>Food for Greater Elgin:</strong></a> Phone: (847) 931-9330. Address: 1553 Commerce Dr, Elgin, IL 60123.</li>
+                    <li>Refer to <a href="#illinois-food">Illinois Statewide Food & Nutrition Resources</a> for SNAP and WIC information.</li>
+                </ul>
+                <h3 id="kane-housing-shelter">Housing & Utilities Assistance</h3>
+                <ul>
+                    <li><a href="https://www.hesedhouse.org/" target="_blank" rel="noopener noreferrer"><strong>Hesed House (Aurora):</strong></a> Phone: (630) 897-2156. Comprehensive services for individuals experiencing homelessness, including shelter.</li>
+                    <li><a href="https://www.lazarushouse.net/" target="_blank" rel="noopener noreferrer"><strong>Lazarus House (St. Charles):</strong></a> Phone: (630) 587-2144. Shelter, food, and supportive services.</li>
+                    <li><a href="https://www.salvationarmyusa.org/" target="_blank" rel="noopener noreferrer"><strong>Salvation Army (St. Charles):</strong></a> Phone: (630) 377-2769. May offer emergency assistance including housing or utilities.</li>
+                    <li><a href="https://www.kanecountyihc.org/" target="_blank" rel="noopener noreferrer"><strong>Kane County Continuum of Care (CoC):</strong></a> Coordinates housing and services for homeless individuals and families. (Refer to 211 for direct service providers).</li>
+                    <li><strong>LIHEAP:</strong> Contact local community action agencies or the Kane County Health Department for LIHEAP application sites.</li>
+                </ul>
+                 <h3 id="kane-health-mental-health">Health & Mental Health</h3>
+                <ul>
+                    <li><a href="https://www.kanehealth.com/" target="_blank" rel="noopener noreferrer"><strong>Kane County Health Department:</strong></a> Main Phone: (630) 208-3801. Offers public health services, immunizations, WIC, environmental health, and referrals.</li>
+                    <li><a href="https://www.aidcares.org/" target="_blank" rel="noopener noreferrer"><strong>Association for Individual Development (AID):</strong></a> Phone: (630) 966-4000 (Aurora). Mental health, substance abuse, crisis services, developmental disabilities.</li>
+                    <li><a href="https://www.eckercenter.org/" target="_blank" rel="noopener noreferrer"><strong>Ecker Center for Behavioral Health (Elgin):</strong></a> Phone: (847) 695-0484. Crisis Line: (888) 325-3750. Services for adults with mental illness.</li>
+                    <li><a href="https://www.tricityfamilyservices.org/" target="_blank" rel="noopener noreferrer"><strong>TriCity Family Services (Geneva):</strong></a> Phone: (630) 232-1070. Counseling services for individuals, couples, and families.</li>
+                    <li><strong>988 Suicide & Crisis Lifeline:</strong> Call or text 988.</li>
+                </ul>
+                 <h3 id="kane-senior-services">Senior Services</h3>
+                <ul>
+                    <li><a href="https://www.kanecountyil.gov/seniors" target="_blank" rel="noopener noreferrer"><strong>Kane County Senior Resources:</strong></a> Information available through the county website or by calling 211.</li>
+                    <li><a href="https://www.seniorservicesassoc.org/" target="_blank" rel="noopener noreferrer"><strong>Senior Services Associates, Inc. (offices in Elgin, Aurora, Yorkville):</strong></a> Provides various programs and assistance for seniors. Elgin: (847) 741-0404. Aurora: (630) 897-4035.</li>
+                </ul>
+                <h3 id="kane-domestic-violence-crisis">Domestic Violence & Crisis Support</h3>
+                <ul>
+                    <li><a href="https://www.mutualground.org/" target="_blank" rel="noopener noreferrer"><strong>Mutual Ground (Aurora):</strong></a> Phone: (630) 897-0088 (24/7 Hotline). Services for victims of domestic and sexual violence.</li>
+                    <li><a href="https://www.crisiscenter.org/" target="_blank" rel="noopener noreferrer"><strong>Community Crisis Center (Elgin):</strong></a> Phone: (847) 697-2380 (24/7 Hotline). Services for individuals and families in crisis, including domestic violence.</li>
+                </ul>
+                 <h3 id="kane-legal-assistance">Legal Assistance</h3>
+                <ul>
+                    <li><a href="https://www.pslegal.org/" target="_blank" rel="noopener noreferrer"><strong>Prairie State Legal Services (St. Charles Office):</strong></a> Phone: (630) 232-9415. Free legal services for low-income individuals.</li>
+                    <li><a href="https://www.administerjustice.org/" target="_blank" rel="noopener noreferrer"><strong>Administer Justice (Elgin):</strong></a> Phone: (847) 844-1100. Legal aid for low-income individuals.</li>
+                </ul>
+              </section>
+          </main>
+      </div>
+  </div>
+
+  <footer>
+      <div class="footer-container">
+          <div class="footer-section">
+              <h3>About Us</h3>
+              <p>Providing a centralized directory of resources for cancer patients and their families.</p>
+          </div>
+          <div class="footer-section">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="index.html#national-resources">National Resources</a></li>
+                  <li><a href="index.html#cancer-resources">Cancer Resources</a></li>
+                  <li><a href="index.html#financial">Financial Assistance</a></li>
+                  <li><a href="index.html#mental-health">Mental Health</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h3>Contact Us</h3>
+              <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+              <div class="social-icons">
+                  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="copyright">
+          &copy; <span id="currentYear"></span> Community Resource Directory. All rights reserved.
+      </div>
+  </footer>
+
+  <div class="back-to-top" onclick="scrollToTop()">
+      <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // JavaScript for search functionality
+    function performSearch() {
+        const query = document.getElementById("siteSearch").value.toLowerCase().trim();
+        const sections = document.querySelectorAll('.resource-section');
+        let resultsHtml = '';
+        let foundItems = new Set(); // To store found item descriptions + context to avoid duplicates
+        const searchResultsDiv = document.getElementById("searchResults");
+
+        if (query === "") {
+            searchResultsDiv.innerHTML = '<p>Please enter a search term.</p>';
+            return;
+        }
+
+        sections.forEach(section => {
+            const sectionId = section.id;
+            const sectionH2 = section.querySelector('h2');
+            const sectionTitleText = sectionH2 ? sectionH2.textContent : 'Unnamed Section';
+            const sectionTitleLower = sectionTitleText.toLowerCase();
+
+            // Check section title itself
+            if (sectionId && sectionTitleLower.includes(query)) {
+                const resultKey = `section-${sectionId}`;
+                if (!foundItems.has(resultKey)) {
+                    resultsHtml += `<p><a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a></p>`;
+                    foundItems.add(resultKey);
+                }
+            }
+
+            // Check subheadings (h3, h4) with IDs
+            const subheadings = section.querySelectorAll('h3[id], h4[id]');
+            subheadings.forEach(subheading => {
+                const subheadingId = subheading.id;
+                const subheadingText = subheading.textContent;
+                if (subheadingText.toLowerCase().includes(query)) {
+                    const resultKey = `subheading-${subheadingId}`;
+                    if (!foundItems.has(resultKey)) {
+                        resultsHtml += `<p><a href="#${subheadingId}" onclick="smoothScrollTo('${subheadingId}'); return false;">${subheadingText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
+                        foundItems.add(resultKey);
+                    }
+                }
+            });
+
+            // Check list items (li) and paragraphs (p) within sections for content
+            const contentElements = section.querySelectorAll('li, .resource-section > p'); // Target direct paragraph children of resource-section too
+            contentElements.forEach(element => {
+                const elementText = element.textContent;
+                const elementTextLower = elementText.toLowerCase();
+
+                if (elementTextLower.includes(query)) {
+                    let targetId = sectionId; // Default to section ID
+                    let contextTitle = sectionTitleText;
+
+                    const parentH4 = element.closest('h4[id]');
+                    const parentH3 = element.closest('h3[id]');
+
+                    if (parentH4) {
+                        targetId = parentH4.id;
+                        contextTitle = parentH4.textContent;
+                    } else if (parentH3) {
+                        targetId = parentH3.id;
+                        contextTitle = parentH3.textContent;
+                    }
+                    
+                    const itemLink = element.querySelector('a');
+                    // Sanitize display text by removing HTML and trimming
+                    let tempDiv = document.createElement("div");
+                    tempDiv.innerHTML = element.innerHTML; // Use innerHTML to get link text correctly
+                    let cleanTextContent = (tempDiv.textContent || tempDiv.innerText || "").trim();
+                    let displayText = cleanTextContent.length > 120 ? cleanTextContent.substring(0, 117) + "..." : cleanTextContent;
+                    
+                    const resultKey = `content-${targetId}-${displayText.substring(0,30)}`; // Create a key to check for duplicates
+
+                    if (!foundItems.has(resultKey)) {
+                        if (itemLink && itemLink.href && !itemLink.href.startsWith('#')) { // External link
+                            resultsHtml += `<p><a href="${itemLink.href}" target="_blank" rel="noopener noreferrer">${displayText}</a> (in <a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${contextTitle}</a>)</p>`;
+                        } else { // Internal link or just text
+                            resultsHtml += `<p><a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${displayText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
+                        }
+                        foundItems.add(resultKey);
+                    }
+                }
+            });
+        });
+
+        if (foundItems.size > 0) {
+            searchResultsDiv.innerHTML = `<h3>Search Results for "${query}"</h3>${resultsHtml}`;
+        } else {
+            searchResultsDiv.innerHTML = `<p>No results found for "${query}".</p>`;
+        }
+    }
+
+    // Smooth scroll to element function
+    function smoothScrollTo(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            const headerOffset = document.querySelector('nav') ? document.querySelector('nav').offsetHeight + 20 : 80; // nav height + buffer
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    }
+
+    // Back to Top Button functionality
+    const backToTopButton = document.querySelector(".back-to-top");
+    if (backToTopButton) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+    }
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Set current year in footer
+    const currentYearSpan = document.getElementById("currentYear");
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Search on Enter key press
+    const searchInput = document.getElementById("siteSearch");
+    if (searchInput) {
+        searchInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                performSearch();
+            }
+        });
+    }
+
+    // Add smooth scrolling to all internal nav links (main nav and quick nav)
+    document.querySelectorAll('.main-navbar a[href^="#"], .quick-nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const hrefAttribute = this.getAttribute('href');
+            if (hrefAttribute && hrefAttribute !== "#") { //Ensure it's a valid anchor
+                // Check if the hrefAttribute starts with # and is not just #
+                if (hrefAttribute.startsWith("#") && hrefAttribute.length > 1) {
+                    const targetId = hrefAttribute.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        smoothScrollTo(targetId);
+                    }
+                }
+            }
+        });
+    });
+
+    // Add target="_blank" to all external links in resource sections for safety and UX
+    document.querySelectorAll('.resource-section a').forEach(link => {
+        if (link.href && (link.hostname !== window.location.hostname )) { // Check if it's an external link
+             if (link.protocol !== "tel:" && link.protocol !== "mailto:") { // Don't add target blank to tel or mailto
+                 link.setAttribute('target', '_blank');
+                 link.setAttribute('rel', 'noopener noreferrer');
+            }
+        }
+    });
+  </script>
+</body>
+</html>
