@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Jersey Resources - Community Resource Directory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Root variables for consistent theming */
+    :root {
+        --primary-color: #3a86ff;
+        --secondary-color: #ff006e;
+        --accent-color: #8338ec;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --success-color: #38b000;
+        --warning-color: #ffbe0b;
+        --danger-color: #dc3545;
+        --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
+        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
+    }
+
+    /* Universal Box-Sizing */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Body and Typography */
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background-color: #f8f9fa;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+
+    h1, h2, h3, h4 {
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+    /* Hero Section Styling */
+    .hero-section {
+        background: var(--blue-gradient);
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 250px;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 800px;
+        margin: 0.5rem auto 0;
+    }
+
+    /* Pointed bottom shape for the hero */
+    .hero-section::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: white;
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        z-index: 999;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-top: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        list-style: disc;
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Header and Navigation */
+    nav {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .main-navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-navbar li {
+        margin: 0;
+    }
+
+    .main-navbar a, .dropbtn {
+        display: block;
+        color: var(--dark-color);
+        text-align: center;
+        padding: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .main-navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: var(--light-color);
+        color: var(--primary-color);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 250px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .dropdown-content a {
+        padding: 0.75rem 1rem;
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Main Content Layout */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .resource-section {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .resource-section > p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Back Button Specifics */
+    .back-button {
+        display: inline-block;
+        margin: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 500;
+    }
+
+    .back-button:hover {
+        background-color: var(--accent-color);
+        transform: translateX(-5px);
+        text-decoration: none;
+    }
+
+    /* Search Box */
+    .search-container {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-container h2 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 1rem;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    .search-box input:focus {
+        border-color: var(--primary-color);
+    }
+
+    .search-box button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-box button:hover {
+        background-color: var(--accent-color);
+    }
+
+    #searchResults {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    /* Quick Navigation Menu */
+    .quick-nav {
+        position: sticky;
+        top: 70px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+    }
+
+    .quick-nav h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+
+    .quick-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .quick-nav ul li {
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 0.5rem;
+    }
+
+    .quick-nav ul li:last-child {
+        border-bottom: none;
+    }
+
+    .quick-nav ul li a {
+        display: block;
+        color: var(--dark-color);
+        transition: color 0.3s ease;
+    }
+
+    .quick-nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Two-Column Layout for Desktop */
+    @media (min-width: 992px) {
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        color: white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: #adb5bd;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icons a {
+        color: white;
+        background-color: #495057;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #495057;
+        color: #adb5bd;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+        z-index: 1000;
+    }
+
+    .back-to-top:hover {
+        background-color: var(--accent-color);
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .container {
+            padding: 1rem;
+        }
+
+        .hero-title {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main-navbar {
+            flex-direction: column;
+        }
+
+        .dropdown-content {
+            position: static;
+            width: 100%;
+            box-shadow: none;
+        }
+
+        .resource-section {
+            padding: 1.5rem;
+        }
+
+        .hero-section {
+            padding: 3rem 1rem;
+            min-height: 220px;
+        }
+
+        .hero-title {
+            font-size: 1.8rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+        }
+
+        .two-column-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .quick-nav {
+            position: static;
+            max-height: none;
+            overflow-y: visible;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .search-box {
+            flex-direction: column;
+        }
+
+        .search-box input, .search-box button {
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .search-box button {
+            margin-top: 0.5rem;
+        }
+
+        .hero-section {
+            padding: 2rem 1rem;
+            min-height: 180px;
+        }
+
+        .resource-section {
+            padding: 1rem;
+        }
+    }
+  </style>
+</head>
+<body>
+   <div id="top"></div>
+
+   <a href="index.html" class="back-button">← Back to Main Page</a>
+
+   <header>
+     <div class="hero-section">
+         <h1 class="hero-title">New Jersey Resources</h1>
+         <p class="hero-subtitle">Statewide and City-Specific Support for Cancer Patients and Seniors</p>
+     </div>
+
+     <nav>
+       <ul class="main-navbar">
+         <li><a href="#nj-resources">New Jersey Statewide</a></li>
+         <li><a href="#nj-housing">Housing</a></li>
+         <li><a href="#nj-utilities">Utilities</a></li>
+         <li><a href="#nj-food">Food & Nutrition</a></li>
+         <li><a href="#nj-dental">Dental</a></li>
+         <li><a href="#nj-senior-resources">Seniors</a></li>
+         <li><a href="#nj-transportation">Transportation</a></li>
+        
+           </div>
+         </li>
+       </ul>
+     </nav>
+   </header>
+
+   <div class="container">
+       <div class="search-container">
+           <h2>Find Resources</h2>
+           <div class="search-box">
+               <input type="text" id="siteSearch" placeholder="Search for resources...">
+               <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+           </div>
+           <div id="searchResults"></div>
+       </div>
+
+       <div class="two-column-layout">
+           <div class="quick-nav">
+               <h3>Quick Navigation</h3>
+               <ul>
+                   <li><a href="#nj-resources">New Jersey Statewide</a></li>
+                   <li><a href="#nj-housing">Housing</a></li>
+                   <li><a href="#nj-utilities">Utilities</a></li>
+                   <li><a href="#nj-food">Food & Nutrition</a></li>
+                   <li><a href="#nj-dental">Dental</a></li>
+                   <li><a href="#nj-senior-resources">Seniors</a></li>
+                   <li><a href="#nj-transportation">Transportation</a></li>
+                   
+           </div>
+
+           <div class="main-content">
+               <section id="nj-resources" class="resource-section">
+                   <h2>New Jersey Resources</h2>
+                   <p>Explore a variety of programs and services available specifically for New Jersey seniors, including statewide resources for housing, utilities, food assistance, and transportation.</p>
+                   
+                   <h3 id="nj-resource-directories">New Jersey Resource Directories</h3>
+                   <p>Comprehensive resource directories to help connect New Jersey residents with health and social services.</p>
+                   <ul>
+                       <li><a href="https://horizonneighborsinhealth.uniteus.com/"><strong>Horizon Neighbors in Health (Horizon Blue Cross Blue Shield of New Jersey):</strong></a> Connects individuals to community resources related to health, social services, and well-being.</li>
+                       <li><a href="https://communityatlanticare.resources.uniteus.io/"><strong>AtlantiCare Community Resources:</strong></a> Links patients and community members in the AtlantiCare service area to supportive services such as food, housing, and transportation.</li>
+                       <li><a href="https://communityhmhn.resources.uniteus.io/?locale=en"><strong>Hackensack Meridian Health Community Resources (Unite Us):</strong></a> A searchable platform linking individuals and families with community-based resources for food, housing, transportation, utilities assistance, and other social services in New Jersey.</li>
+                       <li><a href="https://atlantichealth.resources.uniteus.io/"><strong>Atlantic Health System Community Resources:</strong></a> Provides a searchable platform connecting individuals and families with community-based resources for food, housing, transportation, utilities assistance, and other social services in New Jersey.</li>
+                       <li><a href="https://www.nj211.org/"><strong>NJ 2-1-1:</strong></a> General statewide resource and referral line, accessible by phone (dial 211) or online.</li>
+                       <li><a href="https://www.state.nj.us/humanservices/doas/home/"><strong>NJ Aging & Disability Resource Connection:</strong></a> For older adults and people with disabilities.</li>
+                       <li><a href="https://www.njhelps.org/"><strong>NJHelps:</strong></a> Online screening tool for various state services, including food, housing, and cash assistance.</li>
+                       <li><a href="https://nj.gov/humanservices/dds/documents/RD/2024/NJ_Resources_2024_First_Edition.pdf"><strong>NJ Resources 2024 (New Jersey Department of Human Services):</strong></a> Comprehensive guide to statewide resources including health, housing, food, and disability services.</li>
+                       <li><a href="https://www.adrcnj.org/home"><strong>Aging & Disability Resource Connection of New Jersey (ADRCNJ):</strong></a> Provides information and assistance for seniors and individuals with disabilities in New Jersey. Helps connect users to resources for healthcare, housing, transportation, home-delivered meals, and caregiving services. The site also offers a directory of local Area Agencies on Aging (AAA) for county-specific services. Phone: 1-877-222-3737</li>
+                       <li><a href="https://www.usa.gov/benefit-finder"><strong>USA.gov Benefit Finder:</strong></a> Helps individuals find federal and state benefits, including healthcare assistance, food programs, housing support, and financial aid. Users can complete an online questionnaire to identify eligibility for various programs, including support for medical expenses and cancer treatments.</li>
+                       <li><a href="https://www.benefitscheckup.org"><strong>BenefitsCheckUp:</strong></a> A tool by the National Council on Aging to help older adults and individuals with disabilities find programs to assist with healthcare, medication, food, utilities, and other expenses.</li>
+                       <li><a href="https://www.communityresourcefinder.org"><strong>Community Resource Finder:</strong></a> Provides an online directory to help individuals find local community services, including healthcare providers, housing options, home care, elder law attorneys, and support resources for seniors and caregivers. Operated by AARP and the Alzheimer's Association.</li>
+                       <li><a href="https://www.cancer.org/about-us/local/new-jersey.html"><strong>American Cancer Society - New Jersey:</strong></a> Provides support for cancer patients, including transportation assistance, lodging during treatment, support groups, educational resources, and patient navigation services.</li>
+                   </ul>
+
+                   <h3>New Jersey Resource Search Portals</h3>
+                   <ul>
+                       <li><a href="https://www.nj.gov/humanservices/doas/"><strong>New Jersey Division of Aging Services:</strong></a> The state agency that administers federal and state-funded programs to help older adults live in the community with independence, dignity, and choice.</li>
+                       <li><a href="https://www.njhelps.gov/"><strong>NJHelps:</strong></a> A screening tool to check eligibility for food assistance (SNAP), cash assistance, and health insurance programs.</li>
+                       <li><a href="https://www.adrcnj.org/"><strong>Aging and Disability Resource Center (ADRC):</strong></a> A statewide network providing information and assistance for seniors, people with disabilities, and caregivers.</li>
+                       <li><a href="https://nj211.org/"><strong>NJ 2-1-1:</strong></a> A comprehensive resource for connecting people to community resources, including food, housing, utilities, and more. Call 2-1-1 for immediate assistance.</li>
+                   </ul>
+
+                   <h3 id="nj-housing">New Jersey Housing Resources</h3>
+                   <ul>
+                       <li><a href="https://www.nj.gov/dca/dhcr/offices/srap.shtml"><strong>State Rental Assistance Program (SRAP):</strong></a> Provides housing subsidies for very low-income New Jersey residents. Preferences are given to veterans, homeless individuals, elderly, and disabled people.</li>
+                       <li><a href="https://www.nj.gov/dca/"><strong>Department of Community Affairs:</strong></a> Provides administrative guidance, financial support, and technical assistance for housing needs.</li>
+                       <li><a href="https://www.moneyfit.org/low-income/new-jersey-resources/"><strong>Low-Income Housing Assistance:</strong></a> Directory of low-income assistance and resources for residents throughout New Jersey.</li>
+                       <li><a href="https://www.nj.gov/nj/community/assistance/"><strong>Housing Assistance Programs:</strong></a> State resources for various housing needs including the NJ Housing Resource Center.</li>
+                       <li><a href="https://nj.gov/dca/divisions/dhcr/offices/erap.html"><strong>Emergency Rental Assistance Programs:</strong></a> Assistance for rent and utilities to eligible residents across New Jersey.</li>
+                   </ul>
+
+                   <h3 id="nj-utilities">New Jersey Utility Assistance</h3>
+                   <ul>
+                       <li><a href="https://nj.pseg.com/saveenergyandmoney/gethelppayingyourbill/backontrack"><strong>PSE&G Payment Assistance Programs:</strong></a> Offers NJ Lifeline, a yearly utility credit for seniors over 65 and disabled adults. Income limits apply.</li>
+                       <li><a href="https://www.nj.gov/bpu/assistance/programs/"><strong>Utility Assistance Programs:</strong></a> Multiple state programs for customers struggling to pay energy bills, including LIHEAP and others.</li>
+                       <li><a href="https://www.nj.gov/humanservices/doas/"><strong>NJ Save:</strong></a> Online application to help low-income seniors save money on utilities, Medicare premiums, prescription costs, and other living expenses.</li>
+                       <li><a href="https://easternusa.salvationarmy.org/new-jersey/receive-assistance/"><strong>The Salvation Army Utility Assistance:</strong></a> Emergency utility assistance for eligible residents facing disconnection.</li>
+                   </ul>
+
+                   <h3 id="nj-food">New Jersey Food & Nutrition Resources</h3>
+                   <ul>
+                       <li><a href="https://www.nj.gov/humanservices/njsnap/"><strong>NJ SNAP:</strong></a> New Jersey's Supplemental Nutrition Assistance Program provides food assistance to low-income families through a benefits card.</li>
+                       <li><a href="https://www.nj.gov/disabilities/essential-needs/food-assistance.shtml"><strong>Food Assistance Programs:</strong></a> Multiple resources for immediate and long-term food needs, including food pantries, SNAP, and home-delivered meals.</li>
+                       <li><a href="https://cfbnj.org/find-foods-services/"><strong>Community FoodBank of New Jersey:</strong></a> Connects individuals with resources for free food and other services through partner agencies across the state.</li>
+                       <li><a href="https://foodbanksj.org/"><strong>Food Bank of South Jersey:</strong></a> Provides food assistance to residents in Burlington, Camden, Gloucester, and Salem counties.</li>
+                       <li><a href="https://fulfillnj.org/"><strong>Fulfill NJ:</strong></a> Serves Monmouth and Ocean counties with food distribution and SNAP enrollment assistance.</li>
+                       <li><a href="https://www.nj.gov/basicneeds/food/get-food-this-week.shtml"><strong>Get Food This Week:</strong></a> Information on food pantries and soup kitchens for immediate food needs across the state.</li>
+                   </ul>
+
+                   <h3 id="nj-dental">New Jersey Dental Resources</h3>
+                   <p>Explore dental care options and training-based clinics available across New Jersey.</p>
+                   <ul>
+                       <li><a href="https://www.njda.org/find-a-dentist"><strong>New Jersey Dental Association - Find a Dentist:</strong></a> Directory of dentists and clinics providing care for patients with limited financial resources.</li>
+                       <li><a href="https://findahealthcenter.hrsa.gov/"><strong>New Jersey Federally Qualified Health Centers:</strong></a> Health centers providing dental care for low-income, uninsured, and underinsured patients.</li>
+                       <li><a href="https://www.rutgers.edu/academics/study-options/dental-medicine"><strong>Rutgers School of Dental Medicine:</strong></a> Dental care provided by dental students under supervision. Phone: (973) 972-4300</li>
+                       <li><a href="https://dental.umdnj.edu/patient_care/"><strong>University of Medicine and Dentistry of New Jersey:</strong></a> Low-cost dental care through dental school clinics. Phone: (973) 972-4300</li>
+                       <li><a href="https://www.njhc.org/"><strong>New Jersey Health Connect:</strong></a> Network of community health centers providing dental services on a sliding fee scale.</li>
+                   </ul>
+
+                   <h3 id="nj-senior-resources">New Jersey Senior Resources</h3>
+                   <p>Explore senior-focused services including benefits, caregiving support, and local aging resources.</p>
+                   
+                   <h4>New Jersey Division of Aging Services</h4>
+                   <ul>
+                       <li><strong>Phone:</strong> 1-800-792-8820 (for medical counseling and general aging services)</li>
+                       <li><strong>NJ Save Hotline:</strong> 1-800-792-9745 (for PAAD, Sr. Gold, Medicare Saving Programs, Lifeline)</li>
+                       <li><strong>Website:</strong> <a href="https://www.nj.gov/humanservices/doas/">Division of Aging Services</a></li>
+                       <li><strong>Aging & Disability Resource Connection:</strong> 1-877-222-3737</li>
+                   </ul>
+                   
+                   <h4>Area Agencies on Aging (AAA)</h4>
+                   <ul>
