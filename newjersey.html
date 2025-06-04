@@ -11,14 +11,14 @@
     :root {
         --primary-color: #3a86ff;
         --secondary-color: #ff006e;
-        --accent-color: #8338ec;
+        --accent-color: #8338ec; /* Purple for H3 */
         --light-color: #f8f9fa;
         --dark-color: #212529;
         --success-color: #38b000;
         --warning-color: #ffbe0b;
         --danger-color: #dc3545;
         --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
-        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
+        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3); /* Example for hero or accents */
     }
 
     /* Universal Box-Sizing */
@@ -33,7 +33,7 @@
         font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.6;
         color: var(--dark-color);
-        background-color: #f8f9fa;
+        background-color: var(--light-color); /* Light gray background */
     }
 
     a {
@@ -55,18 +55,18 @@
 
     /* Hero Section Styling */
     .hero-section {
-        background: var(--blue-gradient);
+        background: var(--blue-gradient); /* Using the defined blue gradient */
         color: white;
         padding: 4rem 2rem;
         text-align: center;
-        position: relative;
+        position: relative; /* For the pointed bottom */
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        min-height: 250px;
-        border-radius: 0 0 10px 10px;
-        margin-bottom: 2rem;
+        min-height: 250px; /* Adjusted height */
+        border-radius: 0 0 10px 10px; /* Rounded bottom corners for the section itself */
+        margin-bottom: 2rem; /* Space before the main content */
     }
 
     .hero-title {
@@ -87,32 +87,33 @@
         content: "";
         display: block;
         position: absolute;
-        bottom: -10px;
+        bottom: -10px; /* Adjust to control overlap */
         left: 0;
         right: 0;
-        height: 20px;
-        background: white;
+        height: 20px; /* Height of the point */
+        background: var(--light-color); /* Match body background */
         clip-path: polygon(0 0, 50% 100%, 100% 0);
-        z-index: 999;
+        z-index: 999; /* Ensure it's above the hero but below content if needed */
     }
 
-    h2 {
+
+    h2 { /* Main section titles like "New Jersey Resources" */
         font-size: 2rem;
-        color: var(--primary-color);
+        color: var(--primary-color); /* Blue color for H2 */
         margin-top: 2rem;
         padding-bottom: 0.5rem;
         border-bottom: 2px solid var(--primary-color);
     }
 
-    h3 {
+    h3 { /* Sub-section titles like "New Jersey Resource Directories" */
         font-size: 1.5rem;
-        color: var(--accent-color);
+        color: var(--accent-color); /* Purple color for H3 */
         margin-top: 1.5rem;
     }
 
-    h4 {
+    h4 { /* County names or further sub-categories */
         font-size: 1.2rem;
-        color: var(--primary-color);
+        color: var(--primary-color); /* Blue for H4 to differentiate from H3 */
         margin-top: 1rem;
     }
 
@@ -122,12 +123,12 @@
 
     ul {
         margin-bottom: 1rem;
-        padding-left: 1.5rem;
-        list-style: disc;
+        padding-left: 1.5rem; /* Indent list items */
+        list-style: disc; /* Default bullet style */
     }
 
     li {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.75rem; /* Space between list items */
     }
 
     /* Header and Navigation */
@@ -137,20 +138,20 @@
         position: sticky;
         top: 0;
         z-index: 1000;
-        border-radius: 0 0 8px 8px;
+        border-radius: 0 0 8px 8px; /* Rounded bottom corners for nav */
     }
 
     .main-navbar {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+        justify-content: center; /* Center items */
         list-style: none;
         padding: 0;
         margin: 0;
     }
 
     .main-navbar li {
-        margin: 0;
+        margin: 0; /* Remove default li margin */
     }
 
     .main-navbar a, .dropbtn {
@@ -161,7 +162,7 @@
         text-decoration: none;
         font-weight: 500;
         transition: all 0.3s ease;
-        border-radius: 8px;
+        border-radius: 8px; /* Rounded corners for nav links on hover/focus */
     }
 
     .main-navbar a:hover, .dropdown:hover .dropbtn {
@@ -169,6 +170,7 @@
         color: var(--primary-color);
     }
 
+    /* Dropdown specific styles */
     .dropdown {
         position: relative;
         display: inline-block;
@@ -178,7 +180,7 @@
         background-color: transparent;
         border: none;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 1rem; /* Match link font size */
         font-family: inherit;
     }
 
@@ -186,20 +188,19 @@
         display: none;
         position: absolute;
         background-color: white;
-        min-width: 250px;
+        min-width: 250px; /* Adjust as needed */
         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         z-index: 1;
-        border-radius: 8px;
-        overflow: hidden;
+        border-radius: 8px; /* Rounded corners for dropdown */
+        overflow: hidden; /* Ensures children also have rounded corners */
     }
 
     .dropdown-content a {
         padding: 0.75rem 1rem;
         display: block;
         text-align: left;
-        border-bottom: 1px solid #f1f1f1;
+        border-bottom: 1px solid #f1f1f1; /* Separator line */
     }
-
     .dropdown-content a:last-child {
         border-bottom: none;
     }
@@ -226,16 +227,16 @@
         padding: 2rem;
         margin-bottom: 2rem;
     }
-
-    .resource-section > p {
+    .resource-section > p { /* Paragraphs directly under resource-section */
         font-size: 1.1rem;
         margin-bottom: 1.5rem;
     }
 
+
     /* Back Button Specifics */
     .back-button {
         display: inline-block;
-        margin: 1rem 2rem;
+        margin: 1rem 2rem; /* Positioned relative to its container */
         padding: 0.75rem 1.5rem;
         background-color: var(--primary-color);
         color: white;
@@ -247,7 +248,7 @@
 
     .back-button:hover {
         background-color: var(--accent-color);
-        transform: translateX(-5px);
+        transform: translateX(-5px); /* Slight move on hover */
         text-decoration: none;
     }
 
@@ -256,27 +257,24 @@
         background-color: white;
         padding: 1.5rem;
         border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         margin-bottom: 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
-    .search-container h2 {
+    .search-container h2 { /* "Find Resources" title */
         margin-top: 0;
         text-align: center;
-        border-bottom: none;
+        border-bottom: none; /* Remove border if not needed here */
         padding-bottom: 0;
     }
-
     .search-box {
         display: flex;
         width: 100%;
-        max-width: 600px;
+        max-width: 600px; /* Limit width of search box */
         margin-top: 1rem;
     }
-
     .search-box input {
         flex: 1;
         padding: 0.75rem;
@@ -286,11 +284,9 @@
         outline: none;
         transition: border-color 0.3s ease;
     }
-
     .search-box input:focus {
         border-color: var(--primary-color);
     }
-
     .search-box button {
         background-color: var(--primary-color);
         color: white;
@@ -300,57 +296,65 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
-
     .search-box button:hover {
         background-color: var(--accent-color);
     }
-
     #searchResults {
         margin-top: 1.5rem;
         width: 100%;
-        max-width: 600px;
+        max-width: 600px; /* Match search box width */
     }
+    #searchResults h4 { /* Style for "Search Results:" heading */
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+    #searchResults ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    #searchResults li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+    #searchResults li:last-child {
+        border-bottom: none;
+    }
+
 
     /* Quick Navigation Menu */
     .quick-nav {
         position: sticky;
-        top: 70px;
+        top: 70px; /* Adjust based on nav height */
         background-color: white;
         border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         padding: 1.5rem;
-        margin-bottom: 2rem;
-        max-height: calc(100vh - 100px);
+        margin-bottom: 2rem; /* For spacing on mobile when it stacks */
+        max-height: calc(100vh - 100px); /* Limit height and enable scroll */
         overflow-y: auto;
     }
-
     .quick-nav h3 {
         margin-top: 0;
         margin-bottom: 1rem;
         color: var(--primary-color);
     }
-
     .quick-nav ul {
         list-style: none;
         padding: 0;
     }
-
     .quick-nav ul li {
         margin-bottom: 0.5rem;
         border-bottom: 1px solid #f1f1f1;
         padding-bottom: 0.5rem;
     }
-
     .quick-nav ul li:last-child {
         border-bottom: none;
     }
-
     .quick-nav ul li a {
         display: block;
         color: var(--dark-color);
         transition: color 0.3s ease;
     }
-
     .quick-nav ul li a:hover {
         color: var(--primary-color);
     }
@@ -359,7 +363,7 @@
     @media (min-width: 992px) {
         .two-column-layout {
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 280px 1fr; /* Adjust sidebar width as needed */
             gap: 2rem;
         }
     }
@@ -370,9 +374,8 @@
         color: white;
         padding: 3rem 2rem;
         margin-top: 3rem;
-        border-radius: 10px 10px 0 0;
+        border-radius: 10px 10px 0 0; /* Rounded top corners for footer */
     }
-
     .footer-container {
         max-width: 1200px;
         margin: 0 auto;
@@ -380,42 +383,35 @@
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 2rem;
     }
-
     .footer-section h3 {
-        color: white;
+        color: white; /* Override default H3 color */
         margin-top: 0;
         margin-bottom: 1.5rem;
         font-size: 1.2rem;
     }
-
     .footer-section ul {
         list-style: none;
         padding: 0;
     }
-
     .footer-section ul li {
         margin-bottom: 0.5rem;
     }
-
     .footer-section a {
-        color: #adb5bd;
+        color: #adb5bd; /* Lighter text for footer links */
         transition: color 0.3s ease;
     }
-
     .footer-section a:hover {
         color: white;
         text-decoration: none;
     }
-
     .social-icons {
         display: flex;
         gap: 1rem;
         margin-top: 1rem;
     }
-
     .social-icons a {
         color: white;
-        background-color: #495057;
+        background-color: #495057; /* Darker gray for social icons */
         width: 40px;
         height: 40px;
         border-radius: 50%;
@@ -425,16 +421,14 @@
         font-size: 1.5rem;
         transition: background-color 0.3s ease;
     }
-
     .social-icons a:hover {
         background-color: var(--primary-color);
     }
-
     .copyright {
         text-align: center;
         margin-top: 3rem;
         padding-top: 1.5rem;
-        border-top: 1px solid #495057;
+        border-top: 1px solid #495057; /* Separator line */
         color: #adb5bd;
     }
 
@@ -453,105 +447,87 @@
         justify-content: center;
         font-size: 1.5rem;
         cursor: pointer;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         opacity: 0;
         transition: opacity 0.3s ease, background-color 0.3s ease;
         z-index: 1000;
     }
-
     .back-to-top:hover {
         background-color: var(--accent-color);
     }
-
     .back-to-top.show {
         opacity: 1;
     }
 
     /* Responsive Design */
-    @media (max-width: 992px) {
+    @media (max-width: 992px) { /* Tablet and below */
         .container {
             padding: 1rem;
         }
-
         .hero-title {
             font-size: 2rem;
         }
-
         h2 {
             font-size: 1.8rem;
         }
-
         h3 {
             font-size: 1.3rem;
         }
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 768px) { /* Mobile */
         .main-navbar {
-            flex-direction: column;
+            flex-direction: column; /* Stack nav items */
         }
-
         .dropdown-content {
-            position: static;
+            position: static; /* Make dropdown content flow naturally */
             width: 100%;
             box-shadow: none;
         }
-
         .resource-section {
             padding: 1.5rem;
         }
-
         .hero-section {
             padding: 3rem 1rem;
             min-height: 220px;
         }
-
         .hero-title {
             font-size: 1.8rem;
         }
-
         .hero-subtitle {
             font-size: 1.05rem;
         }
-
         h2 {
             font-size: 1.5rem;
         }
-
         h3 {
             font-size: 1.2rem;
         }
-
         .two-column-layout {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr; /* Stack columns */
         }
-
         .quick-nav {
-            position: static;
+            position: static; /* Remove sticky positioning */
             max-height: none;
             overflow-y: visible;
         }
     }
 
-    @media (max-width: 576px) {
+    @media (max-width: 576px) { /* Smaller Mobile */
         .search-box {
             flex-direction: column;
         }
-
         .search-box input, .search-box button {
             width: 100%;
-            border-radius: 4px;
+            border-radius: 4px; /* Consistent radius for stacked items */
         }
-
         .search-box button {
             margin-top: 0.5rem;
         }
-
         .hero-section {
             padding: 2rem 1rem;
             min-height: 180px;
         }
-
         .resource-section {
             padding: 1rem;
         }
@@ -559,134 +535,643 @@
   </style>
 </head>
 <body>
-   <div id="top"></div>
+    <!-- Anchor for Back to Top -->
+    <div id="top"></div>
 
-   <a href="index.html" class="back-button">← Back to Main Page</a>
+    <!-- Back Button to Main Page -->
+    <a href="index.html" class="back-button" aria-label="Back to Main Page">← Back to Main Page</a>
 
-   <header>
-     <div class="hero-section">
-         <h1 class="hero-title">New Jersey Resources</h1>
-         <p class="hero-subtitle">Statewide and City-Specific Support for Cancer Patients and Seniors</p>
-     </div>
+    <header>
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">New Jersey Resources</h1>
+            <p class="hero-subtitle">Statewide and City-Specific Support for Cancer Patients and Seniors</p>
+        </div>
 
-     <nav>
-       <ul class="main-navbar">
-         <li><a href="#nj-resources">New Jersey Statewide</a></li>
-         <li><a href="#nj-housing">Housing</a></li>
-         <li><a href="#nj-utilities">Utilities</a></li>
-         <li><a href="#nj-food">Food & Nutrition</a></li>
-         <li><a href="#nj-dental">Dental</a></li>
-         <li><a href="#nj-senior-resources">Seniors</a></li>
-         <li><a href="#nj-transportation">Transportation</a></li>
-        
-           </div>
-         </li>
-       </ul>
-     </nav>
-   </header>
+        <!-- Main Navigation Bar -->
+        <nav>
+            <ul class="main-navbar">
+                <li><a href="#nj-resources">NJ Statewide</a></li>
+                <li><a href="#nj-housing">Housing</a></li>
+                <li><a href="#nj-utilities">Utilities</a></li>
+                <li><a href="#nj-food">Food & Nutrition</a></li>
+                <li><a href="#nj-dental">Dental</a></li>
+                <li><a href="#nj-senior-resources">Seniors</a></li>
+                <li><a href="#nj-transportation">Transportation</a></li>
+                <li><a href="#nj-medication">Medication</a></li>
+                <li><a href="#nj-insurance">Insurance</a></li>
+                <li><a href="#nj-cancer-support">Cancer Support</a></li>
+            </ul>
+        </nav>
+    </header>
 
-   <div class="container">
-       <div class="search-container">
-           <h2>Find Resources</h2>
-           <div class="search-box">
-               <input type="text" id="siteSearch" placeholder="Search for resources...">
-               <button onclick="performSearch()"><i class="fas fa-search"></i></button>
-           </div>
-           <div id="searchResults"></div>
-       </div>
+    <div class="container">
+        <!-- Search Container -->
+        <div class="search-container">
+            <h2>Find Resources</h2>
+            <div class="search-box">
+                <input type="text" id="siteSearch" placeholder="Search for resources..." aria-label="Search for resources">
+                <button onclick="performSearch()" aria-label="Perform Search"><i class="fas fa-search"></i></button>
+            </div>
+            <div id="searchResults"></div>
+        </div>
 
-       <div class="two-column-layout">
-           <div class="quick-nav">
-               <h3>Quick Navigation</h3>
-               <ul>
-                   <li><a href="#nj-resources">New Jersey Statewide</a></li>
-                   <li><a href="#nj-housing">Housing</a></li>
-                   <li><a href="#nj-utilities">Utilities</a></li>
-                   <li><a href="#nj-food">Food & Nutrition</a></li>
-                   <li><a href="#nj-dental">Dental</a></li>
-                   <li><a href="#nj-senior-resources">Seniors</a></li>
-                   <li><a href="#nj-transportation">Transportation</a></li>
-                   
-           </div>
+        <!-- Main Content Area with Two Columns -->
+        <div class="two-column-layout">
+            <!-- Quick Navigation Sidebar -->
+            <aside class="quick-nav" aria-labelledby="quick-nav-heading">
+                <h3 id="quick-nav-heading">Quick Navigation</h3>
+                <ul>
+                    <li><a href="#nj-resources">New Jersey Statewide</a></li>
+                    <li><a href="#nj-housing">Housing</a></li>
+                    <li><a href="#nj-utilities">Utilities</a></li>
+                    <li><a href="#nj-food">Food & Nutrition</a></li>
+                    <li><a href="#nj-dental">Dental</a></li>
+                    <li><a href="#nj-senior-resources">Seniors</a></li>
+                    <li><a href="#nj-transportation">Transportation</a></li>
+                    <li><a href="#nj-medication">Medication Assistance</a></li>
+                    <li><a href="#nj-insurance">Insurance</a></li>
+                    <li><a href="#nj-cancer-support">Cancer Support</a></li>
+                </ul>
+            </aside>
 
-           <div class="main-content">
-               <section id="nj-resources" class="resource-section">
-                   <h2>New Jersey Resources</h2>
-                   <p>Explore a variety of programs and services available specifically for New Jersey seniors, including statewide resources for housing, utilities, food assistance, and transportation.</p>
-                   
-                   <h3 id="nj-resource-directories">New Jersey Resource Directories</h3>
-                   <p>Comprehensive resource directories to help connect New Jersey residents with health and social services.</p>
-                   <ul>
-                       <li><a href="https://horizonneighborsinhealth.uniteus.com/"><strong>Horizon Neighbors in Health (Horizon Blue Cross Blue Shield of New Jersey):</strong></a> Connects individuals to community resources related to health, social services, and well-being.</li>
-                       <li><a href="https://communityatlanticare.resources.uniteus.io/"><strong>AtlantiCare Community Resources:</strong></a> Links patients and community members in the AtlantiCare service area to supportive services such as food, housing, and transportation.</li>
-                       <li><a href="https://communityhmhn.resources.uniteus.io/?locale=en"><strong>Hackensack Meridian Health Community Resources (Unite Us):</strong></a> A searchable platform linking individuals and families with community-based resources for food, housing, transportation, utilities assistance, and other social services in New Jersey.</li>
-                       <li><a href="https://atlantichealth.resources.uniteus.io/"><strong>Atlantic Health System Community Resources:</strong></a> Provides a searchable platform connecting individuals and families with community-based resources for food, housing, transportation, utilities assistance, and other social services in New Jersey.</li>
-                       <li><a href="https://www.nj211.org/"><strong>NJ 2-1-1:</strong></a> General statewide resource and referral line, accessible by phone (dial 211) or online.</li>
-                       <li><a href="https://www.state.nj.us/humanservices/doas/home/"><strong>NJ Aging & Disability Resource Connection:</strong></a> For older adults and people with disabilities.</li>
-                       <li><a href="https://www.njhelps.org/"><strong>NJHelps:</strong></a> Online screening tool for various state services, including food, housing, and cash assistance.</li>
-                       <li><a href="https://nj.gov/humanservices/dds/documents/RD/2024/NJ_Resources_2024_First_Edition.pdf"><strong>NJ Resources 2024 (New Jersey Department of Human Services):</strong></a> Comprehensive guide to statewide resources including health, housing, food, and disability services.</li>
-                       <li><a href="https://www.adrcnj.org/home"><strong>Aging & Disability Resource Connection of New Jersey (ADRCNJ):</strong></a> Provides information and assistance for seniors and individuals with disabilities in New Jersey. Helps connect users to resources for healthcare, housing, transportation, home-delivered meals, and caregiving services. The site also offers a directory of local Area Agencies on Aging (AAA) for county-specific services. Phone: 1-877-222-3737</li>
-                       <li><a href="https://www.usa.gov/benefit-finder"><strong>USA.gov Benefit Finder:</strong></a> Helps individuals find federal and state benefits, including healthcare assistance, food programs, housing support, and financial aid. Users can complete an online questionnaire to identify eligibility for various programs, including support for medical expenses and cancer treatments.</li>
-                       <li><a href="https://www.benefitscheckup.org"><strong>BenefitsCheckUp:</strong></a> A tool by the National Council on Aging to help older adults and individuals with disabilities find programs to assist with healthcare, medication, food, utilities, and other expenses.</li>
-                       <li><a href="https://www.communityresourcefinder.org"><strong>Community Resource Finder:</strong></a> Provides an online directory to help individuals find local community services, including healthcare providers, housing options, home care, elder law attorneys, and support resources for seniors and caregivers. Operated by AARP and the Alzheimer's Association.</li>
-                       <li><a href="https://www.cancer.org/about-us/local/new-jersey.html"><strong>American Cancer Society - New Jersey:</strong></a> Provides support for cancer patients, including transportation assistance, lodging during treatment, support groups, educational resources, and patient navigation services.</li>
-                   </ul>
+            <!-- Resource Sections -->
+            <main class="main-content">
+                <section id="nj-resources" class="resource-section" aria-labelledby="nj-resources-heading">
+                    <h2 id="nj-resources-heading">New Jersey Resources</h2>
+                    <p>Explore a variety of programs and services available specifically for New Jersey seniors, including statewide resources for housing, utilities, food assistance, and transportation.</p>
+                    
+                    <h3 id="nj-resource-directories">New Jersey Resource Directories</h3>
+                    <p>Comprehensive resource directories to help connect New Jersey residents with health and social services.</p>
+                    <ul>
+                        <li><a href="https://horizonneighborsinhealth.uniteus.com/"><strong>Horizon Neighbors in Health (Horizon Blue Cross Blue Shield of New Jersey):</strong></a> Connects individuals to community resources related to health, social services, and well-being.</li>
+                        <li><a href="https://communityatlanticare.resources.uniteus.io/"><strong>AtlantiCare Community Resources:</strong></a> Links patients and community members in the AtlantiCare service area to supportive services such as food, housing, and transportation.</li>
+                        <li><a href="https://communityhmhn.resources.uniteus.io/?locale=en"><strong>Hackensack Meridian Health Community Resources (Unite Us):</strong></a> A searchable platform linking individuals and families with community-based resources for food, housing, transportation, utilities assistance, and other social services in New Jersey.</li>
+                        <li><a href="https://atlantichealth.resources.uniteus.io/"><strong>Atlantic Health System Community Resources:</strong></a> Provides a searchable platform connecting individuals and families with community-based resources for food, housing, transportation, utilities assistance, and other social services in New Jersey.</li>
+                        <li><a href="https://www.nj211.org/"><strong>NJ 2-1-1:</strong></a> General statewide resource and referral line, accessible by phone (dial 211) or online.</li>
+                        <li><a href="https://www.nj.gov/humanservices/doas/home/"><strong>NJ Aging & Disability Resource Connection (ADRC):</strong></a> For older adults and people with disabilities. (Also listed below under Senior Resources and Search Portals)</li>
+                        <li><a href="https://www.njhelps.org/"><strong>NJHelps:</strong></a> Online screening tool for various state services, including food, housing, and cash assistance. (Also listed below under Search Portals and Food Assistance)</li>
+                        <li><a href="https://nj.gov/humanservices/dds/documents/RD/2024/NJ_Resources_2024_First_Edition.pdf"><strong>NJ Resources 2024 (New Jersey Department of Human Services):</strong></a> Comprehensive guide to statewide resources including health, housing, food, and disability services.</li>
+                        <li><a href="https://www.usa.gov/benefit-finder"><strong>USA.gov Benefit Finder:</strong></a> Helps individuals find federal and state benefits, including healthcare assistance, food programs, housing support, and financial aid.</li>
+                        <li><a href="https://www.benefitscheckup.org"><strong>BenefitsCheckUp:</strong></a> A tool by the National Council on Aging to help older adults and individuals with disabilities find programs to assist with healthcare, medication, food, utilities, and other expenses.</li>
+                        <li><a href="https://www.communityresourcefinder.org"><strong>Community Resource Finder:</strong></a> Provides an online directory to help individuals find local community services. Operated by AARP and the Alzheimer's Association.</li>
+                        <li><a href="https://www.cancer.org/about-us/local/new-jersey.html"><strong>American Cancer Society - New Jersey:</strong></a> Provides support for cancer patients, including transportation assistance, lodging during treatment, support groups, and educational resources.</li>
+                    </ul>
 
-                   <h3>New Jersey Resource Search Portals</h3>
-                   <ul>
-                       <li><a href="https://www.nj.gov/humanservices/doas/"><strong>New Jersey Division of Aging Services:</strong></a> The state agency that administers federal and state-funded programs to help older adults live in the community with independence, dignity, and choice.</li>
-                       <li><a href="https://www.njhelps.gov/"><strong>NJHelps:</strong></a> A screening tool to check eligibility for food assistance (SNAP), cash assistance, and health insurance programs.</li>
-                       <li><a href="https://www.adrcnj.org/"><strong>Aging and Disability Resource Center (ADRC):</strong></a> A statewide network providing information and assistance for seniors, people with disabilities, and caregivers.</li>
-                       <li><a href="https://nj211.org/"><strong>NJ 2-1-1:</strong></a> A comprehensive resource for connecting people to community resources, including food, housing, utilities, and more. Call 2-1-1 for immediate assistance.</li>
-                   </ul>
+                    <h3>New Jersey Resource Search Portals</h3>
+                    <ul>
+                        <li><a href="https://www.nj.gov/humanservices/doas/"><strong>New Jersey Division of Aging Services:</strong></a> The state agency that administers federal and state-funded programs to help older adults. (Also listed under Senior Resources)</li>
+                        <li><a href="https://www.njhelps.gov/"><strong>NJHelps:</strong></a> A screening tool to check eligibility for food assistance (SNAP), cash assistance, and health insurance programs.</li>
+                        <li><a href="https://www.adrcnj.org/"><strong>Aging and Disability Resource Center (ADRC):</strong></a> A statewide network providing information and assistance for seniors, people with disabilities, and caregivers.</li>
+                        <li><a href="https://nj211.org/"><strong>NJ 2-1-1:</strong></a> A comprehensive resource for connecting people to community resources. Call 2-1-1 for immediate assistance.</li>
+                    </ul>
+                </section>
 
-                   <h3 id="nj-housing">New Jersey Housing Resources</h3>
-                   <ul>
-                       <li><a href="https://www.nj.gov/dca/dhcr/offices/srap.shtml"><strong>State Rental Assistance Program (SRAP):</strong></a> Provides housing subsidies for very low-income New Jersey residents. Preferences are given to veterans, homeless individuals, elderly, and disabled people.</li>
-                       <li><a href="https://www.nj.gov/dca/"><strong>Department of Community Affairs:</strong></a> Provides administrative guidance, financial support, and technical assistance for housing needs.</li>
-                       <li><a href="https://www.moneyfit.org/low-income/new-jersey-resources/"><strong>Low-Income Housing Assistance:</strong></a> Directory of low-income assistance and resources for residents throughout New Jersey.</li>
-                       <li><a href="https://www.nj.gov/nj/community/assistance/"><strong>Housing Assistance Programs:</strong></a> State resources for various housing needs including the NJ Housing Resource Center.</li>
-                       <li><a href="https://nj.gov/dca/divisions/dhcr/offices/erap.html"><strong>Emergency Rental Assistance Programs:</strong></a> Assistance for rent and utilities to eligible residents across New Jersey.</li>
-                   </ul>
+                <section id="nj-housing" class="resource-section" aria-labelledby="nj-housing-heading">
+                    <h2 id="nj-housing-heading">New Jersey Housing Resources</h2>
+                    <ul>
+                        <li><a href="https://www.nj.gov/dca/dhcr/offices/srap.shtml"><strong>State Rental Assistance Program (SRAP):</strong></a> Provides housing subsidies for very low-income New Jersey residents. Preferences are given to veterans, homeless individuals, elderly, and disabled people.</li>
+                        <li><a href="https://www.nj.gov/dca/"><strong>Department of Community Affairs:</strong></a> Provides administrative guidance, financial support, and technical assistance for housing needs.</li>
+                        <li><a href="https://www.moneyfit.org/low-income/new-jersey-resources/"><strong>Low-Income Housing Assistance (MoneyFit):</strong></a> Directory of low-income assistance and resources for residents throughout New Jersey.</li>
+                        <li><a href="https://www.nj.gov/nj/community/assistance/"><strong>Housing Assistance Programs (State of NJ):</strong></a> State resources for various housing needs including the NJ Housing Resource Center.</li>
+                        <li><a href="https://nj.gov/dca/divisions/dhcr/offices/erap.html"><strong>Emergency Rental Assistance Programs (ERAP):</strong></a> Assistance for rent and utilities to eligible residents across New Jersey.</li>
+                    </ul>
+                </section>
 
-                   <h3 id="nj-utilities">New Jersey Utility Assistance</h3>
-                   <ul>
-                       <li><a href="https://nj.pseg.com/saveenergyandmoney/gethelppayingyourbill/backontrack"><strong>PSE&G Payment Assistance Programs:</strong></a> Offers NJ Lifeline, a yearly utility credit for seniors over 65 and disabled adults. Income limits apply.</li>
-                       <li><a href="https://www.nj.gov/bpu/assistance/programs/"><strong>Utility Assistance Programs:</strong></a> Multiple state programs for customers struggling to pay energy bills, including LIHEAP and others.</li>
-                       <li><a href="https://www.nj.gov/humanservices/doas/"><strong>NJ Save:</strong></a> Online application to help low-income seniors save money on utilities, Medicare premiums, prescription costs, and other living expenses.</li>
-                       <li><a href="https://easternusa.salvationarmy.org/new-jersey/receive-assistance/"><strong>The Salvation Army Utility Assistance:</strong></a> Emergency utility assistance for eligible residents facing disconnection.</li>
-                   </ul>
+                <section id="nj-utilities" class="resource-section" aria-labelledby="nj-utilities-heading">
+                    <h2 id="nj-utilities-heading">New Jersey Utility Assistance</h2>
+                    <ul>
+                        <li><a href="https://nj.pseg.com/saveenergyandmoney/gethelppayingyourbill/backontrack"><strong>PSE&G Payment Assistance Programs:</strong></a> Offers various programs including NJ Lifeline.</li>
+                        <li><a href="https://www.state.nj.us/humanservices/doas/services/lifeline/"><strong>Lifeline Utility Assistance Program:</strong></a> Offers a $225 annual credit for electric and gas utilities for eligible low-income seniors and individuals with disabilities. Phone: 1-800-792-9745.</li>
+                        <li><a href="https://www.nj.gov/bpu/assistance/programs/"><strong>Utility Assistance Programs (NJ BPU):</strong></a> Multiple state programs for customers struggling to pay energy bills, including LIHEAP and others.</li>
+                        <li><a href="https://www.nj.gov/humanservices/doas/services/I-p/njsave/"><strong>NJ Save:</strong></a> Online application to help low-income seniors save money on utilities, Medicare premiums, prescription costs, and other living expenses. (The main NJSave application portal)</li>
+                        <li><a href="https://easternusa.salvationarmy.org/new-jersey/receive-assistance/"><strong>The Salvation Army Utility Assistance:</strong></a> Emergency utility assistance for eligible residents facing disconnection.</li>
+                    </ul>
+                </section>
 
-                   <h3 id="nj-food">New Jersey Food & Nutrition Resources</h3>
-                   <ul>
-                       <li><a href="https://www.nj.gov/humanservices/njsnap/"><strong>NJ SNAP:</strong></a> New Jersey's Supplemental Nutrition Assistance Program provides food assistance to low-income families through a benefits card.</li>
-                       <li><a href="https://www.nj.gov/disabilities/essential-needs/food-assistance.shtml"><strong>Food Assistance Programs:</strong></a> Multiple resources for immediate and long-term food needs, including food pantries, SNAP, and home-delivered meals.</li>
-                       <li><a href="https://cfbnj.org/find-foods-services/"><strong>Community FoodBank of New Jersey:</strong></a> Connects individuals with resources for free food and other services through partner agencies across the state.</li>
-                       <li><a href="https://foodbanksj.org/"><strong>Food Bank of South Jersey:</strong></a> Provides food assistance to residents in Burlington, Camden, Gloucester, and Salem counties.</li>
-                       <li><a href="https://fulfillnj.org/"><strong>Fulfill NJ:</strong></a> Serves Monmouth and Ocean counties with food distribution and SNAP enrollment assistance.</li>
-                       <li><a href="https://www.nj.gov/basicneeds/food/get-food-this-week.shtml"><strong>Get Food This Week:</strong></a> Information on food pantries and soup kitchens for immediate food needs across the state.</li>
-                   </ul>
+                <section id="nj-food" class="resource-section" aria-labelledby="nj-food-heading">
+                    <h2 id="nj-food-heading">New Jersey Food & Nutrition Resources</h2>
+                    <p>This section provides links to general food assistance programs, major food banks, county-specific resources, and meal delivery services.</p>
+                    
+                    <h3 id="nj-food-general">General Food Assistance</h3>
+                    <ul>
+                        <li><a href="https://www.nj.gov/humanservices/njsnap/"><strong>NJ SNAP:</strong></a> New Jersey's Supplemental Nutrition Assistance Program provides food assistance to low-income families through a benefits card.</li>
+                        <li><a href="https://www.nj.gov/disabilities/essential-needs/food-assistance.shtml"><strong>Food Assistance Programs (NJ Dept. of Human Services):</strong></a> Multiple resources for immediate and long-term food needs, including food pantries, SNAP, and home-delivered meals.</li>
+                        <li><a href="https://www.njhelps.org/"><strong>NJHelps:</strong></a> A New Jersey-specific tool that allows residents to screen for eligibility and apply for programs such as SNAP, NJ FamilyCare/Medicaid, cash assistance, and more.</li>
+                        <li><a href="https://www.fns.usda.gov/national-hunger-hotline"><strong>USDA National Hunger Hotline:</strong></a> Provides information on food resources such as meal sites, food banks, and other social services available nationwide. Phone: 1-866-3-HUNGRY.</li>
+                        <li><a href="https://whyhunger.org/find-food/"><strong>WhyHunger Hotline:</strong></a> Connects individuals to food pantries, soup kitchens, summer meal sites, and government nutrition programs. Phone: 1-800-5-HUNGRY.</li>
+                        <li><a href="https://www.feedingamerica.org/find-your-local-foodbank"><strong>Feeding America:</strong></a> Nationwide network of food banks.</li>
+                        <li><a href="https://www.findhelp.org/"><strong>findhelp.org:</strong></a> Interactive platform to search and connect to support, including food pantries.</li>
+                        <li><a href="https://www.usa.gov/emergency-food-assistance"><strong>USAGov - Emergency Food Assistance:</strong></a> Information on immediate food assistance.</li>
+                        <li><a href="https://www.nutrition.gov/topics/food-security-and-access/food-assistance-programs"><strong>Nutrition.gov - Food Assistance Programs:</strong></a> Information on USDA commodity distribution programs, nutrition programs for seniors, and SNAP.</li>
+                        <li><a href="https://www.ams.usda.gov/services/local-regional/food-directories-listings"><strong>USDA Local Food Directories:</strong></a> Search for local food businesses, including farmers' markets.</li>
+                        <li><a href="https://www.nj.gov/basicneeds/food/get-food-this-week.shtml"><strong>Get Food This Week (State of NJ):</strong></a> Information on food pantries and soup kitchens for immediate food needs across the state.</li>
+                    </ul>
 
-                   <h3 id="nj-dental">New Jersey Dental Resources</h3>
-                   <p>Explore dental care options and training-based clinics available across New Jersey.</p>
-                   <ul>
-                       <li><a href="https://www.njda.org/find-a-dentist"><strong>New Jersey Dental Association - Find a Dentist:</strong></a> Directory of dentists and clinics providing care for patients with limited financial resources.</li>
-                       <li><a href="https://findahealthcenter.hrsa.gov/"><strong>New Jersey Federally Qualified Health Centers:</strong></a> Health centers providing dental care for low-income, uninsured, and underinsured patients.</li>
-                       <li><a href="https://www.rutgers.edu/academics/study-options/dental-medicine"><strong>Rutgers School of Dental Medicine:</strong></a> Dental care provided by dental students under supervision. Phone: (973) 972-4300</li>
-                       <li><a href="https://dental.umdnj.edu/patient_care/"><strong>University of Medicine and Dentistry of New Jersey:</strong></a> Low-cost dental care through dental school clinics. Phone: (973) 972-4300</li>
-                       <li><a href="https://www.njhc.org/"><strong>New Jersey Health Connect:</strong></a> Network of community health centers providing dental services on a sliding fee scale.</li>
-                   </ul>
+                    <h3 id="nj-food-banks">Larger Food Banks</h3>
+                    <ul>
+                        <li><a href="https://cfbnj.org/"><strong>Community FoodBank of New Jersey (CFBNJ):</strong></a> Connects individuals with resources for free food and other services through partner agencies across the state. Locations in Hillside and Egg Harbor Township. Phone: 908-355-3663.</li>
+                        <li><a href="https://foodbanksj.org/"><strong>Food Bank of South Jersey:</strong></a> Provides food assistance to residents in Burlington, Camden, Gloucester, and Salem counties. Phone: 856-662-4884.</li>
+                        <li><a href="https://fulfillnj.org/"><strong>Fulfill (Monmouth and Ocean Counties):</strong></a> Serves Monmouth and Ocean counties with food distribution and SNAP enrollment assistance. Phone: 732-918-2600.</li>
+                        <li><a href="https://mercerstreetfriends.org"><strong>Mercer Street Friends Food Bank (Mercer County):</strong></a> Regional food bank providing food and nutrition education. Phone: 609-406-0503.</li>
+                        <li><a href="https://norwescap.org"><strong>NORWESCAP Food Bank (Hunterdon, Sussex, Warren Counties):</strong></a> Distributes food to families in Northwest New Jersey. Phone: 908-454-4322.</li>
+                    </ul>
 
-                   <h3 id="nj-senior-resources">New Jersey Senior Resources</h3>
-                   <p>Explore senior-focused services including benefits, caregiving support, and local aging resources.</p>
-                   
-                   <h4>New Jersey Division of Aging Services</h4>
-                   <ul>
-                       <li><strong>Phone:</strong> 1-800-792-8820 (for medical counseling and general aging services)</li>
-                       <li><strong>NJ Save Hotline:</strong> 1-800-792-9745 (for PAAD, Sr. Gold, Medicare Saving Programs, Lifeline)</li>
-                       <li><strong>Website:</strong> <a href="https://www.nj.gov/humanservices/doas/">Division of Aging Services</a></li>
-                       <li><strong>Aging & Disability Resource Connection:</strong> 1-877-222-3737</li>
-                   </ul>
-                   
-                   <h4>Area Agencies on Aging (AAA)</h4>
-                   <ul>
+                    <h3 id="nj-food-county">Food Resources by County (including Meals on Wheels)</h3>
+                    
+                    <h4 id="atlantic-county-food">Atlantic County</h4>
+                    <ul>
+                        <li><a href="https://jfsatlantic.org"><strong>Jewish Family Services of Atlantic County:</strong></a> Home-delivered meals and assistance. Phone: 609-822-1108 ext. 269.</li>
+                        <li><a href="https://www.aclink.org/intergenerational-services/"><strong>Meals on Wheels - Atlantic County:</strong></a> Nutritious meals for homebound seniors and disabled. Phone: 609-645-5965.</li>
+                    </ul>
+
+                    <h4 id="bergen-county-food">Bergen County</h4>
+                    <ul>
+                        <li><a href="https://www.co.bergen.nj.us/food-task-force"><strong>Bergen County Food Security Task Force:</strong></a> Access to food pantries and meal delivery. Phone: 201-336-7006.</li>
+                        <li><a href="https://mealsonwheelsnorthjersey.org/"><strong>Meals on Wheels North Jersey:</strong></a> Delivers meals. Phone: 201-358-0050.</li>
+                        <li><a href="https://www.jfcsnnj.org/kosher-meals-on-wheels/"><strong>Kosher Meals on Wheels (JFCSNNJ):</strong></a> Kosher meals. Phone: 201-837-9090.</li>
+                    </ul>
+
+                    <h4 id="burlington-county-food">Burlington County</h4>
+                    <ul>
+                        <li><a href="https://www.catholiccharitiestrenton.org/services/food-services/"><strong>Catholic Charities - Burlington County:</strong></a> Food pantry and meal programs. Phone: 609-394-8847.</li>
+                        <li><a href="https://www.mealsonwheelsamerica.org/find-meals"><strong>Meals on Wheels - Burlington County (via MOW America):</strong></a> General locator. Local contact: 609-702-7053.</li>
+                    </ul>
+
+                    <h4 id="camden-county-food">Camden County</h4>
+                    <ul>
+                        <li><a href="https://www.camdencounty.com/service/senior-disabled-services/home-delivered-meals/"><strong>Camden County Home-Delivered Meals:</strong></a> Provided by County Council on Economic Opportunity. Phone: 856-968-0210 or 856-374-6325 for MOW.</li>
+                    </ul>
+
+                    <h4 id="cape-may-county-food">Cape May County</h4>
+                    <ul>
+                        <li><a href="https://capemaycountynj.gov/600/Social-Services"><strong>Cape May County Social Services (Meals on Wheels):</strong></a> Meal delivery and food bank access. Phone: 609-886-2784.</li>
+                    </ul>
+
+                    <h4 id="cumberland-county-food">Cumberland County</h4>
+                    <ul>
+                        <li><a href="https://www.salvationarmyusa.org/usn/"><strong>The Salvation Army (Cumberland County):</strong></a> Food pantry and meals. Local contact: 856-696-5050.</li>
+                        <li><a href="https://www.mealsonwheelsamerica.org/find-meals"><strong>Meals on Wheels - Cumberland County (via MOW America):</strong></a> General locator. Local contact: 856-451-6800.</li>
+                    </ul>
+
+                    <h4 id="essex-county-food">Essex County</h4>
+                    <ul>
+                        <li><a href="https://easternusa.salvationarmy.org/new-jersey/"><strong>The Salvation Army Newark Corps:</strong></a> Emergency food and meals. Phone: 973-623-5959.</li>
+                        <li><a href="https://www.mealsonwheelsamerica.org/find-meals"><strong>Meals on Wheels - Essex County (via MOW America):</strong></a> General locator. Local contact: 973-744-8103.</li>
+                    </ul>
+
+                    <h4 id="gloucester-county-food">Gloucester County</h4>
+                    <ul>
+                        <li><a href="https://www.gloucestercountynj.gov/720/Meals-on-Wheels"><strong>Meals on Wheels - Gloucester County:</strong></a> Delivers meals. Phone: 856-218-7838.</li>
+                    </ul>
+
+                    <h4 id="hudson-county-food">Hudson County</h4>
+                    <ul>
+                        <li><a href="https://www.hudsoncountynj.org/family-services"><strong>Hudson County Family Services:</strong></a> Meal programs and food distribution. Phone: 201-420-3000.</li>
+                        <li><a href="https://www.jerseycitynj.gov/cityhall/health/divisionoffoodnutrition/mealsonwheels"><strong>Jersey City Meals on Wheels:</strong></a> Home-delivered meals. Phone: 201-547-6808.</li>
+                    </ul>
+
+                    <h4 id="hunterdon-county-food">Hunterdon County</h4>
+                    <ul>
+                        <li><a href="https://mowih.org/"><strong>Meals on Wheels in Hunterdon, Inc.:</strong></a> Nutritious meal deliveries. Phone: 908-284-0735.</li>
+                    </ul>
+
+                    <h4 id="mercer-county-food">Mercer County</h4>
+                    <ul>
+                        <li><a href="https://www.mealsonwheelsmercer.org/"><strong>Meals on Wheels of Mercer County:</strong></a> Hot meals and social support. Phone: 609-695-3483.</li>
+                    </ul>
+
+                    <h4 id="middlesex-county-food">Middlesex County</h4>
+                    <ul>
+                        <li><a href="https://www.middlesexcountynj.gov/"><strong>Middlesex County Board of Social Services:</strong></a> Assists with meals and food banks. Phone: 732-745-3500.</li>
+                        <li><a href="https://www.mowmc.org/"><strong>Meals on Wheels of Middlesex County:</strong></a> Hot and frozen meal delivery. Phone: 732-777-1999.</li>
+                    </ul>
+
+                    <h4 id="monmouth-county-food">Monmouth County</h4>
+                    <ul>
+                        <li><a href="https://www.mealsonwheelsamerica.org/find-meals"><strong>Meals on Wheels of Monmouth County (via MOW America):</strong></a> General locator. Local contact typically through Fulfill or County Office on Aging: 732-502-3277.</li>
+                    </ul>
+
+                    <h4 id="morris-county-food">Morris County</h4>
+                    <ul>
+                        <li><a href="https://hs.morriscountynj.gov/"><strong>Morris County Division of Social Services:</strong></a> Emergency food and meal delivery. Phone: 973-326-7800.</li>
+                        <li><a href="https://www.mealsonwheelsamerica.org/find-meals"><strong>Meals on Wheels - Morris County (via MOW America):</strong></a> General locator. Local contact: 973-285-6883.</li>
+                    </ul>
+
+                    <h4 id="ocean-county-food">Ocean County</h4>
+                    <ul>
+                        <li><a href="https://www.csimow.org/"><strong>Community Services, Inc. Meals on Wheels (Ocean County):</strong></a> Delivers meals. Phone: 732-367-1400.</li>
+                        <li><a href="https://www.co.ocean.nj.us/"><strong>Ocean County Board of Social Services:</strong></a> Emergency food and meal delivery. Phone: 732-349-1500.</li>
+                    </ul>
+
+                    <h4 id="passaic-county-food">Passaic County</h4>
+                    <ul>
+                        <li><a href="https://www.passaiccountynj.org/"><strong>Passaic County Board of Social Services:</strong></a> Food bank and meal deliveries. Phone: 973-881-0100.</li>
+                        <li><a href="https://www.mealsonwheelsamerica.org/find-meals"><strong>Meals on Wheels - Passaic County (via MOW America):</strong></a> General locator. Local contact: 973-569-4099.</li>
+                    </ul>
+
+                    <h4 id="salem-county-food">Salem County</h4>
+                    <ul>
+                        <li><a href="https://www.salemcountynj.gov/"><strong>Salem County Board of Social Services:</strong></a> Emergency food and meal deliveries. Phone: 856-299-1296.</li>
+                        <li><a href="https://www.salemcountynj.gov/mow"><strong>Meals on Wheels - Salem County:</strong></a> Home-delivered meals. Phone: 856-935-3663.</li>
+                    </ul>
+
+                    <h4 id="somerset-county-food">Somerset County</h4>
+                    <ul>
+                        <li><a href="https://www.co.somerset.nj.us/government/human-services"><strong>Somerset County Division of Social Services / Meals on Wheels:</strong></a> Home-delivered meals and food pantry assistance. Phone: 908-526-8800 (Social Services), 908-704-6346 (MOW).</li>
+                    </ul>
+
+                    <h4 id="sussex-county-food">Sussex County</h4>
+                    <ul>
+                        <li><a href="https://www.projectselfsufficiency.org/"><strong>Project Self-Sufficiency Sussex County:</strong></a> Access to food programs and meal deliveries. Phone: 973-940-3500.</li>
+                        <li><a href="https://www.sussex.nj.us/"><strong>Meals on Wheels - Sussex County (via County website):</strong></a> Hot meal delivery. Phone: 973-579-0555.</li>
+                    </ul>
+
+                    <h4 id="union-county-food">Union County</h4>
+                    <ul>
+                        <li><a href="https://ucnj.org/"><strong>Union County Social Services:</strong></a> Meal delivery and emergency food. Phone: 908-527-4800.</li>
+                        <li><a href="https://www.jfscares.org/"><strong>Meals on Wheels - Union County (Jewish Family Service of Central NJ):</strong></a> Hot and frozen meal delivery. Phone: 908-486-5100.</li>
+                    </ul>
+
+                    <h4 id="warren-county-food">Warren County</h4>
+                    <ul>
+                        <li><a href="https://www.wcphd.org/"><strong>Meals on Wheels - Warren County (Warren County Public Health Dept.):</strong></a> Delivers meals. Phone: 908-689-4140.</li>
+                    </ul>
+                    
+                    <h3 id="nj-food-delivery">Meal Delivery Services (Commercial/Insurance-Covered)</h3>
+                    <ul>
+                        <li><a href="https://www.momsmeals.com"><strong>Mom's Meals:</strong></a> Refrigerated, home-delivered meals for various health needs. Phone: 1-877-508-6667.</li>
+                        <li><a href="https://www.homestyledirect.com"><strong>Homestyle Direct:</strong></a> Healthy, ready-to-eat meals. Phone: 1-866-735-0921.</li>
+                        <li><a href="https://www.nutritionforlongevity.com"><strong>Nutrition for Longevity:</strong></a> Farm-to-table meal delivery, Medically Tailored Meals (MTM) approved. Phone: 1-833-688-7444.</li>
+                        <li><a href="https://performancekitchen.com"><strong>Performance Kitchen:</strong></a> Medically tailored meals. Phone: 1-844-688-2394.</li>
+                        <li><a href="https://www.jfcsnnj.org/kosher-meals-on-wheels/"><strong>Kosher Meals on Wheels (Jewish Family & Children's Services of Northern New Jersey):</strong></a> Kosher meals for homebound. Phone: 201-837-9090.</li>
+                        <li><a href="https://www.adrcnj.org/home"><strong>Area Agencies on Aging (AAA) Home-Delivered Meals:</strong></a> Administers programs for seniors 60+. Contact local AAA via ADRCNJ.</li>
+                        <li><a href="https://www.horizonnjhealth.com"><strong>Managed Long Term Services and Supports (MLTSS) Home-Delivered Meals:</strong></a> For Medicaid recipients, check with your care manager (example: Horizon NJ Health).</li>
+                    </ul>
+                </section>
+
+                <section id="nj-dental" class="resource-section" aria-labelledby="nj-dental-heading">
+                    <h2 id="nj-dental-heading">New Jersey Dental Resources</h2>
+                    <p>Explore dental care options and training-based clinics available across New Jersey.</p>
+                    <ul>
+                        <li><a href="https://www.njda.org/find-a-dentist"><strong>New Jersey Dental Association - Find a Dentist:</strong></a> Directory of dentists and clinics providing care for patients with limited financial resources.</li>
+                        <li><a href="https://findahealthcenter.hrsa.gov/"><strong>New Jersey Federally Qualified Health Centers:</strong></a> Health centers providing dental care for low-income, uninsured, and underinsured patients.</li>
+                        <li><a href="https://sdm.rutgers.edu/patients"><strong>Rutgers School of Dental Medicine:</strong></a> Dental care provided by dental students under supervision. Phone: (973) 972-4300.</li>
+                        <li><a href="https://www.njhc.org/"><strong>New Jersey Health Connect:</strong></a> Network of community health centers providing dental services on a sliding fee scale.</li>
+                    </ul>
+                </section>
+
+                <section id="nj-senior-resources" class="resource-section" aria-labelledby="nj-senior-resources-heading">
+                    <h2 id="nj-senior-resources-heading">New Jersey Senior Resources</h2>
+                    <p>Explore senior-focused services including benefits, caregiving support, and local aging resources.</p>
+                    
+                    <h3 id="nj-senior-division-aging">New Jersey Division of Aging Services</h3>
+                     <ul>
+                        <li><strong>General Information & Medical Counseling:</strong> Phone: <a href="tel:1-800-792-8820">1-800-792-8820</a></li>
+                        <li><strong>NJ Save Hotline (PAAD, Sr. Gold, Medicare Saving Programs, Lifeline):</strong> Phone: <a href="tel:1-800-792-9745">1-800-792-9745</a></li>
+                        <li><strong>Website:</strong> <a href="https://www.nj.gov/humanservices/doas/">Division of Aging Services</a></li>
+                        <li><strong>Aging & Disability Resource Connection (ADRC) Statewide Toll-Free:</strong> Phone: <a href="tel:1-877-222-3737">1-877-222-3737</a> or visit <a href="https://www.adrcnj.org/home">ADRCNJ Website</a></li>
+                    </ul>
+
+                    <h3 id="nj-senior-programs">General Senior Programs & Support</h3>
+                    <ul>
+                        <li><a href="https://www.nj.gov/humanservices/doas/services/a-k/jacc/"><strong>Jersey Assistance for Community Caregiving (JACC):</strong></a> In-home services for seniors 60+ needing nursing facility-level care. Contact County ADRC.</li>
+                        <li><a href="https://www.nj.gov/humanservices/doas/services/a-k/nutrition/"><strong>Congregate or Group Meals / Home-Delivered Meals (State Info):</strong></a> Nutritious meals for individuals 60+. Contact County Area Agency on Aging (AAA).</li>
+                        <li><a href="https://www.nj.gov/humanservices/doas/services/q-z/srcp/"><strong>Statewide Respite Care Program:</strong></a> Respite care for unpaid caregivers. Contact County ADRC.</li>
+                        <li><a href="https://www.nj.gov/health/fhs/wic/seniorfarmersmarket/"><strong>Senior Farmers' Market Nutrition Program (SFMNP):</strong></a> Vouchers for fresh produce for low-income seniors. Contact County ADRC.</li>
+                        <li><a href="https://www.state.nj.us/humanservices/doas/services/paad/"><strong>Pharmaceutical Assistance to the Aged and Disabled (PAAD):</strong></a> Financial assistance for prescriptions. Phone: 1-800-792-9745.</li>
+                        <li><a href="https://www.state.nj.us/humanservices/doas/services/seniorgold/"><strong>Senior Gold Prescription Discount Program:</strong></a> Prescription discounts for seniors not qualifying for PAAD. Phone: 1-800-792-9745.</li>
+                        <li><a href="https://www.nj.gov/humanservices/dds/programs/personalassistance/"><strong>Personal Assistance Services Program (PASP):</strong></a> Non-medical personal care for individuals with permanent physical disabilities. Contact County PASP Coordinator.</li>
+                        <li><a href="https://www.njaaw.org/services-resources/"><strong>New Jersey Advocates for Aging Well (NJAAW):</strong></a> Comprehensive list of services and resources for seniors. Phone: 609-421-0206.</li>
+                    </ul>
+                    
+                    <h3 id="nj-senior-aaa">Area Agencies on Aging (AAA)</h3>
+                    <ul>
+                        <li>Area Agencies on Aging (AAA) provide localized services and support for seniors. To find your local AAA, please visit the <a href="https://www.adrcnj.org/home">Aging & Disability Resource Connection of New Jersey (ADRCNJ)</a> website, which includes a directory, or call <a href="tel:1-877-222-3737">1-877-222-3737</a>.</li>
+                    </ul>
+                </section>
+
+                <section id="nj-transportation" class="resource-section" aria-labelledby="nj-transportation-heading">
+                    <h2 id="nj-transportation-heading">New Jersey Transportation Resources</h2>
+                    <p>Find transportation options including public transit, paratransit, and specialized services for seniors and individuals with disabilities.</p>
+                    <h3 id="nj-transportation-statewide">Statewide & General Medical Transportation</h3>
+                    <ul>
+                        <li><a href="https://nj211.org/transportation-options-in-new-jersey"><strong>NJ 211 - Transportation Options in New Jersey:</strong></a> Information on public transit, paratransit, senior transportation, and accessible transport.</li>
+                        <li><a href="http://www.state.nj.us/transportation/commuter/rideshare/tma.shtm"><strong>Transportation Management Associations (TMAs):</strong></a> Non-profit partnerships promoting alternative commuting modes. Phone: 1-800-245-7665.</li>
+                        <li><a href="https://www.mymodivcare.com/members/nj"><strong>Modivcare:</strong></a> Non-emergency medical transportation for NJ FamilyCare clients. Appointments: 1-866-527-9933.</li>
+                        <li><a href="https://www.nj.gov/humanservices/dmahs/clients/medical-transportation/"><strong>NJ Department of Human Services - Medical Transportation:</strong></a> Non-emergency medical transportation for Medicaid recipients.</li>
+                        <li><a href="https://cancer.findhelp.com/search/text?postal=08061&term=transportation&widget=cancer&ref=cancer.findhelp.com"><strong>Findhelp - Cancer Transportation Resources:</strong></a> Searchable directory for cancer patient transportation.</li>
+                        <li><a href="https://cinj.org/sites/cinj/files/documents/Brochure-Tranpsort.pdf"><strong>Rutgers Cancer Institute of New Jersey - Transportation Brochure (PDF):</strong></a> Information on transportation options for cancer patients.</li>
+                        <li><a href="https://accesslink.njtransit.com"><strong>NJ Transit - Access Link:</strong></a> ADA-compliant paratransit service. Phone: 973-491-4224.</li>
+                        <li><a href="https://www.njtransit.com/schedules-and-fares/reduced-fare-program"><strong>New Jersey Transit Reduced Fare Program:</strong></a> Reduced fares for seniors and individuals with disabilities. Phone: 973-491-7112.</li>
+                        <li><a href="https://vtc.rutgers.edu/njtip/"><strong>Rutgers NJTIP (NJ Travel Independence Program):</strong></a> Travel instruction for individuals with disabilities and older adults. Phone: 848-932-4499.</li>
+                        <li><a href="https://www.pennmedicine.org/cancer/navigating-cancer-care/support-services/transportation-to-cancer-appointments"><strong>Penn Medicine - Transportation to Cancer Appointments:</strong></a> Transportation assistance for cancer patients.</li>
+                    </ul>
+                    <h3 id="nj-transportation-county">County-Specific Transportation Services</h3>
+                    <ul>
+                        <li><a href="https://www.atlantic-county.org/intergenerational-services/transportation.asp"><strong>Atlantic County Transportation:</strong></a> Rides for seniors and disabled residents. Phone: 609-645-5910.</li>
+                        <li><a href="https://www.co.bergen.nj.us/community-transportation"><strong>Bergen County Community Transportation:</strong></a> For seniors and individuals with disabilities. Phone: 201-368-5955.</li>
+                        <li><a href="https://www.co.burlington.nj.us/192/Transportation-Services"><strong>Burlington County Transportation:</strong></a> For seniors, disabled, and low-income individuals. Phone: 609-265-5109.</li>
+                        <li><a href="https://www.camdencounty.com/service/transportation/paratransit-services/"><strong>Camden County Paratransit:</strong></a> Curb-to-curb service. Phone: 856-456-3344.</li>
+                        <li><a href="https://capemaycountynj.gov/449/Fare-Free-Transportation"><strong>Cape May County Fare-Free Transportation:</strong></a> For seniors, disabled, and veterans. Phone: 609-889-3700.</li>
+                        <li><a href="https://www.co.cumberland.nj.us/transportation"><strong>Cumberland Area Transit System (CATS):</strong></a> For seniors and disabled residents. Phone: 856-691-7799.</li>
+                        <li><a href="https://essexcountynj.org/special-transportation/"><strong>Essex County Special Transportation:</strong></a> For seniors and disabled residents. Phone: 973-618-1280.</li>
+                        <li><a href="https://www.gloucestercountynj.gov/713/Non-Emergency-Medical-Transportation"><strong>Gloucester County Non-Emergency Medical Transportation:</strong></a> Curb-to-curb service. Phone: 856-227-7392.</li>
+                        <li><a href="https://www.hudsoncountynj.org/transportation"><strong>Hudson County Transcend Program:</strong></a> For seniors and disabled residents. Phone: 201-369-4320.</li>
+                        <li><a href="https://www.co.hunterdon.nj.us/245/Transportation"><strong>Hunterdon County LINK:</strong></a> Demand-response transportation. Phone: 800-842-0531.</li>
+                        <li><a href="https://www.mercercounty.org/departments/transportation-and-infrastructure/trade"><strong>Mercer County TRADE Transportation:</strong></a> For seniors and disabled residents. Phone: 609-530-1971.</li>
+                        <li><a href="https://www.middlesexcountynj.gov/government/departments/department-of-transportation/middlesex-county-area-transit"><strong>Middlesex County Area Transit (MCAT):</strong></a> Rides to medical appointments and essential destinations. Phone: 800-221-3520.</li>
+                        <li><a href="https://www.visitmonmouth.com/page.aspx?ID=3074"><strong>Monmouth County SCAT (Special Citizen Area Transportation):</strong></a> For seniors and disabled residents. Phone: 732-431-6480.</li>
+                        <li><a href="https://www.morriscountynj.gov/Departments/Aging-Disabilities-Community-Programming/MAPS"><strong>Morris Area Paratransit System (MAPS):</strong></a> For seniors and disabled residents. Phone: 973-829-8103.</li>
+                        <li><a href="https://www.co.ocean.nj.us/OC/Transportation/frmHome.aspx"><strong>Ocean County Ocean Ride:</strong></a> For seniors and disabled residents. Phone: 732-736-8989.</li>
+                        <li><a href="https://www.passaiccountynj.org/government/departments/transportation"><strong>Passaic County Paratransit:</strong></a> For seniors and disabled residents. Phone: 973-305-5756.</li>
+                        <li><a href="https://www.salemcountynj.gov/departments/office-of-aging-disabilities/"><strong>Salem County Office on Aging and Disabilities Transportation:</strong></a> For seniors and disabled residents. Phone: 856-339-8622.</li>
+                        <li><a href="https://www.co.somerset.nj.us/government/public-works/transportation"><strong>Somerset County Transportation:</strong></a> For seniors and disabled residents. Phone: 908-231-7116.</li>
+                        <li><a href="https://www.sussex.nj.us/departments/health-human-services/transportation/skylands-ride/index.cfm"><strong>Sussex County Skylands Ride:</strong></a> For seniors and disabled residents. Phone: 973-579-0480.</li>
+                        <li><a href="https://ucnj.org/paratransit/"><strong>Union County Paratransit System:</strong></a> For seniors and disabled residents. Phone: 908-241-8300.</li>
+                        <li><a href="https://www.warrencountynj.gov/government/human-services/transportation"><strong>Warren County Paratransit:</strong></a> For seniors and disabled residents. Phone: 908-454-4044.</li>
+                    </ul>
+                </section>
+
+                <section id="nj-medication" class="resource-section" aria-labelledby="nj-medication-heading">
+                    <h2 id="nj-medication-heading">Medication Assistance</h2>
+                    <p>Resources for help with prescription costs, co-pays, and finding assistance programs.</p>
+                    <h3 id="nj-medication-general">General Prescription Assistance</h3>
+                    <ul>
+                        <li><a href="https://www.state.nj.us/humanservices/doas/services/paad/"><strong>Pharmaceutical Assistance to the Aged and Disabled (PAAD):</strong></a> Helps eligible NJ residents pay for prescriptions. Phone: 1-800-792-9745.</li>
+                        <li><a href="https://www.state.nj.us/humanservices/doas/services/seniorgold/"><strong>Senior Gold Prescription Discount Program:</strong></a> For NJ residents who meet income limits but are not eligible for PAAD. Phone: 1-800-792-9745.</li>
+                        <li><a href="https://www.goodrx.com/healthcare-professionals"><strong>GoodRx for Healthcare Professionals:</strong></a> Tools to help patients save on medications.</li>
+                        <li><a href="https://www.medicineassistancetool.org/"><strong>Medicine Assistance Tool (MAT):</strong></a> Search engine for prescription assistance programs.</li>
+                        <li><a href="https://www.goodrx.com/insurance/health-insurance/drug-not-covered-insurance-tips-tactics"><strong>GoodRx - What to Do When Your Prescription Drug Isn't Covered:</strong></a> Tips and strategies.</li>
+                        <li><a href="https://www.needymeds.org"><strong>NeedyMeds:</strong></a> Prescription drug assistance and discount card.</li>
+                        <li><a href="https://www.state.nj.us/health/charitycare/"><strong>NJ Hospital Charity Care Program:</strong></a> Covers medically necessary services for uninsured/underinsured. Phone: 1-866-588-5696.</li>
+                    </ul>
+                    <h3 id="nj-medication-cancer">Cancer-Related Financial & Medication Assistance</h3>
+                     <ul>
+                        <li><a href="https://www.cancerhopenetwork.org/"><strong>Cancer Hope Network:</strong></a> One-on-one support and information on financial resources. Phone: 1-877-467-3638.</li>
+                        <li><a href="https://www.cancer.org/about-us/local/new-jersey.html"><strong>American Cancer Society (NJ Division):</strong></a> Educational resources, patient navigation, rides, lodging. Phone: 1-800-227-2345.</li>
+                        <li><a href="https://www.nj.gov/humanservices/doas/services/q-z/take-control/"><strong>Cancer Thriving and Surviving (CTS) Workshops:</strong></a> Peer-led workshops on managing cancer survivorship.</li>
+                        <li><a href="https://www.lls.org/support/financial-support"><strong>The Leukemia & Lymphoma Society (LLS) Patient Financial Assistance:</strong></a> Copay assistance, grants for transportation, lodging. Phone: 1-800-955-4572.</li>
+                        <li><a href="https://www.lls.org"><strong>Leukemia & Lymphoma Society (LLS) Co-Pay Assistance Program:</strong></a> Financial support for blood cancer patients. Phone: 1-877-557-2672.</li>
+                        <li><a href="https://www.copays.org/"><strong>The Patient Advocate Foundation (PAF) Co-Pay Relief Program:</strong></a> Direct financial support for eligible patients. Phone: 1-866-512-3861.</li>
+                        <li><a href="https://www.patientadvocate.org"><strong>Patient Advocate Foundation (PAF):</strong></a> Co-pay relief and financial aid, case management. Phone: 1-800-532-5274.</li>
+                        <li><a href="https://www.expectmiraclesfoundation.org/the-samfund"><strong>The Samfund (via Expect Miracles Foundation):</strong></a> Financial assistance for young adult cancer survivors.</li>
+                        <li><a href="https://www.healthwellfoundation.org"><strong>HealthWell Foundation:</strong></a> Financial assistance for premiums, deductibles, co-pays, travel. Phone: 1-800-675-8416.</li>
+                        <li><a href="https://www.cancercare.org"><strong>CancerCare - Financial Assistance:</strong></a> Help with transportation, home care, child care, co-pays. Phone: 1-800-813-4673.</li>
+                        <li><a href="https://www.panfoundation.org"><strong>PAN Foundation:</strong></a> Financial assistance for out-of-pocket expenses. Phone: 1-866-316-7263.</li>
+                        <li><a href="https://tafcares.org"><strong>The Assistance Fund:</strong></a> Financial assistance for co-pays, coinsurance, deductibles. Phone: 1-855-845-3663.</li>
+                    </ul>
+                </section>
+
+                <section id="nj-insurance" class="resource-section" aria-labelledby="nj-insurance-heading">
+                    <h2 id="nj-insurance-heading">Insurance Resources</h2>
+                    <p>Information on state health insurance marketplaces, public programs, and assistance with coverage.</p>
+                    <ul>
+                        <li><a href="https://www.getcovered.nj.gov"><strong>Get Covered New Jersey:</strong></a> State's official health insurance marketplace. Phone: 1-800-701-0710.</li>
+                        <li><a href="https://www.njfamilycare.org"><strong>NJ FamilyCare:</strong></a> Publicly funded health coverage for eligible residents. Phone: 1-800-701-0710.</li>
+                        <li><a href="https://www.ssa.gov/disability/"><strong>Social Security Disability Insurance (SSDI):</strong></a> Monthly benefits for eligible workers with disabilities. Phone: 1-800-772-1213.</li>
+                        <li><a href="https://www.ssa.gov/ssi/"><strong>Supplemental Security Income (SSI):</strong></a> Financial assistance for low-income aged, blind, or disabled. Phone: 1-800-772-1213.</li>
+                        <li><a href="https://www.nj.gov/humanservices/dds/services/workability/"><strong>NJ WorkAbility Program:</strong></a> Medicaid coverage for working individuals with disabilities. Contact local Medicaid office.</li>
+                        <li><a href="https://www.nj.gov/humanservices/doas/services/paad/"><strong>Pharmaceutical Assistance to the Aged and Disabled (PAAD):</strong></a> Helps with prescription costs. Phone: 1-800-792-9745.</li>
+                        <li><a href="https://www.nj.gov/humanservices/doas/services/seniorgold/"><strong>Senior Gold Prescription Discount Program:</strong></a> Phone: 1-800-792-9745.</li>
+                        <li><a href="https://www.nj.gov/humanservices/doas/services/I-p/njsave/"><strong>NJSave:</strong></a> Online tool to apply for PAAD, Medicare Savings Programs, utility assistance. Phone: 1-877-222-3737.</li>
+                        <li><a href="https://www.medicare.gov"><strong>Medicare:</strong></a> Federal health insurance for individuals 65+ or with certain disabilities. Phone: 1-800-MEDICARE.</li>
+                        <li><a href="https://www.nj.gov/humanservices/dds/home/"><strong>NJ Division of Disability Services (DDS):</strong></a> Coordinates services for individuals with disabilities. Phone: 1-888-285-3036.</li>
+                        <li><a href="https://www.state.nj.us/humanservices/doas/services/lifeline/"><strong>Lifeline Utility Assistance Program:</strong></a> Phone: 1-800-792-9745.</li>
+                        <li><a href="https://www.njhelps.org"><strong>NJHelps:</strong></a> Online screening for Medicaid, SNAP, housing assistance.</li>
+                        <li><a href="https://www.medicineassistancetool.org/"><strong>Medicine Assistance Tool (MAT):</strong></a> Search engine for prescription assistance.</li>
+                        <li><a href="https://www.nj.gov/health/hivstdtb/hiv-aids/medications.shtml"><strong>AIDS Drug Distribution Program (ADDP):</strong></a> Medications for low-income NJ residents with HIV/AIDS. Phone: 1-877-613-4533.</li>
+                        <li><a href="https://www.nj.gov/dobi/division_consumers/insurance/appealcomplaintguide.pdf"><strong>Appeal and Complaint Guide for New Jersey Consumers (PDF):</strong></a> Guide for appealing insurance decisions. Phone: 1-800-446-7467.</li>
+                    </ul>
+                </section>
+
+                <section id="nj-cancer-support" class="resource-section" aria-labelledby="nj-cancer-support-heading">
+                    <h2 id="nj-cancer-support-heading">Cancer Support Resources</h2>
+                    <p>Find financial aid, support programs, and information specific to various types of cancer.</p>
+                    <h3 id="nj-cancer-general-guides">General Cancer Financial & Support Guides</h3>
+                    <ul>
+                        <li><a href="https://www.cancer.org/cancer/financial-insurance-matters/managing-health-insurance/programs-and-resources-to-help-with-cancer-related-expenses.html"><strong>American Cancer Society - Programs and Resources to Help with Cancer-Related Expenses:</strong></a> Guide to managing expenses, insurance, and support organizations.</li>
+                        <li><a href="https://www.cancercare.org/publications/62-sources_of_financial_assistance"><strong>CancerCare: Sources of Financial Assistance:</strong></a> Guide to financial help for treatment, medications, living expenses.</li>
+                    </ul>
+                    <h3 id="nj-cancer-specific-types">Specific Cancer Type Resources</h3>
+                    
+                    <h4 id="nj-cancer-breast">Breast Cancer</h4>
+                    <ul>
+                        <li><a href="https://www.komen.org/support/financial-assistance/"><strong>Susan G. Komen:</strong></a> Financial assistance and community resources.</li>
+                        <li><a href="https://www.cancer.org/cancer/types/breast-cancer/support-programs-and-services.html"><strong>American Cancer Society - Breast Cancer:</strong></a> Financial support, treatment info, community programs.</li>
+                    </ul>
+
+                    <h4 id="nj-cancer-lung">Lung Cancer</h4>
+                    <ul>
+                        <li><a href="https://www.lung.org/lung-health-diseases/lung-disease-lookup/lung-cancer/patient-resources-and-support"><strong>American Lung Association:</strong></a> Financial assistance and community resources.</li>
+                        <li><a href="https://lcfamerica.org/patient-resources/"><strong>Lung Cancer Foundation of America:</strong></a> Financial resources and support services.</li>
+                    </ul>
+
+                    <h4 id="nj-cancer-prostate">Prostate Cancer</h4>
+                    <ul>
+                        <li><a href="https://www.pcf.org/patient-resources/"><strong>Prostate Cancer Foundation:</strong></a> Financial aid and community support.</li>
+                        <li><a href="https://www.cancer.org/cancer/types/prostate-cancer/support-programs-and-services.html"><strong>American Cancer Society - Prostate Cancer:</strong></a> Financial assistance, support resources.</li>
+                    </ul>
+
+                    <h4 id="nj-cancer-colorectal">Colorectal Cancer</h4>
+                    <ul>
+                        <li><a href="https://www.ccalliance.org/patient-family-support"><strong>Colorectal Cancer Alliance:</strong></a> Financial assistance, patient support.</li>
+                        <li><a href="https://www.cancer.org/cancer/types/colon-rectal-cancer/support-programs-and-services.html"><strong>American Cancer Society - Colorectal Cancer:</strong></a> Financial assistance, community programs.</li>
+                    </ul>
+
+                    <h4 id="nj-cancer-skin">Skin Cancer (Non-Melanoma)</h4>
+                    <ul>
+                        <li><a href="https://www.skincancer.org/support/"><strong>Skin Cancer Foundation:</strong></a> Information on financial assistance and resources.</li>
+                        <li><a href="https://www.cancer.org/cancer/types/skin-cancer/support-programs-and-services.html"><strong>American Cancer Society - Skin Cancer:</strong></a> Financial support, education.</li>
+                    </ul>
+
+                    <h4 id="nj-cancer-melanoma">Melanoma</h4>
+                    <ul>
+                        <li><a href="https://melanoma.org/patients-caregivers/find-support/financial-assistance/"><strong>Melanoma Research Foundation:</strong></a> Financial assistance, education, support.</li>
+                        <li><a href="https://www.cancer.org/cancer/types/melanoma-skin-cancer/support-programs-and-services.html"><strong>American Cancer Society - Melanoma:</strong></a> Financial resources, community connections.</li>
+                    </ul>
+
+                    <h4 id="nj-cancer-bladder">Bladder Cancer</h4>
+                    <ul>
+                        <li><a href="https://bcan.org/find-support/"><strong>Bladder Cancer Advocacy Network (BCAN):</strong></a> Financial support and community resources.</li>
+                        <li><a href="https://www.cancer.org/cancer/types/bladder-cancer/support-programs-and-services.html"><strong>American Cancer Society - Bladder Cancer:</strong></a> Financial assistance, community resources.</li>
+                    </ul>
+
+                    <h4 id="nj-cancer-ovarian">Ovarian Cancer</h4>
+                    <ul>
+                        <li><a href="https://ocrahope.org/resources-support/additional-resources/financial-assistance/"><strong>Ovarian Cancer Research Alliance (OCRA):</strong></a> Financial assistance resources.</li>
+                    </ul>
+
+                    <h4 id="nj-cancer-leukemia-lymphoma">Leukemia & Lymphoma</h4>
+                    <ul>
+                        <li><a href="https://www.lls.org/support-resources/financial-support"><strong>Leukemia & Lymphoma Society (LLS):</strong></a> Financial support programs.</li>
+                    </ul>
+
+                    <h4 id="nj-cancer-brain-tumor">Brain Tumor</h4>
+                    <ul>
+                        <li><a href="https://www.abta.org/financial-assistance/"><strong>American Brain Tumor Association (ABTA):</strong></a> Financial assistance resources.</li>
+                    </ul>
+
+                    <h4 id="nj-cancer-thyroid">Thyroid Cancer</h4>
+                    <ul>
+                        <li><a href="https://www.thyca.org/support/financial-assistance/"><strong>Thyroid Cancer Survivors' Association (ThyCa):</strong></a> Support and financial assistance.</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Providing a directory of essential community resources for New Jersey residents, focusing on support for cancer patients and seniors.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#nj-resources">Statewide Resources</a></li>
+                    <li><a href="#nj-housing">Housing</a></li>
+                    <li><a href="#nj-food">Food & Nutrition</a></li>
+                    <li><a href="#nj-senior-resources">Senior Support</a></li>
+                    <li><a href="#nj-cancer-support">Cancer Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>For inaccuracies or suggestions, please reach out. (Contact info placeholder)</p>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 New Jersey Community Resource Directory. All Rights Reserved. (Disclaimer: This is a mock-up site for informational purposes.)</p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" onclick="scrollToTop()" role="button" aria-label="Back to Top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Back to Top Button Functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Simple Search Functionality
+        function performSearch() {
+            const searchTerm = document.getElementById('siteSearch').value.toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = ''; // Clear previous results
+
+            if (searchTerm.trim() === '') {
+                resultsContainer.innerHTML = '<p>Please enter a search term.</p>';
+                return;
+            }
+
+            const sections = document.querySelectorAll('.resource-section');
+            let foundItems = [];
+
+            sections.forEach(section => {
+                const sectionTitleElement = section.querySelector('h2'); // Main title of the section
+                const subSectionTitleElements = section.querySelectorAll('h3, h4'); // Sub-titles
+
+                // Check main section title
+                if (sectionTitleElement && sectionTitleElement.textContent.toLowerCase().includes(searchTerm)) {
+                     // Add section link if title matches
+                    foundItems.push({
+                        text: `<strong>Section: ${sectionTitleElement.textContent}</strong>`,
+                        href: `#${section.id}`,
+                        section: sectionTitleElement.textContent,
+                        sectionId: section.id,
+                        isSectionTitle: true
+                    });
+                }
+                
+                // Check sub-section titles
+                subSectionTitleElements.forEach(subTitleEl => {
+                    if (subTitleEl.textContent.toLowerCase().includes(searchTerm)) {
+                        foundItems.push({
+                            text: `<strong>Sub-section: ${subTitleEl.textContent}</strong>`,
+                            href: `#${subTitleEl.id || section.id}`, // Link to sub-section ID if available, else section ID
+                            section: sectionTitleElement ? sectionTitleElement.textContent : 'N/A',
+                            sectionId: subTitleEl.id || section.id,
+                            isSectionTitle: true
+                        });
+                    }
+                });
+
+                const links = section.querySelectorAll('ul li');
+                links.forEach(li => {
+                    const linkText = li.textContent.toLowerCase();
+                    const linkElement = li.querySelector('a');
+                    const linkHref = linkElement ? linkElement.href : `#${section.id}`; // Fallback to section ID
+                    
+                    if (linkText.includes(searchTerm)) {
+                        // Avoid duplicating section/subsection titles if they were already added
+                        let alreadyAdded = foundItems.some(item => item.isSectionTitle && (item.sectionId === (linkElement ? linkElement.getAttribute('href').substring(1) : section.id)));
+                        if (!alreadyAdded) {
+                             foundItems.push({
+                                text: linkElement ? linkElement.innerHTML : li.innerHTML, // Keep strong tags
+                                href: linkHref,
+                                section: sectionTitleElement ? sectionTitleElement.textContent : 'N/A',
+                                sectionId: section.id
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Remove duplicate search results based on href and text
+            const uniqueFoundItems = Array.from(new Set(foundItems.map(item => JSON.stringify(item))))
+                                     .map(str => JSON.parse(str));
+
+
+            if (uniqueFoundItems.length > 0) {
+                let resultsHTML = '<h4>Search Results:</h4><ul>';
+                uniqueFoundItems.forEach(item => {
+                    resultsHTML += `<li><a href="${item.href}">${item.text}</a> (In section: ${item.section})</li>`;
+                });
+                resultsHTML += '</ul>';
+                resultsContainer.innerHTML = resultsHTML;
+            } else {
+                resultsContainer.innerHTML = '<p>No resources found matching your search term.</p>';
+            }
+        }
+
+        // Smooth scroll for anchor links
+         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const hrefAttribute = this.getAttribute('href');
+                if (hrefAttribute && hrefAttribute.length > 1) {
+                    try {
+                        const targetElement = document.querySelector(hrefAttribute);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    } catch (error) {
+                        // If querySelector fails (e.g., invalid selector), let the browser handle it or log error
+                        console.warn("Smooth scroll failed for selector:", hrefAttribute, error);
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
