@@ -2,547 +2,1242 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Community Resource Directory for Cancer Patients</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <title>Pennsylvania Resources - Community Resource Directory</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* Basic Reset */
+    /* Root variables for consistent theming */
+    :root {
+        --primary-color: #3a86ff; /* Blue */
+        --secondary-color: #ff006e; /* Pink */
+        --accent-color: #8338ec; /* Purple */
+        --light-color: #f8f9fa; /* Light Gray */
+        --dark-color: #212529; /* Dark Gray */
+        --success-color: #38b000; /* Green */
+        --warning-color: #ffbe0b; /* Yellow */
+        --danger-color: #dc3545; /* Red */
+        --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
+        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
+    }
+
+    /* Universal Box-Sizing and Smooth Scrolling */
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
-    
+    html {
+        scroll-behavior: smooth; /* Enable smooth scrolling for the whole page */
+    }
+
+    /* Body and Typography */
     body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      padding: 20px;
-      background-color: #f5f5f5;
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background-color: #f8f9fa;
     }
-    
+
     a {
-      color: #0066cc;
-      text-decoration: none;
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
     }
-    
+
     a:hover {
-      text-decoration: underline;
+        color: var(--accent-color);
+        text-decoration: underline;
     }
-    
-    .back-button {
-      display: inline-block;
-      margin-bottom: 20px;
-      padding: 5px 10px;
-      background-color: #f1f1f1;
-      border-radius: 4px;
-      font-size: 14px;
+
+    h1, h2, h3, h4 {
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        font-weight: 600;
     }
-    
-    header {
-      background-color: #005a9c;
-      color: white;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+
+    /* Hero Section Styling */
+    .hero-section {
+        background: var(--blue-gradient); /* Consistent blue gradient */
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 250px;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 2rem;
     }
-    
-    .main-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      text-align: center;
+
+    .hero-title {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
-    
-    nav {
-      margin-top: 20px;
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 800px;
+        margin: 0.5rem auto 0;
     }
-    
-    .menu {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
+
+    .hero-section::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: white;
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        z-index: 999;
     }
-    
-    .menu a {
-      color: white;
-      padding: 8px 12px;
-      border-radius: 4px;
-      background-color: rgba(255,255,255,0.2);
-      transition: background-color 0.3s;
-    }
-    
-    .menu a:hover {
-      background-color: rgba(255,255,255,0.3);
-      text-decoration: none;
-    }
-    
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-      border-radius: 4px;
-    }
-    
-    .dropdown-content a {
-      color: #333;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-      background-color: transparent;
-    }
-    
-    .dropdown-content a:hover {
-      background-color: #f1f1f1;
-    }
-    
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    
-    .resource-section {
-      background-color: white;
-      padding: 25px;
-      margin-bottom: 30px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
+
     h2 {
-      color: #005a9c;
-      margin-bottom: 15px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #eaeaea;
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
     }
-    
+
     h3 {
-      color: #0066cc;
-      margin: 25px 0 10px 0;
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-top: 1.5rem;
     }
-    
+
     h4 {
-      color: #333;
-      margin: 20px 0 10px 0;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1rem;
     }
-    
+
     p {
-      margin-bottom: 15px;
+        margin-bottom: 1rem;
     }
-    
+
     ul {
-      margin-left: 20px;
-      margin-bottom: 20px;
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        list-style: disc;
     }
-    
+
     li {
-      margin-bottom: 10px;
+        margin-bottom: 0.75rem;
     }
-    
-    @media (max-width: 768px) {
-      .menu {
+
+    /* Header and Navigation */
+    nav {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .main-navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-navbar li {
+        margin: 0;
+    }
+
+    .main-navbar a, .dropbtn {
+        display: block;
+        color: var(--dark-color);
+        text-align: center;
+        padding: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .main-navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: var(--light-color);
+        color: var(--primary-color);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+    .dropbtn .fa-caret-down {
+        margin-left: 0.3em;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 250px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .dropdown-content a {
+        padding: 0.75rem 1rem;
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Main Content Layout */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .resource-section {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    .resource-section > p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Back Button Specifics */
+    .back-button {
+        display: inline-block;
+        margin: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 500;
+    }
+
+    .back-button:hover {
+        background-color: var(--accent-color);
+        transform: translateX(-5px);
+        text-decoration: none;
+    }
+
+    /* Search Box */
+    .search-container {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
+        display: flex;
         flex-direction: column;
         align-items: center;
-      }
-      
-      header {
-        padding: 15px;
-      }
-      
-      .main-title {
-        font-size: 20px;
-      }
+    }
+    .search-container h2 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 1rem;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+    .search-box input:focus {
+        border-color: var(--primary-color);
+    }
+
+    .search-box button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .search-box button:hover {
+        background-color: var(--accent-color);
+    }
+    #searchResults {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+    #searchResults p {
+        margin-bottom: 0.5rem;
+    }
+    #searchResults a {
+        font-weight: 500;
+    }
+
+    /* Quick Navigation Menu */
+    .quick-nav {
+        position: sticky;
+        top: 85px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        max-height: calc(100vh - 120px);
+        overflow-y: auto;
+    }
+    .quick-nav h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+    .quick-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+    .quick-nav ul li {
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 0.5rem;
+    }
+    .quick-nav ul li:last-child {
+        border-bottom: none;
+    }
+    .quick-nav ul li a {
+        display: block;
+        color: var(--dark-color);
+        transition: color 0.3s ease;
+    }
+    .quick-nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Two-Column Layout for Desktop */
+    @media (min-width: 992px) {
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+        }
+        .main-content {
+            min-width: 0;
+        }
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        color: white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: #adb5bd;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icons a {
+        color: white;
+        background-color: #495057;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #495057;
+        color: #adb5bd;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+        z-index: 1000;
+    }
+    .back-to-top:hover {
+        background-color: var(--accent-color);
+    }
+    .back-to-top.show {
+        opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .container { padding: 1rem; }
+        .hero-title { font-size: 2rem; }
+        h2 { font-size: 1.8rem; }
+        h3 { font-size: 1.3rem; }
+    }
+
+    @media (max-width: 768px) {
+        .main-navbar { flex-direction: column; }
+        .dropdown-content { position: static; width: 100%; box-shadow: none; }
+        .resource-section { padding: 1.5rem; }
+        .hero-section { padding: 3rem 1rem; min-height: 220px; }
+        .hero-title { font-size: 1.8rem; }
+        .hero-subtitle { font-size: 1.05rem; }
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.2rem; }
+        .two-column-layout { grid-template-columns: 1fr; }
+        .quick-nav { position: static; max-height: none; overflow-y: visible; margin-bottom: 1rem; }
+    }
+
+    @media (max-width: 576px) {
+        .search-box { flex-direction: column; }
+        .search-box input, .search-box button { width: 100%; border-radius: 4px; }
+        .search-box button { margin-top: 0.5rem; }
+        .hero-section { padding: 2rem 1rem; min-height: 180px; }
+        .resource-section { padding: 1rem; }
+        .back-button { margin: 1rem; }
+        .footer-container { padding: 0 1rem; }
     }
   </style>
 </head>
-
 <body>
-  
-    <!-- Back Button -->
-    <a href="index.html" class="back-button">← Back to Main Page</a>
- 
-   <header>
-     <div class="main-title">Community Resource Directory for Cancer Patients</div>
-     <div class="main-title">Pennsylvania</div>
-     <nav>
-       <div class="menu">
-         <a href="#pennsylvania-resources">Pennsylvania Resources</a>
-         <a href="#pennsylvania-housing">Housing</a>
-         <a href="#pennsylvania-utilities">Utilities</a>
-         <a href="#pennsylvania-food">Food & Nutrition</a>
-         <a href="#pennsylvania-dental">Dental</a>
-         <a href="#seniors">Seniors</a>
-         <a href="#pennsylvania-transportation">Transportation</a>
-         <a href="#philadelphia-resources">Philadelphia Resources</a>
-    
-         <!-- Counties Dropdown -->
-         <div class="dropdown">
-           <a href="#" class="dropbtn">Counties</a>
-           <div class="dropdown-content">
-             <a href="#philadelphia-county">Philadelphia County</a>
-             <a href="#allegheny-county">Allegheny County</a>
-             <a href="#montgomery-county">Montgomery County</a>
-             <a href="#bucks-county">Bucks County</a>
-             <a href="#delaware-county">Delaware County</a>
-           </div>
-         </div>
-       </div>
-     </nav>
-   </header>
+  <div id="top"></div>
 
-   <!-- Start of resource content -->
-   <section id="pennsylvania-resources" class="resource-section">
-     <h2>Pennsylvania Resources</h2>
-     <p>Explore a variety of programs and services available specifically for Pennsylvania residents.</p>
+  <a href="index.html" class="back-button">← Back to Main Page</a>
 
-     <h3>Pennsylvania Resource Search Portals</h3>
-     <ul>
-       <li><a href="https://www.pa211.org/"><strong>PA 211:</strong></a> Pennsylvania's statewide resource hotline and website connecting residents to health and human service needs. Call 211 for assistance.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/COMPASS.aspx"><strong>COMPASS PA:</strong></a> Apply for health care, food stamps, cash assistance, and many other services through this online portal.</li>
-       <li><a href="https://www.compass.state.pa.us/compass.web/Public/CMPHome"><strong>COMPASS Benefits Portal:</strong></a> Online application for Pennsylvanians to apply for many health and human service programs.</li>
-       <li><a href="https://findhelp.org/search_results/Pennsylvania"><strong>FindHelp.org Pennsylvania:</strong></a> Search for free and reduced-cost services in your area across Pennsylvania.</li>
-       <li><a href="https://www.aging.pa.gov/local-resources/Pages/AAA.aspx"><strong>Pennsylvania Area Agencies on Aging:</strong></a> Find your local Area Agency on Aging for senior services.</li>
-     </ul>
+  <header>
+    <div class="hero-section">
+        <h1 class="hero-title">Pennsylvania Resources</h1>
+        <p class="hero-subtitle">Statewide and County-Specific Support for Cancer Patients</p>
+    </div>
 
-     <h3 id="pennsylvania-housing">Pennsylvania Housing Resources</h3>
-     <ul>
-       <li><a href="https://www.phfa.org/"><strong>Pennsylvania Housing Finance Agency (PHFA):</strong></a> Provides affordable housing options, homeowner resources, and rental assistance programs statewide.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Other-Services/Pages/Housing-Resources.aspx"><strong>PA DHS Housing Resources:</strong></a> Housing assistance information through the Department of Human Services.</li>
-       <li><a href="https://www.phfa.org/consumers/renters/dehp.aspx"><strong>PHFA Housing Programs for Persons with Disabilities:</strong></a> Information on housing resources for individuals with disabilities.</li>
-       <li><a href="https://www.rentalhelppa.org/"><strong>Pennsylvania Emergency Rental Assistance Program:</strong></a> Helps eligible renters affected by financial hardship pay for rent and utilities.</li>
-       <li><a href="https://www.phfa.org/counseling/hsgcounselor.aspx"><strong>Housing Counseling Agencies:</strong></a> Find free housing counseling services by county.</li>
-       <li><a href="https://www.phfa.org/mhp/serviceprovider/"><strong>Supportive Housing Programs:</strong></a> Assistance for vulnerable populations including those with disabilities or special needs.</li>
-       <li><a href="https://www.pealcenter.org/housing-resources/"><strong>PEAL Center Housing Resources:</strong></a> Housing information for families of children and adults with disabilities.</li>
-     </ul>
-    
-     <h3 id="pennsylvania-utilities">Pennsylvania Utility Assistance</h3>
-     <ul>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/LIHEAP.aspx"><strong>Low Income Home Energy Assistance Program (LIHEAP):</strong></a> Helps low-income households with heating bills. Apply through COMPASS or your County Assistance Office.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/LIHEAP-Crisis.aspx"><strong>LIHEAP Crisis Program:</strong></a> Emergency assistance for utility shutoffs or heating system failures.</li>
-       <li><a href="https://www.puc.pa.gov/consumer-services/customer-assistance-programs/"><strong>Pennsylvania Public Utility Commission - Customer Assistance Programs:</strong></a> Information on various utility assistance programs including CAP, LIURP, and CARES.</li>
-       <li><a href="https://www.dollarenergy.org/need-help/pennsylvania/"><strong>Dollar Energy Fund:</strong></a> Provides utility assistance to low-income households through the Hardship Program.</li>
-       <li><a href="https://www.elp.org/utility-assistance/"><strong>Electric League of Pennsylvania Assistance:</strong></a> Connect to energy assistance programs throughout Pennsylvania.</li>
-       <li><a href="https://www.uwp.org/programs/utility-assistance/"><strong>United Way of Pennsylvania Utility Help:</strong></a> Statewide utility assistance resources and referrals.</li>
-       <li><a href="https://www.needhelppayingbills.com/html/pennsylvania_assistance_progra1.html"><strong>Pennsylvania Assistance Programs:</strong></a> Comprehensive list of assistance options for utilities and other basic needs.</li>
-       <li><a href="https://www.peco.com/MyAccount/CustomerSupport/Pages/AssistancePrograms.aspx"><strong>PECO Customer Assistance Programs:</strong></a> Help for PECO customers who are having difficulty paying their bills.</li>
-       <li><a href="https://www.pgworks.com/residential/customer-care/payment-assistance"><strong>PGW Customer Assistance:</strong></a> Payment assistance programs for Philadelphia Gas Works customers.</li>
-     </ul>
-    
-     <h3 id="pennsylvania-food">Pennsylvania Food & Nutrition Resources</h3>
-     <ul>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/SNAP.aspx"><strong>Supplemental Nutrition Assistance Program (SNAP):</strong></a> Food assistance benefits for eligible low-income individuals and families.</li>
-       <li><a href="https://www.compass.state.pa.us/compass.web/Public/CMPHome"><strong>COMPASS - Apply for SNAP:</strong></a> Online portal to apply for SNAP benefits.</li>
-       <li><a href="https://www.feedingpa.org/find-food-assistance/"><strong>Feeding Pennsylvania:</strong></a> Find food banks and pantries in your area.</li>
-       <li><a href="https://www.health.pa.gov/topics/programs/WIC/Pages/WIC.aspx"><strong>Women, Infants, and Children (WIC):</strong></a> Nutrition program for eligible pregnant women, new mothers, and young children.</li>
-       <li><a href="https://www.agriculture.pa.gov/Food_Security/Pages/Senior-Farmers-Market-Nutrition-Program.aspx"><strong>Senior Farmers Market Nutrition Program:</strong></a> Provides eligible seniors with vouchers to purchase fresh produce.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/nutrition-services/Pages/default.aspx"><strong>PA Department of Aging Nutrition Services:</strong></a> Information on congregate meals and home-delivered meals for seniors.</li>
-       <li><a href="https://hungerfreepascorecard.org/resources/"><strong>Hunger-Free PA Resources:</strong></a> Comprehensive directory of food assistance programs.</li>
-       <li><a href="https://www.philabundance.org/find-food/"><strong>Philabundance:</strong></a> Food assistance in the Philadelphia region and Delaware Valley.</li>
-       <li><a href="https://www.pittsburghfoodbank.org/get-help/"><strong>Greater Pittsburgh Community Food Bank:</strong></a> Food assistance in southwestern Pennsylvania.</li>
-       <li><a href="https://www.education.pa.gov/Teachers - Administrators/Food-Nutrition/programs/Pages/default.aspx"><strong>School Meals Programs:</strong></a> Information on school breakfast, lunch, and summer food service programs.</li>
-     </ul>
-       
-     <h3 id="pennsylvania-dental">Pennsylvania Dental Resources</h3>
-     <p>Explore dental care options and training-based clinics available across Pennsylvania.</p>
-     <ul>
-       <li><a href="https://www.padental.org/Online/Resources___Programs/Dental_Clinics/Online/Resources___Programs/Dental_Clinics/Dental_Clinics.aspx"><strong>Pennsylvania Dental Association Clinics:</strong></a> Directory of low-cost dental clinics throughout the state.</li>
-       <li><a href="https://findahealthcenter.hrsa.gov/"><strong>Pennsylvania's Federally Qualified Health Centers:</strong></a> These centers provide dental services to people who are low income, uninsured, or undocumented residents.</li>
-       <li><a href="https://www.dental.pitt.edu/patients/community-emergency"><strong>University of Pittsburgh School of Dental Medicine:</strong></a> Offers reduced-cost dental services. Call: 412-648-8616</li>
-       <li><a href="https://dental.temple.edu/patient-care"><strong>Temple University Kornberg School of Dentistry:</strong></a> Provides comprehensive dental care at reduced rates. Call: 215-707-2900</li>
-       <li><a href="https://www.pccy.org/resource/dental-clinics-philadelphia-region/"><strong>Philadelphia Dental Clinics:</strong></a> List of affordable dental clinics in the Philadelphia region.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/Medical-Assistance.aspx"><strong>Pennsylvania Medical Assistance (Medicaid):</strong></a> Includes dental benefits for eligible individuals.</li>
-       <li><a href="https://www.health.pa.gov/topics/programs/Dental/Pages/Dental%20Clinics.aspx"><strong>PA Department of Health Dental Clinics:</strong></a> State-supported dental services for eligible residents.</li>
-       <li><a href="https://www.dentistry.psu.edu/patient-care"><strong>Penn State College of Medicine Dental Clinic:</strong></a> Affordable dental care in central Pennsylvania. Call: 717-531-8300</li>
-     </ul>
-     
-     <h3 id="seniors">Pennsylvania Senior Resources</h3>
-     <p>Explore senior-focused services including benefits, caregiving support, and local aging resources.</p>
-     <ul>
-       <li><a href="https://www.aging.pa.gov/Pages/default.aspx"><strong>Pennsylvania Department of Aging:</strong></a> Statewide agency overseeing services for older Pennsylvanians.</li>
-       <li><a href="https://www.aging.pa.gov/local-resources/Pages/AAA.aspx"><strong>Area Agencies on Aging:</strong></a> Find your local AAA for senior services in your county.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/caregiver-support/Pages/default.aspx"><strong>PA Caregiver Support Program:</strong></a> Assistance for family caregivers of older adults.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/protective-services/Pages/default.aspx"><strong>Older Adult Protective Services:</strong></a> Investigates reports of elder abuse and neglect.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/property-tax-rent-rebate/Pages/default.aspx"><strong>Property Tax/Rent Rebate Program:</strong></a> Tax relief for eligible seniors and disabled individuals.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/health-wellness/Pages/default.aspx"><strong>Health & Wellness Programs:</strong></a> Preventive health services for older adults.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/long-term-care/Pages/default.aspx"><strong>Long-Term Care Ombudsman Program:</strong></a> Advocacy for residents of long-term care facilities.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/medicare-counseling/Pages/default.aspx"><strong>Medicare Counseling (APPRISE):</strong></a> Free Medicare insurance counseling for older Pennsylvanians.</li>
-       <li><a href="https://www.paieb.com/"><strong>PA Insurance Exchange Board:</strong></a> Information on health insurance options for seniors not yet eligible for Medicare.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/meals/Pages/default.aspx"><strong>Senior Community Centers and Meal Programs:</strong></a> Congregate and home-delivered meals for seniors.</li>
-     </ul>
-     
-     <h4>Pennsylvania Senior Hotlines and Helplines</h4>
-     <ul>
-       <li><a href="https://www.aging.pa.gov/organization/advocacy-and-protection/Pages/Elder-Abuse-Hotline.aspx"><strong>PA Elder Abuse Hotline:</strong></a> Report elder abuse 24/7 at 1-800-490-8505.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/medicare-counseling/Pages/default.aspx"><strong>PA MEDI (formerly APPRISE) Helpline:</strong></a> Medicare counseling at 1-800-783-7067.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/Helplines.aspx"><strong>PA Aging and Disability Resource Helpline:</strong></a> Call 1-800-753-8827 for resources and support.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/long-term-care/Pages/Ombudsman.aspx"><strong>Long-Term Care Ombudsman Hotline:</strong></a> Call 717-783-7247 for concerns about long-term care.</li>
-       <li><a href="https://www.revenue.pa.gov/IncentivesCreditsPrograms/PropertyTaxRentRebateProgram/Pages/default.aspx"><strong>Property Tax/Rent Rebate Hotline:</strong></a> Call 1-888-222-9190 for application assistance.</li>
-     </ul>
-     
-     <h4>Pennsylvania Senior Benefits and Financial Assistance</h4>
-     <ul>
-       <li><a href="https://www.revenue.pa.gov/IncentivesCreditsPrograms/PropertyTaxRentRebateProgram/Pages/default.aspx"><strong>Property Tax/Rent Rebate Program:</strong></a> Rebates up to $650 for eligible seniors 65+, widows/widowers 50+, and disabled 18+.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/LIHEAP.aspx"><strong>LIHEAP for Seniors:</strong></a> Energy assistance with special eligibility considerations for seniors.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/prescriptions/Pages/default.aspx"><strong>PACE/PACENET:</strong></a> Prescription assistance programs for Pennsylvania seniors 65+.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/SNAP.aspx"><strong>SNAP Benefits for Seniors:</strong></a> Food assistance with special rules for older adults.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Attendant-Care.aspx"><strong>Attendant Care Services:</strong></a> Financial support for in-home care services.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/Pages/Consumer-Choice.aspx"><strong>Options Program:</strong></a> In-home services for seniors who don't qualify for Medicaid.</li>
-       <li><a href="https://www.puc.pa.gov/consumer-services/responsible-utility-customer-protection-act/customer-assistance-programs/"><strong>Utility Customer Assistance Programs:</strong></a> Reduced rates and payment plans for eligible seniors.</li>
-     </ul>
-     
-     <h4>Pennsylvania Senior Healthcare Resources</h4>
-     <ul>
-       <li><a href="https://www.health.pa.gov/topics/programs/Pages/Programs.aspx"><strong>PA Department of Health Senior Programs:</strong></a> Health services and chronic disease management.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/Medical-Assistance.aspx"><strong>Medical Assistance (Medicaid):</strong></a> Health coverage for eligible low-income seniors.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/medicare-counseling/Pages/default.aspx"><strong>Medicare Counseling:</strong></a> Free guidance on Medicare options through PA MEDI.</li>
-       <li><a href="https://www.pennie.com/learn/how-to-apply/"><strong>Pennie Health Insurance:</strong></a> Pennsylvania's official health insurance marketplace for those under 65.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/health-wellness/Pages/Health-and-Wellness.aspx"><strong>Health & Wellness Programs:</strong></a> Evidence-based programs for chronic disease management and fall prevention.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/CHC-Main.aspx"><strong>Community HealthChoices (CHC):</strong></a> Managed care program for dual-eligible Medicare/Medicaid recipients.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/prescriptions/Pages/default.aspx"><strong>Prescription Assistance:</strong></a> Help with medication costs through PACE/PACENET.</li>
-     </ul>
-     
-     <h4>Pennsylvania Senior Housing and Living Arrangements</h4>
-     <ul>
-       <li><a href="https://www.phfa.org/consumers/seniors/"><strong>PHFA Senior Housing Options:</strong></a> Pennsylvania Housing Finance Agency resources for senior housing.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Personal-Care-Homes.aspx"><strong>Personal Care Homes:</strong></a> Residential facilities offering assistance with daily living.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/housing/Pages/Shared-Housing.aspx"><strong>Shared Housing and Resources Program (SHARE):</strong></a> Matching homeowners with home seekers for shared living arrangements.</li>
-       <li><a href="https://www.phfa.org/programs/repairs.aspx"><strong>PHFA Home Repair Programs:</strong></a> Assistance for home modifications and repairs for older homeowners.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Nursing-Facilities.aspx"><strong>Nursing Facility Information:</strong></a> Resources and information on skilled nursing facilities.</li>
-       <li><a href="https://www.phfa.org/counseling/seniors.aspx"><strong>Senior Housing Counseling:</strong></a> Free counseling services to help seniors explore housing options.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Independent-Enrollment-Broker.aspx"><strong>Independent Enrollment Broker:</strong></a> Help with long-term care service enrollment.</li>
-     </ul>
-     
-     <h4>Pennsylvania Senior Technology and Education</h4>
-     <ul>
-       <li><a href="https://www.aging.pa.gov/aging-services/senior-center-services/Pages/default.aspx"><strong>Senior Community Center Services:</strong></a> Educational programs and technology training at local centers.</li>
-       <li><a href="https://www.aarp.org/pennsylvania/"><strong>AARP Pennsylvania:</strong></a> Technology education, workshops, and resources for seniors.</li>
-       <li><a href="https://www.patellnet.org/"><strong>PA TellNet:</strong></a> Pennsylvania's Technology Enhanced Lifelong Learning Network.</li>
-       <li><a href="https://www.psl.org/for-seniors/"><strong>Presbyterian Senior Living Learning Opportunities:</strong></a> Educational programs throughout Pennsylvania.</li>
-       <li><a href="https://www.osher.pitt.edu/"><strong>Osher Lifelong Learning Institute:</strong></a> Educational programs for adults 50+ at University of Pittsburgh.</li>
-       <li><a href="https://cce.temple.edu/osher-lifelong-learning-institute-temple-university"><strong>Temple University OLLI:</strong></a> Learning opportunities for older adults in Philadelphia.</li>
-       <li><a href="https://lewisandclark.temple.edu"><strong>Temple University Lewis and Clark Center for Senior Computer Training:</strong></a> Technology training for seniors.</li>
-     </ul>
-     
-     <h4>Pennsylvania Senior Legal Resources</h4>
-     <ul>
-       <li><a href="https://palegalaid.net/legal-aid-providers-in-pa"><strong>PA Legal Aid Network:</strong></a> Free legal assistance for eligible seniors throughout Pennsylvania.</li>
-       <li><a href="https://seniorlawcenter.org/"><strong>SeniorLAW Center:</strong></a> Legal services for older Pennsylvanians. Statewide Helpline: 877-727-7529.</li>
-       <li><a href="https://www.palawhelp.org/"><strong>PA Law Help:</strong></a> Free legal information for low-income Pennsylvanians.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/protective-services/Pages/Elder-Abuse.aspx"><strong>Elder Abuse Prevention & Reporting:</strong></a> Legal protections and reporting procedures.</li>
-       <li><a href="https://www.palawhelp.org/issues/seniors/advance-directives-and-powers-of-attorney"><strong>Advance Directives and Powers of Attorney:</strong></a> Free legal guidance on planning documents.</li>
-       <li><a href="https://www.attorneygeneral.gov/protect-yourself/seniors/"><strong>PA Attorney General Elder Protection:</strong></a> Resources to protect seniors from fraud and abuse.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Adult-Protective-Services.aspx"><strong>Adult Protective Services:</strong></a> Legal protection for adults 18-59 with disabilities.</li>
-     </ul>
-     
-     <h3 id="pennsylvania-transportation">Pennsylvania Transportation Resources</h3>
-     <p>Explore transportation options for seniors, people with disabilities, and medical appointments across Pennsylvania.</p>
-     <ul>
-       <li><a href="https://www.penndot.pa.gov/TravelInPA/RideShare/Pages/Seniors.aspx"><strong>PennDOT Shared Ride Program:</strong></a> Discounted shared-ride transportation service for seniors aged 65+.</li>
-       <li><a href="https://www.penndot.pa.gov/TravelInPA/PublicTransit/Pages/default.aspx"><strong>PennDOT Public Transit Options:</strong></a> Information on public transportation throughout Pennsylvania.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/Medical-Assistance-Transportation-Program.aspx"><strong>Medical Assistance Transportation Program (MATP):</strong></a> Free transportation to medical appointments for Medicaid recipients.</li>
-       <li><a href="https://www.aging.pa.gov/aging-services/transportation/Pages/default.aspx"><strong>PA Department of Aging Transportation:</strong></a> Transportation services for older adults through local Area Agencies on Aging.</li>
-       <li><a href="https://www.paturnpike.com/toll/toll-by-plate-discounts"><strong>PA Turnpike E-ZPass Discounts:</strong></a> Reduced toll rates for seniors and people with disabilities.</li>
-       <li><a href="https://www.penndot.pa.gov/TravelInPA/RideShare/Pages/Persons-with-Disabilities.aspx"><strong>Persons with Disabilities Program:</strong></a> Reduced fare shared-ride transportation for eligible persons with disabilities.</li>
-       <li><a href="https://www.septa.org/service/cct/"><strong>SEPTA CCT Connect:</strong></a> Paratransit service for individuals with disabilities in the Philadelphia region.</li>
-       <li><a href="https://www.portauthority.org/inside-Pittsburgh-Regional-Transit/rider-info/accessible/"><strong>Pittsburgh Regional Transit ACCESS:</strong></a> Door-to-door, advance reservation, shared-ride transportation service in Allegheny County.</li>
-       <li><a href="https://www.dmv.pa.gov/Driver-Services/Mature-Drivers/Pages/default.aspx"><strong>PennDOT Mature Driver Resources:</strong></a> Special services and information for older drivers.</li>
-     </ul>
+    <nav>
+      <ul class="main-navbar">
+        <li><a href="#pennsylvania-statewide">Pennsylvania Statewide</a></li>
+        <li><a href="#pennsylvania-housing">Housing</a></li>
+        <li><a href="#pennsylvania-utilities">Utilities</a></li>
+        <li><a href="#pennsylvania-food">Food & Nutrition</a></li>
+        <li><a href="#pennsylvania-dental">Dental</a></li>
+        <li><a href="#pennsylvania-seniors">Seniors</a></li>
+        <li><a href="#pennsylvania-transportation">Transportation</a></li>
+        <li><a href="#pennsylvania-cancer-support">Cancer Support</a></li>
+        <li class="dropdown">
+          <button class="dropbtn">Major Counties <i class="fas fa-caret-down"></i></button>
+          <div class="dropdown-content">
+            <a href="#philadelphia-county-resources">Philadelphia County</a>
+            <a href="#allegheny-county-resources">Allegheny County</a>
+            <a href="#montgomery-county-resources">Montgomery County</a>
+            <a href="#bucks-county-resources">Bucks County</a>
+            <a href="#delaware-county-resources">Delaware County</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-     <h3 id="senior-transportation">Senior Transportation Resources by County</h3>
-     
-     <h4 id="philadelphia-county">Philadelphia County</h4>
-     <ul>
-       <li><a href="https://www.septa.org/service/senior-rides-program/"><strong>SEPTA Senior Rides Program:</strong></a> Free transit for seniors 65+ with valid ID on all SEPTA services.</li>
-       <li><a href="https://www.septa.org/service/cct/"><strong>SEPTA CCT Connect Paratransit:</strong></a> Door-to-door service for persons with disabilities unable to use regular transit.</li>
-       <li><a href="https://www.pcacares.org/service-type/transportation/"><strong>Philadelphia Corporation for Aging (PCA) Transportation:</strong></a> Coordinates transportation services for seniors in Philadelphia.</li>
-       <li><a href="https://www.phila.gov/programs/older-adult-services/"><strong>Philadelphia Older Adult Services:</strong></a> City resources for senior transportation and other needs.</li>
-       <li><a href="https://www.rideprt.org/"><strong>Shared-Ride Program:</strong></a> Door-to-door, advance reservation service for seniors 65+ at discounted rates.</li>
-       <li><a href="https://libertyresources.org/programs/transportation/"><strong>Liberty Resources Transportation Service:</strong></a> Provides accessible transportation for people with disabilities.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/MATP.aspx"><strong>Philadelphia MATP:</strong></a> Medical Assistance Transportation Program for Medicaid recipients.</li>
-       <li><a href="https://www.keystonecommunityresources.org/services/transportation"><strong>Keystone Community Resources:</strong></a> Door-to-door transportation for seniors and people with disabilities.</li>
-     </ul>
+  <div class="container">
+      <div class="search-container">
+          <h2>Find Resources in Pennsylvania</h2>
+          <div class="search-box">
+              <input type="text" id="siteSearch" placeholder="Search for Pennsylvania resources...">
+              <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+          </div>
+          <div id="searchResults"></div>
+      </div>
 
-     <h4 id="allegheny-county">Allegheny County</h4>
-     <ul>
-       <li><a href="https://www.portauthority.org/inside-Pittsburgh-Regional-Transit/rider-info/senior-connect/"><strong>Pittsburgh Regional Transit Senior Services:</strong></a> Free rides for seniors 65+ on regular transit routes.</li>
-       <li><a href="https://www.portauthority.org/inside-Pittsburgh-Regional-Transit/rider-info/accessible/access/"><strong>ACCESS Transportation System:</strong></a> Door-to-door paratransit service for seniors and people with disabilities.</li>
-       <li><a href="https://www.alleghenycounty.us/human-services/older-adults/transportation.aspx"><strong>Allegheny County Area Agency on Aging Transportation:</strong></a> Coordinates rides for seniors to medical appointments, grocery shopping, and more.</li>
-       <li><a href="https://www.accesstransys.com/older-pennsylvanians-shared-ride-program/"><strong>Older Pennsylvanians Shared-Ride Program:</strong></a> Discounted shared-ride service for Allegheny County seniors.</li>
-       <li><a href="https://www.healthrideplus.com/"><strong>HealthRidePlus:</strong></a> Non-emergency medical transportation for Medicaid-eligible residents.</li>
-       <li><a href="https://www.alleghenycounty.us/Human-Services/News-Events/Transportation-Resources.aspx"><strong>Allegheny County Transportation Resources:</strong></a> County directory of transportation services and programs.</li>
-     </ul>
+      <div class="two-column-layout">
+          <aside class="quick-nav">
+              <h3>Quick Navigation</h3>
+              <ul>
+                <li><a href="#pennsylvania-statewide">PA Statewide</a></li>
+                <li><a href="#pennsylvania-housing">Housing</a></li>
+                <li><a href="#pennsylvania-utilities">Utilities</a></li>
+                <li><a href="#pennsylvania-food">Food & Nutrition</a></li>
+                <li><a href="#pennsylvania-dental">Dental</a></li>
+                <li><a href="#pennsylvania-seniors">Seniors</a></li>
+                <li><a href="#pennsylvania-transportation">Transportation</a></li>
+                <li><a href="#pennsylvania-cancer-support">Cancer Support</a></li>
+                <li><a href="#philadelphia-county-resources">Philadelphia County</a></li>
+                <li><a href="#allegheny-county-resources">Allegheny County</a></li>
+                <li><a href="#montgomery-county-resources">Montgomery County</a></li>
+                <li><a href="#bucks-county-resources">Bucks County</a></li>
+                <li><a href="#delaware-county-resources">Delaware County</a></li>
+              </ul>
+          </aside>
 
-     <h4 id="montgomery-county">Montgomery County</h4>
-     <ul>
-       <li><a href="https://www.septa.org/service/senior-rides-program/"><strong>SEPTA Senior Transit Services:</strong></a> Free transit for seniors 65+ on all SEPTA services.</li>
-       <li><a href="https://www.montcopa.org/2121/Shared-Ride-Transportation"><strong>Montgomery County Shared Ride Program:</strong></a> Door-to-door service for seniors and persons with disabilities.</li>
-       <li><a href="https://www.montcopa.org/148/Senior-Services"><strong>Montgomery County Senior Services:</strong></a> Transportation coordination through the County Office of Senior Services.</li>
-       <li><a href="https://www.montcopa.org/1732/Suburban-Transit-Network-TransNet"><strong>TransNet:</strong></a> Provides shared ride services for eligible Montgomery County residents.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/MATP.aspx"><strong>Montgomery County MATP:</strong></a> Medical transportation for Medicaid recipients.</li>
-     </ul>
+          <main class="main-content">
+              <section id="pennsylvania-statewide" class="resource-section">
+                <h2>Pennsylvania Statewide Resources</h2>
+                <p>Explore a variety of programs and services available specifically for Pennsylvania residents.</p>
+            
+                <h3 id="pa-search-portals">Pennsylvania Resource Search Portals</h3>
+                <ul>
+                  <li><a href="https://www.pa211.org/"><strong>PA 211:</strong></a> Pennsylvania's statewide resource hotline and website connecting residents to health and human service needs. Call 211 for assistance.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/COMPASS.aspx"><strong>COMPASS PA:</strong></a> Apply for health care, food stamps, cash assistance, and many other services through this online portal.</li>
+                  <li><a href="https://www.compass.state.pa.us/compass.web/Public/CMPHome"><strong>COMPASS Benefits Portal:</strong></a> Online application for Pennsylvanians to apply for many health and human service programs.</li>
+                  <li><a href="https://findhelp.org/search_results/Pennsylvania"><strong>FindHelp.org Pennsylvania:</strong></a> Search for free and reduced-cost services in your area across Pennsylvania.</li>
+                  <li><a href="https://www.aging.pa.gov/local-resources/Pages/AAA.aspx"><strong>Pennsylvania Area Agencies on Aging:</strong></a> Find your local Area Agency on Aging for senior services.</li>
+                </ul>
+              </section>
 
-     <h4 id="bucks-county">Bucks County</h4>
-     <ul>
-       <li><a href="https://www.buckscounty.gov/913/Transportation"><strong>Bucks County Transport:</strong></a> Provides shared-ride services for seniors 65+ and persons with disabilities.</li>
-       <li><a href="https://www.buckscounty.gov/802/Area-Agency-on-Aging"><strong>Bucks County Area Agency on Aging:</strong></a> Senior transportation coordination and resources.</li>
-       <li><a href="https://www.septa.org/service/senior-rides-program/"><strong>SEPTA Senior Transit Services:</strong></a> Free transit for seniors 65+ on all SEPTA services in Bucks County.</li>
-       <li><a href="https://www.buckscounty.gov/796/Medical-Assistance-Transportation-Program"><strong>Bucks County MATP:</strong></a> Medical transportation for Medicaid recipients.</li>
-       <li><a href="https://www.buckscounty.gov/913/Transportation"><strong>Bucks County Shared-Ride Program:</strong></a> Discounted rides for seniors 65+ throughout the county.</li>
-     </ul>
+              <section id="pennsylvania-housing" class="resource-section">
+                <h2>Pennsylvania Housing Resources</h2>
+                <ul>
+                  <li><a href="https://www.phfa.org/"><strong>Pennsylvania Housing Finance Agency (PHFA):</strong></a> Provides affordable housing options, homeowner resources, and rental assistance programs statewide.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Other-Services/Pages/Housing-Resources.aspx"><strong>PA DHS Housing Resources:</strong></a> Housing assistance information through the Department of Human Services.</li>
+                  <li><a href="https://www.phfa.org/consumers/renters/dehp.aspx"><strong>PHFA Housing Programs for Persons with Disabilities:</strong></a> Information on housing resources for individuals with disabilities.</li>
+                  <li><a href="https://www.rentalhelppa.org/"><strong>Pennsylvania Emergency Rental Assistance Program:</strong></a> Helps eligible renters affected by financial hardship pay for rent and utilities.</li>
+                  <li><a href="https://www.phfa.org/counseling/hsgcounselor.aspx"><strong>Housing Counseling Agencies:</strong></a> Find free housing counseling services by county.</li>
+                  <li><a href="https://www.phfa.org/mhp/serviceprovider/"><strong>Supportive Housing Programs:</strong></a> Assistance for vulnerable populations including those with disabilities or special needs.</li>
+                  <li><a href="https://www.pealcenter.org/housing-resources/"><strong>PEAL Center Housing Resources:</strong></a> Housing information for families of children and adults with disabilities.</li>
+                </ul>
+              </section>
+                
+              <section id="pennsylvania-utilities" class="resource-section">
+                <h2>Pennsylvania Utility Assistance</h2>
+                <ul>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/LIHEAP.aspx"><strong>Low Income Home Energy Assistance Program (LIHEAP):</strong></a> Helps low-income households with heating bills. Apply through COMPASS or your County Assistance Office.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/LIHEAP-Crisis.aspx"><strong>LIHEAP Crisis Program:</strong></a> Emergency assistance for utility shutoffs or heating system failures.</li>
+                  <li><a href="https://www.puc.pa.gov/consumer-services/customer-assistance-programs/"><strong>Pennsylvania Public Utility Commission - Customer Assistance Programs:</strong></a> Information on various utility assistance programs including CAP, LIURP, and CARES.</li>
+                  <li><a href="https://www.dollarenergy.org/need-help/pennsylvania/"><strong>Dollar Energy Fund:</strong></a> Provides utility assistance to low-income households through the Hardship Program.</li>
+                  <li><a href="https://www.elp.org/utility-assistance/"><strong>Electric League of Pennsylvania Assistance:</strong></a> Connect to energy assistance programs throughout Pennsylvania.</li>
+                  <li><a href="https://www.uwp.org/programs/utility-assistance/"><strong>United Way of Pennsylvania Utility Help:</strong></a> Statewide utility assistance resources and referrals.</li>
+                  <li><a href="https://www.needhelppayingbills.com/html/pennsylvania_assistance_progra1.html"><strong>Pennsylvania Assistance Programs:</strong></a> Comprehensive list of assistance options for utilities and other basic needs.</li>
+                  <li><a href="https://www.peco.com/MyAccount/CustomerSupport/Pages/AssistancePrograms.aspx"><strong>PECO Customer Assistance Programs:</strong></a> Help for PECO customers who are having difficulty paying their bills.</li>
+                  <li><a href="https://www.pgworks.com/residential/customer-care/payment-assistance"><strong>PGW Customer Assistance:</strong></a> Payment assistance programs for Philadelphia Gas Works customers.</li>
+                </ul>
+              </section>
+                
+              <section id="pennsylvania-food" class="resource-section">
+                <h2>Pennsylvania Food & Nutrition Resources</h2>
+                <ul>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/SNAP.aspx"><strong>Supplemental Nutrition Assistance Program (SNAP):</strong></a> Food assistance benefits for eligible low-income individuals and families.</li>
+                  <li><a href="https://www.compass.state.pa.us/compass.web/Public/CMPHome"><strong>COMPASS - Apply for SNAP:</strong></a> Online portal to apply for SNAP benefits.</li>
+                  <li><a href="https://www.feedingpa.org/find-food-assistance/"><strong>Feeding Pennsylvania:</strong></a> Find food banks and pantries in your area.</li>
+                  <li><a href="https://www.health.pa.gov/topics/programs/WIC/Pages/WIC.aspx"><strong>Women, Infants, and Children (WIC):</strong></a> Nutrition program for eligible pregnant women, new mothers, and young children.</li>
+                  <li><a href="https://www.agriculture.pa.gov/Food_Security/Pages/Senior-Farmers-Market-Nutrition-Program.aspx"><strong>Senior Farmers Market Nutrition Program:</strong></a> Provides eligible seniors with vouchers to purchase fresh produce.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/nutrition-services/Pages/default.aspx"><strong>PA Department of Aging Nutrition Services:</strong></a> Information on congregate meals and home-delivered meals for seniors.</li>
+                  <li><a href="https://hungerfreepascorecard.org/resources/"><strong>Hunger-Free PA Resources:</strong></a> Comprehensive directory of food assistance programs.</li>
+                  <li><a href="https://www.philabundance.org/find-food/"><strong>Philabundance:</strong></a> Food assistance in the Philadelphia region and Delaware Valley.</li>
+                  <li><a href="https://www.pittsburghfoodbank.org/get-help/"><strong>Greater Pittsburgh Community Food Bank:</strong></a> Food assistance in southwestern Pennsylvania.</li>
+                  <li><a href="https://www.education.pa.gov/Teachers - Administrators/Food-Nutrition/programs/Pages/default.aspx"><strong>School Meals Programs:</strong></a> Information on school breakfast, lunch, and summer food service programs.</li>
+                </ul>
+              </section>
+                  
+              <section id="pennsylvania-dental" class="resource-section">
+                <h2>Pennsylvania Dental Resources</h2>
+                <p>Explore dental care options and training-based clinics available across Pennsylvania.</p>
+                <ul>
+                  <li><a href="https://www.padental.org/Online/Resources___Programs/Dental_Clinics/Online/Resources___Programs/Dental_Clinics/Dental_Clinics.aspx"><strong>Pennsylvania Dental Association Clinics:</strong></a> Directory of low-cost dental clinics throughout the state.</li>
+                  <li><a href="https://findahealthcenter.hrsa.gov/"><strong>Pennsylvania's Federally Qualified Health Centers:</strong></a> These centers provide dental services to people who are low income, uninsured, or undocumented residents.</li>
+                  <li><a href="https://www.dental.pitt.edu/patients/community-emergency"><strong>University of Pittsburgh School of Dental Medicine:</strong></a> Offers reduced-cost dental services. Call: 412-648-8616</li>
+                  <li><a href="https://dental.temple.edu/patient-care"><strong>Temple University Kornberg School of Dentistry:</strong></a> Provides comprehensive dental care at reduced rates. Call: 215-707-2900</li>
+                  <li><a href="https://www.pccy.org/resource/dental-clinics-philadelphia-region/"><strong>Philadelphia Dental Clinics:</strong></a> List of affordable dental clinics in the Philadelphia region.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/Medical-Assistance.aspx"><strong>Pennsylvania Medical Assistance (Medicaid):</strong></a> Includes dental benefits for eligible individuals.</li>
+                  <li><a href="https://www.health.pa.gov/topics/programs/Dental/Pages/Dental%20Clinics.aspx"><strong>PA Department of Health Dental Clinics:</strong></a> State-supported dental services for eligible residents.</li>
+                  <li><a href="https://www.dentistry.psu.edu/patient-care"><strong>Penn State College of Medicine Dental Clinic:</strong></a> Affordable dental care in central Pennsylvania. Call: 717-531-8300</li>
+                </ul>
+              </section>
+                
+              <section id="pennsylvania-seniors" class="resource-section">
+                <h2>Pennsylvania Senior Resources</h2>
+                <p>Explore senior-focused services including benefits, caregiving support, and local aging resources.</p>
+                <h4 id="pa-seniors-general">General Senior Services & Hotlines</h4>
+                <ul>
+                  <li><a href="https://www.aging.pa.gov/Pages/default.aspx"><strong>Pennsylvania Department of Aging:</strong></a> Statewide agency overseeing services for older Pennsylvanians.</li>
+                  <li><a href="https://www.aging.pa.gov/local-resources/Pages/AAA.aspx"><strong>Area Agencies on Aging:</strong></a> Find your local AAA for senior services in your county.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/caregiver-support/Pages/default.aspx"><strong>PA Caregiver Support Program:</strong></a> Assistance for family caregivers of older adults.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/protective-services/Pages/default.aspx"><strong>Older Adult Protective Services:</strong></a> Investigates reports of elder abuse and neglect. Report elder abuse 24/7 at 1-800-490-8505.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/medicare-counseling/Pages/default.aspx"><strong>PA MEDI (formerly APPRISE) Helpline:</strong></a> Medicare counseling at 1-800-783-7067.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/Helplines.aspx"><strong>PA Aging and Disability Resource Helpline:</strong></a> Call 1-800-753-8827 for resources and support.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/long-term-care/Pages/Ombudsman.aspx"><strong>Long-Term Care Ombudsman Hotline:</strong></a> Call 717-783-7247 for concerns about long-term care.</li>
+                </ul>
+                <h4 id="pa-seniors-financial">Senior Benefits and Financial Assistance</h4>
+                <ul>
+                  <li><a href="https://www.revenue.pa.gov/IncentivesCreditsPrograms/PropertyTaxRentRebateProgram/Pages/default.aspx"><strong>Property Tax/Rent Rebate Program:</strong></a> Rebates up to $650 for eligible seniors 65+, widows/widowers 50+, and disabled 18+. Hotline: 1-888-222-9190.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/LIHEAP.aspx"><strong>LIHEAP for Seniors:</strong></a> Energy assistance with special eligibility considerations for seniors.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/prescriptions/Pages/default.aspx"><strong>PACE/PACENET:</strong></a> Prescription assistance programs for Pennsylvania seniors 65+.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/SNAP.aspx"><strong>SNAP Benefits for Seniors:</strong></a> Food assistance with special rules for older adults.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Attendant-Care.aspx"><strong>Attendant Care Services:</strong></a> Financial support for in-home care services.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/Pages/Consumer-Choice.aspx"><strong>Options Program:</strong></a> In-home services for seniors who don't qualify for Medicaid.</li>
+                  <li><a href="https://www.puc.pa.gov/consumer-services/responsible-utility-customer-protection-act/customer-assistance-programs/"><strong>Utility Customer Assistance Programs:</strong></a> Reduced rates and payment plans for eligible seniors.</li>
+                </ul>
+                <h4 id="pa-seniors-healthcare">Senior Healthcare Resources</h4>
+                <ul>
+                  <li><a href="https://www.health.pa.gov/topics/programs/Pages/Programs.aspx"><strong>PA Department of Health Senior Programs:</strong></a> Health services and chronic disease management.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/Medical-Assistance.aspx"><strong>Medical Assistance (Medicaid):</strong></a> Health coverage for eligible low-income seniors.</li>
+                  <li><a href="https://www.pennie.com/learn/how-to-apply/"><strong>Pennie Health Insurance:</strong></a> Pennsylvania's official health insurance marketplace for those under 65.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/health-wellness/Pages/Health-and-Wellness.aspx"><strong>Health & Wellness Programs:</strong></a> Evidence-based programs for chronic disease management and fall prevention.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/CHC-Main.aspx"><strong>Community HealthChoices (CHC):</strong></a> Managed care program for dual-eligible Medicare/Medicaid recipients.</li>
+                </ul>
+                <h4 id="pa-seniors-housing">Senior Housing and Living Arrangements</h4>
+                <ul>
+                  <li><a href="https://www.phfa.org/consumers/seniors/"><strong>PHFA Senior Housing Options:</strong></a> Pennsylvania Housing Finance Agency resources for senior housing.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Personal-Care-Homes.aspx"><strong>Personal Care Homes:</strong></a> Residential facilities offering assistance with daily living.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/housing/Pages/Shared-Housing.aspx"><strong>Shared Housing and Resources Program (SHARE):</strong></a> Matching homeowners with home seekers for shared living arrangements.</li>
+                  <li><a href="https://www.phfa.org/programs/repairs.aspx"><strong>PHFA Home Repair Programs:</strong></a> Assistance for home modifications and repairs for older homeowners.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Nursing-Facilities.aspx"><strong>Nursing Facility Information:</strong></a> Resources and information on skilled nursing facilities.</li>
+                  <li><a href="https://www.phfa.org/counseling/seniors.aspx"><strong>Senior Housing Counseling:</strong></a> Free counseling services to help seniors explore housing options.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Independent-Enrollment-Broker.aspx"><strong>Independent Enrollment Broker:</strong></a> Help with long-term care service enrollment.</li>
+                </ul>
+                <h4 id="pa-seniors-tech">Senior Technology and Education</h4>
+                <ul>
+                  <li><a href="https://www.aging.pa.gov/aging-services/senior-center-services/Pages/default.aspx"><strong>Senior Community Center Services:</strong></a> Educational programs and technology training at local centers.</li>
+                  <li><a href="https://www.aarp.org/pennsylvania/"><strong>AARP Pennsylvania:</strong></a> Technology education, workshops, and resources for seniors.</li>
+                  <li><a href="https://www.patellnet.org/"><strong>PA TellNet:</strong></a> Pennsylvania's Technology Enhanced Lifelong Learning Network.</li>
+                  <li><a href="https://www.psl.org/for-seniors/"><strong>Presbyterian Senior Living Learning Opportunities:</strong></a> Educational programs throughout Pennsylvania.</li>
+                  <li><a href="https://www.osher.pitt.edu/"><strong>Osher Lifelong Learning Institute (University of Pittsburgh):</strong></a> Educational programs for adults 50+.</li>
+                  <li><a href="https://cce.temple.edu/osher-lifelong-learning-institute-temple-university"><strong>Temple University OLLI:</strong></a> Learning opportunities for older adults in Philadelphia.</li>
+                </ul>
+                <h4 id="pa-seniors-legal">Senior Legal Resources</h4>
+                <ul>
+                  <li><a href="https://palegalaid.net/legal-aid-providers-in-pa"><strong>PA Legal Aid Network:</strong></a> Free legal assistance for eligible seniors throughout Pennsylvania.</li>
+                  <li><a href="https://seniorlawcenter.org/"><strong>SeniorLAW Center:</strong></a> Legal services for older Pennsylvanians. Statewide Helpline: 877-727-7529.</li>
+                  <li><a href="https://www.palawhelp.org/"><strong>PA Law Help:</strong></a> Free legal information for low-income Pennsylvanians.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/protective-services/Pages/Elder-Abuse.aspx"><strong>Elder Abuse Prevention & Reporting:</strong></a> Legal protections and reporting procedures.</li>
+                  <li><a href="https://www.palawhelp.org/issues/seniors/advance-directives-and-powers-of-attorney"><strong>Advance Directives and Powers of Attorney:</strong></a> Free legal guidance on planning documents.</li>
+                  <li><a href="https://www.attorneygeneral.gov/protect-yourself/seniors/"><strong>PA Attorney General Elder Protection:</strong></a> Resources to protect seniors from fraud and abuse.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Disabilities-Aging/Pages/Adult-Protective-Services.aspx"><strong>Adult Protective Services:</strong></a> Legal protection for adults 18-59 with disabilities.</li>
+                </ul>
+              </section>
+                
+              <section id="pennsylvania-transportation" class="resource-section">
+                <h2>Pennsylvania Transportation Resources</h2>
+                <p>Explore transportation options for seniors, people with disabilities, and medical appointments across Pennsylvania.</p>
+                <ul>
+                  <li><a href="https://www.penndot.pa.gov/TravelInPA/RideShare/Pages/Seniors.aspx"><strong>PennDOT Shared Ride Program:</strong></a> Discounted shared-ride transportation service for seniors aged 65+.</li>
+                  <li><a href="https://www.penndot.pa.gov/TravelInPA/PublicTransit/Pages/default.aspx"><strong>PennDOT Public Transit Options:</strong></a> Information on public transportation throughout Pennsylvania.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/Medical-Assistance-Transportation-Program.aspx"><strong>Medical Assistance Transportation Program (MATP):</strong></a> Free transportation to medical appointments for Medicaid recipients.</li>
+                  <li><a href="https://www.aging.pa.gov/aging-services/transportation/Pages/default.aspx"><strong>PA Department of Aging Transportation:</strong></a> Transportation services for older adults through local Area Agencies on Aging.</li>
+                  <li><a href="https://www.paturnpike.com/toll/toll-by-plate-discounts"><strong>PA Turnpike E-ZPass Discounts:</strong></a> Reduced toll rates for seniors and people with disabilities.</li>
+                  <li><a href="https://www.penndot.pa.gov/TravelInPA/RideShare/Pages/Persons-with-Disabilities.aspx"><strong>Persons with Disabilities Program:</strong></a> Reduced fare shared-ride transportation for eligible persons with disabilities.</li>
+                </ul>
+                <h4 id="pa-transportation-philadelphia">Philadelphia County Transportation</h4>
+                <ul>
+                  <li><a href="https://www.septa.org/service/senior-rides-program/"><strong>SEPTA Senior Rides Program:</strong></a> Free transit for seniors 65+ with valid ID on all SEPTA services.</li>
+                  <li><a href="https://www.septa.org/service/cct/"><strong>SEPTA CCT Connect Paratransit:</strong></a> Door-to-door service for persons with disabilities unable to use regular transit.</li>
+                  <li><a href="https://www.pcacares.org/service-type/transportation/"><strong>Philadelphia Corporation for Aging (PCA) Transportation:</strong></a> Coordinates transportation services for seniors in Philadelphia.</li>
+                  <li><a href="https://www.phila.gov/programs/older-adult-services/"><strong>Philadelphia Older Adult Services:</strong></a> City resources for senior transportation and other needs.</li>
+                  <li><a href="https://www.rideprt.org/"><strong>Shared-Ride Program (Philadelphia):</strong></a> Door-to-door, advance reservation service for seniors 65+ at discounted rates. (Note: rideprt.org is Pittsburgh Regional Transit; ensure correct link for Philadelphia if different).</li>
+                  <li><a href="https://libertyresources.org/programs/transportation/"><strong>Liberty Resources Transportation Service:</strong></a> Provides accessible transportation for people with disabilities.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/MATP.aspx"><strong>Philadelphia MATP:</strong></a> Medical Assistance Transportation Program for Medicaid recipients.</li>
+                </ul>
+                <h4 id="pa-transportation-allegheny">Allegheny County Transportation</h4>
+                <ul>
+                  <li><a href="https://www.portauthority.org/inside-Pittsburgh-Regional-Transit/rider-info/senior-connect/"><strong>Pittsburgh Regional Transit Senior Services:</strong></a> Free rides for seniors 65+ on regular transit routes.</li>
+                  <li><a href="https://www.portauthority.org/inside-Pittsburgh-Regional-Transit/rider-info/accessible/access/"><strong>ACCESS Transportation System:</strong></a> Door-to-door paratransit service for seniors and people with disabilities.</li>
+                  <li><a href="https://www.alleghenycounty.us/human-services/older-adults/transportation.aspx"><strong>Allegheny County Area Agency on Aging Transportation:</strong></a> Coordinates rides for seniors to medical appointments, grocery shopping, and more.</li>
+                  <li><a href="https://www.accesstransys.com/older-pennsylvanians-shared-ride-program/"><strong>Older Pennsylvanians Shared-Ride Program (Allegheny):</strong></a> Discounted shared-ride service for Allegheny County seniors.</li>
+                  <li><a href="https://www.healthrideplus.com/"><strong>HealthRidePlus:</strong></a> Non-emergency medical transportation for Medicaid-eligible residents.</li>
+                </ul>
+                <h4 id="pa-transportation-montgomery">Montgomery County Transportation</h4>
+                <ul>
+                  <li><a href="https://www.septa.org/service/senior-rides-program/"><strong>SEPTA Senior Transit Services (Montgomery):</strong></a> Free transit for seniors 65+ on all SEPTA services.</li>
+                  <li><a href="https://www.montcopa.org/2121/Shared-Ride-Transportation"><strong>Montgomery County Shared Ride Program:</strong></a> Door-to-door service for seniors and persons with disabilities.</li>
+                  <li><a href="https://www.montcopa.org/148/Senior-Services"><strong>Montgomery County Senior Services:</strong></a> Transportation coordination through the County Office of Senior Services.</li>
+                  <li><a href="https://www.montcopa.org/1732/Suburban-Transit-Network-TransNet"><strong>TransNet:</strong></a> Provides shared ride services for eligible Montgomery County residents.</li>
+                  <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/MATP.aspx"><strong>Montgomery County MATP:</strong></a> Medical transportation for Medicaid recipients.</li>
+                </ul>
+                <h4 id="pa-transportation-bucks">Bucks County Transportation</h4>
+                <ul>
+                  <li><a href="https://www.buckscounty.gov/913/Transportation"><strong>Bucks County Transport:</strong></a> Provides shared-ride services for seniors 65+ and persons with disabilities.</li>
+                  <li><a href="https://www.buckscounty.gov/802/Area-Agency-on-Aging"><strong>Bucks County Area Agency on Aging:</strong></a> Senior transportation coordination and resources.</li>
+                  <li><a href="https://www.septa.org/service/senior-rides-program/"><strong>SEPTA Senior Transit Services (Bucks):</strong></a> Free transit for seniors 65+ on all SEPTA services in Bucks County.</li>
+                  <li><a href="https://www.buckscounty.gov/796/Medical-Assistance-Transportation-Program"><strong>Bucks County MATP:</strong></a> Medical transportation for Medicaid recipients.</li>
+                </ul>
+                <h4 id="pa-transportation-delaware">Delaware County Transportation</h4>
+                <ul>
+                  <li><a href="https://www.delcosa.org/transportation/"><strong>Delaware County Office of Services for the Aging (COSA):</strong></a> Transportation coordination for seniors.</li>
+                  <li><a href="https://www.ctdelco.org/"><strong>Community Transit of Delaware County:</strong></a> Shared-ride program for seniors and persons with disabilities.</li>
+                  <li><a href="https://www.septa.org/service/senior-rides-program/"><strong>SEPTA Senior Transit Services (Delaware):</strong></a> Free transit for seniors 65+ on all SEPTA services in Delaware County.</li>
+                  <li><a href="https://www.delcosa.org/transportation/medical-transportation/"><strong>Delaware County MATP:</strong></a> Medical transportation for Medicaid recipients.</li>
+                </ul>
+              </section>
 
-     <h4 id="delaware-county">Delaware County</h4>
-     <ul>
-       <li><a href="https://www.delcosa.org/transportation/"><strong>Delaware County Office of Services for the Aging (COSA):</strong></a> Transportation coordination for seniors.</li>
-       <li><a href="https://www.ctdelco.org/"><strong>Community Transit of Delaware County:</strong></a> Shared-ride program for seniors and persons with disabilities.</li>
-       <li><a href="https://www.septa.org/service/senior-rides-program/"><strong>SEPTA Senior Transit Services:</strong></a> Free transit for seniors 65+ on all SEPTA services in Delaware County.</li>
-       <li><a href="https://www.delcosa.org/transportation/medical-transportation/"><strong>Delaware County MATP:</strong></a> Medical transportation for Medicaid recipients.</li>
-       <li><a href="https://www.ctdelco.org/senior-shared-ride/"><strong>Delaware County Shared-Ride Program:</strong></a> Discounted rides for seniors 65+ throughout the county.</li>
-     </ul>
+              <section id="pennsylvania-cancer-support" class="resource-section">
+                <h2>Pennsylvania Cancer Support Resources</h2>
+                <p>Resources specifically for cancer patients and their families in Pennsylvania.</p>
+                <h4 id="pa-cancer-general">General Cancer Support</h4>
+                <ul>
+                  <li><a href="https://www.cancer.org/about-us/local/pennsylvania.html"><strong>American Cancer Society - Pennsylvania:</strong></a> Support services, educational resources, and programs across the state.</li>
+                  <li><a href="https://www.cancercareconnection.org/"><strong>Cancer Care Connection:</strong></a> Information and support for Pennsylvania cancer patients.</li>
+                  <li><a href="https://www.cancersupportphiladelphia.org/"><strong>Cancer Support Community Greater Philadelphia:</strong></a> Free support programs for anyone affected by cancer.</li>
+                  <li><a href="https://cancercaringcenter.org/"><strong>Cancer Caring Center:</strong></a> Support services for cancer patients in Western Pennsylvania.</li>
+                  <li><a href="https://www.cancerbridge.org/"><strong>Cancer Bridge:</strong></a> Free services for cancer patients in Western Pennsylvania.</li>
+                </ul>
+                <h4 id="pa-cancer-financial">Financial Assistance for Cancer Patients</h4>
+                <ul>
+                  <li><a href="https://www.patientadvocate.org/explore-our-resources/pennsylvania-resource-guide/"><strong>Patient Advocate Foundation - Pennsylvania Resources:</strong></a> Financial support and resources for patients with chronic illnesses.</li>
+                  <li><a href="https://www.cancer.org/support-programs-and-services/road-to-recovery.html"><strong>Road to Recovery Program:</strong></a> Free transportation to cancer treatments through the American Cancer Society.</li>
+                  <li><a href="https://www.cancercare.org/financial"><strong>CancerCare Financial Assistance:</strong></a> Limited financial assistance for cancer-related costs.</li>
+                  <li><a href="https://www.lls.org/support-resources/financial-support"><strong>Leukemia & Lymphoma Society Financial Support:</strong></a> Financial assistance for blood cancer patients.</li>
+                  <li><a href="https://www.healthwellfoundation.org/"><strong>HealthWell Foundation:</strong></a> Financial assistance for underinsured patients with chronic illnesses.</li>
+                  <li><a href="https://www.panfoundation.org/"><strong>Patient Access Network Foundation:</strong></a> Help with out-of-pocket costs for those with life-threatening illnesses.</li>
+                </ul>
+                <h4 id="pa-cancer-treatment">Cancer Treatment Centers in Pennsylvania</h4>
+                <ul>
+                  <li><a href="https://www.pennmedicine.org/cancer"><strong>Penn Medicine Abramson Cancer Center:</strong></a> NCI-designated comprehensive cancer center in Philadelphia. Support Services: <a href="https://www.pennmedicine.org/cancer/about/support-groups-and-resources">Link</a></li>
+                  <li><a href="https://www.upmc.com/services/hillman"><strong>UPMC Hillman Cancer Center:</strong></a> NCI-designated comprehensive cancer center in Pittsburgh. Support Services: <a href="https://www.upmc.com/services/hillman/support/resources">Link</a></li>
+                  <li><a href="https://www.foxchase.org/"><strong>Fox Chase Cancer Center:</strong></a> NCI-designated comprehensive cancer center in Philadelphia. Patient Resources: <a href="https://www.foxchase.org/patients/support">Link</a></li>
+                  <li><a href="https://www.geisinger.org/patient-care/conditions-treatments-specialty/cancer"><strong>Geisinger Cancer Institute:</strong></a> Cancer treatment centers throughout central and northeastern Pennsylvania.</li>
+                  <li><a href="https://www.templehealth.org/services/cancer"><strong>Temple Health Fox Chase Cancer Center:</strong></a> Comprehensive cancer care in Philadelphia.</li>
+                  <li><a href="https://www.pennstatehealth.org/services-treatments/cancer-care"><strong>Penn State Cancer Institute:</strong></a> Cancer treatment in central Pennsylvania.</li>
+                  <li><a href="https://www.lvhn.org/conditions-treatments/cancer"><strong>Lehigh Valley Topper Cancer Institute:</strong></a> Cancer treatment in the Lehigh Valley region.</li>
+                  <li><a href="https://www.slhn.org/cancer"><strong>St. Luke's Cancer Center:</strong></a> Cancer care throughout eastern Pennsylvania.</li>
+                </ul>
+                <h4 id="pa-cancer-survivorship">Cancer Survivorship Resources</h4>
+                <ul>
+                  <li><a href="https://www.pennmedicine.org/cancer/navigating-cancer-care/programs-and-services/cancer-survivorship-program"><strong>Penn Medicine Cancer Survivorship Program:</strong></a> Resources and support for cancer survivors.</li>
+                  <li><a href="https://www.upmc.com/services/hillman/support/resources/survivors"><strong>UPMC Cancer Survivorship:</strong></a> Support services for cancer survivors.</li>
+                  <li><a href="https://www.cancer.org/treatment/survivorship-during-and-after-treatment.html"><strong>American Cancer Society Survivorship Resources:</strong></a> Information and support for life after cancer treatment.</li>
+                  <li><a href="https://www.livingbeyondbreastcancer.org/"><strong>Living Beyond Breast Cancer:</strong></a> Pennsylvania-based organization supporting breast cancer survivors.</li>
+                  <li><a href="https://www.cancersupportphiladelphia.org/programs/"><strong>Cancer Support Community Survivorship Programs:</strong></a> Programs for patients and survivors throughout treatment and beyond.</li>
+                </ul>
+                <h4 id="pa-cancer-additional-orgs">Additional Cancer Support Organizations</h4>
+                <ul>
+                  <li><a href="https://www.komen.org/community/pennsylvania/"><strong>Susan G. Komen Pennsylvania:</strong></a> Support and resources for breast cancer patients.</li>
+                  <li><a href="https://zerocancer.org/"><strong>ZERO - The End of Prostate Cancer:</strong></a> Resources for prostate cancer patients in Pennsylvania.</li>
+                  <li><a href="https://lungevity.org/"><strong>LUNGevity Foundation:</strong></a> Support for lung cancer patients and their families.</li>
+                  <li><a href="https://www.pancan.org/"><strong>Pancreatic Cancer Action Network:</strong></a> Resources for pancreatic cancer patients in Pennsylvania.</li>
+                  <li><a href="https://www.youngsurvival.org/"><strong>Young Survival Coalition:</strong></a> Support for young adults affected by breast cancer.</li>
+                  <li><a href="https://stupidcancer.org/"><strong>Stupid Cancer:</strong></a> Resources for young adult cancer patients and survivors.</li>
+                </ul>
+              </section>
 
-     <h3 id="philadelphia-resources">Philadelphia Resources</h3>
-     <p>Explore support services available to residents of Philadelphia, including housing, legal aid, crisis response, and public assistance.</p>
-     <ul>
-       <li><a href="https://www.phila.gov/services/payments-assistance-taxes/income-based-assistance-programs/"><strong>City of Philadelphia – Income-Based Assistance Programs:</strong></a> Information on various assistance programs for Philadelphia residents.</li>
-       <li><a href="https://www.phila.gov/departments/office-of-community-empowerment-and-opportunity/"><strong>Office of Community Empowerment and Opportunity:</strong></a> Coordinates anti-poverty efforts and connects residents to resources.</li>
-       <li><a href="https://www.philadelphiafightscancer.org/support/"><strong>Philadelphia Fights Cancer - Support Services:</strong></a> Resources specifically for cancer patients in Philadelphia.</li>
-       <li><a href="https://www.pcacares.org/"><strong>Philadelphia Corporation for Aging:</strong></a> Services for older adults including housing, meals, and transportation.</li>
-       <li><a href="https://www.phila.gov/2020-03-28-mental-health-services-available-through-covid-19-closures/"><strong>Philadelphia Mental Health Resources:</strong></a> Support services for mental health needs.</li>
-       <li><a href="https://philalegal.org/"><strong>Philadelphia Legal Assistance:</strong></a> Free civil legal services for low-income Philadelphians.</li>
-       <li><a href="https://www.phlp.org/"><strong>Pennsylvania Health Law Project:</strong></a> Legal services focused on accessing healthcare.</li>
-       <li><a href="https://hhinc.org/programs-services/financial-assistance-utility-bills/"><strong>Utility Emergency Services Fund (UESF):</strong></a> Help with utility bills for Philadelphia residents.</li>
-       <li><a href="https://www.prafamily.org/"><strong>Pennsylvania Resources for Autism and Intellectual Disability (PAID):</strong></a> Supports for individuals with autism and intellectual disabilities.</li>
-       <li><a href="https://www.phila.gov/departments/department-of-public-health/health-centers/"><strong>City Health Centers:</strong></a> Eight health centers providing primary care regardless of ability to pay.</li>
-       <li><a href="https://www.philasd.org/studenthealth/programs-services/"><strong>School District of Philadelphia Health Resources:</strong></a> Health services for students and families.</li>
-       <li><a href="https://benefitspa.org/agency/philadelphia-mayor-s-office-of-community-services-for-philadelphia-county-philadelphia"><strong>Mayor's Office of Community Services:</strong></a> Community outreach and service coordination for low-income residents.</li>
-     </ul>
+              <section id="philadelphia-county-resources" class="resource-section">
+                <h2>Philadelphia County Resources</h2>
+                <p>Explore support services available to residents of Philadelphia, including housing, legal aid, crisis response, and public assistance.</p>
+                <h4 id="phila-general">General & Financial Assistance</h4>
+                <ul>
+                  <li><a href="https://www.phila.gov/services/payments-assistance-taxes/income-based-assistance-programs/"><strong>City of Philadelphia – Income-Based Assistance Programs:</strong></a> Information on various assistance programs for Philadelphia residents.</li>
+                  <li><a href="https://www.phila.gov/departments/office-of-community-empowerment-and-opportunity/"><strong>Office of Community Empowerment and Opportunity:</strong></a> Coordinates anti-poverty efforts and connects residents to resources.</li>
+                   <li><a href="https://hhinc.org/programs-services/financial-assistance-utility-bills/"><strong>Utility Emergency Services Fund (UESF):</strong></a> Help with utility bills for Philadelphia residents.</li>
+                   <li><a href="https://benefitspa.org/agency/philadelphia-mayor-s-office-of-community-services-for-philadelphia-county-philadelphia"><strong>Mayor's Office of Community Services:</strong></a> Community outreach and service coordination for low-income residents.</li>
+                </ul>
+                 <h4 id="phila-cancer">Cancer Specific Support</h4>
+                 <ul>
+                    <li><a href="https://www.philadelphiafightscancer.org/support/"><strong>Philadelphia Fights Cancer - Support Services:</strong></a> Resources specifically for cancer patients in Philadelphia.</li>
+                 </ul>
+                <h4 id="phila-seniors">Senior Services (Philadelphia)</h4>
+                <ul>
+                  <li><a href="https://www.pcacares.org/"><strong>Philadelphia Corporation for Aging (PCA):</strong></a> Services for older adults including housing, meals, and transportation. Helpline: 215-765-9040.</li>
+                  <li><a href="https://www.pcacares.org/service-type/care-at-home/"><strong>PCA Care at Home Services:</strong></a> In-home support services for activities of daily living.</li>
+                  <li><a href="https://www.pcacares.org/service-type/protective-services/"><strong>PCA Older Adult Protective Services:</strong></a> Investigates reports of elder abuse, neglect, and exploitation. Call 24/7: 215-765-9040.</li>
+                  <li><a href="https://www.pcacares.org/service-type/housing/"><strong>PCA Senior Housing Options:</strong></a> Help finding affordable and accessible housing for seniors.</li>
+                  <li><a href="https://www.pcacares.org/service-type/senior-community-centers/"><strong>PCA Senior Community Centers:</strong></a> Find locations of 28 senior centers throughout Philadelphia.</li>
+                  <li><a href="https://www.phila.gov/services/property-lots-housing/facilities-that-serve-the-public/find-a-location-that-serves-seniors/"><strong>City of Philadelphia Senior Centers:</strong></a> City-operated senior centers and their services.</li>
+                  <li><a href="https://northcitycongress.org/senior-centers/"><strong>North City Congress Senior Centers:</strong></a> Senior centers serving North Philadelphia.</li>
+                  <li><a href="https://www.lutheransettlement.org/senior-services"><strong>Lutheran Settlement House Senior Center:</strong></a> Comprehensive services for seniors in Fishtown and Kensington.</li>
+                  <li><a href="https://www.kleincjc.org/older-adult-programs"><strong>KleinLife Senior Center:</strong></a> Vibrant senior programming in Northeast Philadelphia.</li>
+                  <li><a href="https://www.jwcseniorservices.org/"><strong>Jewish Federation's Senior Services:</strong></a> Programs for Jewish seniors throughout Philadelphia.</li>
+                  <li><a href="https://www.pha.phila.gov/housing/senior-housing/"><strong>Philadelphia Housing Authority Senior Housing:</strong></a> Affordable housing developments specifically for seniors.</li>
+                  <li><a href="https://www.seniorhousingnet.com/seniors/senior-living-us/pennsylvania/philadelphia"><strong>Senior Housing Net - Philadelphia:</strong></a> Directory of senior living options throughout the city.</li>
+                  <li><a href="https://www.phila.gov/services/property-lots-housing/buy-sell-or-rent-a-property/find-housing/find-senior-housing/"><strong>Find Senior Housing - City of Philadelphia:</strong></a> City resources for finding senior-appropriate housing.</li>
+                   <li><a href="https://www.pcacares.org/service-type/health-wellness/"><strong>PCA Health & Wellness Programs:</strong></a> Health promotion and disease prevention programs for older adults.</li>
+                  <li><a href="https://www.pcacares.org/service-type/health-insurance-counseling/"><strong>APPRISE Medicare Counseling (PCA):</strong></a> Free Medicare insurance counseling for Philadelphia seniors. Call: 215-765-9030.</li>
+                  <li><a href="https://www.jeffersonhealth.org/services/senior-health"><strong>Jefferson Health Senior Services:</strong></a> Specialized medical care for older adults.</li>
+                  <li><a href="https://www.pennmedicine.org/for-patients-and-visitors/find-a-program-or-service/geriatric-medicine"><strong>Penn Medicine Geriatric Services:</strong></a> Comprehensive medical care for seniors.</li>
+                  <li><a href="https://www.templehealth.org/services/seniors"><strong>Temple Health Senior Services:</strong></a> Specialized care for older adults in North Philadelphia.</li>
+                  <li><a href="https://www.einstein.edu/older-adults"><strong>Einstein Healthcare Network Senior Health:</strong></a> Healthcare services focused on seniors' needs.</li>
+                  <li><a href="https://www.pcacares.org/service-type/meals-food/"><strong>PCA Senior Meal Programs:</strong></a> Congregate meals at senior centers and home-delivered meals.</li>
+                  <li><a href="https://www.philabundance.org/find-food/seniors/"><strong>Philabundance Senior Food Program:</strong></a> Food assistance specifically for seniors in Philadelphia.</li>
+                  <li><a href="https://www.manna.org/"><strong>MANNA:</strong></a> Medically tailored meals for people with serious illnesses, including seniors.</li>
+                  <li><a href="https://www.phila.gov/departments/department-of-public-health/chronic-disease-and-injury-prevention/nutrition-and-physical-activity/food-access/"><strong>Philadelphia Food Access Resources:</strong></a> City programs to improve food access for all residents, including seniors.</li>
+                  <li><a href="https://www.pcacares.org/service-type/legal-services/"><strong>SeniorLAW Center (via PCA):</strong></a> Legal services specifically for older Philadelphians. Call: 215-988-1242.</li>
+                  <li><a href="https://www.centerintheparkphila.org/"><strong>Center in the Park:</strong></a> Senior community center serving Northwest Philadelphia.</li>
+                  <li><a href="https://www.newseasonssenior.org/"><strong>New Seasons Senior Center:</strong></a> Innovative programming for seniors in West Philadelphia.</li>
+                  <li><a href="https://www.phila.gov/programs/philly-counts/digital-navigators-program/"><strong>Digital Navigators for Seniors:</strong></a> Help with technology access and digital literacy for older adults.</li>
+                  <li><a href="https://www.phila.gov/services/mental-physical-health/older-adults/"><strong>City of Philadelphia Older Adult Services:</strong></a> City resources dedicated to supporting senior residents.</li>
+                </ul>
+                <h4 id="phila-health">General Health & Mental Health</h4>
+                <ul>
+                  <li><a href="https://www.phila.gov/2020-03-28-mental-health-services-available-through-covid-19-closures/"><strong>Philadelphia Mental Health Resources:</strong></a> Support services for mental health needs.</li>
+                  <li><a href="https://www.phila.gov/departments/department-of-public-health/health-centers/"><strong>City Health Centers:</strong></a> Eight health centers providing primary care regardless of ability to pay.</li>
+                  <li><a href="https://www.phlp.org/"><strong>Pennsylvania Health Law Project:</strong></a> Legal services focused on accessing healthcare.</li>
+                </ul>
+                 <h4 id="phila-legal">Legal Aid</h4>
+                <ul>
+                  <li><a href="https://philalegal.org/"><strong>Philadelphia Legal Assistance:</strong></a> Free civil legal services for low-income Philadelphians.</li>
+                </ul>
+                 <h4 id="phila-disability">Disability Services</h4>
+                <ul>
+                     <li><a href="https://www.prafamily.org/"><strong>Pennsylvania Resources for Autism and Intellectual Disability (PAID):</strong></a> Supports for individuals with autism and intellectual disabilities.</li>
+                </ul>
+                 <h4 id="phila-education">Education</h4>
+                <ul>
+                     <li><a href="https://www.philasd.org/studenthealth/programs-services/"><strong>School District of Philadelphia Health Resources:</strong></a> Health services for students and families.</li>
+                </ul>
+              </section>
 
-     <h3 id="philadelphia-senior-resources">Philadelphia Senior Resources</h3>
-     <p>Comprehensive services for Philadelphia older adults, including benefit programs, care management, housing support, and community resources.</p>
-     
-     <h4>Philadelphia Corporation for Aging (PCA)</h4>
-     <ul>
-       <li><a href="https://www.pcacares.org/services-for-seniors/"><strong>PCA Services for Seniors:</strong></a> Overview of services available to Philadelphia seniors.</li>
-       <li><a href="https://www.pcacares.org/service-type/helpline/"><strong>PCA Helpline:</strong></a> Call 215-765-9040 for information and referrals to services for older Philadelphians.</li>
-       <li><a href="https://www.pcacares.org/service-type/care-at-home/"><strong>Care at Home Services:</strong></a> In-home support services for activities of daily living.</li>
-       <li><a href="https://www.pcacares.org/service-type/protective-services/"><strong>Older Adult Protective Services:</strong></a> Investigates reports of elder abuse, neglect, and exploitation. Call 24/7: 215-765-9040.</li>
-       <li><a href="https://www.pcacares.org/service-type/housing/"><strong>Senior Housing Options:</strong></a> Help finding affordable and accessible housing for seniors.</li>
-     </ul>
-     
-     <h4>Senior Centers in Philadelphia</h4>
-     <ul>
-       <li><a href="https://www.pcacares.org/service-type/senior-community-centers/"><strong>PCA Senior Community Centers:</strong></a> Find locations of 28 senior centers throughout Philadelphia.</li>
-       <li><a href="https://www.phila.gov/services/property-lots-housing/facilities-that-serve-the-public/find-a-location-that-serves-seniors/"><strong>City of Philadelphia Senior Centers:</strong></a> City-operated senior centers and their services.</li>
-       <li><a href="https://northcitycongress.org/senior-centers/"><strong>North City Congress Senior Centers:</strong></a> Senior centers serving North Philadelphia.</li>
-       <li><a href="https://www.lutheransettlement.org/senior-services"><strong>Lutheran Settlement House Senior Center:</strong></a> Comprehensive services for seniors in Fishtown and Kensington.</li>
-       <li><a href="https://www.kleincjc.org/older-adult-programs"><strong>KleinLife Senior Center:</strong></a> Vibrant senior programming in Northeast Philadelphia.</li>
-       <li><a href="https://www.jwcseniorservices.org/"><strong>Jewish Federation's Senior Services:</strong></a> Programs for Jewish seniors throughout Philadelphia.</li>
-     </ul>
-     
-     <h4>Philadelphia Senior Housing Resources</h4>
-     <ul>
-       <li><a href="https://www.pcacares.org/service-type/housing/"><strong>PCA Housing Resources:</strong></a> Housing counseling and referrals for Philadelphia seniors.</li>
-       <li><a href="https://pha.phila.gov/housing/senior-housing/"><strong>Philadelphia Housing Authority Senior Housing:</strong></a> Affordable housing developments specifically for seniors.</li>
-       <li><a href="https://www.seniorhousingnet.com/seniors/senior-living-us/pennsylvania/philadelphia"><strong>Senior Housing Net - Philadelphia:</strong></a> Directory of senior living options throughout the city.</li>
-       <li><a href="https://www.phila.gov/services/property-lots-housing/buy-sell-or-rent-a-property/find-housing/find-senior-housing/"><strong>Find Senior Housing - City of Philadelphia:</strong></a> City resources for finding senior-appropriate housing.</li>
-       <li><a href="https://seniorcitizenszendo.org/senior-housing/"><strong>Senior Citizens Housing - Philadelphia:</strong></a> Housing assistance specifically for low-income seniors.</li>
-       <li><a href="https://www.chp1.org/senior-services/"><strong>Community Health Partners Senior Housing:</strong></a> Affordable housing options for seniors in various Philadelphia neighborhoods.</li>
-     </ul>
-     
-     <h4>Philadelphia Senior Health Resources</h4>
-     <ul>
-       <li><a href="https://www.pcacares.org/service-type/health-wellness/"><strong>PCA Health & Wellness Programs:</strong></a> Health promotion and disease prevention programs for older adults.</li>
-       <li><a href="https://www.pcacares.org/service-type/health-insurance-counseling/"><strong>APPRISE Medicare Counseling:</strong></a> Free Medicare insurance counseling for Philadelphia seniors. Call: 215-765-9030.</li>
-       <li><a href="https://www.jeffersonhealth.org/services/senior-health"><strong>Jefferson Health Senior Services:</strong></a> Specialized medical care for older adults.</li>
-       <li><a href="https://www.pennmedicine.org/for-patients-and-visitors/find-a-program-or-service/geriatric-medicine"><strong>Penn Medicine Geriatric Services:</strong></a> Comprehensive medical care for seniors.</li>
-       <li><a href="https://www.templehealth.org/services/seniors"><strong>Temple Health Senior Services:</strong></a> Specialized care for older adults in North Philadelphia.</li>
-       <li><a href="https://www.einstein.edu/older-adults"><strong>Einstein Healthcare Network Senior Health:</strong></a> Healthcare services focused on seniors' needs.</li>
-     </ul>
-     
-     <h4>Philadelphia Senior Nutrition Programs</h4>
-     <ul>
-       <li><a href="https://www.pcacares.org/service-type/meals-food/"><strong>PCA Senior Meal Programs:</strong></a> Congregate meals at senior centers and home-delivered meals.</li>
-       <li><a href="https://www.philabundance.org/find-food/seniors/"><strong>Philabundance Senior Food Program:</strong></a> Food assistance specifically for seniors in Philadelphia.</li>
-       <li><a href="https://www.manna.org/"><strong>MANNA:</strong></a> Medically tailored meals for people with serious illnesses, including seniors.</li>
-       <li><a href="https://www.phila.gov/departments/department-of-public-health/chronic-disease-and-injury-prevention/nutrition-and-physical-activity/food-access/"><strong>Philadelphia Food Access Resources:</strong></a> City programs to improve food access for all residents, including seniors.</li>
-       <li><a href="https://www.dhs.pa.gov/Services/Assistance/Pages/SNAP.aspx"><strong>SNAP Benefits for Seniors:</strong></a> Food assistance benefits with special eligibility rules for older adults.</li>
-     </ul>
-     
-     <h4>Additional Philadelphia Senior Services</h4>
-     <ul>
-       <li><a href="https://www.pcacares.org/service-type/legal-services/"><strong>SeniorLAW Center:</strong></a> Legal services specifically for older Philadelphians. Call: 215-988-1242.</li>
-       <li><a href="https://www.centerintheparkphila.org/"><strong>Center in the Park:</strong></a> Senior community center serving Northwest Philadelphia.</li>
-       <li><a href="https://www.newseasonssenior.org/"><strong>New Seasons Senior Center:</strong></a> Innovative programming for seniors in West Philadelphia.</li>
-       <li><a href="https://www.phila.gov/programs/philly-counts/digital-navigators-program/"><strong>Digital Navigators for Seniors:</strong></a> Help with technology access and digital literacy for older adults.</li>
-       <li><a href="https://www.phila.gov/services/mental-physical-health/older-adults/"><strong>City of Philadelphia Older Adult Services:</strong></a> City resources dedicated to supporting senior residents.</li>
-       <li><a href="https://paseseniors.org/"><strong>Philadelphia Association of Senior Executives (PASE):</strong></a> Connection to retired executives who volunteer to help community organizations.</li>
-       <li><a href="https://generocity.org/philly/category/aging/"><strong>Philadelphia Senior Organizations:</strong></a> News and information about senior-serving organizations in Philadelphia.</li>
-     </ul>
+              <section id="allegheny-county-resources" class="resource-section">
+                <h2>Allegheny County Resources</h2>
+                <p>Comprehensive resources for Allegheny County residents, including Pittsburgh, with services for seniors, health care, housing, and social services.</p>
+                
+                <h4 id="allegheny-general">General Services & Assistance</h4>
+                <ul>
+                  <li><a href="https://www.alleghenycounty.us/human-services/"><strong>Allegheny County Department of Human Services:</strong></a> Central hub for county social services and assistance programs.</li>
+                  <li><a href="https://www.alleghenycounty.us/human-services/older-adults/"><strong>Allegheny County Area Agency on Aging:</strong></a> Comprehensive services for older adults in the county.</li>
+                  <li><a href="https://www.alleghenycounty.us/human-services/News-Events/Community-Resources.aspx"><strong>Allegheny County Community Resources:</strong></a> Directory of community services and programs.</li>
+                  <li><a href="https://www.pittsburghpa.gov/mayor/community-affairs"><strong>City of Pittsburgh Community Affairs:</strong></a> Municipal services and community programs for Pittsburgh residents.</li>
+                </ul>
 
-     <h3 id="pennsylvania-cancer">Pennsylvania Cancer Support Resources</h3>
-     <p>Resources specifically for cancer patients and their families in Pennsylvania.</p>
-     <ul>
-       <li><a href="https://www.cancer.org/about-us/local/pennsylvania.html"><strong>American Cancer Society - Pennsylvania:</strong></a> Support services, educational resources, and programs across the state.</li>
-       <li><a href="https://www.cancercareconnection.org/"><strong>Cancer Care Connection:</strong></a> Information and support for Pennsylvania cancer patients.</li>
-       <li><a href="https://www.cancersupportphiladelphia.org/"><strong>Cancer Support Community Greater Philadelphia:</strong></a> Free support programs for anyone affected by cancer.</li>
-       <li><a href="https://cancercaringcenter.org/"><strong>Cancer Caring Center:</strong></a> Support services for cancer patients in Western Pennsylvania.</li>
-       <li><a href="https://www.upmc.com/services/hillman/support/resources"><strong>UPMC Hillman Cancer Center Support Services:</strong></a> Resources for cancer patients and caregivers.</li>
-       <li><a href="https://www.pennmedicine.org/cancer/about/support-groups-and-resources"><strong>Penn Medicine Abramson Cancer Center Support Services:</strong></a> Comprehensive support for cancer patients.</li>
-       <li><a href="https://www.foxchase.org/patients/support"><strong>Fox Chase Cancer Center Patient Resources:</strong></a> Support services for cancer patients in the Philadelphia region.</li>
-       <li><a href="https://www.chop.edu/centers-programs/cancer-center/resources"><strong>CHOP Cancer Center Resources:</strong></a> Support for families of children with cancer.</li>
-       <li><a href="https://www.cancerbridge.org/"><strong>Cancer Bridge:</strong></a> Free services for cancer patients in Western Pennsylvania.</li>
-       <li><a href="https://www.hopkinsmedicine.org/kimmel_cancer_center/patient_information/resources_services/"><strong>Johns Hopkins Kimmel Cancer Center at Sibley:</strong></a> Resources for cancer patients in the greater Philadelphia region.</li>
-     </ul>
-     
-     <h4>Financial Assistance for Cancer Patients</h4>
-     <ul>
-       <li><a href="https://www.patientadvocate.org/explore-our-resources/pennsylvania-resource-guide/"><strong>Patient Advocate Foundation - Pennsylvania Resources:</strong></a> Financial support and resources for patients with chronic illnesses.</li>
-       <li><a href="https://www.cancer.org/support-programs-and-services/road-to-recovery.html"><strong>Road to Recovery Program:</strong></a> Free transportation to cancer treatments through the American Cancer Society.</li>
-       <li><a href="https://www.cancercare.org/financial"><strong>CancerCare Financial Assistance:</strong></a> Limited financial assistance for cancer-related costs.</li>
-       <li><a href="https://www.lls.org/support-resources/financial-support"><strong>Leukemia & Lymphoma Society Financial Support:</strong></a> Financial assistance for blood cancer patients.</li>
-       <li><a href="https://www.healthwellfoundation.org/"><strong>HealthWell Foundation:</strong></a> Financial assistance for underinsured patients with chronic illnesses.</li>
-       <li><a href="https://www.panfoundation.org/"><strong>Patient Access Network Foundation:</strong></a> Help with out-of-pocket costs for those with life-threatening illnesses.</li>
-     </ul>
-     
-     <h4>Cancer Treatment Centers in Pennsylvania</h4>
-     <ul>
-       <li><a href="https://www.pennmedicine.org/cancer"><strong>Penn Medicine Abramson Cancer Center:</strong></a> NCI-designated comprehensive cancer center in Philadelphia.</li>
-       <li><a href="https://www.upmc.com/services/hillman"><strong>UPMC Hillman Cancer Center:</strong></a> NCI-designated comprehensive cancer center in Pittsburgh.</li>
-       <li><a href="https://www.foxchase.org/"><strong>Fox Chase Cancer Center:</strong></a> NCI-designated comprehensive cancer center in Philadelphia.</li>
-       <li><a href="https://www.geisinger.org/patient-care/conditions-treatments-specialty/cancer"><strong>Geisinger Cancer Institute:</strong></a> Cancer treatment centers throughout central and northeastern Pennsylvania.</li>
-       <li><a href="https://www.templehealth.org/services/cancer"><strong>Temple Health Fox Chase Cancer Center:</strong></a> Comprehensive cancer care in Philadelphia.</li>
-       <li><a href="https://www.pennstatehealth.org/services-treatments/cancer-care"><strong>Penn State Cancer Institute:</strong></a> Cancer treatment in central Pennsylvania.</li>
-       <li><a href="https://www.lvhn.org/conditions-treatments/cancer"><strong>Lehigh Valley Topper Cancer Institute:</strong></a> Cancer treatment in the Lehigh Valley region.</li>
-       <li><a href="https://www.stjudemedicalcenter.org/services/cancer-institute/"><strong>St. Luke's Cancer Center:</strong></a> Cancer care throughout eastern Pennsylvania.</li>
-     </ul>
-     
-     <h4>Cancer Survivorship Resources</h4>
-     <ul>
-       <li><a href="https://www.pennmedicine.org/cancer/navigating-cancer-care/programs-and-services/cancer-survivorship-program"><strong>Penn Medicine Cancer Survivorship Program:</strong></a> Resources and support for cancer survivors.</li>
-       <li><a href="https://www.upmc.com/services/hillman/support/resources/survivors"><strong>UPMC Cancer Survivorship:</strong></a> Support services for cancer survivors.</li>
-       <li><a href="https://www.cancer.org/treatment/survivorship-during-and-after-treatment.html"><strong>American Cancer Society Survivorship Resources:</strong></a> Information and support for life after cancer treatment.</li>
-       <li><a href="https://www.livingbeyondbreastcancer.org/"><strong>Living Beyond Breast Cancer:</strong></a> Pennsylvania-based organization supporting breast cancer survivors.</li>
-       <li><a href="https://www.cancersupportphiladelphia.org/programs/"><strong>Cancer Support Community Survivorship Programs:</strong></a> Programs for patients and survivors throughout treatment and beyond.</li>
-     </ul>
-     
-     <h4>Additional Cancer Support Organizations</h4>
-     <ul>
-       <li><a href="https://www.komen.org/community/pennsylvania/"><strong>Susan G. Komen Pennsylvania:</strong></a> Support and resources for breast cancer patients.</li>
-       <li><a href="https://zerocancer.org/"><strong>ZERO - The End of Prostate Cancer:</strong></a> Resources for prostate cancer patients in Pennsylvania.</li>
-       <li><a href="https://lungevity.org/"><strong>LUNGevity Foundation:</strong></a> Support for lung cancer patients and their families.</li>
-       <li><a href="https://www.pancan.org/"><strong>Pancreatic Cancer Action Network:</strong></a> Resources for pancreatic cancer patients in Pennsylvania.</li>
-       <li><a href="https://www.youngsurvival.org/"><strong>Young Survival Coalition:</strong></a> Support for young adults affected by breast cancer.</li>
-       <li><a href="https://stupidcancer.org/"><strong>Stupid Cancer:</strong></a> Resources for young adult cancer patients and survivors.</li>
-     </ul>
-   </section>
- </body>
+                <h4 id="allegheny-seniors">Senior Services</h4>
+                <ul>
+                  <li><a href="https://www.alleghenycounty.us/human-services/older-adults/"><strong>Allegheny County Area Agency on Aging:</strong></a> Aging services including meals, transportation, and care coordination.</li>
+                  <li><a href="https://www.alleghenycounty.us/human-services/older-adults/protective-services.aspx"><strong>Allegheny County Protective Services:</strong></a> Investigation and services for elder abuse and neglect.</li>
+                  <li><a href="https://www.alleghenycounty.us/human-services/older-adults/nutrition.aspx"><strong>Senior Nutrition Programs:</strong></a> Congregate meals and home-delivered meals for seniors.</li>
+                  <li><a href="https://www.alleghenycounty.us/human-services/older-adults/caregiver-support.aspx"><strong>Caregiver Support Services:</strong></a> Support for family caregivers of older adults.</li>
+                  <li><a href="https://www.vintagepgh.org/"><strong>Vintage Senior Services:</strong></a> Community-based services for seniors in Pittsburgh area.</li>
+                  <li><a href="https://www.southwestseniors.org/"><strong>Southwest Senior Services:</strong></a> Senior services in southwestern Allegheny County.</li>
+                </ul>
+
+                <h4 id="allegheny-health">Healthcare Resources</h4>
+                <ul>
+                  <li><a href="https://www.upmc.com/"><strong>UPMC Healthcare System:</strong></a> Major healthcare provider serving Allegheny County and western Pennsylvania.</li>
+                  <li><a href="https://www.ahn.org/"><strong>Allegheny Health Network:</strong></a> Comprehensive healthcare services throughout the region.</li>
+                  <li><a href="https://www.chp.edu/"><strong>Children's Hospital of Pittsburgh of UPMC:</strong></a> Pediatric healthcare services.</li>
+                  <li><a href="https://www.alleghenycounty.us/Health-Department/"><strong>Allegheny County Health Department:</strong></a> Public health services and programs.</li>
+                  <li><a href="https://www.familyhealthcouncil.org/"><strong>Family Health Council:</strong></a> Reproductive health services and family planning.</li>
+                </ul>
+
+                <h4 id="allegheny-housing">Housing Resources</h4>
+                <ul>
+                  <li><a href="https://www.hacp.org/"><strong>Housing Authority of the City of Pittsburgh:</strong></a> Public housing and rental assistance programs.</li>
+                  <li><a href="https://www.alleghenycounty.us/human-services/housing-homelessness/"><strong>Allegheny County Housing Services:</strong></a> Housing assistance and homeless services.</li>
+                  <li><a href="https://www.actionhousing.org/"><strong>ACTION-Housing:</strong></a> Affordable housing development and services.</li>
+                  <li><a href="https://www.cmu.edu/steinbrenner/EPA/reports/Housing-Reports/housing-rehabilitation-programs.html"><strong>Pittsburgh Housing Rehabilitation Programs:</strong></a> Home repair and improvement assistance.</li>
+                </ul>
+
+                <h4 id="allegheny-food">Food & Nutrition</h4>
+                <ul>
+                  <li><a href="https://www.pittsburghfoodbank.org/"><strong>Greater Pittsburgh Community Food Bank:</strong></a> Food assistance throughout southwestern Pennsylvania.</li>
+                  <li><a href="https://www.412foodrescue.org/"><strong>412 Food Rescue:</strong></a> Food redistribution to prevent waste and feed people.</li>
+                  <li><a href="https://www.alleghenycounty.us/WorkForce-Development/Assistance/SNAP.aspx"><strong>Allegheny County SNAP Benefits:</strong></a> Information on applying for food assistance.</li>
+                  <li><a href="https://www.pittsburghpa.gov/citiparks/farmers-markets"><strong>Pittsburgh Farmers Markets:</strong></a> Fresh produce markets throughout the city.</li>
+                </ul>
+
+                <h4 id="allegheny-legal">Legal Services</h4>
+                <ul>
+                  <li><a href="https://www.nlsa.us/"><strong>Neighborhood Legal Services Association:</strong></a> Free legal services for low-income residents.</li>
+                  <li><a href="https://www.palawhelp.org/"><strong>PA Law Help - Allegheny:</strong></a> Legal resources and assistance.</li>
+                  <li><a href="https://www.alleghenycounty.us/court/civil-division/"><strong>Allegheny County Civil Court:</strong></a> Civil legal proceedings and services.</li>
+                </ul>
+              </section>
+
+              <section id="montgomery-county-resources" class="resource-section">
+                <h2>Montgomery County Resources</h2>
+                <p>Resources and services available to Montgomery County residents, including senior services, healthcare, housing assistance, and community programs.</p>
+                
+                <h4 id="montgomery-general">General Services & Assistance</h4>
+                <ul>
+                  <li><a href="https://www.montcopa.org/"><strong>Montgomery County Government:</strong></a> Official county website with information on all county services.</li>
+                  <li><a href="https://www.montcopa.org/148/Senior-Services"><strong>Montgomery County Senior Services:</strong></a> Comprehensive services for older adults in the county.</li>
+                  <li><a href="https://www.montcopa.org/191/Community-Development"><strong>Montgomery County Community Development:</strong></a> Housing and community development programs.</li>
+                  <li><a href="https://www.montcopa.org/513/Health-Human-Services"><strong>Montgomery County Health & Human Services:</strong></a> Social services and health programs.</li>
+                </ul>
+
+                <h4 id="montgomery-seniors">Senior Services</h4>
+                <ul>
+                  <li><a href="https://www.montcopa.org/148/Senior-Services"><strong>Montgomery County Office of Senior Services:</strong></a> Aging services including transportation, meals, and support.</li>
+                  <li><a href="https://www.montcopa.org/2036/Senior-Centers"><strong>Montgomery County Senior Centers:</strong></a> Directory of senior centers throughout the county.</li>
+                  <li><a href="https://www.montcopa.org/1954/Meals-on-Wheels"><strong>Montgomery County Meals on Wheels:</strong></a> Home-delivered meals for seniors.</li>
+                  <li><a href="https://www.montcopa.org/1953/Senior-Community-Services"><strong>Senior Community Services:</strong></a> Various programs supporting senior independence.</li>
+                  <li><a href="https://www.seniorlivingresidences.com/pennsylvania/montgomery-county/"><strong>Senior Living Options:</strong></a> Housing and care options for seniors.</li>
+                </ul>
+
+                <h4 id="montgomery-health">Healthcare Resources</h4>
+                <ul>
+                  <li><a href="https://www.montcopa.org/513/Health-Human-Services"><strong>Montgomery County Health Department:</strong></a> Public health services and programs.</li>
+                  <li><a href="https://www.mainlinehealth.org/"><strong>Main Line Health:</strong></a> Healthcare system serving Montgomery County.</li>
+                  <li><a href="https://www.einstein.edu/"><strong>Einstein Healthcare Network:</strong></a> Healthcare services in Montgomery County.</li>
+                  <li><a href="https://www.chop.edu/locations/montgomery-county"><strong>Children's Hospital of Philadelphia - Montgomery County:</strong></a> Pediatric care locations.</li>
+                </ul>
+
+                <h4 id="montgomery-housing">Housing Resources</h4>
+                <ul>
+                  <li><a href="https://www.montcopa.org/191/Community-Development"><strong>Montgomery County Housing Programs:</strong></a> Affordable housing and assistance programs.</li>
+                  <li><a href="https://www.norristownmha.org/"><strong>Norristown Municipal Housing Authority:</strong></a> Public housing services.</li>
+                  <li><a href="https://www.montcopa.org/1964/Housing-Rehabilitation"><strong>Housing Rehabilitation Programs:</strong></a> Home repair and improvement assistance.</li>
+                  <li><a href="https://www.habitatmontco.org/"><strong>Habitat for Humanity Montgomery County:</strong></a> Affordable homeownership opportunities.</li>
+                </ul>
+
+                <h4 id="montgomery-legal">Legal & Social Services</h4>
+                <ul>
+                  <li><a href="https://www.nlsp.org/"><strong>North Penn Legal Services:</strong></a> Free legal assistance for low-income residents.</li>
+                  <li><a href="https://www.montcopa.org/513/Health-Human-Services"><strong>Montgomery County Social Services:</strong></a> Various assistance programs and services.</li>
+                  <li><a href="https://www.your-voice.org/"><strong>Your Voice Counseling:</strong></a> Mental health and counseling services.</li>
+                </ul>
+              </section>
+
+              <section id="bucks-county-resources" class="resource-section">
+                <h2>Bucks County Resources</h2>
+                <p>Services and support available to Bucks County residents, including aging services, healthcare, housing, and community assistance programs.</p>
+                
+                <h4 id="bucks-general">General Services & Assistance</h4>
+                <ul>
+                  <li><a href="https://www.buckscounty.gov/"><strong>Bucks County Government:</strong></a> Official county website with comprehensive service information.</li>
+                  <li><a href="https://www.buckscounty.gov/802/Area-Agency-on-Aging"><strong>Bucks County Area Agency on Aging:</strong></a> Comprehensive aging services and programs.</li>
+                  <li><a href="https://www.buckscounty.gov/785/Community-Development"><strong>Bucks County Community Development:</strong></a> Housing and community improvement programs.</li>
+                  <li><a href="https://www.buckscounty.gov/government/departments-agencies/health"><strong>Bucks County Health Department:</strong></a> Public health services and programs.</li>
+                </ul>
+
+                <h4 id="bucks-seniors">Senior Services</h4>
+                <ul>
+                  <li><a href="https://www.buckscounty.gov/802/Area-Agency-on-Aging"><strong>Bucks County Area Agency on Aging:</strong></a> Aging services including meals, transportation, and care coordination.</li>
+                  <li><a href="https://www.buckscounty.gov/1041/Senior-Centers"><strong>Bucks County Senior Centers:</strong></a> Directory of senior centers and programs.</li>
+                  <li><a href="https://www.buckscounty.gov/1044/Nutrition-Services"><strong>Senior Nutrition Programs:</strong></a> Meals on wheels and congregate dining.</li>
+                  <li><a href="https://www.buckscounty.gov/1046/Caregiver-Support"><strong>Caregiver Support Services:</strong></a> Support for family caregivers.</li>
+                  <li><a href="https://www.newhopeseniorservices.org/"><strong>New Hope Senior Services:</strong></a> Community-based services for seniors.</li>
+                </ul>
+
+                <h4 id="bucks-health">Healthcare Resources</h4>
+                <ul>
+                  <li><a href="https://www.buckscounty.gov/government/departments-agencies/health"><strong>Bucks County Health Department:</strong></a> Public health services and disease prevention.</li>
+                  <li><a href="https://www.doylestownhealth.org/"><strong>Doylestown Health:</strong></a> Healthcare system serving Bucks County.</li>
+                  <li><a href="https://www.stmaryhealthcare.org/"><strong>St. Mary Medical Center:</strong></a> Hospital and healthcare services.</li>
+                  <li><a href="https://www.lowerbuckshospital.com/"><strong>Lower Bucks Hospital:</strong></a> Healthcare services in lower Bucks County.</li>
+                </ul>
+
+                <h4 id="bucks-housing">Housing Resources</h4>
+                <ul>
+                  <li><a href="https://www.buckscounty.gov/785/Community-Development"><strong>Bucks County Housing Programs:</strong></a> Affordable housing and assistance programs.</li>
+                  <li><a href="https://www.bcredevelopmentauthority.org/"><strong>Bucks County Redevelopment Authority:</strong></a> Housing development and rehabilitation.</li>
+                  <li><a href="https://www.habitatbucks.org/"><strong>Habitat for Humanity Bucks County:</strong></a> Affordable homeownership opportunities.</li>
+                  <li><a href="https://www.buckscounty.gov/1964/Housing-Rehabilitation"><strong>Housing Rehabilitation Programs:</strong></a> Home repair assistance.</li>
+                </ul>
+
+                <h4 id="bucks-legal">Legal & Social Services</h4>
+                <ul>
+                  <li><a href="https://www.nlsp.org/"><strong>North Penn Legal Services - Bucks:</strong></a> Free legal assistance for low-income residents.</li>
+                  <li><a href="https://www.buckscounty.gov/189/Children-Youth-Families"><strong>Bucks County Children & Youth Services:</strong></a> Family support and child welfare services.</li>
+                  <li><a href="https://www.familyserviceassociation.org/"><strong>Family Service Association of Bucks County:</strong></a> Family counseling and support services.</li>
+                </ul>
+              </section>
+
+              <section id="delaware-county-resources" class="resource-section">
+                <h2>Delaware County Resources</h2>
+                <p>Comprehensive services for Delaware County residents, including senior services, healthcare, housing assistance, and community support programs.</p>
+                
+                <h4 id="delaware-general">General Services & Assistance</h4>
+                <ul>
+                  <li><a href="https://www.delcopa.gov/"><strong>Delaware County Government:</strong></a> Official county website with service directories.</li>
+                  <li><a href="https://www.delcosa.org/"><strong>Delaware County Office of Services for the Aging:</strong></a> Comprehensive aging services and programs.</li>
+                  <li><a href="https://www.delcopa.gov/publichealth/"><strong>Delaware County Health Department:</strong></a> Public health services and programs.</li>
+                  <li><a href="https://www.delcopa.gov/humanservices/"><strong>Delaware County Human Services:</strong></a> Social services and assistance programs.</li>
+                </ul>
+
+                <h4 id="delaware-seniors">Senior Services</h4>
+                <ul>
+                  <li><a href="https://www.delcosa.org/"><strong>Delaware County Office of Services for the Aging (COSA):</strong></a> Aging services including transportation, meals, and care coordination.</li>
+                  <li><a href="https://www.delcosa.org/senior-centers/"><strong>Delaware County Senior Centers:</strong></a> Directory of senior centers and programs.</li>
+                  <li><a href="https://www.delcosa.org/nutrition/"><strong>Senior Nutrition Services:</strong></a> Congregate meals and home-delivered meals.</li>
+                  <li><a href="https://www.delcosa.org/caregiver-support/"><strong>Caregiver Support Programs:</strong></a> Support for family caregivers of seniors.</li>
+                  <li><a href="https://www.delcosa.org/protective-services/"><strong>Protective Services:</strong></a> Elder abuse prevention and investigation.</li>
+                </ul>
+
+                <h4 id="delaware-health">Healthcare Resources</h4>
+                <ul>
+                  <li><a href="https://www.delcopa.gov/publichealth/"><strong>Delaware County Health Department:</strong></a> Public health services and disease prevention.</li>
+                  <li><a href="https://www.mainlinehealth.org/"><strong>Main Line Health - Delaware County:</strong></a> Healthcare services throughout the county.</li>
+                  <li><a href="https://www.crozer.org/"><strong>Crozer Health:</strong></a> Hospital system serving Delaware County.</li>
+                  <li><a href="https://www.chop.edu/locations/delaware-county"><strong>Children's Hospital of Philadelphia - Delaware County:</strong></a> Pediatric care locations.</li>
+                  <li><a href="https://www.towerhealth.org/locations/delaware-county"><strong>Tower Health Delaware County:</strong></a> Community healthcare services.</li>
+                </ul>
+
+                <h4 id="delaware-housing">Housing Resources</h4>
+                <ul>
+                  <li><a href="https://www.delcopa.gov/planningservices/"><strong>Delaware County Planning Services:</strong></a> Housing and community development programs.</li>
+                  <li><a href="https://www.delcoha.org/"><strong>Delaware County Housing Authority:</strong></a> Public housing and rental assistance.</li>
+                  <li><a href="https://www.habitatdelco.org/"><strong>Habitat for Humanity Delaware County:</strong></a> Affordable homeownership opportunities.</li>
+                  <li><a href="https://www.delcopa.gov/intercommunity/"><strong>Intercommunity Action:</strong></a> Housing assistance and community development.</li>
+                </ul>
+
+                <h4 id="delaware-legal">Legal & Social Services</h4>
+                <ul>
+                  <li><a href="https://www.dlsphila.org/"><strong>Delaware County Legal Aid:</strong></a> Free legal assistance for low-income residents.</li>
+                  <li><a href="https://www.delcopa.gov/humanservices/"><strong>Delaware County Human Services:</strong></a> Social services and family support.</li>
+                  <li><a href="https://www.delcopa.gov/children/"><strong>Delaware County Children & Youth Services:</strong></a> Child welfare and family services.</li>
+                  <li><a href="https://www.familysupportline.org/"><strong>Family Support Line:</strong></a> Crisis intervention and support services.</li>
+                </ul>
+              </section>
+          </main>
+      </div>
+  </div>
+
+  <footer>
+      <div class="footer-container">
+          <div class="footer-section">
+              <h3>About Us</h3>
+              <p>Providing a centralized directory of resources for cancer patients and their families.</p>
+          </div>
+          <div class="footer-section">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="index.html#national-resources">National Resources</a></li>
+                  <li><a href="index.html#cancer-resources">Cancer Resources</a></li>
+                  <li><a href="index.html#financial">Financial Assistance</a></li>
+                  <li><a href="index.html#mental-health">Mental Health</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h3>Contact Us</h3>
+              <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+              <div class="social-icons">
+                  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="copyright">
+          &copy; <span id="currentYear"></span> Community Resource Directory. All rights reserved.
+      </div>
+  </footer>
+
+  <div class="back-to-top" onclick="scrollToTop()">
+      <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // JavaScript for search functionality
+    function performSearch() {
+        const query = document.getElementById("siteSearch").value.toLowerCase().trim();
+        const sections = document.querySelectorAll('.resource-section');
+        let resultsHtml = '';
+        let foundItems = new Set(); 
+        const searchResultsDiv = document.getElementById("searchResults");
+
+        if (query === "") {
+            searchResultsDiv.innerHTML = '<p>Please enter a search term.</p>';
+            return;
+        }
+
+        sections.forEach(section => {
+            const sectionId = section.id;
+            const sectionH2 = section.querySelector('h2');
+            const sectionTitleText = sectionH2 ? sectionH2.textContent : 'Unnamed Section';
+            const sectionTitleLower = sectionTitleText.toLowerCase();
+
+            if (sectionId && sectionTitleLower.includes(query)) {
+                const resultKey = `section-${sectionId}`;
+                if (!foundItems.has(resultKey)) {
+                    resultsHtml += `<p><a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a></p>`;
+                    foundItems.add(resultKey);
+                }
+            }
+
+            const subheadings = section.querySelectorAll('h3[id], h4[id]');
+            subheadings.forEach(subheading => {
+                const subheadingId = subheading.id;
+                const subheadingText = subheading.textContent;
+                if (subheadingText.toLowerCase().includes(query)) {
+                    const resultKey = `subheading-${subheadingId}`;
+                    if (!foundItems.has(resultKey)) {
+                        resultsHtml += `<p><a href="#${subheadingId}" onclick="smoothScrollTo('${subheadingId}'); return false;">${subheadingText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
+                        foundItems.add(resultKey);
+                    }
+                }
+            });
+
+            const contentElements = section.querySelectorAll('li, .resource-section > p'); 
+            contentElements.forEach(element => {
+                const elementText = element.textContent;
+                const elementTextLower = elementText.toLowerCase();
+
+                if (elementTextLower.includes(query)) {
+                    let targetId = sectionId; 
+                    let contextTitle = sectionTitleText;
+
+                    const parentH4 = element.closest('h4[id]');
+                    const parentH3 = element.closest('h3[id]');
+
+                    if (parentH4) {
+                        targetId = parentH4.id;
+                        contextTitle = parentH4.textContent;
+                    } else if (parentH3) {
+                        targetId = parentH3.id;
+                        contextTitle = parentH3.textContent;
+                    }
+                    
+                    const itemLink = element.querySelector('a');
+                    let tempDiv = document.createElement("div");
+                    tempDiv.innerHTML = element.innerHTML; 
+                    let cleanTextContent = (tempDiv.textContent || tempDiv.innerText || "").trim();
+                    let displayText = cleanTextContent.length > 120 ? cleanTextContent.substring(0, 117) + "..." : cleanTextContent;
+                    
+                    const resultKey = `content-${targetId}-${displayText.substring(0,30)}`; 
+
+                    if (!foundItems.has(resultKey)) {
+                        if (itemLink && itemLink.href && !itemLink.href.startsWith('#')) { 
+                            resultsHtml += `<p><a href="${itemLink.href}" target="_blank" rel="noopener noreferrer">${displayText}</a> (in <a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${contextTitle}</a>)</p>`;
+                        } else { 
+                            resultsHtml += `<p><a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${displayText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
+                        }
+                        foundItems.add(resultKey);
+                    }
+                }
+            });
+        });
+
+        if (foundItems.size > 0) {
+            searchResultsDiv.innerHTML = `<h3>Search Results for "${document.getElementById("siteSearch").value}"</h3>${resultsHtml}`;
+        } else {
+            searchResultsDiv.innerHTML = `<p>No results found for "${document.getElementById("siteSearch").value}".</p>`;
+        }
+    }
+
+    function smoothScrollTo(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            const headerOffset = document.querySelector('nav') ? document.querySelector('nav').offsetHeight + 20 : 80; 
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    }
+
+    const backToTopButton = document.querySelector(".back-to-top");
+    if (backToTopButton) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+    }
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    const currentYearSpan = document.getElementById("currentYear");
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    const searchInput = document.getElementById("siteSearch");
+    if (searchInput) {
+        searchInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                performSearch();
+            }
+        });
+    }
+
+
+
+    document.querySelectorAll('.resource-section a').forEach(link => {
+        if (link.href && (link.hostname !== window.location.hostname )) { 
+             if (link.protocol !== "tel:" && link.protocol !== "mailto:") { 
+                 link.setAttribute('target', '_blank');
+                 link.setAttribute('rel', 'noopener noreferrer');
+            }
+        }
+    });
+  </script>
+</body>
 </html>
