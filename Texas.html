@@ -14,12 +14,11 @@
         --accent-color: #8338ec; /* Purple */
         --light-color: #f8f9fa; /* Light Gray */
         --dark-color: #212529; /* Dark Gray */
-        --success-color: #38b000; /* Green */
+        --success-color: #38b000; /* Green */FSAN
         --warning-color: #ffbe0b; /* Yellow */
         --danger-color: #dc3545; /* Red */
         --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
         --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
-        /* --texas-gradient: linear-gradient(135deg, #BF0A30, #A00020); /* Texas Red Gradient - Changed for consistency */
     }
 
     /* Universal Box-Sizing and Smooth Scrolling */
@@ -320,13 +319,13 @@
     /* Quick Navigation Menu */
     .quick-nav {
         position: sticky;
-        top: 85px;
+        top: 85px; /* Adjusted based on typical nav height */
         background-color: white;
         border-radius: 8px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         padding: 1.5rem;
         margin-bottom: 2rem;
-        max-height: calc(100vh - 120px);
+        max-height: calc(100vh - 120px); /* Adjust based on nav height and desired spacing */
         overflow-y: auto;
     }
     .quick-nav h3 {
@@ -359,11 +358,11 @@
     @media (min-width: 992px) {
         .two-column-layout {
             display: grid;
-            grid-template-columns: 280px 1fr;
+            grid-template-columns: 280px 1fr; /* Width of quick-nav and remaining space */
             gap: 2rem;
         }
         .main-content {
-            min-width: 0;
+            min-width: 0; /* Prevents overflow issues with grid */
         }
     }
 
@@ -485,8 +484,8 @@
         .hero-subtitle { font-size: 1.05rem; }
         h2 { font-size: 1.5rem; }
         h3 { font-size: 1.2rem; }
-        .two-column-layout { grid-template-columns: 1fr; }
-        .quick-nav { position: static; max-height: none; overflow-y: visible; margin-bottom: 1rem; }
+        .two-column-layout { grid-template-columns: 1fr; } /* Stack columns */
+        .quick-nav { position: static; max-height: none; overflow-y: visible; margin-bottom: 1rem;}
     }
 
     @media (max-width: 576px) {
@@ -501,9 +500,7 @@
   </style>
 </head>
 <body>
-  <div id="top"></div>
-
-  <a href="index.html" class="back-button">← Back to Main Page</a>
+  <div id="top"></div> <a href="index.html" class="back-button">← Back to Main Page</a>
 
   <header>
     <div class="hero-section">
@@ -835,38 +832,43 @@
                     <li><a href="https://www.h-gac.com/mobility-links"><strong>Houston-Galveston Area Council (H-GAC) Mobility Links:</strong></a> Information about public transportation options including non-emergency medical transportation in the Gulf Coast Region. Phone: 713-627-3200</li>
                 </ul>
               </section>
-    
+              
               <section id="dallas-resources" class="resource-section">
                 <h2>Dallas / Dallas County Resources</h2>
                 <p>Resources specifically for residents of Dallas and Dallas County areas.</p>
                  <h4 id="dallas-general">General Assistance</h4>
                 <ul>
                     <li><a href="https://www.unitedwaydallas.org/"><strong>United Way of Metropolitan Dallas:</strong></a> Connects residents to essential community resources. Phone: (214) 978-0000</li>
-                     <li><a href="https://www.ccadvance.org/"><strong>Community Council of Greater Dallas:</strong></a> Resources for healthcare, transportation, and senior services. Phone: (214) 871-5065</li>
-                     <li><a href="https://www.dallascounty.org/Assets/uploads/docs/hhs/ehap/English-DALLAS-COUNTY-COMMUNITY-REFERRAL-LIST.pdf"><strong>Dallas County Community Referral List:</strong></a> Comprehensive guide to community resources. Phone: (214) 819-2000 (DCHHS)</li>
+                    <li><a href="https://www.ccadvance.org/"><strong>Community Council of Greater Dallas:</strong></a> Resources for healthcare, transportation, and senior services. Phone: (214) 871-5065</li>
+                    <li><a href="https://www.dallascounty.org/Assets/uploads/docs/hhs/ehap/English-DALLAS-COUNTY-COMMUNITY-REFERRAL-LIST.pdf"><strong>Dallas County Community Referral List:</strong></a> Comprehensive guide to community resources. Phone: (214) 819-2000 (DCHHS)</li>
                 </ul>
                 <h4 id="dallas-housing">Housing & Utilities</h4>
                 <ul>
                     <li><a href="https://dallascityhall.com/departments/housing-neighborhood-revitalization/Pages/default.aspx"><strong>City of Dallas Housing & Neighborhood Revitalization:</strong></a> Housing assistance programs for Dallas residents. Phone: (214) 670-5988</li>
+                     <li><a href="https://www.dallascounty.org/departments/dchhs/housing-assistance.php"><strong>Dallas County HHS - Housing Assistance:</strong></a> Information on emergency rental and utility assistance programs. Phone: (214) 819-1968</li>
+                     <li><a href="https://www.dhadal.com/"><strong>DHA Housing Solutions for North Texas:</strong></a> Housing choice vouchers (Section 8) and public housing. Phone: (214) 951-8300</li>
                 </ul>
                 <h4 id="dallas-health">Health & Mental Health</h4>
                 <ul>
                     <li><a href="https://www.dallascounty.org/departments/dchhs/"><strong>Dallas County Health and Human Services:</strong></a> Health services, benefits enrollment, and assistance programs. Phone: (214) 819-2000</li>
-                    <li><a href="https://www.metrocareservices.org/"><strong>Metrocare Services:</strong></a> Mental health and developmental disability services. Phone: (214) 743-1200</li>
+                    <li><a href="https://www.metrocareservices.org/"><strong>Metrocare Services:</strong></a> Mental health and developmental disability services. Phone: (214) 743-1200. Crisis Line: (877) 283-2121</li>
                     <li><a href="https://www.parklandhospital.com/"><strong>Parkland Health:</strong></a> Public hospital system serving Dallas County residents. Phone: (214) 590-8000</li>
-                     <li><a href="https://unitedwaydallas.org/resources/healthcare-financial-assistance/"><strong>United Way Dallas Healthcare Financial Assistance:</strong></a> Resources for healthcare costs and financial support. Phone: (214) 978-0000</li>
+                    <li><a href="https://unitedwaydallas.org/resources/healthcare-financial-assistance/"><strong>United Way Dallas Healthcare Financial Assistance:</strong></a> Resources for healthcare costs and financial support. Phone: (214) 978-0000</li>
                 </ul>
                  <h4 id="dallas-food">Food Assistance</h4>
                 <ul>
                     <li><a href="https://ntfb.org/"><strong>North Texas Food Bank:</strong></a> Food assistance programs serving Dallas County. Phone: (214) 330-1396</li>
+                    <li><a href="https://www.dallascounty.org/departments/dchhs/food-assistance.php"><strong>Dallas County HHS - Food Assistance:</strong></a> Information on SNAP and local food pantries. Phone: (214) 819-1800</li>
                 </ul>
                 <h4 id="dallas-legal">Legal Aid</h4>
                 <ul>
-                     <li><a href="https://www.dallasbar.org/page/dvap"><strong>Dallas Volunteer Attorney Program:</strong></a> Free legal assistance for low-income residents. Phone: (214) 220-7444</li>
+                    <li><a href="https://www.dallasbar.org/page/dvap"><strong>Dallas Volunteer Attorney Program:</strong></a> Free legal assistance for low-income residents. Phone: (214) 220-7444</li>
+                    <li><a href="https://internet.lanwt.org/en-us/get-help/office/dallas"><strong>Legal Aid of NorthWest Texas - Dallas Office:</strong></a> Free civil legal services to eligible low-income residents. Phone: (214) 748-1234</li>
                 </ul>
                  <h4 id="dallas-crisis">Crisis Support</h4>
                  <ul>
                     <li><a href="https://www.familyplace.org/"><strong>The Family Place:</strong></a> Domestic violence support services. 24-Hour Crisis Hotline: (214) 941-1991</li>
+                    <li><a href="https://www.dallasarearapesurvivors.org/"><strong>Dallas Area Rape Crisis Center (DARCC):</strong></a> Support for survivors of sexual violence. 24-Hour Crisis Hotline: (972) 641-7273</li>
                 </ul>
                  <h4 id="dallas-social-services">Social Services</h4>
                 <ul>
@@ -878,19 +880,151 @@
                     <li><a href="https://www.theseniorsource.org/"><strong>The Senior Source:</strong></a> Comprehensive services for seniors including employment assistance, elder financial safety, and guardianship services. Phone: (214) 823-5700</li>
                     <li><a href="https://vnatexas.org/i-need-help-with/meals-on-wheels/"><strong>VNA Texas Meals on Wheels:</strong></a> Home-delivered meals for homebound seniors in Dallas County. Phone: (214) 689-2639</li>
                     <li><a href="https://www.dallascounty.org/departments/tax/exemptions.php"><strong>Dallas County Tax Office - Senior Tax Exemptions:</strong></a> Information on property tax exemptions for seniors. Phone: (214) 653-7811</li>
+                    <li><a href="https://www.dallascounty.org/departments/older-adult-services/"><strong>Dallas County Older Adult Services Program:</strong></a> Provides services to improve the quality of life for seniors. Phone: (214) 819-1860</li>
+                </ul>
+                <h4 id="dallas-transportation">Transportation</h4>
+                <ul>
+                    <li><a href="https://www.dart.org/"><strong>Dallas Area Rapid Transit (DART):</strong></a> Public transportation including bus, light rail, and paratransit services. Phone: (214) 979-1111. Paratransit: (214) 515-7272</li>
+                    <li><a href="https://www.dallascounty.org/departments/older-adult-services/transportation.php"><strong>Dallas County Senior Transportation Program:</strong></a> Transportation services for eligible seniors. Phone: (214) 819-1860</li>
                 </ul>
               </section>
                 
               <section id="austin-resources" class="resource-section">
                 <h2>Austin / Travis County Resources</h2>
-                <p>Information for Austin / Travis County is coming soon. Please check back later or search statewide resources.</p>
+                <p>Explore support services available to residents of Austin and Travis County, including housing, legal aid, crisis response, and public assistance.</p>
+                <h4 id="austin-general">General Assistance & Community Resources</h4>
+                <ul>
+                    <li><a href="https://www.traviscountytx.gov/health-human-services/community-centers"><strong>Travis County Community Centers:</strong></a> Offer a range of social services, including emergency financial assistance, food pantry access, and health screenings. Phone: (512) 854-4120 (Central Operations)</li>
+                    <li><a href="https://www.unitedwayaustin.org/get-help/"><strong>United Way for Greater Austin:</strong></a> Connects individuals and families to resources for basic needs, health, education, and financial stability. Navigation Center: (512) 225-0363</li>
+                    <li><a href="https://www.austintexas.gov/department/austin-public-health"><strong>Austin Public Health:</strong></a> Provides public health services, including immunizations, WIC, and disease prevention programs. Phone: (512) 972-5000</li>
+                    <li><a href="https://www.findhelp.org/?postal=78701"><strong>FindHelp.org (Austin Search):</strong></a> Search engine for social services by zip code.</li>
+                </ul>
+                <h4 id="austin-housing">Housing & Utilities Assistance</h4>
+                <ul>
+                    <li><a href="https://www.austintexas.gov/department/housing"><strong>City of Austin Housing Department:</strong></a> Information on affordable housing programs, rental assistance, and home repair. Phone: (512) 974-3100</li>
+                    <li><a href="https://www.haca.org/"><strong>Housing Authority of the City of Austin (HACA):</strong></a> Provides affordable housing options, including public housing and housing choice vouchers (Section 8). Phone: (512) 477-4488</li>
+                    <li><a href="https://www.traviscountytx.gov/health-human-services/individuals-families/financial-assistance"><strong>Travis County Health & Human Services - Financial Assistance:</strong></a> May offer emergency rent and utility assistance. Phone: (512) 854-4100</li>
+                    <li><a href="https://www.austinenergy.com/ae/residential/your-bill/customer-assistance-programs"><strong>Austin Energy Customer Assistance Programs:</strong></a> Offers utility bill discounts and payment assistance for eligible customers. Phone: (512) 494-9400</li>
+                    <li><a href="https://www.austintexas.gov/department/relief-emergency-assistance"><strong>Relief of Emergency Needs for Tenants (RENT) Assistance Program:</strong></a> City of Austin program providing rent assistance to prevent eviction (check for current funding availability).</li>
+                    <li><a href="https://www.echoaustin.org/"><strong>Ending Community Homelessness Coalition (ECHO):</strong></a> Coordinates services for individuals experiencing homelessness. Coordinated Assessment: (512) 234-3632</li>
+                </ul>
+                <h4 id="austin-food">Food Assistance</h4>
+                <ul>
+                    <li><a href="https://www.centraltexasfoodbank.org/"><strong>Central Texas Food Bank:</strong></a> Provides food to a network of partner agencies and programs in Travis County and surrounding areas. Phone: (512) 282-2111</li>
+                    <li><a href="https://www.traviscountytx.gov/health-human-services/community-centers"><strong>Travis County Community Centers Food Pantries:</strong></a> Several community centers operate food pantries. Contact your local center for details.</li>
+                    <li><a href="https://www.austintexas.gov/department/wic"><strong>WIC (Women, Infants, and Children) - Austin:</strong></a> Nutrition program providing food benefits and education. Phone: (512) 972-4942</li>
+                </ul>
+                <h4 id="austin-health-mental">Health & Mental Health</h4>
+                <ul>
+                    <li><a href="https://integralcare.org/"><strong>Integral Care:</strong></a> Local mental health and intellectual and developmental disability authority for Travis County. Provides mental health crisis services, counseling, and support. 24/7 Crisis Helpline: (512) 472-HELP (4357)</li>
+                    <li><a href="https://www.commongroundrelief.org/"><strong>CommUnityCare Health Centers:</strong></a> Federally Qualified Health Centers providing primary care, dental, behavioral health, and specialty care, often on a sliding fee scale. Phone: (512) 978-9015</li>
+                    <li><a href="https://namiaustin.org/"><strong>NAMI Central Texas (Austin):</strong></a> Offers support groups, classes, and resources for individuals affected by mental illness. Phone: (512) 420-9810</li>
+                    <li><a href="https://www.centralhealth.net/"><strong>Central Health:</strong></a> Healthcare district for Travis County, helping residents access quality healthcare. Phone: (512) 978-8000</li>
+                </ul>
+                 <h4 id="austin-cancer-financial">Cancer Financial & Support Resources</h4>
+                <ul>
+                    <li><a href="https://www.livestrong.org/what-we-do/program/navigation"><strong>Livestrong (Austin-based):</strong></a> Offers free, confidential, personalized support for anyone affected by cancer, including help with financial concerns and treatment navigation. Phone: 1-855-220-7777</li>
+                    <li><a href="https://www.texasoncology.com/austin-cancer-centers"><strong>Texas Oncology - Austin Locations:</strong></a> May have financial counselors available to discuss assistance options. Check specific locations.</li>
+                    <li><a href="https://www.cancerallianceoftexas.org/"><strong>Cancer Alliance of Texas:</strong></a> Statewide organization that may have information on local Austin resources.</li>
+                     <li><a href="https://www.hhs.texas.gov/services/health/medicaid-chip-breast-cervical-cancer-services"><strong>Texas Breast and Cervical Cancer Services (BCCS):</strong></a> Provides screenings and diagnostic services, and may link to treatment funding for eligible residents.</li>
+                </ul>
+                <h4 id="austin-seniors">Senior Services</h4>
+                <ul>
+                    <li><a href="https://www.traviscountytx.gov/health-human-services/older-adults"><strong>Travis County Health & Human Services - Older Adult Services:</strong></a> Programs and resources for seniors. Phone: (512) 854-7777</li>
+                    <li><a href="https://www.capcog.org/divisions/area-agency-on-aging/"><strong>Area Agency on Aging of the Capital Area (AAA):</strong></a> Provides services for seniors and caregivers, including benefits counseling, care coordination, and Meals on Wheels. Phone: (512) 916-6062 or 1-888-622-9111</li>
+                    <li><a href="https://www.mealsonwheelscentraltexas.org/"><strong>Meals on Wheels Central Texas:</strong></a> Delivers meals to homebound older adults and people with disabilities. Phone: (512) 476-6325</li>
+                    <li><a href="https://www.familyeldercare.org/"><strong>Family Eldercare:</strong></a> Provides services for seniors and adults with disabilities, including in-home care, financial counseling, and housing assistance. Phone: (512) 450-0844</li>
+                </ul>
+                <h4 id="austin-transportation">Transportation</h4>
+                <ul>
+                    <li><a href="https://www.capmetro.org/"><strong>Capital Metro (CapMetro):</strong></a> Public transportation system for Austin, including bus and rail services. Phone: (512) 474-1200</li>
+                    <li><a href="https://www.capmetro.org/metroaccess"><strong>MetroAccess:</strong></a> Paratransit service for people with disabilities who cannot use regular bus or rail services. Phone: (512) 389-7501</li>
+                    <li><a href="https://www.traviscountytx.gov/health-human-services/transportation"><strong>Travis County Transportation Services:</strong></a> May offer limited transportation assistance for eligible residents. Phone: (512) 854-4460</li>
+                    <li><a href="https://www.driveasenior.org/"><strong>Drive a Senior:</strong></a> Volunteer-based transportation services for seniors in various Austin neighborhoods (check specific service areas).</li>
+                </ul>
+                <h4 id="austin-legal">Legal Aid</h4>
+                <ul>
+                    <li><a href="https://www.trla.org/office/austin"><strong>Texas RioGrande Legal Aid (TRLA) - Austin Office:</strong></a> Provides free civil legal services to low-income residents. Phone: (512) 374-2700</li>
+                    <li><a href="https://www.vlsoct.org/"><strong>Volunteer Legal Services of Central Texas (VLS):</strong></a> Offers free legal clinics and representation to eligible low-income individuals. Phone: (512) 476-5550</li>
+                </ul>
+                <h4 id="austin-crisis">Crisis Support</h4>
+                <ul>
+                    <li><a href="https://integralcare.org/en/crisis-services/"><strong>Integral Care 24/7 Crisis Helpline:</strong></a> (512) 472-HELP (4357)</li>
+                    <li><a href="https://www.safeaustin.org/"><strong>The SAFE Alliance:</strong></a> Provides shelter, counseling, and support services for survivors of domestic violence, sexual assault, and child abuse. SAFEline (24/7): Call (512) 267-SAFE (7233), Text (737) 888-7233, Chat at safeaustin.org/chat</li>
+                </ul>
               </section>
-    
+              
               <section id="sanantonio-resources" class="resource-section">
                 <h2>San Antonio / Bexar County Resources</h2>
-                <p>Information for San Antonio / Bexar County is coming soon. Please check back later or search statewide resources.</p>
+                <p>Explore support services available to residents of San Antonio and Bexar County, including housing, legal aid, crisis response, and public assistance.</p>
+                <h4 id="sanantonio-general">General Assistance & Community Resources</h4>
+                <ul>
+                    <li><a href="https://www.bexar.org/2657/Community-Resources"><strong>Bexar County Community Resources:</strong></a> Official county page listing various assistance programs and services.</li>
+                    <li><a href="https://www.unitedwaysatx.org/gethelp/"><strong>United Way of San Antonio and Bexar County:</strong></a> Connects residents to resources for basic needs, health, education, and financial stability. 2-1-1 Helpline: Dial 2-1-1.</li>
+                    <li><a href="https://www.sanantonio.gov/humanservices"><strong>City of San Antonio Department of Human Services:</strong></a> Offers programs for financial empowerment, senior services, homeless assistance, and more. Phone: (210) 207-7830</li>
+                    <li><a href="https://www.safoodbank.org/find-help/social-services/"><strong>San Antonio Food Bank - Social Services:</strong></a> Assistance with applying for SNAP, Medicaid, TANF, and other benefits. Phone: (210) 431-8326</li>
+                    <li><a href="https://www.sanantonio.gov/humanservices/SeniorServices/Resources"><strong>City of San Antonio - Senior Services Resources:</strong></a> Comprehensive resources and services for seniors in the San Antonio area.</li>
+                    <li><a href="https://www.sa.gov/Directory/Departments/DHS/Senior-Services"><strong>San Antonio Department of Human Services - Senior Services:</strong></a> Senior-focused programs and assistance through the city's human services department.</li>
+                    <li><a href="https://www.sanantonio.gov/humanservices/SeniorServices/Resources"><strong>City of San Antonio - Senior Services Resources:</strong></a> Comprehensive resources and services for seniors in the San Antonio area.</li>
+                    <li><a href="https://www.sa.gov/Directory/Departments/DHS/Senior-Services"><strong>San Antonio Department of Human Services - Senior Services:</strong></a> Senior-focused programs and assistance through the city's human services department.</li>
+                    <li><a href="https://sacrd.org/directory/"><strong>SACRD Directory:</strong></a> Community resource directory providing access to local services and assistance programs.</li>
+                </ul>
+                <h4 id="sanantonio-housing">Housing & Utilities Assistance</h4>
+                <ul>
+                    <li><a href="https://www.sanantonio.gov/nhsd"><strong>City of San Antonio Neighborhood & Housing Services Department (NHSD):</strong></a> Provides housing assistance, home repair programs, and resources for renters and homeowners. Phone: (210) 207-6459</li>
+                    <li><a href="https://saha.org/"><strong>San Antonio Housing Authority (SAHA):</strong></a> Offers affordable housing options, including public housing and housing choice vouchers (Section 8). Phone: (210) 477-6000</li>
+                    <li><a href="https://www.bexar.org/2794/Housing-Assistance"><strong>Bexar County Housing Authority:</strong></a> Provides housing assistance programs for residents outside San Antonio city limits but within Bexar County. Phone: (210) 225-0071</li>
+                    <li><a href="https://www.cpsenergy.com/assistance"><strong>CPS Energy Customer Assistance Programs:</strong></a> Offers utility bill assistance and payment plans for eligible customers. Phone: (210) 353-2222</li>
+                    <li><a href="https://www.saws.org/service/uplift/"><strong>SAWS Uplift Assistance Program:</strong></a> Provides assistance with water bills for eligible SAWS customers. Phone: (210) 704-7297</li>
+                    <li><a href="https://www.havenforhope.org/"><strong>Haven for Hope:</strong></a> Comprehensive homeless services campus offering shelter, housing assistance, and support services. Phone: (210) 220-2100</li>
+                </ul>
+                <h4 id="sanantonio-food">Food Assistance</h4>
+                <ul>
+                    <li><a href="https://www.safoodbank.org/"><strong>San Antonio Food Bank:</strong></a> Distributes food to a network of partner agencies and offers direct programs throughout Bexar County and Southwest Texas. Phone: (210) 337-3663</li>
+                    <li><a href="https://www.sanantonio.gov/humanservices/EmergencyHelp/FoodPantries"><strong>City of San Antonio Food Pantry Search:</strong></a> Directory of food pantries in the San Antonio area.</li>
+                    <li><a href="https://www.sanantonio.gov/health/HealthServices/WIC"><strong>WIC (Women, Infants, and Children) - San Antonio:</strong></a> Nutrition program for pregnant women, new mothers, infants, and young children. Phone: (210) 207-4650</li>
+                </ul>
+                <h4 id="sanantonio-health-mental">Health & Mental Health</h4>
+                <ul>
+                    <li><a href="https://www.sanantonio.gov/health"><strong>San Antonio Metropolitan Health District (Metro Health):</strong></a> Provides public health services, including immunizations, health clinics, and disease prevention. Phone: (210) 207-8780</li>
+                    <li><a href="https://chcsbc.org/"><strong>The Center for Health Care Services (CHCS):</strong></a> Local mental health and intellectual and developmental disability authority for Bexar County. Offers mental health crisis services, counseling, and substance use treatment. 24/7 Crisis Line: (800) 316-9241 or (210) 223-SAFE (7233)</li>
+                    <li><a href="https://www.universityhealthsystem.com/"><strong>University Health:</strong></a> Public hospital system serving Bexar County residents, offering a wide range of medical services. Phone: (210) 358-4000</li>
+                    <li><a href="https://namisanantonio.org/"><strong>NAMI San Antonio:</strong></a> Provides support, education, and advocacy for individuals and families affected by mental illness. Phone: (210) 734-3349</li>
+                </ul>
+                 <h4 id="sanantonio-cancer-financial">Cancer Financial & Support Resources</h4>
+                <ul>
+                    <li><a href="https://www.texasoncology.com/san-antonio-cancer-centers"><strong>Texas Oncology - San Antonio Locations:</strong></a> May have financial counselors available to assist patients. Check specific locations.</li>
+                    <li><a href="https://www.thrivewell.org/"><strong>ThriveWell Cancer Foundation:</strong></a> Provides financial assistance for living expenses, transportation, and access to care for adult cancer patients in the San Antonio area. Phone: (210) 593-5949</li>
+                    <li><a href="https://sarcs.org/"><strong>San Antonio Cancer Resource Center (SARCS):</strong></a> Provides information, resources, and support to cancer patients and their families. (Note: Check website for current status and services).</li>
+                    <li><a href="https://www.cancer.org/about-us/local/texas.html"><strong>American Cancer Society - San Antonio:</strong></a> Offers patient programs and services, including potential transportation and lodging assistance. Phone: 1-800-227-2345</li>
+                </ul>
+                <h4 id="sanantonio-seniors">Senior Services</h4>
+                <ul>
+                    <li><a href="https://www.sanantonio.gov/humanservices/OlderAdults"><strong>City of San Antonio Department of Human Services - Senior Services:</strong></a> Offers senior centers, nutrition programs (including Meals on Wheels), and other support services. Senior Help Line: (210) 207-7172</li>
+                    <li><a href="https://www.aacog.com/109/Alamo-Area-Agency-on-Aging"><strong>Alamo Area Agency on Aging (AACOG):</strong></a> Provides services for seniors and caregivers in Bexar County, including benefits counseling, care coordination, and health and wellness programs. Phone: (210) 477-3275 or 1-866-231-4922</li>
+                    <li><a href="https://www.christianseniorservices.org/"><strong>Christian Senior Services (Meals on Wheels San Antonio):</strong></a> Delivers meals to homebound seniors and provides other support services. Phone: (210) 735-5115</li>
+                </ul>
+                <h4 id="sanantonio-transportation">Transportation</h4>
+                <ul>
+                    <li><a href="https://www.viainfo.net/"><strong>VIA Metropolitan Transit:</strong></a> Public transportation system for San Antonio and Bexar County, including bus services and VIA Link. Phone: (210) 362-2020</li>
+                    <li><a href="https://www.viainfo.net/service/viatrans/"><strong>VIAtrans:</strong></a> Paratransit service for individuals with disabilities who are unable to use regular bus services. Phone: (210) 362-5050</li>
+                    <li><a href="https://www.bexar.org/2662/Transportation"><strong>Bexar County Transportation Resources:</strong></a> Information on county-supported transportation initiatives.</li>
+                    <li><a href="https://www.projectmend.org/"><strong>Project MEND (Transportation):</strong></a> While primarily DME, they may have information or referrals for accessible transportation. Phone: (210) 223-6363</li>
+                </ul>
+                <h4 id="sanantonio-legal">Legal Aid</h4>
+                <ul>
+                    <li><a href="https://www.trla.org/office/san-antonio"><strong>Texas RioGrande Legal Aid (TRLA) - San Antonio Office:</strong></a> Provides free civil legal services to low-income residents. Phone: (210) 212-3700</li>
+                    <li><a href="https://www.sanantoniobar.org/?pg=Community-Justice-Program"><strong>San Antonio Bar Association - Community Justice Program (CJP):</strong></a> Offers pro bono legal services to eligible low-income individuals. Phone: (210) 227-8822</li>
+                    <li><a href="https://law.stmarytx.edu/academics/experiential/clinics/civil-justice/"><strong>St. Mary's University School of Law - Civil Justice Clinic:</strong></a> Provides free legal services to low-income clients in various civil matters. Phone: (210) 431-2599</li>
+                </ul>
+                <h4 id="sanantonio-crisis">Crisis Support</h4>
+                <ul>
+                    <li><a href="https://chcsbc.org/services/crisis-care/"><strong>The Center for Health Care Services (CHCS) 24/7 Crisis Line:</strong></a> (800) 316-9241 or (210) 223-SAFE (7233)</li>
+                    <li><a href="https://fvps.org/"><strong>Family Violence Prevention Services, Inc. (The Battered Women and Children's Shelter):</strong></a> Provides shelter, counseling, and support services for survivors of domestic violence. 24/7 Crisis Hotline: (210) 733-8810</li>
+                    <li><a href="https://rapecrisis.com/"><strong>Rape Crisis Center:</strong></a> Offers advocacy, counseling, and support for survivors of sexual assault. 24/7 Hotline: (210) 349-7273</li>
+                </ul>
               </section>
-    
+              
               <section id="fortworth-resources" class="resource-section">
                 <h2>Fort Worth / Tarrant County Resources</h2>
                 <p>Resources specifically for residents of Fort Worth and Tarrant County areas.</p>
@@ -915,7 +1049,7 @@
                   <li><a href="https://www.journeyhome.org/"><strong>Presbyterian Night Shelter:</strong></a> Emergency housing and transitional housing programs. Phone: (817) 632-7400</li>
                   <li><a href="https://ugm-tc.org/"><strong>Union Gospel Mission of Tarrant County:</strong></a> Emergency shelter and housing assistance programs. Phone: (817) 339-2553</li>
                   <li><a href="https://samaritanhouse.org/"><strong>Samaritan House:</strong></a> Housing programs for people with chronic health conditions. Phone: (817) 332-6410</li>
-                   <li><a href="https://www.fwhp.org/"><strong>Fort Worth Housing Partnership:</strong></a> Affordable housing development and rental assistance. Phone: (817) 924-2929</li>
+                    <li><a href="https://www.fwhp.org/"><strong>Fort Worth Housing Partnership:</strong></a> Affordable housing development and rental assistance. Phone: (817) 924-2929</li>
                   <li><a href="https://www.habitatfw.org/"><strong>Habitat for Humanity of Greater Fort Worth:</strong></a> Affordable homeownership opportunities and home repairs. Phone: (817) 926-9219</li>
                 </ul>
                  <h4 id="fortworth-food">Food Assistance</h4>
@@ -925,9 +1059,10 @@
                 </ul>
                 <h4 id="fortworth-health-mental">Health & Mental Health</h4>
                 <ul>
-                     <li><a href="https://www.mhmrtarrant.org"><strong>My Health My Resources (MHMR) of Tarrant County:</strong></a> Behavioral health and disability services including crisis response, counseling, and long-term support. Phone: 1-800-866-2465. ICARE Crisis Line (24/7): (817) 335-3022.</li>
+                    <li><a href="https://www.mhmrtarrant.org"><strong>My Health My Resources (MHMR) of Tarrant County:</strong></a> Behavioral health and disability services including crisis response, counseling, and long-term support. Phone: 1-800-866-2465. ICARE Crisis Line (24/7): (817) 335-3022.</li>
                     <li><a href="https://mhmrtc.org/mha"><strong>Mental Health America – Tarrant County:</strong></a> Mental health advocacy, education, and peer support resources. Phone: (817) 335-5405</li>
                     <li><a href="https://www.mansfield-texas.com/1057/Mansfield-Cares"><strong>Mansfield Cares Clinic:</strong></a> Free medical, dental, and optical care for the Mansfield in-need community at the Linda Nix Family Caring Place.</li>
+                    <li><a href="https://www.jpshealthnet.org/"><strong>JPS Health Network:</strong></a> Public hospital system serving Tarrant County residents. Phone: (817) 702-1100</li>
                 </ul>
                 <h4 id="fortworth-cancer-financial">Cancer Financial Assistance</h4>
                  <ul>
@@ -937,23 +1072,30 @@
                 </ul>
                  <h4 id="fortworth-disability">Disability Services</h4>
                 <ul>
-                     <li><a href="https://www.reachcils.org"><strong>REACH Resource Center on Independent Living:</strong></a> Advocacy and independent living services for people with disabilities. Phone: (817) 870-9082</li>
+                    <li><a href="https://www.reachcils.org"><strong>REACH Resource Center on Independent Living:</strong></a> Advocacy and independent living services for people with disabilities. Phone: (817) 870-9082</li>
                 </ul>
                 <h4 id="fortworth-seniors">Senior Services</h4>
                 <ul>
-                    <li><a href="https://www.unitedwaytarrant.org/get-help/aging-disability-and-caregivers"><strong>Area Agency on Aging of Tarrant County (AAATC):</strong></a> Works with local organizations to develop and provide services that benefit older adults, people with disabilities and caregivers.</li>
-                    <li><a href="https://www.mealsonwheels.org/"><strong>Tarrant County Meals on Wheels:</strong></a> Home-delivered meals, professional case management and other services to elderly and disabled homebound residents.</li>
+                    <li><a href="https://www.unitedwaytarrant.org/get-help/aging-disability-and-caregivers"><strong>Area Agency on Aging of Tarrant County (AAATC):</strong></a> Works with local organizations to develop and provide services that benefit older adults, people with disabilities and caregivers. Phone: (888) 730-2372</li>
+                    <li><a href="https://www.mealsonwheels.org/"><strong>Tarrant County Meals on Wheels:</strong></a> Home-delivered meals, professional case management and other services to elderly and disabled homebound residents. Phone: (817) 336-0912</li>
+                    <li><a href="https://www.sixtyandbetter.org/"><strong>Sixty & Better:</strong></a> Senior centers and programs throughout Tarrant County. Phone: (817) 413-4949</li>
                 </ul>
                  <h4 id="fortworth-transportation">Transportation</h4>
                 <ul>
-                    <li><a href="https://ridetrinitymetro.org"><strong>Trinity Metro (The T):</strong></a> Public transportation and ACCESS paratransit services for Tarrant County. Phone: (817) 215-8600</li>
+                    <li><a href="https://ridetrinitymetro.org"><strong>Trinity Metro (The T):</strong></a> Public transportation and ACCESS paratransit services for Tarrant County. Phone: (817) 215-8600. ACCESS: (817) 215-8600</li>
                     <li><a href="https://tarrantcountyadrc.org/myride/"><strong>My Ride Tarrant County:</strong></a> Transportation coordination program for older adults and people with disabilities. Phone: (682) 587-7099</li>
-                    <li><a href="https://ahomewithhope.org/help/transportation/"><strong>Catholic Charities Transportation Services:</strong></a> Transportation services for medical appointments and essential needs. Phone: (817) 336-8714</li>
+                    <li><a href="https://www.ccfw.org/get-help/transportation/"><strong>Catholic Charities Fort Worth Transportation Services:</strong></a> Transportation services for medical appointments and essential needs for eligible clients. Phone: (817) 534-0814</li>
                     <li><a href="https://tarrantcountyadrc.org/wp-content/uploads/2022/06/Get-A-Ride-Guide-2_singlepages_English_FINAL_digital.pdf"><strong>Get-A-Ride Guide:</strong></a> Downloadable guide to local transportation services available to seniors and individuals with disabilities in Tarrant County.</li>
                 </ul>
                 <h4 id="fortworth-legal">Legal Aid</h4>
                 <ul>
                     <li><a href="https://internet.lanwt.org/"><strong>Legal Aid of NorthWest Texas:</strong></a> Free legal services for housing issues for qualifying residents. Phone: (888) 529-5277 (Main) / (817) 336-3943 (Fort Worth Office)</li>
+                    <li><a href="https://www.tarrantbar.org/page/LegalLine"><strong>Tarrant County Bar Association - LegalLine:</strong></a> Free legal advice over the phone on certain evenings. Phone: (817) 335-1239</li>
+                </ul>
+                 <h4 id="fortworth-crisis">Crisis Support</h4>
+                <ul>
+                    <li><a href="https://www.safehaventc.org/"><strong>SafeHaven of Tarrant County:</strong></a> Domestic violence shelter and support services. 24/7 Crisis Hotline: (877) 701-7233</li>
+                    <li><a href="https://www.thewomenscenter.org/our-services/rape-crisis-victim-services/"><strong>The Women's Center of Tarrant County - Rape Crisis and Victim Services:</strong></a> Support for survivors of sexual assault. 24/7 Crisis Hotline: (817) 927-2737</li>
                 </ul>
               </section>
           </main>
@@ -1014,6 +1156,7 @@
             const sectionTitleText = sectionH2 ? sectionH2.textContent : 'Unnamed Section';
             const sectionTitleLower = sectionTitleText.toLowerCase();
 
+            // Match section titles
             if (sectionId && sectionTitleLower.includes(query)) {
                 const resultKey = `section-${sectionId}`;
                 if (!foundItems.has(resultKey)) {
@@ -1022,6 +1165,7 @@
                 }
             }
 
+            // Match subheadings (h3, h4)
             const subheadings = section.querySelectorAll('h3[id], h4[id]');
             subheadings.forEach(subheading => {
                 const subheadingId = subheading.id;
@@ -1035,6 +1179,7 @@
                 }
             });
 
+            // Match content within list items and paragraphs directly under resource-section
             const contentElements = section.querySelectorAll('li, .resource-section > p'); 
             contentElements.forEach(element => {
                 const elementText = element.textContent;
@@ -1044,6 +1189,7 @@
                     let targetId = sectionId; 
                     let contextTitle = sectionTitleText;
 
+                    // Try to find the closest h4 or h3 parent for better context
                     const parentH4 = element.closest('h4[id]');
                     const parentH3 = element.closest('h3[id]');
 
@@ -1056,17 +1202,21 @@
                     }
                     
                     const itemLink = element.querySelector('a');
+                    // Create a temporary div to strip HTML for display text
                     let tempDiv = document.createElement("div");
                     tempDiv.innerHTML = element.innerHTML; 
                     let cleanTextContent = (tempDiv.textContent || tempDiv.innerText || "").trim();
                     let displayText = cleanTextContent.length > 120 ? cleanTextContent.substring(0, 117) + "..." : cleanTextContent;
                     
+                    // Unique key for the result to avoid duplicates
                     const resultKey = `content-${targetId}-${displayText.substring(0,30)}`; 
 
                     if (!foundItems.has(resultKey)) {
                         if (itemLink && itemLink.href && !itemLink.href.startsWith('#')) { 
+                            // If it's an external link, link directly to it
                             resultsHtml += `<p><a href="${itemLink.href}" target="_blank" rel="noopener noreferrer">${displayText}</a> (in <a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${contextTitle}</a>)</p>`;
                         } else { 
+                            // Otherwise, link to the section/subheading
                             resultsHtml += `<p><a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${displayText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
                         }
                         foundItems.add(resultKey);
@@ -1082,10 +1232,11 @@
         }
     }
 
+    // Smooth scroll function
     function smoothScrollTo(elementId) {
         const element = document.getElementById(elementId);
         if (element) {
-            const headerOffset = document.querySelector('nav') ? document.querySelector('nav').offsetHeight + 20 : 80; 
+            const headerOffset = document.querySelector('nav') ? document.querySelector('nav').offsetHeight + 20 : 80; // Adjust offset as needed
             const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
             const offsetPosition = elementPosition - headerOffset;
 
@@ -1096,6 +1247,7 @@
         }
     }
 
+    // Back to top button functionality
     const backToTopButton = document.querySelector(".back-to-top");
     if (backToTopButton) {
         window.addEventListener("scroll", () => {
@@ -1110,26 +1262,29 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // Set current year in footer
     const currentYearSpan = document.getElementById("currentYear");
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
     }
 
+    // Search on Enter key press
     const searchInput = document.getElementById("siteSearch");
     if (searchInput) {
         searchInput.addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
-                event.preventDefault();
+                event.preventDefault(); // Prevent form submission if it were a form
                 performSearch();
             }
         });
     }
 
+    // Smooth scroll for internal navigation links
     document.querySelectorAll('.main-navbar a[href^="#"], .quick-nav a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const hrefAttribute = this.getAttribute('href');
-            if (hrefAttribute && hrefAttribute !== "#") { 
-                if (hrefAttribute.startsWith("#") && hrefAttribute.length > 1) {
+            if (hrefAttribute && hrefAttribute !== "#") { // Ensure it's not just a "#"
+                if (hrefAttribute.startsWith("#") && hrefAttribute.length > 1) { // Check it's an internal link
                     const targetId = hrefAttribute.substring(1);
                     const targetElement = document.getElementById(targetId);
                     if (targetElement) {
@@ -1141,11 +1296,12 @@
         });
     });
 
+    // Add target="_blank" to all external links within resource sections
     document.querySelectorAll('.resource-section a').forEach(link => {
-        if (link.href && (link.hostname !== window.location.hostname )) { 
-             if (link.protocol !== "tel:" && link.protocol !== "mailto:") { 
-                 link.setAttribute('target', '_blank');
-                 link.setAttribute('rel', 'noopener noreferrer');
+        if (link.href && (link.hostname !== window.location.hostname )) { // Check if it's an external link
+             if (link.protocol !== "tel:" && link.protocol !== "mailto:") { // Exclude tel and mailto links
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer'); // For security
             }
         }
     });
