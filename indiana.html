@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indiana Resources - Community Resource Directory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Root variables for consistent theming */
+    :root {
+        --primary-color: #3a86ff; /* Blue */
+        --secondary-color: #ff006e; /* Pink */
+        --accent-color: #8338ec; /* Purple */
+        --light-color: #f8f9fa; /* Light Gray */
+        --dark-color: #212529; /* Dark Gray */
+        --success-color: #38b000; /* Green */
+        --warning-color: #ffbe0b; /* Yellow */
+        --danger-color: #dc3545; /* Red */
+        --blue-gradient: linear-gradient(135deg, #0077b6, #0096c7);
+        --purple-gradient: linear-gradient(135deg, #8338ec, #3a0ca3);
+    }
+
+    /* Universal Box-Sizing and Smooth Scrolling */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        scroll-behavior: smooth; /* Enable smooth scrolling for the whole page */
+    }
+
+    /* Body and Typography */
+    body {
+        font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark-color);
+        background-color: #f8f9fa;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--accent-color);
+        text-decoration: underline;
+    }
+
+    h1, h2, h3, h4 {
+        margin-bottom: 1rem;
+        line-height: 1.3;
+        font-weight: 600;
+    }
+
+    /* Hero Section Styling */
+    .hero-section {
+        background: var(--blue-gradient); /* Changed to blue gradient for consistency */
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 250px;
+        border-radius: 0 0 10px 10px;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        max-width: 800px;
+        margin: 0.5rem auto 0;
+    }
+
+    .hero-section::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        background: white;
+        clip-path: polygon(0 0, 50% 100%, 100% 0);
+        z-index: 999;
+    }
+
+    h2 {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-top: 1.5rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-top: 1rem;
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        list-style: disc;
+    }
+
+    li {
+        margin-bottom: 0.75rem;
+    }
+
+    /* Header and Navigation */
+    nav {
+        background-color: white;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .main-navbar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .main-navbar li {
+        margin: 0;
+    }
+
+    .main-navbar a, .dropbtn {
+        display: block;
+        color: var(--dark-color);
+        text-align: center;
+        padding: 1rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+    }
+
+    .main-navbar a:hover, .dropdown:hover .dropbtn {
+        background-color: var(--light-color);
+        color: var(--primary-color);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropbtn {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+    }
+    .dropbtn .fa-caret-down {
+        margin-left: 0.3em;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 250px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .dropdown-content a {
+        padding: 0.75rem 1rem;
+        display: block;
+        text-align: left;
+        border-bottom: 1px solid #f1f1f1;
+    }
+    .dropdown-content a:last-child {
+        border-bottom: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    /* Main Content Layout */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .resource-section {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    .resource-section > p {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Back Button Specifics */
+    .back-button {
+        display: inline-block;
+        margin: 1rem 2rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        font-weight: 500;
+    }
+
+    .back-button:hover {
+        background-color: var(--accent-color);
+        transform: translateX(-5px);
+        text-decoration: none;
+    }
+
+    /* Search Box */
+    .search-container {
+        background-color: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-container h2 {
+        margin-top: 0;
+        text-align: center;
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    .search-box {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin-top: 1rem;
+    }
+
+    .search-box input {
+        flex: 1;
+        padding: 0.75rem;
+        border: 2px solid #dee2e6;
+        border-radius: 4px 0 0 4px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+    .search-box input:focus {
+        border-color: var(--primary-color);
+    }
+
+    .search-box button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .search-box button:hover {
+        background-color: var(--accent-color);
+    }
+    #searchResults {
+        margin-top: 1.5rem;
+        width: 100%;
+        max-width: 600px;
+    }
+    #searchResults p {
+        margin-bottom: 0.5rem;
+    }
+    #searchResults a {
+        font-weight: 500;
+    }
+
+    /* Quick Navigation Menu */
+    .quick-nav {
+        position: sticky;
+        top: 85px; /* Adjusted based on typical nav height */
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        max-height: calc(100vh - 120px); /* Adjust based on nav height and desired spacing */
+        overflow-y: auto;
+    }
+    .quick-nav h3 {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+    .quick-nav ul {
+        list-style: none;
+        padding: 0;
+    }
+    .quick-nav ul li {
+        margin-bottom: 0.5rem;
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 0.5rem;
+    }
+    .quick-nav ul li:last-child {
+        border-bottom: none;
+    }
+    .quick-nav ul li a {
+        display: block;
+        color: var(--dark-color);
+        transition: color 0.3s ease;
+    }
+    .quick-nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Two-Column Layout for Desktop */
+    @media (min-width: 992px) {
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr; /* Width of quick-nav and remaining space */
+            gap: 2rem;
+        }
+        .main-content {
+            min-width: 0; /* Prevents overflow issues with grid */
+        }
+    }
+
+    /* Footer */
+    footer {
+        background-color: var(--dark-color);
+        color: white;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+
+    .footer-section h3 {
+        color: white;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: #adb5bd;
+        transition: color 0.3s ease;
+    }
+
+    .footer-section a:hover {
+        color: white;
+        text-decoration: none;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .social-icons a {
+        color: white;
+        background-color: #495057;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+        background-color: var(--primary-color);
+    }
+
+    .copyright {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #495057;
+        color: #adb5bd;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+        z-index: 1000;
+    }
+    .back-to-top:hover {
+        background-color: var(--accent-color);
+    }
+    .back-to-top.show {
+        opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .container { padding: 1rem; }
+        .hero-title { font-size: 2rem; }
+        h2 { font-size: 1.8rem; }
+        h3 { font-size: 1.3rem; }
+    }
+
+    @media (max-width: 768px) {
+        .main-navbar { flex-direction: column; }
+        .dropdown-content { position: static; width: 100%; box-shadow: none; }
+        .resource-section { padding: 1.5rem; }
+        .hero-section { padding: 3rem 1rem; min-height: 220px; }
+        .hero-title { font-size: 1.8rem; }
+        .hero-subtitle { font-size: 1.05rem; }
+        h2 { font-size: 1.5rem; }
+        h3 { font-size: 1.2rem; }
+        .two-column-layout { grid-template-columns: 1fr; } /* Stack columns */
+        .quick-nav { position: static; max-height: none; overflow-y: visible; margin-bottom: 1rem;}
+    }
+
+    @media (max-width: 576px) {
+        .search-box { flex-direction: column; }
+        .search-box input, .search-box button { width: 100%; border-radius: 4px; }
+        .search-box button { margin-top: 0.5rem; }
+        .hero-section { padding: 2rem 1rem; min-height: 180px; }
+        .resource-section { padding: 1rem; }
+        .back-button { margin: 1rem; }
+        .footer-container { padding: 0 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="top"></div> <a href="index.html" class="back-button">← Back to Main Page</a>
+
+  <header>
+    <div class="hero-section">
+        <h1 class="hero-title">Indiana Resources</h1>
+        <p class="hero-subtitle">Statewide and County-Specific Support for Cancer Patients</p>
+    </div>
+
+    <nav>
+      <ul class="main-navbar">
+        <li><a href="#indiana-state-guides">State Resource Guides</a></li>
+        <li><a href="#indiana-housing">Housing</a></li>
+        <li><a href="#indiana-utilities">Utilities</a></li>
+        <li><a href="#indiana-food">Food & Nutrition</a></li>
+        <li><a href="#indiana-dental">Dental</a></li>
+        <li><a href="#indiana-cancer-financial">Cancer Financial Assistance</a></li>
+        <li><a href="#indiana-seniors">Seniors</a></li>
+        <li><a href="#indiana-transportation">Transportation</a></li>
+        <li><a href="#indiana-medical-supplies">Medical Equipment</a></li>
+        <li class="dropdown">
+          <button class="dropbtn">Major Areas <i class="fas fa-caret-down"></i></button>
+          <div class="dropdown-content">
+            <a href="#indianapolis-resources">Indianapolis / Marion County</a>
+            <a href="#fortwayne-resources">Fort Wayne / Allen County</a>
+            <a href="#evansville-resources">Evansville / Vanderburgh County</a>
+            <a href="#southbend-resources">South Bend / St. Joseph County</a>
+            <a href="#northwest-resources">Northwest Indiana / Lake County</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+      <div class="search-container">
+          <h2>Find Resources in Indiana</h2>
+          <div class="search-box">
+              <input type="text" id="siteSearch" placeholder="Search for Indiana resources...">
+              <button onclick="performSearch()"><i class="fas fa-search"></i></button>
+          </div>
+          <div id="searchResults"></div>
+      </div>
+
+      <div class="two-column-layout">
+          <aside class="quick-nav">
+              <h3>Quick Navigation</h3>
+              <ul>
+                  <li><a href="#indiana-state-guides">State Resource Guides</a></li>
+                  <li><a href="#indiana-housing">Housing</a></li>
+                  <li><a href="#indiana-utilities">Utilities</a></li>
+                  <li><a href="#indiana-food">Food & Nutrition</a></li>
+                  <li><a href="#indiana-dental">Dental</a></li>
+                  <li><a href="#indiana-cancer-financial">Cancer Financial Assistance</a></li>
+                  <li><a href="#indiana-seniors">Seniors</a></li>
+                  <li><a href="#indiana-transportation">Transportation</a></li>
+                  <li><a href="#indiana-medical-supplies">Medical Equipment</a></li>
+                  <li><a href="#indianapolis-resources">Indianapolis / Marion County</a></li>
+                  <li><a href="#fortwayne-resources">Fort Wayne / Allen County</a></li>
+                  <li><a href="#evansville-resources">Evansville / Vanderburgh County</a></li>
+                  <li><a href="#southbend-resources">South Bend / St. Joseph County</a></li>
+                  <li><a href="#northwest-resources">Northwest Indiana / Lake County</a></li>
+              </ul>
+          </aside>
+
+          <main class="main-content">
+              <section id="indiana-state-guides" class="resource-section">
+                  <h2>Indiana State Resource Guides</h2>
+                  <p>Comprehensive guides and directories provided by state agencies to help navigate available resources.</p>
+                  <ul>
+                      <li><a href="https://in211.org/"><strong>Indiana 2-1-1:</strong></a> A free service connecting Hoosiers with a wide range of human services, including housing, utilities, food, healthcare, and more. Dial 2-1-1 or visit the website 24/7.</li>
+                      <li><a href="https://www.in.gov/fssa/"><strong>Indiana Family and Social Services Administration (FSSA):</strong></a> The state agency for public assistance programs, including healthcare (Medicaid), food (SNAP), disability, aging, and mental health services.</li>
+                      <li><a href="https://fssabenefits.in.gov/bp/#/"><strong>FSSA Benefits Portal:</strong></a> Indiana's official online portal to apply for and manage benefits like SNAP (food assistance), TANF (cash assistance), and health coverage.</li>
+                      <li><a href="https://www.in.gov/bmv/2337.htm"><strong>Indiana Bureau of Motor Vehicles (BMV) - ID Cards:</strong></a> Information on obtaining a state identification card, a crucial document for accessing many services.</li>
+                      <li><a href="https://www.in.gov/dwd/2456.htm"><strong>Vocational Rehabilitation (VR):</strong></a> Helps individuals with disabilities prepare for, obtain, or retain employment.</li>
+                      <li><a href="https://www.in.gov/fssa/ddrs/2635.htm"><strong>Deaf and Hard of Hearing Services (DHHS):</strong></a> Provides resources and advocacy for deaf and hard of hearing individuals in Indiana.</li>
+                      <li><a href="https://www.in.gov/dva/"><strong>Indiana Department of Veterans Affairs:</strong></a> Offers resources, benefits, and advocacy for veterans in Indiana. Phone: (317) 232-3910</li>
+                      <li><a href="https://indianalegalhelp.org/"><strong>Indiana Legal Help:</strong></a> Provides free legal information, self-help resources, and referrals to low-income Hoosiers with civil legal problems.</li>
+                      <li><a href="https://www.needhelppayingbills.com/html/indiana_assistance_programs.html"><strong>Indiana Assistance Programs:</strong></a> A comprehensive, privately managed list of assistance programs available to Indiana residents.</li>
+                  </ul>
+              </section>
+              
+              <section id="indiana-housing" class="resource-section">
+                  <h2>Indiana Housing Resources</h2>
+                  <ul>
+                      <li><a href="https://www.in.gov/ihcda/homeowners-and-renters/"><strong>Indiana Housing & Community Development Authority (IHCDA):</strong></a> The primary state agency for housing assistance, offering programs for rental assistance, homeownership, and foreclosure prevention. Phone: (317) 232-7777</li>
+                      <li><a href="https://www.hud.gov/states/indiana"><strong>U.S. Department of Housing and Urban Development (HUD) - Indiana:</strong></a> Federal housing resources, including information on rental assistance, Section 8 (Housing Choice Vouchers), and housing counseling.</li>
+                      <li><a href="https://www.in.gov/ihcda/homeowners-and-renters/rental-assistance/"><strong>Rental Assistance Programs:</strong></a> IHCDA's portal for various rental assistance programs, including information on the Housing Choice Voucher program.</li>
+                      <li><a href="https://indianahousingnow.org/"><strong>Indiana Housing Now:</strong></a> A free state-supported service to help find affordable rental housing across Indiana.</li>
+                      <li><a href="https://www.chipindy.org/homelessness-in-indy"><strong>Indiana Homelessness Resources:</strong></a> The Coalition for Homelessness Intervention & Prevention (CHIP) provides resources and information for those experiencing or at risk of homelessness.</li>
+                      <li><a href="https://www.in.gov/ihcda/homeowners-and-renters/homeownership/home-repairs/"><strong>Home Repair Assistance:</strong></a> Information on programs available through IHCDA and its partners to assist with necessary home repairs.</li>
+                  </ul>
+              </section>
+              
+              <section id="indiana-utilities" class="resource-section">
+                  <h2>Indiana Utility Assistance</h2>
+                  <ul>
+                      <li><a href="https://www.in.gov/ihcda/homeowners-and-renters/low-income-home-energy-assistance-program-liheap/"><strong>Low-Income Home Energy Assistance Program (LIHEAP):</strong></a> A federally funded program, also known as the Energy Assistance Program (EAP) in Indiana, that helps low-income households with their heating and cooling bills.</li>
+                      <li><a href="https://www.in.gov/ihcda/homeowners-and-renters/water-assistance-program-lihwa/"><strong>Low Income Household Water Assistance Program (LIHWAP):</strong></a> Provides financial assistance to eligible households for water and wastewater bills.</li>
+                      <li><a href="https://www.in.gov/ihcda/homeowners-and-renters/weatherization-assistance-program/"><strong>Weatherization Assistance Program (WAP):</strong></a> Helps reduce energy costs for low-income households by improving home energy efficiency.</li>
+                      <li><a href="https://in211.org/search-results/utility-assistance/"><strong>2-1-1 Utility Assistance:</strong></a> Connects you with local agencies and programs that provide utility assistance. Dial 2-1-1 for direct help.</li>
+                      <li><a href="https://www.in.gov/oucc/2346.htm"><strong>Indiana Office of Utility Consumer Counselor (OUCC):</strong></a> Provides information on utility assistance programs offered by major utility companies across the state.</li>
+                  </ul>
+              </section>
+              
+              <section id="indiana-food" class="resource-section">
+                  <h2>Indiana Food & Nutrition Resources</h2>
+                  <ul>
+                      <li><a href="https://www.in.gov/fssa/dfr/2691.htm"><strong>Supplemental Nutrition Assistance Program (SNAP):</strong></a> Indiana's food stamp program to help low-income families buy groceries. Apply through the FSSA Benefits Portal.</li>
+                      <li><a href="https://www.in.gov/health/wic/"><strong>Indiana WIC Program:</strong></a> A nutrition program providing healthy food, nutrition education, and healthcare referrals for women, infants, and children up to age five. Phone: 1-800-522-0874</li>
+                      <li><a href="https://feedingindianashungry.org/find-a-food-bank/"><strong>Feeding Indiana's Hungry:</strong></a> A statewide network of 11 food banks. Their website helps you find the food bank and local pantries serving your county.</li>
+                      <li><a href="https://www.in.gov/fssa/da/3475.htm"><strong>Senior Nutrition Programs:</strong></a> FSSA's Division of Aging provides information on programs like congregate meals and home-delivered meals (Meals on Wheels).</li>
+                      <li><a href="https://www.doe.in.gov/nutrition"><strong>School Meal Programs:</strong></a> The Indiana Department of Education oversees school breakfast, lunch, and summer food programs for children.</li>
+                  </ul>
+              </section>
+              
+              <section id="indiana-dental" class="resource-section">
+                  <h2>Indiana Dental Resources</h2>
+                  <p>Explore dental care options and training-based clinics available across Indiana.</p>
+                  <ul>
+                      <li><a href="https://www.in.gov/medicaid/members/160.htm"><strong>Indiana Medicaid Dental Benefits:</strong></a> Information on dental services covered by Indiana Medicaid for eligible children and adults.</li>
+                      <li><a href="https://dentistry.iu.edu/patient-care/index.html"><strong>IU School of Dentistry Patient Care:</strong></a> Located in Indianapolis, the dental school offers comprehensive, patient-centered care at a reduced cost. Phone: (317) 274-7433</li>
+                      <li><a href="https://www.in.gov/health/chp/oral-health-program/"><strong>Indiana Department of Health - Oral Health Program:</strong></a> Provides information and resources for accessing dental care, including a list of safety-net dental clinics.</li>
+                      <li><a href="https://findahealthcenter.hrsa.gov/?state=IN"><strong>Federally Qualified Health Centers (FQHCs):</strong></a> Many FQHCs across Indiana offer dental services on a sliding fee scale based on income. Use the search tool to find one near you.</li>
+                      <li><a href="https://www.communitycompass.app/search?query=Dental%20Care"><strong>Community Compass Dental Search:</strong></a> Search for free or low-cost dental clinics, primarily in the Indianapolis area but with some statewide listings.</li>
+                  </ul>
+              </section>
+              
+              <section id="indiana-cancer-financial" class="resource-section">
+                  <h2>Indiana Cancer Financial Assistance</h2>
+                  <p>Financial resources specifically for cancer patients in Indiana.</p>
+                  <ul>
+                      <li><a href="https://www.littlereddoor.org/"><strong>Little Red Door Cancer Agency:</strong></a> Serving central Indiana, this agency provides financial assistance, emotional support, and navigation services to cancer patients. Phone: (317) 925-5595</li>
+                      <li><a href="https://www.cancer.org/about-us/local/indiana.html"><strong>American Cancer Society - Indiana:</strong></a> Offers patient support programs, including information on financial assistance, lodging, and transportation. 24/7 Helpline: 1-800-227-2345</li>
+                      <li><a href="http://www.cancer-services.org/"><strong>Cancer Services of Northeast Indiana:</strong></a> Provides financial assistance, wellness programs, and a wig salon for cancer patients in Northeast Indiana. Phone: (260) 484-9560</li>
+                      <li><a href="https://www.in.gov/medicaid/members/156.htm"><strong>Medicaid for Breast or Cervical Cancer (MBCC):</strong></a> A state program providing full health care coverage (including cancer treatment) to eligible individuals diagnosed with breast or cervical cancer.</li>
+                      <li><a href="https://www.cancercare.org/financial_assistance"><strong>CancerCare Financial Assistance Program:</strong></a> A national organization offering limited financial assistance for cancer-related costs. Phone: (800) 813-4673</li>
+                      <li><a href="https://www.healthwellfoundation.org/"><strong>HealthWell Foundation:</strong></a> A national foundation that provides financial assistance to help with prescription co-pays, treatment premiums, and other out-of-pocket costs.</li>
+                  </ul>
+              </section>
+              
+              <section id="indiana-seniors" class="resource-section">
+                <h2 id="indiana-senior-resources">Indiana Senior Resources</h2>
+                <p>Explore support services for older adults in Indiana, including caregiving, nutrition, home care, food access, and transportation assistance.</p>
+                
+                <h3 id="local-service-organizations">Local Service Organizations (Southern Indiana)</h3>
+                <p>Regional organizations serving Crawford, Floyd, Harrison, Scott, Washington, Clark, Lawrence, and Orange counties.</p>
+                <ul>
+                    <li><a href="https://www.hoosieruplands.org/ViewDeptPage.aspx?DID=8&PID=53"><strong>Hoosier Uplands Area XV Agency on Aging – In‑Home Services:</strong></a> Regional hub connecting seniors to in‑home care options. Provides homemaker & attendant care, consumer‑directed care, nursing/home‑health aid, Lifeline alerts, adult day care, meals, transportation, respite, assistive devices. Phone: <a href="tel:8128494457">812‑849‑4457</a> or <a href="tel:18003332451">1‑800‑333‑2451</a></li>
+                    <li><a href="https://www.in.gov/fssa/da/community-and-home-options-to-institutional-care-for-the-elderly-and-disabled/"><strong>Indiana CHOICE Program (Community & Home Options):</strong></a> State-funded Medicaid alternative providing comprehensive home services to prevent institutionalization. Apply through Hoosier Uplands at <a href="tel:8128494457">812‑849‑4457</a></li>
+                    <li><a href="https://www.in.gov/medicaid/members/home-and-community-based-services/aged-and-disabled-waiver/"><strong>Medicaid Aged & Disabled Waiver (A&D Waiver):</strong></a> Medicaid waiver covering long‑term home care services to eligible seniors. Apply through Hoosier Uplands at <a href="tel:8128494457">812‑849‑4457</a></li>
+                    <li><a href="https://oasc.us"><strong>Older Americans Services Corporation (OASC):</strong></a> Nonprofit providing homemaker, meals, and transportation to low-income seniors. Offers homemaker & attendant care, home-delivered and congregate meals, essential transport. Phone: <a href="tel:8128653352">812‑865‑3352</a> or <a href="tel:18002588786">1‑800‑258‑8786</a></li>
+                    <li><a href="https://www.wccoaging.org"><strong>Washington County Commission on Aging:</strong></a> Supports family caregivers through training, respite, and referrals. Provides short-term in-home respite, adult day referrals, caregiver education and support groups. Phone: <a href="tel:8128494457">812‑849‑4457</a></li>
+                    <li><a href="https://centralusa.salvationarmy.org/newalbany/"><strong>Salvation Army – Southern Indiana (New Albany & Salem):</strong></a> Provides emergency aid, referrals, and occasional in‑home support. Offers emergency financial aid (rent/utilities), food, clothing, and referrals to in-home services. Phone: <a href="tel:8129441018">812‑944‑1018</a> (New Albany office)</li>
+                    <li><a href="https://sicilindiana.org/"><strong>Southern Indiana Center for Independent Living (SICIL):</strong></a> Advocates for independent living and assists with home care access. Provides peer support, referrals (home health, homemaker), independent living skills, ombudsman services. Phone: <a href="tel:8122779626">812‑277‑9626</a> or <a href="tel:18008456914">1‑800‑845‑6914</a></li>
+                </ul>
+        
+                <h3 id="statewide-senior-resources">Statewide Senior Resources</h3>
+                <p>Indiana state programs and services available throughout the state.</p>
+                <ul>
+                    <li><a href="https://www.in.gov/fssa/da/"><strong>FSSA Division of Aging:</strong></a> The main state portal for senior services, connecting to Area Agencies on Aging, elder abuse prevention, and in-home care services.</li>
+                    <li><a href="https://www.in.gov/fssa/da/community-and-home-options-to-institutional-care-for-the-elderly-and-disabled/"><strong>Indiana CHOICE Program (Community & Home Options):</strong></a> Provides in-home services and case management to help seniors and individuals with disabilities stay safely in their homes.</li>
+                    <li><a href="https://www.in.gov/medicaid/members/home-and-community-based-services/aged-and-disabled-waiver/"><strong>Home and Community-Based Services (HCBS) - Aged & Disabled Waiver:</strong></a> Medicaid waiver services that provide personal care, home modifications, and supports for seniors who wish to remain in their homes.</li>
+                    <li><a href="https://www.in.gov/fssa/da/nutrition/"><strong>Indiana Senior Meal Programs:</strong></a> Provides home-delivered and congregate meals for older adults through local Area Agencies on Aging.</li>
+                    <li><a href="https://www.in.gov/health/wic/farmers-marketsstands-information/"><strong>Senior Farmers' Market Nutrition Program (SFMNP):</strong></a> Eligible low-income seniors can receive vouchers to purchase fresh fruits and vegetables at participating farmers markets.</li>
+                    <li><a href="https://www.in.gov/health/wic/seniors/"><strong>Commodity Supplemental Food Program (CSFP):</strong></a> Monthly USDA food boxes for income-eligible seniors aged 60+ distributed through local food banks and agencies.</li>
+                    <li><a href="https://www.in.gov/fssa/da/nutrition/"><strong>Supplemental Nutrition Assistance Program (SNAP):</strong></a> Food assistance for seniors; application support is available through Area Agencies on Aging.</li>
+                    <li><a href="https://www.in.gov/fssa/da/"><strong>Transportation Assistance:</strong></a> Connects seniors to local transit options and ride services for medical appointments and essential trips through Area Agencies on Aging.</li>
+                    <li><a href="https://www.in.gov/fssa/da/area-agencies-on-aging/"><strong>Area Agencies on Aging (AAA):</strong></a> A network of 16 agencies across Indiana that are the primary access point for senior services. Call 1-800-986-3505 to be connected to your local office.</li>
+                    <li><a href="https://www.in.gov/fssa/da/programs-and-services2/"><strong>Division of Aging – Programs & Services:</strong></a> Overview of all aging programs including CHOICE, HCBS waivers, meal programs, caregiver support, and more.</li>
+                    <li><a href="https://www.in.gov/fssa/da/contact-us/"><strong>Indiana Division of Aging – Contact & Senior Hotline:</strong></a> Call toll-free at <a href="tel:18886730002">1-888-673-0002</a> for help connecting to services and resources across Indiana.</li>
+                    <li><a href="https://www.in.gov/fssa/da/adult-protective-services/"><strong>Adult Protective Services (APS):</strong></a> Investigates claims of abuse, neglect, or exploitation of endangered adults. Statewide Hotline: <a href="tel:18009926978">(800) 992-6978</a></li>
+                    <li><a href="https://www.in.gov/ship/"><strong>State Health Insurance Assistance Program (SHIP):</strong></a> Free, unbiased counseling and information about Medicare, Medicare supplement insurance, and prescription drug coverage. Phone: <a href="tel:18004524800">1-800-452-4800</a></li>
+                    <li><a href="https://www.in.gov/medicaid/providers/about-ihcp-programs/program-for-all-inclusive-care-to-the-elderly-pace/"><strong>Program of All-Inclusive Care for the Elderly (PACE):</strong></a> A Medicare and Medicaid program that helps people meet their health care needs in the community instead of going to a nursing home or other care facility.</li>
+                </ul>
+            </section>
+                
+
+              </section>
+              
+              <section id="indiana-transportation" class="resource-section">
+                  <h2>Indiana Transportation Resources</h2>
+                  <p>Explore transportation options for seniors, people with disabilities, and Medicaid recipients across Indiana.</p>
+                  <ul>
+                      <li><a href="https://www.in.gov/medicaid/members/151.htm"><strong>Non-Emergency Medical Transportation (NEMT):</strong></a> A statewide program providing free transportation to and from medical appointments for eligible Medicaid members.</li>
+                      <li><a href="https://in211.org/search-results/transportation/"><strong>2-1-1 Transportation Search:</strong></a> A comprehensive database of public transit, senior transportation, and medical transport options throughout Indiana.</li>
+                      <li><a href="https://www.in.gov/indot/public-transportation-programs/indiana-public-transit-systems/"><strong>Indiana Public Transit Systems:</strong></a> A list from INDOT of public transit providers by county, including rural and urban systems.</li>
+                      <li><a href="https://www.in.gov/fssa/da/3478.htm"><strong>Area Agencies on Aging (AAA) Transportation:</strong></a> Many local AAA offices provide or coordinate transportation services for seniors. Call 1-800-986-3505 to find your local provider.</li>
+                      <li><a href="https://www.cancer.org/support-programs-and-services/road-to-recovery.html"><strong>American Cancer Society Road to Recovery:</strong></a> Volunteer drivers provide free rides to and from cancer treatment for patients who have no other means of transportation. Phone: 1-800-227-2345</li>
+                  </ul>
+              </section>
+              
+              <section id="indiana-medical-supplies" class="resource-section">
+                  <h2>Indiana Medical Equipment & Incontinence Supplies</h2>
+                  <p>Resources for accessing medical equipment loan closets, incontinence supplies, and other medical necessities across Indiana.</p>
+                  <ul>
+                      <li><a href="https://www.in.gov/medicaid/members/164.htm"><strong>Medicaid - Durable Medical Equipment (DME):</strong></a> Information on how Indiana Medicaid covers necessary medical equipment and supplies for eligible members.</li>
+                      <li><a href="https://www.patins.org/services-and-supports/lending-library-and-refurbished-equipment"><strong>PATINS Project - Refurbished Equipment:</strong></a> While focused on education, PATINS offers some refurbished assistive technology and may have information on other programs.</li>
+                      <li><a href="https://www.easterseals.com/crossroads/our-programs/assistive-technology/"><strong>Easterseals Crossroads (Central Indiana):</strong></a> Offers an equipment loan library and reuse program for assistive technology and medical equipment. Phone: (317) 466-2013</li>
+                      <li><a href="https://in211.org/search-results/assistive-technology/"><strong>2-1-1 Assistive Technology Search:</strong></a> Use the 2-1-1 database to search for medical equipment loan closets or assistive technology providers in your specific area.</li>
+                      <li><a href="https://www.thearcofindiana.org/"><strong>The Arc of Indiana:</strong></a> An advocacy organization for people with intellectual and developmental disabilities that can often provide referrals to equipment resources. Phone: (317) 977-2375</li>
+                  </ul>
+              </section>
+              
+              <section id="indianapolis-resources" class="resource-section">
+                  <h2>Indianapolis / Marion County Resources</h2>
+                  <p>Explore support services available to residents of Indianapolis and Marion County.</p>
+                  <h4 id="indianapolis-general">General & Financial Assistance</h4>
+                  <ul>
+                      <li><a href="https://www.uwci.org/211"><strong>United Way of Central Indiana 2-1-1:</strong></a> Connects residents to essential health and human services, including shelter, food, and financial assistance.</li>
+                      <li><a href="https://www.indy.gov/agency/community-action-of-greater-indianapolis"><strong>Community Action of Greater Indianapolis (CAGI):</strong></a> Offers programs to address the causes of poverty, including energy assistance, family development, and more. Phone: (317) 396-1800</li>
+                  </ul>
+                  <h4 id="indianapolis-housing">Housing & Homelessness</h4>
+                  <ul>
+                      <li><a href="https://www.indyha.org/"><strong>Indianapolis Housing Agency (IHA):</strong></a> Administers public housing and the Housing Choice Voucher (Section 8) program for Marion County. Phone: (317) 261-7200</li>
+                      <li><a href="https://www.chipindy.org/"><strong>Coalition for Homelessness Intervention & Prevention (CHIP):</strong></a> The lead agency coordinating homeless services and prevention in Indianapolis.</li>
+                  </ul>
+                   <h4 id="indianapolis-food">Food Assistance</h4>
+                  <ul>
+                      <li><a href="https://www.gleaners.org/"><strong>Gleaners Food Bank of Indiana:</strong></a> The primary food bank serving Central Indiana. Use their website to find local food pantries and mobile distributions. Phone: (317) 925-0191</li>
+                  </ul>
+                  <h4 id="indianapolis-transportation">Transportation</h4>
+                  <ul>
+                      <li><a href="https://www.indygo.net/"><strong>IndyGo:</strong></a> The public transportation provider for Indianapolis, offering fixed bus routes and the Red Line BRT. Phone: (317) 635-3344</li>
+                      <li><a href="https://www.indygo.net/open-door/"><strong>IndyGo Access (Open Door):</strong></a> Paratransit service for individuals with disabilities who cannot use fixed-route buses.</li>
+                  </ul>
+              </section>
+              
+              <section id="fortwayne-resources" class="resource-section">
+                  <h2>Fort Wayne / Allen County Resources</h2>
+                  <p>Resources specifically for residents of Fort Wayne and Allen County areas.</p>
+                  <ul>
+                      <li><a href="https://www.brightpoint.org/"><strong>Brightpoint:</strong></a> A community action agency providing a wide range of services, including utility assistance, housing, healthcare enrollment, and childcare. Phone: (260) 423-3546</li>
+                      <li><a href="https://www.cityoffortwayne.org/assistance"><strong>City of Fort Wayne - Financial Assistance:</strong></a> Portal for city-run assistance programs, often including rent and utility help.</li>
+                      <li><a href="https://www.fwha.org/"><strong>Fort Wayne Housing Authority:</strong></a> Manages public housing and the Section 8 Housing Choice Voucher program in Fort Wayne. Phone: (260) 267-9300</li>
+                      <li><a href="https://www.communityharvest.org/"><strong>Community Harvest Food Bank of Northeast Indiana:</strong></a> The primary food bank for the region. Use their website to find local food pantries. Phone: (260) 447-3696</li>
+                      <li><a href="https://www.fwcitilink.com/"><strong>Citilink:</strong></a> The public transit provider for Fort Wayne. They also offer Citilink Access for eligible riders with disabilities. Phone: (260) 432-4546</li>
+                       <li><a href="http://www.cancer-services.org/"><strong>Cancer Services of Northeast Indiana:</strong></a> Provides financial assistance, wellness programs, and a wig salon for cancer patients in the area. Phone: (260) 484-9560</li>
+                  </ul>
+              </section>
+              
+              <section id="evansville-resources" class="resource-section">
+                  <h2>Evansville / Vanderburgh County Resources</h2>
+                  <p>Explore support services available to residents of Evansville and Vanderburgh County.</p>
+                  <ul>
+                      <li><a href="https://www.capeevansville.org/"><strong>Community Action Program of Evansville (CAPE):</strong></a> The local community action agency offering energy assistance, weatherization, and other self-sufficiency programs. Phone: (812) 425-4241</li>
+                      <li><a href="https://evansvillehousing.org/"><strong>Evansville Housing Authority:</strong></a> Manages public housing and Section 8 housing programs for the city. Phone: (812) 428-8500</li>
+                      <li><a href="http://www.tristatefoodbank.org/"><strong>Tri-State Food Bank:</strong></a> Serves 33 counties in Indiana, Illinois, and Kentucky from its Evansville base. Phone: (812) 425-0775</li>
+                      <li><a href="https://www.evansville.in.gov/mets/"><strong>Metropolitan Evansville Transit System (METS):</strong></a> Public transportation for the Evansville area, including mobility paratransit services. Phone: (812) 435-6166</li>
+                      <li><a href="https://auroraevansville.org/"><strong>Aurora Evansville:</strong></a> An organization dedicated to preventing and ending homelessness in the region. Phone: (812) 428-3246</li>
+                  </ul>
+              </section>
+              
+              <section id="southbend-resources" class="resource-section">
+                  <h2>South Bend / St. Joseph County Resources</h2>
+                  <p>Explore support services available to residents of South Bend and St. Joseph County.</p>
+                  <ul>
+                      <li><a href="https://realservices.org/"><strong>REAL Services, Inc.:</strong></a> The Area Agency on Aging for the region, but also provides a wide range of community services for all ages, including energy assistance, transportation, and nutrition programs. Phone: (574) 233-8205</li>
+                      <li><a href="https://www.hasb.org/"><strong>Housing Authority of South Bend (HASB):</strong></a> Manages public and voucher-based housing programs. Phone: (574) 235-9346</li>
+                      <li><a href="https://feedindiana.org/"><strong>Food Bank of Northern Indiana:</strong></a> The central food bank for the region, supplying local pantries and meal sites. Phone: (574) 232-9986</li>
+                      <li><a href="https://sbtranspo.com/"><strong>South Bend Public Transportation (Transpo):</strong></a> Provides fixed-route bus service in the South Bend/Mishawaka area, as well as paratransit services. Phone: (574) 233-2131</li>
+                      <li><a href="https://www.sjcindiana.com/1997/Human-Services"><strong>St. Joseph County Department of Human Services:</strong></a> County office providing referrals and information on various assistance programs.</li>
+                  </ul>
+              </section>
+              
+              <section id="northwest-resources" class="resource-section">
+                  <h2>Northwest Indiana / Lake County Resources</h2>
+                  <p>Resources specifically for residents of Northwest Indiana, including Lake, Porter, and surrounding counties.</p>
+                   <ul>
+                      <li><a href="https://www.nwi-ca.com/"><strong>Northwest Indiana Community Action (NWICA):</strong></a> The primary community action agency and Area Agency on Aging, providing energy assistance, senior meals, housing services, and more. Phone: (219) 794-1829</li>
+                      <li><a href="https://www.foodbanknwi.org/"><strong>Food Bank of Northwest Indiana:</strong></a> Distributes food to partner agencies across Lake and Porter counties. Phone: (219) 980-1777</li>
+                       <li><a href="https://www.gary.gov/community-development/community-services-division/"><strong>Gary Community Services Division:</strong></a> Offers assistance programs, including energy and emergency help, for residents of Gary. Phone: (219) 881-4886</li>
+                      <li><a href="https://www.easthammond.org/"><strong>East Chicago & Hammond Housing Authorities:</strong></a> These cities operate their own housing authorities for public housing and voucher programs.</li>
+                      <li><a href="https://www.nictd.com/"><strong>South Shore Line:</strong></a> Commuter rail service connecting South Bend, Gary, Hammond, and East Chicago with Chicago.</li>
+                      <li><a href="https://www.gptcbus.com/"><strong>Gary Public Transportation Corp. (GPTC):</strong></a> The primary bus service for Gary and surrounding communities. Phone: (219) 884-6100</li>
+                  </ul>
+              </section>
+          </main>
+      </div>
+  </div>
+
+  <footer>
+      <div class="footer-container">
+          <div class="footer-section">
+              <h3>About Us</h3>
+              <p>Providing a centralized directory of resources for cancer patients and their families.</p>
+          </div>
+          <div class="footer-section">
+              <h3>Quick Links</h3>
+              <ul>
+                  <li><a href="index.html#national-resources">National Resources</a></li>
+                  <li><a href="index.html#cancer-resources">Cancer Resources</a></li>
+                  <li><a href="index.html#financial">Financial Assistance</a></li>
+                  <li><a href="index.html#mental-health">Mental Health</a></li>
+              </ul>
+          </div>
+          <div class="footer-section">
+              <h3>Contact Us</h3>
+              <p>Email: <a href="mailto:info@example.com">info@example.com</a></p>
+              <div class="social-icons">
+                  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+          </div>
+      </div>
+      <div class="copyright">
+          &copy; <span id="currentYear"></span> Community Resource Directory. All rights reserved.
+      </div>
+  </footer>
+
+  <div class="back-to-top" onclick="scrollToTop()">
+      <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <script>
+    // JavaScript for search functionality
+    function performSearch() {
+        const query = document.getElementById("siteSearch").value.toLowerCase().trim();
+        const sections = document.querySelectorAll('.resource-section');
+        let resultsHtml = '';
+        let foundItems = new Set(); 
+        const searchResultsDiv = document.getElementById("searchResults");
+
+        if (query === "") {
+            searchResultsDiv.innerHTML = '<p>Please enter a search term.</p>';
+            return;
+        }
+
+        sections.forEach(section => {
+            const sectionId = section.id;
+            const sectionH2 = section.querySelector('h2');
+            const sectionTitleText = sectionH2 ? sectionH2.textContent : 'Unnamed Section';
+            const sectionTitleLower = sectionTitleText.toLowerCase();
+
+            // Match section titles
+            if (sectionId && sectionTitleLower.includes(query)) {
+                const resultKey = `section-${sectionId}`;
+                if (!foundItems.has(resultKey)) {
+                    resultsHtml += `<p><a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a></p>`;
+                    foundItems.add(resultKey);
+                }
+            }
+
+            // Match subheadings (h3, h4)
+            const subheadings = section.querySelectorAll('h3[id], h4[id]');
+            subheadings.forEach(subheading => {
+                const subheadingId = subheading.id;
+                const subheadingText = subheading.textContent;
+                if (subheadingText.toLowerCase().includes(query)) {
+                    const resultKey = `subheading-${subheadingId}`;
+                    if (!foundItems.has(resultKey)) {
+                        resultsHtml += `<p><a href="#${subheadingId}" onclick="smoothScrollTo('${subheadingId}'); return false;">${subheadingText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
+                        foundItems.add(resultKey);
+                    }
+                }
+            });
+
+            // Match content within list items and paragraphs directly under resource-section
+            const contentElements = section.querySelectorAll('li, .resource-section > p'); 
+            contentElements.forEach(element => {
+                const elementText = element.textContent;
+                const elementTextLower = elementText.toLowerCase();
+
+                if (elementTextLower.includes(query)) {
+                    let targetId = sectionId; 
+                    let contextTitle = sectionTitleText;
+
+                    // Try to find the closest h4 or h3 parent for better context
+                    const parentH4 = element.closest('h4[id]');
+                    const parentH3 = element.closest('h3[id]');
+
+                    if (parentH4) {
+                        targetId = parentH4.id;
+                        contextTitle = parentH4.textContent;
+                    } else if (parentH3) {
+                        targetId = parentH3.id;
+                        contextTitle = parentH3.textContent;
+                    }
+                   
+                    const itemLink = element.querySelector('a');
+                    // Create a temporary div to strip HTML for display text
+                    let tempDiv = document.createElement("div");
+                    tempDiv.innerHTML = element.innerHTML; 
+                    let cleanTextContent = (tempDiv.textContent || tempDiv.innerText || "").trim();
+                    let displayText = cleanTextContent.length > 120 ? cleanTextContent.substring(0, 117) + "..." : cleanTextContent;
+                   
+                    // Unique key for the result to avoid duplicates
+                    const resultKey = `content-${targetId}-${displayText.substring(0,30)}`; 
+
+                    if (!foundItems.has(resultKey)) {
+                        if (itemLink && itemLink.href && !itemLink.href.startsWith('#')) { 
+                            // If it's an external link, link directly to it
+                            resultsHtml += `<p><a href="${itemLink.href}" target="_blank" rel="noopener noreferrer">${displayText}</a> (in <a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${contextTitle}</a>)</p>`;
+                        } else { 
+                            // Otherwise, link to the section/subheading
+                            resultsHtml += `<p><a href="#${targetId}" onclick="smoothScrollTo('${targetId}'); return false;">${displayText}</a> (in <a href="#${sectionId}" onclick="smoothScrollTo('${sectionId}'); return false;">${sectionTitleText}</a>)</p>`;
+                        }
+                        foundItems.add(resultKey);
+                    }
+                }
+            });
+        });
+
+        if (foundItems.size > 0) {
+            searchResultsDiv.innerHTML = `<h3>Search Results for "${document.getElementById("siteSearch").value}"</h3>${resultsHtml}`;
+        } else {
+            searchResultsDiv.innerHTML = `<p>No results found for "${document.getElementById("siteSearch").value}".</p>`;
+        }
+    }
+
+    // Smooth scroll function
+    function smoothScrollTo(elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            const headerOffset = document.querySelector('nav') ? document.querySelector('nav').offsetHeight + 20 : 80; // Adjust offset as needed
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    }
+
+    // Back to top button functionality
+    const backToTopButton = document.querySelector(".back-to-top");
+    if (backToTopButton) {
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        });
+    }
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Set current year in footer
+    const currentYearSpan = document.getElementById("currentYear");
+    if (currentYearSpan) {
+        currentYearSpan.textContent = new Date().getFullYear();
+    }
+
+    // Search on Enter key press
+    const searchInput = document.getElementById("siteSearch");
+    if (searchInput) {
+        searchInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent form submission if it were a form
+                performSearch();
+            }
+        });
+    }
+
+    // Smooth scroll for internal navigation links
+    document.querySelectorAll('.main-navbar a[href^="#"], .quick-nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const hrefAttribute = this.getAttribute('href');
+            if (hrefAttribute && hrefAttribute !== "#") { // Ensure it's not just a "#"
+                if (hrefAttribute.startsWith("#") && hrefAttribute.length > 1) { // Check it's an internal link
+                    const targetId = hrefAttribute.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        smoothScrollTo(targetId);
+                    }
+                }
+            }
+        });
+    });
+
+    // Add target="_blank" to all external links within resource sections
+    document.querySelectorAll('.resource-section a').forEach(link => {
+        if (link.href && (link.hostname !== window.location.hostname )) { // Check if it's an external link
+             if (link.protocol !== "tel:" && link.protocol !== "mailto:") { // Exclude tel and mailto links
+                 link.setAttribute('target', '_blank');
+                 link.setAttribute('rel', 'noopener noreferrer'); // For security
+            }
+        }
+    });
+  </script>
+</body>
+</html>
